@@ -1,0 +1,6 @@
+framework module OTOnexus {
+  umbrella header "OTOnexus-umbrella.h"
+
+  export *
+  module * { export * }
+}
