@@ -1,0 +1,16 @@
+PODS:
+  - OTOnexus (0.1.0)
+
+DEPENDENCIES:
+  - OTOnexus (from `../`)
+
+EXTERNAL SOURCES:
+  OTOnexus:
+    :path: ../
+
+SPEC CHECKSUMS:
+  OTOnexus: af7b1d7b36d08369f1a32c23eceef3223d70977a
+
+PODFILE CHECKSUM: 507f9e69f9617577aafdae8bde861b9961b9c59a
+
+COCOAPODS: 1.3.1

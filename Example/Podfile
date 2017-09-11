@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'OTOnexus_Example' do
+  pod 'OTOnexus', :path => '../'
+
+  target 'OTOnexus_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
