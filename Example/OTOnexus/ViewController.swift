@@ -18,15 +18,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func resetAction(_ sender: Any) {
-        captureView.resetResults()
+        self.captureView.resetResults()
     }
     
     @IBAction func flashAction(_ sender: Any) {
-        captureView.toggleFlash()
+        self.captureView.toggleFlash()
     }
     
     @IBAction func segmentChangedAction(_ sender: UISegmentedControl) {
-      captureView.scanStacked = sender.selectedSegmentIndex == 0
+        self.captureView.scanStacked = sender.selectedSegmentIndex == 0
     }
 }
 
