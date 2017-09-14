@@ -215,15 +215,15 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     func drawBarcodeBounds(_ code: AVMetadataMachineReadableCodeObject) {
+        guard let videoPreviewLayer = videoPreviewLayer else { return }
         if(codeDetectionShape.superlayer == nil) {
-            videoPreviewLayer?.addSublayer(codeDetectionShape)
+            videoPreviewLayer.addSublayer(codeDetectionShape)
         }
+        
         //create a suitable CGPath for the barcode area
-        let path: CGPath = MDTAVMetadataMachineReadableCodeObjectCreatePathForCorners(videoPreviewLayer!, barcodeObject: code)
-        codeDetectionShape.frame = videoPreviewLayer!.bounds
+        let path = pathForCorners(from: code, transformedForLayer: videoPreviewLayer)
+        codeDetectionShape.frame = videoPreviewLayer.bounds
         codeDetectionShape.path = path
-        
-        
     }
     
     func clearBarcodeBounds() {
@@ -252,7 +252,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     
-   public func resetResults() {
+    public func resetResults() {
         if scanStacked {
             previewBox.setLabelText("0/2 Scanned")
         } else {
@@ -417,4 +417,26 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
 }
 
 
+// MARK: Private functions
+
+extension CaptureView {
+    fileprivate func pathForCorners(from barcodeObject: AVMetadataMachineReadableCodeObject,
+        transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
+    {
+        let transformedObject = previewLayer.transformedMetadataObject(for: barcodeObject) as? AVMetadataMachineReadableCodeObject
+        
+        // new mutable path
+        let path = CGMutablePath()
+        
+        for corner in transformedObject!.corners as! [NSDictionary] {
+            let point = CGPoint(dictionaryRepresentation: corner)!
+            path.move(to: point)
+            path.addLine(to: point)
+        }
+        
+        path.closeSubpath()
+        
+        return path
+    }
+}
 
