@@ -14,14 +14,20 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.captureView.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func resetAction(_ sender: Any) {
+        captureView.resetResults()
     }
-
+    
+    @IBAction func flashAction(_ sender: Any) {
+        captureView.toggleFlash()
+    }
+    
+    @IBAction func segmentChangedAction(_ sender: UISegmentedControl) {
+      captureView.scanStacked = sender.selectedSegmentIndex == 0
+    }
 }
 
 extension UIViewController : CaptureViewDelegate {

@@ -140,6 +140,29 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         scanStatus = Status.scanning
     }
     
+    public func toggleFlash() {
+        if (self.captureDevice.hasTorch) {
+            do {
+                if self.captureDevice.hasTorch {
+                    try self.captureDevice.lockForConfiguration()
+                    if (self.captureDevice.torchMode == AVCaptureTorchMode.on) {
+                        self.captureDevice.torchMode = AVCaptureTorchMode.off
+                    } else {
+                        do {
+                            try self.captureDevice.setTorchModeOnWithLevel(1.0)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    
+                    self.captureDevice.unlockForConfiguration()
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     // MARK: AVCaptureMetadataOutputObjectsDelegate
     public func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
     {
