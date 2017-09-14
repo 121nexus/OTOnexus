@@ -1,22 +1,22 @@
 {
   "name": "OTOnexus",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "summary": "A short description of OTOnexus.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Nic Schlueter/OTOnexus",
-  "license": {
-    "type": "MIT",
-    "file": "LICENSE"
-  },
-  "authors": {
-    "Nic Schlueter": "schlueter@gmail.com"
-  },
   "source": {
-    "git": "https://github.com/Nic Schlueter/OTOnexus.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/121nexus/OTOnexus"
+  },
+  "description": "Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description",
+  "homepage": "https://github.com/121nexus/OTOnexus",
+  "authors": {
+    "Chris DeOrio": "chris@121nexus.com"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "OTOnexus/Classes/**/*"
+  "source_files": "OTOnexus/Classes/**/*.{swift,h}",
+  "resource_bundles": {
+    "OTOnexus": [
+      "OTOnexus/**/*.xib"
+    ]
+  }
 }
