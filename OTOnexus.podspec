@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'OTOnexus'
   s.version          = '1.0.0'
   s.summary          = 'A short description of OTOnexus.'
+  s.source           = { :git => 'https://github.com/121nexus/OTOnexus' }
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -31,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'OTOnexus/Classes/**/*'
+  s.source_files = 'OTOnexus/Classes/**/*.{swift,h}'
   s.resource_bundles = {
       'OTOnexus' => ['OTOnexus/**/*.xib']
   }

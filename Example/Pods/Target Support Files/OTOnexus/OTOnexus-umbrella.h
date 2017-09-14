@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "OTOnexus.h"
 
 FOUNDATION_EXPORT double OTOnexusVersionNumber;
 FOUNDATION_EXPORT const unsigned char OTOnexusVersionString[];
