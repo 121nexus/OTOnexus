@@ -124,149 +124,43 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         metaDataOutput?.rectOfInterest = rectOfInterest
     }
     
-    
-    func findGtin(_ str: String) -> String! {
-        if str.hasPrefix(AI_GTIN) {
-            return String(String(str.characters.dropFirst(2)).characters.prefix(14))
-        } else {
-            return ""
-        }
-    }
-    
-    func captureBarcodes() {
-        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
-        // as the media type parameter.
-        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        do {
-            if captureDevice.isSmoothAutoFocusSupported {
-                try captureDevice.lockForConfiguration()
-                captureDevice.focusMode = AVCaptureFocusMode.continuousAutoFocus
-                captureDevice.unlockForConfiguration()
-            }
-            ////TODO: Play around with capture quality to get best results for low light in warehouse
-            
-        } catch {
-            print(error)
-        }
-        do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            // Initialize the captureSession object.
-            captureSession = AVCaptureSession()
-            
-            //Initialize AVCaptureStillIamgeOutput
-            stillCameraOutput = AVCaptureStillImageOutput()
-            
-            
-            if(captureDevice.supportsAVCaptureSessionPreset(AVCaptureSessionPreset1920x1080)) {
-                captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
-                
-            } else {
-                captureSession?.sessionPreset = AVCaptureSessionPresetMedium
-            }
-
-            
-            videoConnection = self.captureMetadataOutput.connection(withMediaType: AVMediaTypeVideo)
-            if ((videoConnection?.isVideoStabilizationSupported) != nil){
-                videoConnection!.preferredVideoStabilizationMode = AVCaptureVideoStabilizationMode.auto
-                
-            }
-            
-            // Set the input device on the capture session.
-            captureSession?.addInput(input)
-            
-            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
-            //  let captureMetadataOutput = AVCaptureMetadataOutput()
-            captureSession?.addOutput(captureMetadataOutput)
-            
-            // Set delegate and use the default dispatch queue to execute the call back
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            
-            //Add output of camera still of barcode image
-            captureSession?.addOutput(stillCameraOutput)
-            
-            // Detect all the supported bar code
-            captureMetadataOutput.metadataObjectTypes = supportedBarCodes
-            
-            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer?.frame = self.layer.bounds
-            videoPreviewLayer?.borderColor = UIColor.green.cgColor
-            self.layer.addSublayer(videoPreviewLayer!)
-            
-            // Start video capture
-            captureSession?.startRunning()
-            
-            // Initialize QR Code Frame to highlight the QR code
-            qrCodeFrameView = UIView()
-            
-            if let qrCodeFrameView = qrCodeFrameView {
-                qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
-                qrCodeFrameView.layer.borderWidth = 2
-                self.addSubview(qrCodeFrameView)
-                self.bringSubview(toFront: qrCodeFrameView)
-            }
-        } catch {
-            // If any error occurs, simply print it out and don't continue any more.
-            print(error)
-            return
-        }
-    }
-    func drawBarcodeBounds(_ code: AVMetadataMachineReadableCodeObject) {
-        if(codeDetectionShape.superlayer == nil) {
-            videoPreviewLayer?.addSublayer(codeDetectionShape)
-        }
-        //create a suitable CGPath for the barcode area
-        let path: CGPath = MDTAVMetadataMachineReadableCodeObjectCreatePathForCorners(videoPreviewLayer!, barcodeObject: code)
-        codeDetectionShape.frame = videoPreviewLayer!.bounds
-        codeDetectionShape.path = path
-        
-        
-    }
-    
-    func clearBarcodeBounds() {
-        if(codeDetectionShape.superlayer != nil) {
-            codeDetectionShape.removeFromSuperlayer()
-        }
-    }
-    
-    func sanitizeBarcodeString(_ str: String) -> String {
-        return str.trimmingCharacters(in: CharacterSet.urlQueryAllowed.inverted)
-    }
-
-    
-    func processBarcode(_ metadataObjects: [AnyObject]) -> String {
-        let barcodeObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        if supportedBarCodes.contains(barcodeObj.type) && barcodeObj.stringValue != nil {
-            drawBarcodeBounds(barcodeObj)
-            //print("Barcode", barcodeObj.observationInfo.debugDescription)
-            
-            //            print ("Barcode", barcodeObj.valueForKeyPath("_internal.basicDescriptor")!["BarcodeRawData"])
-            
-            return sanitizeBarcodeString(barcodeObj.stringValue)
-        } else {
-            return ""
-        }
-    }
-    
-    
-   public func resetResults() {
+    public func resetResults() {
         if scanStacked {
             previewBox.setLabelText("0/2 Scanned")
         } else {
             previewBox.setLabelText("")
         }
-                //spinner.stopAnimating()
-                previewBox.red()
-                stackedResult = []
-                result = ""
-                GTIN = ""
-                rawScanData = ""
-                barcodeStringToPass = ""
-                scanStatus = Status.scanning
-
+        //spinner.stopAnimating()
+        previewBox.red()
+        stackedResult = []
+        result = ""
+        GTIN = ""
+        rawScanData = ""
+        barcodeStringToPass = ""
+        scanStatus = Status.scanning
+    }
+    
+    public func toggleFlash() {
+        if (self.captureDevice.hasTorch) {
+            do {
+                if self.captureDevice.hasTorch {
+                    try self.captureDevice.lockForConfiguration()
+                    if (self.captureDevice.torchMode == AVCaptureTorchMode.on) {
+                        self.captureDevice.torchMode = AVCaptureTorchMode.off
+                    } else {
+                        do {
+                            try self.captureDevice.setTorchModeOnWithLevel(1.0)
+                        } catch {
+                            print(error)
+                        }
+                    }
+                    
+                    self.captureDevice.unlockForConfiguration()
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
     
     // MARK: AVCaptureMetadataOutputObjectsDelegate
@@ -372,8 +266,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         
     }
     
-    func takePhoto(){
-        
+    func takePhoto() {
         if let stillOutput = stillCameraOutput {
             // we do this on another thread so that we don't hang the UI
             DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
@@ -417,4 +310,153 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
 }
 
 
+// MARK: Private functions
+
+extension CaptureView {
+    fileprivate func pathForCorners(from barcodeObject: AVMetadataMachineReadableCodeObject,
+        transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
+    {
+        let transformedObject = previewLayer.transformedMetadataObject(for: barcodeObject) as? AVMetadataMachineReadableCodeObject
+        
+        // new mutable path
+        let path = CGMutablePath()
+        
+        for corner in transformedObject!.corners as! [NSDictionary] {
+            let point = CGPoint(dictionaryRepresentation: corner)!
+            path.move(to: point)
+            path.addLine(to: point)
+        }
+        
+        path.closeSubpath()
+        
+        return path
+    }
+    
+    fileprivate func findGtin(_ str: String) -> String! {
+        if str.hasPrefix(AI_GTIN) {
+            return String(String(str.characters.dropFirst(2)).characters.prefix(14))
+        } else {
+            return ""
+        }
+    }
+    
+    fileprivate func captureBarcodes() {
+        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
+        // as the media type parameter.
+        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        do {
+            if captureDevice.isSmoothAutoFocusSupported {
+                try captureDevice.lockForConfiguration()
+                captureDevice.focusMode = AVCaptureFocusMode.continuousAutoFocus
+                captureDevice.unlockForConfiguration()
+            }
+            ////TODO: Play around with capture quality to get best results for low light in warehouse
+            
+        } catch {
+            print(error)
+        }
+        do {
+            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
+            let input = try AVCaptureDeviceInput(device: captureDevice)
+            
+            // Initialize the captureSession object.
+            captureSession = AVCaptureSession()
+            
+            //Initialize AVCaptureStillIamgeOutput
+            stillCameraOutput = AVCaptureStillImageOutput()
+            
+            
+            if(captureDevice.supportsAVCaptureSessionPreset(AVCaptureSessionPreset1920x1080)) {
+                captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080
+                
+            } else {
+                captureSession?.sessionPreset = AVCaptureSessionPresetMedium
+            }
+            
+            
+            videoConnection = self.captureMetadataOutput.connection(withMediaType: AVMediaTypeVideo)
+            if ((videoConnection?.isVideoStabilizationSupported) != nil){
+                videoConnection!.preferredVideoStabilizationMode = AVCaptureVideoStabilizationMode.auto
+                
+            }
+            
+            // Set the input device on the capture session.
+            captureSession?.addInput(input)
+            
+            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
+            //  let captureMetadataOutput = AVCaptureMetadataOutput()
+            captureSession?.addOutput(captureMetadataOutput)
+            
+            // Set delegate and use the default dispatch queue to execute the call back
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            
+            //Add output of camera still of barcode image
+            captureSession?.addOutput(stillCameraOutput)
+            
+            // Detect all the supported bar code
+            captureMetadataOutput.metadataObjectTypes = supportedBarCodes
+            
+            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer?.frame = self.layer.bounds
+            videoPreviewLayer?.borderColor = UIColor.green.cgColor
+            self.layer.addSublayer(videoPreviewLayer!)
+            
+            // Start video capture
+            captureSession?.startRunning()
+            
+            // Initialize QR Code Frame to highlight the QR code
+            qrCodeFrameView = UIView()
+            
+            if let qrCodeFrameView = qrCodeFrameView {
+                qrCodeFrameView.layer.borderColor = UIColor.red.cgColor
+                qrCodeFrameView.layer.borderWidth = 2
+                self.addSubview(qrCodeFrameView)
+                self.bringSubview(toFront: qrCodeFrameView)
+            }
+        } catch {
+            // If any error occurs, simply print it out and don't continue any more.
+            print(error)
+            return
+        }
+    }
+    
+    fileprivate func drawBarcodeBounds(_ code: AVMetadataMachineReadableCodeObject) {
+        guard let videoPreviewLayer = videoPreviewLayer else { return }
+        if(codeDetectionShape.superlayer == nil) {
+            videoPreviewLayer.addSublayer(codeDetectionShape)
+        }
+        
+        //create a suitable CGPath for the barcode area
+        let path = pathForCorners(from: code, transformedForLayer: videoPreviewLayer)
+        codeDetectionShape.frame = videoPreviewLayer.bounds
+        codeDetectionShape.path = path
+    }
+    
+    fileprivate func clearBarcodeBounds() {
+        if(codeDetectionShape.superlayer != nil) {
+            codeDetectionShape.removeFromSuperlayer()
+        }
+    }
+    
+    fileprivate func sanitizeBarcodeString(_ str: String) -> String {
+        return str.trimmingCharacters(in: CharacterSet.urlQueryAllowed.inverted)
+    }
+    
+    
+    fileprivate func processBarcode(_ metadataObjects: [AnyObject]) -> String {
+        let barcodeObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        if supportedBarCodes.contains(barcodeObj.type) && barcodeObj.stringValue != nil {
+            drawBarcodeBounds(barcodeObj)
+            //print("Barcode", barcodeObj.observationInfo.debugDescription)
+            
+            //            print ("Barcode", barcodeObj.valueForKeyPath("_internal.basicDescriptor")!["BarcodeRawData"])
+            
+            return sanitizeBarcodeString(barcodeObj.stringValue)
+        } else {
+            return ""
+        }
+    }
+}
 

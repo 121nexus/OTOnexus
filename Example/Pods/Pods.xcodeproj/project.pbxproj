@@ -14,9 +14,11 @@
 		4FAA2A9F73F9454C9C52D4E1294858E8 /* Pods-OTOnexus_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F6E523BF554FC3DE962A683F465CB480 /* Pods-OTOnexus_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64A16471651D9696EDABBD47534B31A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
-		8A6CD0FE1F633BDA00DBF448 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6CD0F91F633BDA00DBF448 /* CaptureView.swift */; };
-		8A6CD0FF1F633BDA00DBF448 /* MDTAVFoundationFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6CD0FB1F633BDA00DBF448 /* MDTAVFoundationFunctions.swift */; };
-		8A6CD1001F633BDA00DBF448 /* MDTPreviewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6CD0FC1F633BDA00DBF448 /* MDTPreviewBox.swift */; };
+		8A3E51A11F6ADC0300287E02 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E519D1F6ADC0300287E02 /* CaptureView.swift */; };
+		8A3E51A31F6ADC0300287E02 /* MDTPreviewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E51A01F6ADC0300287E02 /* MDTPreviewBox.swift */; };
+		8A3E51A61F6ADDFE00287E02 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E51A51F6ADDFE00287E02 /* Product.swift */; };
+		8A3E51A81F6ADE5C00287E02 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E51A71F6ADE5C00287E02 /* Experience.swift */; };
+		8A3E51AA1F6ADFF900287E02 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E51A91F6ADFF900287E02 /* Session.swift */; };
 		8A6CD1011F633BDA00DBF448 /* OTOnexus.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A6CD0FD1F633BDA00DBF448 /* OTOnexus.h */; };
 		BEAAC09A146DDFC2C61DF7B7C7E0F17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		FA3B423CD35942F2BB869ABF5C0D9E0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -51,10 +53,12 @@
 		6FE5BD033364DA0716A5898B786865A6 /* OTOnexus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OTOnexus-dummy.m"; sourceTree = "<group>"; };
 		732B82AA6FDDF331964B57B83D5395ED /* Pods_OTOnexus_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OTOnexus_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		757C371133099499111E3E594C77216E /* Pods_OTOnexus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OTOnexus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A6CD0F91F633BDA00DBF448 /* CaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
-		8A6CD0FA1F633BDA00DBF448 /* CaptureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptureView.xib; sourceTree = "<group>"; };
-		8A6CD0FB1F633BDA00DBF448 /* MDTAVFoundationFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTAVFoundationFunctions.swift; sourceTree = "<group>"; };
-		8A6CD0FC1F633BDA00DBF448 /* MDTPreviewBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTPreviewBox.swift; sourceTree = "<group>"; };
+		8A3E519D1F6ADC0300287E02 /* CaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		8A3E519E1F6ADC0300287E02 /* CaptureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptureView.xib; sourceTree = "<group>"; };
+		8A3E51A01F6ADC0300287E02 /* MDTPreviewBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDTPreviewBox.swift; sourceTree = "<group>"; };
+		8A3E51A51F6ADDFE00287E02 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		8A3E51A71F6ADE5C00287E02 /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		8A3E51A91F6ADFF900287E02 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8A6CD0FD1F633BDA00DBF448 /* OTOnexus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTOnexus.h; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -159,13 +163,31 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		8A3E519C1F6ADC0300287E02 /* Caputre */ = {
+			isa = PBXGroup;
+			children = (
+				8A3E519D1F6ADC0300287E02 /* CaptureView.swift */,
+				8A3E519E1F6ADC0300287E02 /* CaptureView.xib */,
+				8A3E51A01F6ADC0300287E02 /* MDTPreviewBox.swift */,
+			);
+			path = Caputre;
+			sourceTree = "<group>";
+		};
+		8A3E51A41F6ADC5600287E02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A3E51A51F6ADDFE00287E02 /* Product.swift */,
+				8A3E51A71F6ADE5C00287E02 /* Experience.swift */,
+				8A3E51A91F6ADFF900287E02 /* Session.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8A6CD0F71F633BDA00DBF448 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8A6CD0F91F633BDA00DBF448 /* CaptureView.swift */,
-				8A6CD0FA1F633BDA00DBF448 /* CaptureView.xib */,
-				8A6CD0FB1F633BDA00DBF448 /* MDTAVFoundationFunctions.swift */,
-				8A6CD0FC1F633BDA00DBF448 /* MDTPreviewBox.swift */,
+				8A3E51A41F6ADC5600287E02 /* Models */,
+				8A3E519C1F6ADC0300287E02 /* Caputre */,
 				8A6CD0FD1F633BDA00DBF448 /* OTOnexus.h */,
 			);
 			name = Classes;
@@ -359,10 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6CD0FF1F633BDA00DBF448 /* MDTAVFoundationFunctions.swift in Sources */,
+				8A3E51AA1F6ADFF900287E02 /* Session.swift in Sources */,
 				202AF5A670698E2F8F592CA0C9378106 /* OTOnexus-dummy.m in Sources */,
-				8A6CD1001F633BDA00DBF448 /* MDTPreviewBox.swift in Sources */,
-				8A6CD0FE1F633BDA00DBF448 /* CaptureView.swift in Sources */,
+				8A3E51A61F6ADDFE00287E02 /* Product.swift in Sources */,
+				8A3E51A81F6ADE5C00287E02 /* Experience.swift in Sources */,
+				8A3E51A31F6ADC0300287E02 /* MDTPreviewBox.swift in Sources */,
+				8A3E51A11F6ADC0300287E02 /* CaptureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
