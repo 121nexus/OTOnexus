@@ -10,9 +10,19 @@ import Foundation
 
 public class OTOnexus {
     static let shared = OTOnexus()
-    var apiKey = ""
+    var apiKey = "" {
+        didSet {
+            WebServiceManager.shared.urlSession.configuration.httpAdditionalHeaders?["api-key"] = apiKey
+        }
+    }
     
     public static func configure(withApiKey apiKey:String) {
         self.shared.apiKey = apiKey
+    }
+    
+    public static func testApi() {
+        WebServiceManager.shared.get(endpoint: "search", params: ["q":"foo"]) { (response) in
+            print(response)
+        }
     }
 }

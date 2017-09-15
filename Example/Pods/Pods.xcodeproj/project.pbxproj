@@ -23,6 +23,10 @@
 		845368B7617FD356BD61A379E3AAA7B8 /* CaptureViewInternal.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5877E6734F4E62DE9776F20CB35612 /* CaptureViewInternal.xib */; };
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
 		8A7FA0781F6C16FF00F216A3 /* OTOnexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FA0771F6C16FF00F216A3 /* OTOnexus.swift */; };
+		8AD9299E1F6C1BFC003B42DC /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9299D1F6C1BFC003B42DC /* WebServiceManager.swift */; };
+		8AD929A01F6C2269003B42DC /* WebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9299F1F6C2269003B42DC /* WebServiceOperation.swift */; };
+		8AD929A21F6C2534003B42DC /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD929A11F6C2534003B42DC /* AsyncOperation.swift */; };
+		8AD929A51F6C3755003B42DC /* GetWebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD929A41F6C3755003B42DC /* GetWebServiceOperation.swift */; };
 		B3F5384A6C3C7DCAF9258AFE05FC9E23 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C70D0BADF2957BDFD314E385C8E8D3 /* Session.swift */; };
 		BEAAC09A146DDFC2C61DF7B7C7E0F17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		EE4838F4DFF3774CD96243B9E74C6585 /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B4E78A51AB519144A173A9072142BBE /* OTOnexus.bundle */; };
@@ -69,6 +73,10 @@
 		8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OTOnexus.xcconfig; sourceTree = "<group>"; };
 		8937A3A990B9916B09A6CE079B312E2B /* CaptureViewInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CaptureViewInternal.swift; sourceTree = "<group>"; };
 		8A7FA0771F6C16FF00F216A3 /* OTOnexus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTOnexus.swift; sourceTree = "<group>"; };
+		8AD9299D1F6C1BFC003B42DC /* WebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceManager.swift; sourceTree = "<group>"; };
+		8AD9299F1F6C2269003B42DC /* WebServiceOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceOperation.swift; sourceTree = "<group>"; };
+		8AD929A11F6C2534003B42DC /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		8AD929A41F6C3755003B42DC /* GetWebServiceOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetWebServiceOperation.swift; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OTOnexus_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -182,6 +190,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		8AD9299C1F6C1B7A003B42DC /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				8AD9299D1F6C1BFC003B42DC /* WebServiceManager.swift */,
+				8AD9299F1F6C2269003B42DC /* WebServiceOperation.swift */,
+				8AD929A11F6C2534003B42DC /* AsyncOperation.swift */,
+				8AD929A41F6C3755003B42DC /* GetWebServiceOperation.swift */,
+			);
+			name = WebServices;
+			path = OTOnexus/Classes/WebServices;
+			sourceTree = "<group>";
+		};
 		96B5041F89D23B148CF15CD6207A4DDA /* capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +228,7 @@
 				8A7FA0771F6C16FF00F216A3 /* OTOnexus.swift */,
 				96B5041F89D23B148CF15CD6207A4DDA /* capture */,
 				373D5AB7CE07758A2B2B49C629918548 /* Models */,
+				8AD9299C1F6C1B7A003B42DC /* WebServices */,
 				A0429A6315B02B3C60DC97D82E9B378F /* Resources */,
 				D656EADA69BDF9435D6B62E654E25C99 /* Support Files */,
 			);
@@ -447,13 +468,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				448483247A0315341BDC29F5413B07D5 /* CaptureViewInternal.swift in Sources */,
+				8AD929A21F6C2534003B42DC /* AsyncOperation.swift in Sources */,
 				38F94F05BB158249181D49E9F9D96545 /* CaptureView.swift in Sources */,
 				4640B84255E0B8E7E499DFFEAFC19030 /* Experience.swift in Sources */,
 				2E84A05A3E2DC372C867F632AB3269F2 /* MDTPreviewBox.swift in Sources */,
 				501546786ADD9E070CA6FCE27D75046F /* OTOnexus-dummy.m in Sources */,
 				84468F7B63BA17539D7D5AA2FE4F9CD3 /* Product.swift in Sources */,
+				8AD929A51F6C3755003B42DC /* GetWebServiceOperation.swift in Sources */,
+				8AD929A01F6C2269003B42DC /* WebServiceOperation.swift in Sources */,
 				8A7FA0781F6C16FF00F216A3 /* OTOnexus.swift in Sources */,
 				B3F5384A6C3C7DCAF9258AFE05FC9E23 /* Session.swift in Sources */,
+				8AD9299E1F6C1BFC003B42DC /* WebServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
