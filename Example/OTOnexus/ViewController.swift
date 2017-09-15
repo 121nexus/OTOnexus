@@ -31,16 +31,8 @@ class ViewController: UIViewController {
 }
 
 extension UIViewController : CaptureViewDelegate {
-    public func sendRawScanDataString(_ barcodeStringToPass: String) {
+    public func didCapture(product: Product) {
         
-    }
-    
-    public func sendScannedImageData(_ pickedImage: UIImage) {
-        
-    }
-    
-    public func connectionLost() -> Bool {
-        return false
     }
 }
 

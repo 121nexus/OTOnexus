@@ -8,8 +8,14 @@
 
 import Foundation
 
-class Product {
-    var url = ""
+public class Product {
+    public var url = ""
     var defaultExperienceId = -1
-    var experiences = [Experience]()
+    public var experiences = [Experience]()
+    public var defaultExperience:Experience? {
+        let foundExperience = experiences.first { (experience) -> Bool in
+            return experience.id == defaultExperienceId
+        }
+        return foundExperience
+    }
 }

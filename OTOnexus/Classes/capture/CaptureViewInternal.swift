@@ -1,18 +1,14 @@
 //
-//  CaptureView.swift
-//  MDT-Scan-App-V2
+//  CaptuerViewInternal.swift
+//  OTOnexus
 //
-//  Created by Christopher DeOrio on 2/2/17.
-//  Copyright © 2017 Christopher DeOrio. All rights reserved.
+//  Created by Nicholas Schlueter on 9/14/17.
 //
 
 import UIKit
 import AVFoundation
-import Foundation
-import JavaScriptCore
 
-
-public protocol CaptureViewDelegate: class {
+public protocol CaptureViewInternalDelegate: class {
     
     func sendRawScanDataString(_ barcodeStringToPass: String)
     func sendScannedImageData(_ pickedImage: UIImage)
@@ -30,14 +26,14 @@ public protocol CaptureViewDelegate: class {
 let AI_GTIN = "01"
 
 
-public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
+public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet var myCaptureView: UIView!
     @IBOutlet public weak var previewBox: MDTPreviewBox!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var previewBoxAspect: NSLayoutConstraint!
-
-    public var delegate : CaptureViewDelegate?
+    
+    public var delegate : CaptureViewInternalDelegate?
     
     public var captureSession:AVCaptureSession?
     var stillCameraOutput: AVCaptureStillImageOutput?
@@ -49,7 +45,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var sessionKey = ""
     var possibleGTINs : [String] = []
     let listOfCodes: NSMutableSet = []
-//  let locationManager = CLLocationManager()
+    //  let locationManager = CLLocationManager()
     var latitudeString = ""
     var longitudeString = ""
     var statusCode: Int = Int()
@@ -57,7 +53,13 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var result = String()
     var stackedResult : Set<String> = []
     var GTIN = String()
-    public var scanStacked = true
+    public var scanStacked = true {
+        didSet {
+            if oldValue != scanStacked {
+                resetResults()
+            }
+        }
+    }
     let stackedHeightMultiplier: CGFloat = 1.0
     let singleHeightMultiplier: CGFloat = 1.0
     var processing = false
@@ -66,7 +68,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var strBase64 = String()
     
     public var captureDevice : AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
- 
+    
     
     public enum Status {
         case scanning, stacking, completed
@@ -77,36 +79,36 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var codeDetectionShape = CAShapeLayer()
     
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
-
+    
     required public init?(coder aDecoder:NSCoder) {
         
         super.init(coder: aDecoder)
         
-
-        guard
-            let path = Bundle(for: CaptureView.self).path(forResource: "OTOnexus", ofType: "bundle"),
-            let bundle = Bundle(path: path)
-        else {
-            fatalError("No bundle found")
-        }
-        bundle.loadNibNamed("CaptureView", owner: self, options: nil)
         
-        self.addSubview(self.myCaptureView!)
-        self.addSubview(self.previewBox)
-        previewBox.addLabel(previewLabel)
-
+//        guard
+//            let path = Bundle(for: CaptureView.self).path(forResource: "OTOnexus", ofType: "bundle"),
+//            let bundle = Bundle(path: path)
+//            else {
+//                fatalError("No bundle found")
+//        }
+//        bundle.loadNibNamed("CaptureView", owner: self, options: nil)
+        
+        //        self.addSubview(self.myCaptureView!)
+//        self.addSubview(self.previewBox)
+//        previewBox.addLabel(previewLabel)
+        
         codeDetectionShape.strokeColor = UIColor.green.cgColor
         codeDetectionShape.fillColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.25).cgColor
         codeDetectionShape.lineWidth = 2
         captureBarcodes()
-
+        
     }
     
     override public func didMoveToSuperview() {
         previewBox.addLabel(previewLabel)
         self.bringSubview(toFront: previewBox)
         self.bringSubview(toFront: previewLabel)
-
+        
         //print("testing life cycle")
         if (!(captureSession?.isRunning)!)
         {
@@ -199,7 +201,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     clearBarcodeBounds()
                     if (delegate != nil) {
                         if (delegate?.connectionLost())! {
-                        ///No connection
+                            ///No connection
                             self.resetResults()
                             scanStatus = Status.scanning
                         } else {
@@ -208,7 +210,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                             delegate!.sendRawScanDataString(barcodeStringToPass)
                             
                         }
-                    
+                        
                         
                     }
                 } else if stackedResult.count == 1 {
@@ -289,7 +291,7 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                 if videoConnection  != nil {
                     
                     stillOutput.captureStillImageAsynchronously(from: videoConnection) { (imageSampleBuffer: CMSampleBuffer?, err: Error?) -> Void in
-
+                        
                         if imageSampleBuffer != nil {
                             let imageDataJpeg = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
                             self.pickedImage = UIImage(data: imageDataJpeg!)!
@@ -312,9 +314,9 @@ public class CaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
 
 // MARK: Private functions
 
-extension CaptureView {
+extension CaptureViewInternal {
     fileprivate func pathForCorners(from barcodeObject: AVMetadataMachineReadableCodeObject,
-        transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
+                                    transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
     {
         let transformedObject = previewLayer.transformedMetadataObject(for: barcodeObject) as? AVMetadataMachineReadableCodeObject
         
@@ -459,4 +461,3 @@ extension CaptureView {
         }
     }
 }
-

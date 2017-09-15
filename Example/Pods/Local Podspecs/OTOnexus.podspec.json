@@ -11,7 +11,7 @@
     "Chris DeOrio": "chris@121nexus.com"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "source_files": "OTOnexus/Classes/**/*.{swift,h}",
   "resource_bundles": {
