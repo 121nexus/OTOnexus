@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   # s.authors            = { "Chris DeOrio" => "chris@121nexus.com" }
   # s.social_media_url   = "http://twitter.com/Chris DeOrio"
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'OTOnexus/Classes/**/*.{swift,h}'
   s.resource_bundles = {

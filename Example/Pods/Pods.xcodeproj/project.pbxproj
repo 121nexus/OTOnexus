@@ -8,37 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		0448CDA44B09EAE929A149BDD3292F96 /* Pods-OTOnexus_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AEE0A65162E4381A0019783C9314542C /* Pods-OTOnexus_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		08B395D968DD2D64DDF466FA311A83E8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF7E597ED4EECE29FB0F447650C42BD /* Session.swift */; };
-		2E5FBDC22B879EFF1B5162BF6795565C /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B4E78A51AB519144A173A9072142BBE /* OTOnexus.bundle */; };
-		31CF6726CE8506EC62BCE4E883D485CD /* OTOnexus-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D404F40C51853510C84198C44BD7924B /* OTOnexus-dummy.m */; };
-		39B21803DB786CDA582CA5E8919857D6 /* CaptureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DD9652693DCCD48A7B8C7662E5DEC /* CaptureView.xib */; };
-		3D231173701F6294F3566E30D31355B6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA8741399E5568E94D50CB0BCCEF23 /* Product.swift */; };
+		2E84A05A3E2DC372C867F632AB3269F2 /* MDTPreviewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03145BDB49DA4A46C6D8679ABCB0333 /* MDTPreviewBox.swift */; };
+		38F94F05BB158249181D49E9F9D96545 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF23CFE6F9E087B08D0D8AEDDC82CBC /* CaptureView.swift */; };
 		402D28A2525A29C53031AF17FA822E28 /* Pods-OTOnexus_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E244C42D0A48EDA1BDA17BD85A615BF /* Pods-OTOnexus_Example-dummy.m */; };
-		4DA359D5348CC02BE98F86402A45D846 /* OTOnexus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BCFCA47E403A87BDF7FF82BDA620C53 /* OTOnexus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42CCFD19CAF6C3FD449DB18DC92732F2 /* OTOnexus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 23FAC1952FA243F104C6EE0B65607F19 /* OTOnexus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		448483247A0315341BDC29F5413B07D5 /* CaptuerViewInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937A3A990B9916B09A6CE079B312E2B /* CaptuerViewInternal.swift */; };
+		4640B84255E0B8E7E499DFFEAFC19030 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F229E91D0FC6FC7E211E6FA8B328774 /* Experience.swift */; };
+		4A2D4E4527730086A61653B1B92D97B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		4FAA2A9F73F9454C9C52D4E1294858E8 /* Pods-OTOnexus_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F6E523BF554FC3DE962A683F465CB480 /* Pods-OTOnexus_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		51F54A0B1C0259988648E7711BE1625B /* MDTPreviewBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21171C3D36E18F05EE9DE15FDB9E9094 /* MDTPreviewBox.swift */; };
+		501546786ADD9E070CA6FCE27D75046F /* OTOnexus-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4382786CBEDB28C5939EF29090914F /* OTOnexus-dummy.m */; };
 		64A16471651D9696EDABBD47534B31A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		7E2416D4CDB11AE498064C6047744408 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28884C52489420D5124B90A7171C6130 /* Experience.swift */; };
+		823A02585F3F42F12A9C991DAEF09F02 /* OTOnexus.h in Headers */ = {isa = PBXBuildFile; fileRef = C4DEB384DBFCA2ECB834016F1B375ED9 /* OTOnexus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84468F7B63BA17539D7D5AA2FE4F9CD3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1778F9B03C67E9B6BF49A0F7492C5 /* Product.swift */; };
+		845368B7617FD356BD61A379E3AAA7B8 /* CaptureViewInternal.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5877E6734F4E62DE9776F20CB35612 /* CaptureViewInternal.xib */; };
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
-		B4BDD77AF0D34631DD5E9D7407CDEF1F /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69BEA8E501465EA3FAD9CCD13F8123B /* CaptureView.swift */; };
-		B9CF48BBEBA9BBD9C590C483FD8538E9 /* OTOnexus.h in Headers */ = {isa = PBXBuildFile; fileRef = 6143D672FB95E29D8AFAE6EAFDE4A473 /* OTOnexus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BE9558345E90D627E3F3028ACAB6BA85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		B3F5384A6C3C7DCAF9258AFE05FC9E23 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C70D0BADF2957BDFD314E385C8E8D3 /* Session.swift */; };
 		BEAAC09A146DDFC2C61DF7B7C7E0F17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		EE4838F4DFF3774CD96243B9E74C6585 /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B4E78A51AB519144A173A9072142BBE /* OTOnexus.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		49450E7B14D8BC030D3379077A20DE76 /* PBXContainerItemProxy */ = {
+		0F58C15BBD9CE08F58C9C2C5710C1D02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 89A844088C3FD1AF79492C5E5DBA0F78;
+			remoteGlobalIDString = 9D1F231EC51FCAE4B5CAF892C10E735D;
 			remoteInfo = "OTOnexus-OTOnexus";
 		};
 		D1E45C510FCFDD091A8ACB798428584B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3B3269BE2B44A4F4FC718B5100E87051;
+			remoteGlobalIDString = CB730FA74A03D260C8B8B0A01492524E;
 			remoteInfo = OTOnexus;
 		};
 /* End PBXContainerItemProxy section */
@@ -48,38 +49,39 @@
 		0B4E78A51AB519144A173A9072142BBE /* OTOnexus.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = OTOnexus.bundle; path = OTOnexus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD6EEF2DDE1A5AB7E840DC87FD181C5 /* Pods-OTOnexus_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OTOnexus_Example-resources.sh"; sourceTree = "<group>"; };
 		19C6ED320D9994FEFA613F0C089D49DF /* Pods-OTOnexus_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OTOnexus_Tests-resources.sh"; sourceTree = "<group>"; };
+		1C4382786CBEDB28C5939EF29090914F /* OTOnexus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OTOnexus-dummy.m"; sourceTree = "<group>"; };
 		1FCED3C96BEFCC1F821A54555BF3458A /* Pods-OTOnexus_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OTOnexus_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		210783CB663D7CAC15E765FDCF18B0F9 /* Pods-OTOnexus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Example.release.xcconfig"; sourceTree = "<group>"; };
-		21171C3D36E18F05EE9DE15FDB9E9094 /* MDTPreviewBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MDTPreviewBox.swift; sourceTree = "<group>"; };
-		28884C52489420D5124B90A7171C6130 /* Experience.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		23FAC1952FA243F104C6EE0B65607F19 /* OTOnexus-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OTOnexus-umbrella.h"; sourceTree = "<group>"; };
+		2B1096EC5F5A4D77093AAF2984B48DAE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E8764343A7390715F4D03F61D038C71 /* OTOnexus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OTOnexus.framework; path = OTOnexus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CF7E597ED4EECE29FB0F447650C42BD /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		49FAA7BFBC94497A3CB21744724C1E3C /* OTOnexus-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OTOnexus-prefix.pch"; sourceTree = "<group>"; };
-		4BCFCA47E403A87BDF7FF82BDA620C53 /* OTOnexus-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OTOnexus-umbrella.h"; sourceTree = "<group>"; };
+		4613AC8AE659056EC55B55FB81375674 /* OTOnexus-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OTOnexus-prefix.pch"; sourceTree = "<group>"; };
+		4AF23CFE6F9E087B08D0D8AEDDC82CBC /* CaptureView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		4E244C42D0A48EDA1BDA17BD85A615BF /* Pods-OTOnexus_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OTOnexus_Example-dummy.m"; sourceTree = "<group>"; };
+		4F229E91D0FC6FC7E211E6FA8B328774 /* Experience.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		4FD0B4BCDDAFD4AC1A31FE41396B1EA2 /* Pods_OTOnexus_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OTOnexus_Tests.framework; path = "Pods-OTOnexus_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D490EBE3ECD590F1E364433BD022CA /* Pods-OTOnexus_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OTOnexus_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		517D490A2EF582157E2DA802758D7121 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FC93DBEACBE0E55ACA44D071730B31 /* Pods-OTOnexus_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5CAFD19A078E3011F8A654C18F31C9DE /* Pods-OTOnexus_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-OTOnexus_Example.modulemap"; sourceTree = "<group>"; };
-		6143D672FB95E29D8AFAE6EAFDE4A473 /* OTOnexus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTOnexus.h; path = OTOnexus/Classes/OTOnexus.h; sourceTree = "<group>"; };
+		5FD1778F9B03C67E9B6BF49A0F7492C5 /* Product.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		80E8592402EA0EE80B63169DACA5B505 /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = OTOnexus.modulemap; sourceTree = "<group>"; };
+		8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OTOnexus.xcconfig; sourceTree = "<group>"; };
+		8937A3A990B9916B09A6CE079B312E2B /* CaptuerViewInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CaptuerViewInternal.swift; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F0DD9652693DCCD48A7B8C7662E5DEC /* CaptureView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CaptureView.xib; path = OTOnexus/Classes/caputre/CaptureView.xib; sourceTree = "<group>"; };
 		A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OTOnexus_Tests-dummy.m"; sourceTree = "<group>"; };
-		A8CA8741399E5568E94D50CB0BCCEF23 /* Product.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A213FF04400DD41AF21908036BE81358 /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = OTOnexus.modulemap; sourceTree = "<group>"; };
+		A4C70D0BADF2957BDFD314E385C8E8D3 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A57136AA17F6EA060346823413AE7850 /* ResourceBundle-OTOnexus-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-OTOnexus-Info.plist"; sourceTree = "<group>"; };
 		A98E0895398FE4AA14560EA535D08C9A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEE0A65162E4381A0019783C9314542C /* Pods-OTOnexus_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OTOnexus_Tests-umbrella.h"; sourceTree = "<group>"; };
 		BDC776C10254F0FE7E34C8CAD6326B87 /* Pods-OTOnexus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C2BD7DAE77CEE359726951163DAECC35 /* Pods-OTOnexus_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-OTOnexus_Tests.modulemap"; sourceTree = "<group>"; };
+		C4DEB384DBFCA2ECB834016F1B375ED9 /* OTOnexus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTOnexus.h; path = OTOnexus/Classes/OTOnexus.h; sourceTree = "<group>"; };
 		C89E8A69C51E321FC6AA9C0626138FED /* Pods-OTOnexus_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OTOnexus_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OTOnexus.xcconfig; sourceTree = "<group>"; };
-		D404F40C51853510C84198C44BD7924B /* OTOnexus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OTOnexus-dummy.m"; sourceTree = "<group>"; };
-		DB6F0CC2FD53E4D6BBDBA60E35B67130 /* ResourceBundle-OTOnexus-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-OTOnexus-Info.plist"; sourceTree = "<group>"; };
+		D03145BDB49DA4A46C6D8679ABCB0333 /* MDTPreviewBox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MDTPreviewBox.swift; sourceTree = "<group>"; };
+		DB5877E6734F4E62DE9776F20CB35612 /* CaptureViewInternal.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CaptureViewInternal.xib; path = OTOnexus/Classes/caputre/CaptureViewInternal.xib; sourceTree = "<group>"; };
 		E68CD473722E61502DA8FDA897C843D0 /* Pods-OTOnexus_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OTOnexus_Example-frameworks.sh"; sourceTree = "<group>"; };
-		E69BEA8E501465EA3FAD9CCD13F8123B /* CaptureView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		EEBA8354C54A2BBFBE94C143C9ECC00B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6E523BF554FC3DE962A683F465CB480 /* Pods-OTOnexus_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OTOnexus_Example-umbrella.h"; sourceTree = "<group>"; };
 		FCFC2F3D5D681D0BCD600E4FD058A2A5 /* Pods-OTOnexus_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OTOnexus_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -87,6 +89,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		40969C3E9B8062129108630A33BB4DC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A2D4E4527730086A61653B1B92D97B6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C4197D44AC598777838F850379356F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9842AFC2B71C090473CFE421619CD42F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,38 +120,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6D81B53B2BD293447136ABB4C55BE84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE9558345E90D627E3F3028ACAB6BA85 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EF4F2B7CA5FBB02650E18603521F0AD8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1401B9504D2FADEE874C37E729E02CD5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9F0DD9652693DCCD48A7B8C7662E5DEC /* CaptureView.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		16F822E1F018579FAC285C15ADE9BBE4 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				701BE4FCFFCD7E62411026CEFAF5DE40 /* OTOnexus */,
+				A2C60BEE5299DA222D07C45C87E96B45 /* OTOnexus */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		373D5AB7CE07758A2B2B49C629918548 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F229E91D0FC6FC7E211E6FA8B328774 /* Experience.swift */,
+				5FD1778F9B03C67E9B6BF49A0F7492C5 /* Product.swift */,
+				A4C70D0BADF2957BDFD314E385C8E8D3 /* Session.swift */,
+			);
+			name = Models;
+			path = OTOnexus/Classes/Models;
 			sourceTree = "<group>";
 		};
 		614FB9A306F4DB2BDAFA45F2A527473B /* Pods-OTOnexus_Tests */ = {
@@ -153,29 +158,6 @@
 			);
 			name = "Pods-OTOnexus_Tests";
 			path = "Target Support Files/Pods-OTOnexus_Tests";
-			sourceTree = "<group>";
-		};
-		669245B82299B854B1A17C145CC78417 /* caputre */ = {
-			isa = PBXGroup;
-			children = (
-				E69BEA8E501465EA3FAD9CCD13F8123B /* CaptureView.swift */,
-				21171C3D36E18F05EE9DE15FDB9E9094 /* MDTPreviewBox.swift */,
-			);
-			name = caputre;
-			path = OTOnexus/Classes/caputre;
-			sourceTree = "<group>";
-		};
-		701BE4FCFFCD7E62411026CEFAF5DE40 /* OTOnexus */ = {
-			isa = PBXGroup;
-			children = (
-				6143D672FB95E29D8AFAE6EAFDE4A473 /* OTOnexus.h */,
-				669245B82299B854B1A17C145CC78417 /* caputre */,
-				8D6B5F6CF3EFAEFFF61B1D73468E6462 /* Models */,
-				1401B9504D2FADEE874C37E729E02CD5 /* Resources */,
-				92187D143813616F4083995D689610ED /* Support Files */,
-			);
-			name = OTOnexus;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -198,30 +180,36 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		8D6B5F6CF3EFAEFFF61B1D73468E6462 /* Models */ = {
+		96B5041F89D23B148CF15CD6207A4DDA /* caputre */ = {
 			isa = PBXGroup;
 			children = (
-				28884C52489420D5124B90A7171C6130 /* Experience.swift */,
-				A8CA8741399E5568E94D50CB0BCCEF23 /* Product.swift */,
-				3CF7E597ED4EECE29FB0F447650C42BD /* Session.swift */,
+				8937A3A990B9916B09A6CE079B312E2B /* CaptuerViewInternal.swift */,
+				4AF23CFE6F9E087B08D0D8AEDDC82CBC /* CaptureView.swift */,
+				D03145BDB49DA4A46C6D8679ABCB0333 /* MDTPreviewBox.swift */,
 			);
-			name = Models;
-			path = OTOnexus/Classes/Models;
+			name = caputre;
+			path = OTOnexus/Classes/caputre;
 			sourceTree = "<group>";
 		};
-		92187D143813616F4083995D689610ED /* Support Files */ = {
+		A0429A6315B02B3C60DC97D82E9B378F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				517D490A2EF582157E2DA802758D7121 /* Info.plist */,
-				80E8592402EA0EE80B63169DACA5B505 /* OTOnexus.modulemap */,
-				CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */,
-				D404F40C51853510C84198C44BD7924B /* OTOnexus-dummy.m */,
-				49FAA7BFBC94497A3CB21744724C1E3C /* OTOnexus-prefix.pch */,
-				4BCFCA47E403A87BDF7FF82BDA620C53 /* OTOnexus-umbrella.h */,
-				DB6F0CC2FD53E4D6BBDBA60E35B67130 /* ResourceBundle-OTOnexus-Info.plist */,
+				DB5877E6734F4E62DE9776F20CB35612 /* CaptureViewInternal.xib */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/OTOnexus";
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A2C60BEE5299DA222D07C45C87E96B45 /* OTOnexus */ = {
+			isa = PBXGroup;
+			children = (
+				C4DEB384DBFCA2ECB834016F1B375ED9 /* OTOnexus.h */,
+				96B5041F89D23B148CF15CD6207A4DDA /* caputre */,
+				373D5AB7CE07758A2B2B49C629918548 /* Models */,
+				A0429A6315B02B3C60DC97D82E9B378F /* Resources */,
+				D656EADA69BDF9435D6B62E654E25C99 /* Support Files */,
+			);
+			name = OTOnexus;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -258,6 +246,21 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		D656EADA69BDF9435D6B62E654E25C99 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B1096EC5F5A4D77093AAF2984B48DAE /* Info.plist */,
+				A213FF04400DD41AF21908036BE81358 /* OTOnexus.modulemap */,
+				8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */,
+				1C4382786CBEDB28C5939EF29090914F /* OTOnexus-dummy.m */,
+				4613AC8AE659056EC55B55FB81375674 /* OTOnexus-prefix.pch */,
+				23FAC1952FA243F104C6EE0B65607F19 /* OTOnexus-umbrella.h */,
+				A57136AA17F6EA060346823413AE7850 /* ResourceBundle-OTOnexus-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/OTOnexus";
+			sourceTree = "<group>";
+		};
 		E00334E108F8B15BA40F80F62521BC8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,44 +291,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5EED2AE4731B41838A43428A06059B1 /* Headers */ = {
+		CB99E5D9C3155AB8A037EEEA9B08D2D3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DA359D5348CC02BE98F86402A45D846 /* OTOnexus-umbrella.h in Headers */,
-				B9CF48BBEBA9BBD9C590C483FD8538E9 /* OTOnexus.h in Headers */,
+				42CCFD19CAF6C3FD449DB18DC92732F2 /* OTOnexus-umbrella.h in Headers */,
+				823A02585F3F42F12A9C991DAEF09F02 /* OTOnexus.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3B3269BE2B44A4F4FC718B5100E87051 /* OTOnexus */ = {
+		9D1F231EC51FCAE4B5CAF892C10E735D /* OTOnexus-OTOnexus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA240569428FE21354DC048EB778BCCA /* Build configuration list for PBXNativeTarget "OTOnexus" */;
+			buildConfigurationList = CBA748DAF3367CE21F9E83D452DDF445 /* Build configuration list for PBXNativeTarget "OTOnexus-OTOnexus" */;
 			buildPhases = (
-				6B68404CF60D32CFFB38092EC669C172 /* Sources */,
-				D6D81B53B2BD293447136ABB4C55BE84 /* Frameworks */,
-				E4311D53C9D93AA8C93DDBBDC6ECC505 /* Resources */,
-				E5EED2AE4731B41838A43428A06059B1 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F05E00B59CAD123D04E914E8BDD552EE /* PBXTargetDependency */,
-			);
-			name = OTOnexus;
-			productName = OTOnexus;
-			productReference = 2E8764343A7390715F4D03F61D038C71 /* OTOnexus.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		89A844088C3FD1AF79492C5E5DBA0F78 /* OTOnexus-OTOnexus */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A100BA03D2CD9589D99A385251F8A9BC /* Build configuration list for PBXNativeTarget "OTOnexus-OTOnexus" */;
-			buildPhases = (
-				D8E663D5C1142722CB412CDB59A9F503 /* Sources */,
-				EF4F2B7CA5FBB02650E18603521F0AD8 /* Frameworks */,
-				335F0A36253AC57A4364A7B928C1D2E7 /* Resources */,
+				B369CA85AD1ADA1FCBF4325D58D02CAC /* Sources */,
+				4C4197D44AC598777838F850379356F8 /* Frameworks */,
+				1F90B582BB3D841E2583C1B5AB58005E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -351,6 +335,25 @@
 			name = "Pods-OTOnexus_Tests";
 			productName = "Pods-OTOnexus_Tests";
 			productReference = 4FD0B4BCDDAFD4AC1A31FE41396B1EA2 /* Pods_OTOnexus_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CB730FA74A03D260C8B8B0A01492524E /* OTOnexus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 860A88229B6D05243D3BAEE82981599A /* Build configuration list for PBXNativeTarget "OTOnexus" */;
+			buildPhases = (
+				4A4C7C5391AD1336412E373C7819F068 /* Sources */,
+				40969C3E9B8062129108630A33BB4DC5 /* Frameworks */,
+				EEA0BF9B42F0E1D235EFCC86B3BEDD33 /* Resources */,
+				CB99E5D9C3155AB8A037EEEA9B08D2D3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A4AE429CA49D5653717B50774E6F190 /* PBXTargetDependency */,
+			);
+			name = OTOnexus;
+			productName = OTOnexus;
+			productReference = 2E8764343A7390715F4D03F61D038C71 /* OTOnexus.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EADBFA06D2C1A333C3C35FE1F21B5392 /* Pods-OTOnexus_Example */ = {
@@ -392,8 +395,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B3269BE2B44A4F4FC718B5100E87051 /* OTOnexus */,
-				89A844088C3FD1AF79492C5E5DBA0F78 /* OTOnexus-OTOnexus */,
+				CB730FA74A03D260C8B8B0A01492524E /* OTOnexus */,
+				9D1F231EC51FCAE4B5CAF892C10E735D /* OTOnexus-OTOnexus */,
 				EADBFA06D2C1A333C3C35FE1F21B5392 /* Pods-OTOnexus_Example */,
 				A0DF591E070D49E70010098ABEDDF5DB /* Pods-OTOnexus_Tests */,
 			);
@@ -401,19 +404,19 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		335F0A36253AC57A4364A7B928C1D2E7 /* Resources */ = {
+		1F90B582BB3D841E2583C1B5AB58005E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B21803DB786CDA582CA5E8919857D6 /* CaptureView.xib in Resources */,
+				845368B7617FD356BD61A379E3AAA7B8 /* CaptureViewInternal.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4311D53C9D93AA8C93DDBBDC6ECC505 /* Resources */ = {
+		EEA0BF9B42F0E1D235EFCC86B3BEDD33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E5FBDC22B879EFF1B5162BF6795565C /* OTOnexus.bundle in Resources */,
+				EE4838F4DFF3774CD96243B9E74C6585 /* OTOnexus.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,20 +439,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B68404CF60D32CFFB38092EC669C172 /* Sources */ = {
+		4A4C7C5391AD1336412E373C7819F068 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4BDD77AF0D34631DD5E9D7407CDEF1F /* CaptureView.swift in Sources */,
-				7E2416D4CDB11AE498064C6047744408 /* Experience.swift in Sources */,
-				51F54A0B1C0259988648E7711BE1625B /* MDTPreviewBox.swift in Sources */,
-				31CF6726CE8506EC62BCE4E883D485CD /* OTOnexus-dummy.m in Sources */,
-				3D231173701F6294F3566E30D31355B6 /* Product.swift in Sources */,
-				08B395D968DD2D64DDF466FA311A83E8 /* Session.swift in Sources */,
+				448483247A0315341BDC29F5413B07D5 /* CaptuerViewInternal.swift in Sources */,
+				38F94F05BB158249181D49E9F9D96545 /* CaptureView.swift in Sources */,
+				4640B84255E0B8E7E499DFFEAFC19030 /* Experience.swift in Sources */,
+				2E84A05A3E2DC372C867F632AB3269F2 /* MDTPreviewBox.swift in Sources */,
+				501546786ADD9E070CA6FCE27D75046F /* OTOnexus-dummy.m in Sources */,
+				84468F7B63BA17539D7D5AA2FE4F9CD3 /* Product.swift in Sources */,
+				B3F5384A6C3C7DCAF9258AFE05FC9E23 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8E663D5C1142722CB412CDB59A9F503 /* Sources */ = {
+		B369CA85AD1ADA1FCBF4325D58D02CAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,22 +463,126 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4A4AE429CA49D5653717B50774E6F190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "OTOnexus-OTOnexus";
+			target = 9D1F231EC51FCAE4B5CAF892C10E735D /* OTOnexus-OTOnexus */;
+			targetProxy = 0F58C15BBD9CE08F58C9C2C5710C1D02 /* PBXContainerItemProxy */;
+		};
 		7E9B765803185C68A52E4081529606C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OTOnexus;
-			target = 3B3269BE2B44A4F4FC718B5100E87051 /* OTOnexus */;
+			target = CB730FA74A03D260C8B8B0A01492524E /* OTOnexus */;
 			targetProxy = D1E45C510FCFDD091A8ACB798428584B /* PBXContainerItemProxy */;
-		};
-		F05E00B59CAD123D04E914E8BDD552EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "OTOnexus-OTOnexus";
-			target = 89A844088C3FD1AF79492C5E5DBA0F78 /* OTOnexus-OTOnexus */;
-			targetProxy = 49450E7B14D8BC030D3379077A20DE76 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3851A991DC0EC1FED1A9E1FBA6C40A27 /* Release */ = {
+		02679EFC29AB41AE88ACF848DB152208 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OTOnexus/OTOnexus-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OTOnexus/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OTOnexus/OTOnexus.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = OTOnexus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		635106242BC7E87E537181DA2CCEA5C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OTOnexus/OTOnexus-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OTOnexus/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OTOnexus/OTOnexus.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = OTOnexus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6D135E6C860C33BC8DB246500440EE4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OTOnexus";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/OTOnexus/ResourceBundle-OTOnexus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = OTOnexus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		78D13BAAF48F5BD168D6651138E0DA25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OTOnexus";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/OTOnexus/ResourceBundle-OTOnexus-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = OTOnexus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		7D1FBECD585CD378F5C1FDAEBEDC6DF1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 210783CB663D7CAC15E765FDCF18B0F9 /* Pods-OTOnexus_Example.release.xcconfig */;
 			buildSettings = {
@@ -492,7 +600,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Example/Pods-OTOnexus_Example.modulemap";
@@ -512,210 +620,7 @@
 			};
 			name = Release;
 		};
-		4873E71FE69D3A75744FB10B97AB82E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OTOnexus/OTOnexus-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OTOnexus/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OTOnexus/OTOnexus.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = OTOnexus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6C8955221FBB1143C9EE6E73EB0B88B1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OTOnexus/OTOnexus-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OTOnexus/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OTOnexus/OTOnexus.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = OTOnexus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		717E77604BFBB04BEAF56608A1CB2EDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		7CA91AAE1BBD38E6299C7BAE44C82467 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Tests/Pods-OTOnexus_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_OTOnexus_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		958255F64AD312794B7F20C6FC609788 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52FC93DBEACBE0E55ACA44D071730B31 /* Pods-OTOnexus_Tests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Tests/Pods-OTOnexus_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_OTOnexus_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A3722FDA3BE43BE73FA7D591A2978E12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OTOnexus";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/OTOnexus/ResourceBundle-OTOnexus-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = OTOnexus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		A6A03C9B1314C05BD3C2FBD3F65EDF83 /* Debug */ = {
+		97803B46811A9BDB5E70FA1303AFBFFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -755,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -764,7 +669,123 @@
 			};
 			name = Debug;
 		};
-		AD0A0071EA6E3C0141BB8CFA605B8B6A /* Debug */ = {
+		B355FE8FCB68E6AF2FB4DC002FCEEEBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52FC93DBEACBE0E55ACA44D071730B31 /* Pods-OTOnexus_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Tests/Pods-OTOnexus_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_OTOnexus_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B77A62470F1D511B69E02E1C2864CE92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Tests/Pods-OTOnexus_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_OTOnexus_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA9C27F02D1DC70E203A2836678F5152 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDC776C10254F0FE7E34C8CAD6326B87 /* Pods-OTOnexus_Example.debug.xcconfig */;
 			buildSettings = {
@@ -782,7 +803,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-OTOnexus_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OTOnexus_Example/Pods-OTOnexus_Example.modulemap";
@@ -803,31 +824,14 @@
 			};
 			name = Debug;
 		};
-		C35D14F06580181AEF5F0097A3F1C468 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF688CF4D4D3AFD2ACE4913CCBBB2134 /* OTOnexus.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/OTOnexus";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/OTOnexus/ResourceBundle-OTOnexus-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = OTOnexus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6A03C9B1314C05BD3C2FBD3F65EDF83 /* Debug */,
-				717E77604BFBB04BEAF56608A1CB2EDE /* Release */,
+				97803B46811A9BDB5E70FA1303AFBFFE /* Debug */,
+				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -835,17 +839,17 @@
 		30272A508548569C3F1E4876F02BB175 /* Build configuration list for PBXNativeTarget "Pods-OTOnexus_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CA91AAE1BBD38E6299C7BAE44C82467 /* Debug */,
-				958255F64AD312794B7F20C6FC609788 /* Release */,
+				B77A62470F1D511B69E02E1C2864CE92 /* Debug */,
+				B355FE8FCB68E6AF2FB4DC002FCEEEBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A100BA03D2CD9589D99A385251F8A9BC /* Build configuration list for PBXNativeTarget "OTOnexus-OTOnexus" */ = {
+		860A88229B6D05243D3BAEE82981599A /* Build configuration list for PBXNativeTarget "OTOnexus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C35D14F06580181AEF5F0097A3F1C468 /* Debug */,
-				A3722FDA3BE43BE73FA7D591A2978E12 /* Release */,
+				02679EFC29AB41AE88ACF848DB152208 /* Debug */,
+				635106242BC7E87E537181DA2CCEA5C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -853,17 +857,17 @@
 		A204075FEDC1D328E0E2266E9072884B /* Build configuration list for PBXNativeTarget "Pods-OTOnexus_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AD0A0071EA6E3C0141BB8CFA605B8B6A /* Debug */,
-				3851A991DC0EC1FED1A9E1FBA6C40A27 /* Release */,
+				EA9C27F02D1DC70E203A2836678F5152 /* Debug */,
+				7D1FBECD585CD378F5C1FDAEBEDC6DF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA240569428FE21354DC048EB778BCCA /* Build configuration list for PBXNativeTarget "OTOnexus" */ = {
+		CBA748DAF3367CE21F9E83D452DDF445 /* Build configuration list for PBXNativeTarget "OTOnexus-OTOnexus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6C8955221FBB1143C9EE6E73EB0B88B1 /* Debug */,
-				4873E71FE69D3A75744FB10B97AB82E3 /* Release */,
+				6D135E6C860C33BC8DB246500440EE4F /* Debug */,
+				78D13BAAF48F5BD168D6651138E0DA25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

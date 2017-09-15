@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Session {
-    var sessionid = ""
+public class Session {
+    var id = ""
     var productUrl = ""
     
     static func startSession(withExperience experience:Experience,

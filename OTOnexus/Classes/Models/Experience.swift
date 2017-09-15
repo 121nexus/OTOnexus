@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Experience {
+public class Experience {
     var id = -1
-    var name = ""
-    var description = ""
-    var productRequired = false
+    public var name = ""
+    public var description = ""
+    public var productRequired = false
 }
