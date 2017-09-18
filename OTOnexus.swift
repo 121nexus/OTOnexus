@@ -19,10 +19,4 @@ public class OTOnexus {
     public static func configure(withApiKey apiKey:String) {
         self.shared.apiKey = apiKey
     }
-    
-    public static func testApi() {
-        WebServiceManager.shared.get(endpoint: "search", params: ["q":"foo"]) { (response) in
-            print(response)
-        }
-    }
 }

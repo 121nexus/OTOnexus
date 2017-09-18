@@ -14,7 +14,9 @@ class WebServiceOperation: AsyncOperation {
     enum HttpMethod : String {
         case GET, POST, HEAD, DELETE, PUT
     }
-    var method = HttpMethod.GET
+    var method:WebServiceOperation.HttpMethod {
+        return .GET
+    }
     var successBlock:WebServiceManager.SuccessBlock?
     
     override func main() {
@@ -38,6 +40,8 @@ class WebServiceOperation: AsyncOperation {
         }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = self.method.rawValue
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         return urlRequest
     }
     
