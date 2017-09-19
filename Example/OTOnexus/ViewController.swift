@@ -34,7 +34,11 @@ class ViewController: UIViewController {
 
 extension UIViewController : CaptureViewDelegate {
     public func didCapture(product: Product) {
-        
+        guard let defaultExperience = product.defaultExperience else { return }
+        Session.startSession(withExperience: defaultExperience,
+                             product: product) { (session) in
+                                print(session.id)
+        }
     }
 }
 
