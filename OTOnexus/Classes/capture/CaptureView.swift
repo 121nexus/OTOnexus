@@ -40,6 +40,7 @@ public class CaptureView: UIView {
         }
         captureViewInternal = bundle.loadNibNamed("CaptureViewInternal", owner: self, options: nil)!.first! as! CaptureViewInternal
         captureViewInternal?.translatesAutoresizingMaskIntoConstraints = false
+        captureViewInternal?.delegate = self
         self.addSubview(captureViewInternal!)
         captureViewInternal?.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         captureViewInternal?.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -55,4 +56,21 @@ public class CaptureView: UIView {
         self.captureViewInternal?.toggleFlash()
     }
 }
+
+extension CaptureView : CaptureViewInternalDelegate {
+    public func sendRawScanDataString(_ barcodeStringToPass: String) {
+        Product.search(barcodeData: barcodeStringToPass) { (product) in
+            self.delegate?.didCapture(product: product)
+        }
+    }
+    
+    public func sendScannedImageData(_ pickedImage: UIImage) {
+        
+    }
+    
+    public func connectionLost() -> Bool {
+        return false
+    }
+}
+
 
