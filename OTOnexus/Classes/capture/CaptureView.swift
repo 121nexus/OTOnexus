@@ -34,18 +34,19 @@ public class CaptureView: UIView {
 
         guard
             let path = Bundle(for: CaptureViewInternal.self).path(forResource: "OTOnexus", ofType: "bundle"),
-            let bundle = Bundle(path: path)
+            let bundle = Bundle(path: path),
+            let captureViewInternal = bundle.loadNibNamed("CaptureViewInternal", owner: self, options: nil)?.first as? CaptureViewInternal
         else {
             fatalError("No bundle found")
         }
-        captureViewInternal = bundle.loadNibNamed("CaptureViewInternal", owner: self, options: nil)!.first! as! CaptureViewInternal
-        captureViewInternal?.translatesAutoresizingMaskIntoConstraints = false
-        captureViewInternal?.delegate = self
-        self.addSubview(captureViewInternal!)
-        captureViewInternal?.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        captureViewInternal?.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        captureViewInternal?.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        captureViewInternal?.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.captureViewInternal = captureViewInternal
+        captureViewInternal.translatesAutoresizingMaskIntoConstraints = false
+        captureViewInternal.delegate = self
+        self.addSubview(captureViewInternal)
+        captureViewInternal.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        captureViewInternal.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        captureViewInternal.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        captureViewInternal.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     public func resetResults() {
