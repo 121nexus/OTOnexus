@@ -8,9 +8,20 @@
 
 import Foundation
 
-public class Experience {
+final public class Experience {
     var id = -1
     public var name = ""
     public var description = ""
     public var productRequired = false
+    
+    required public init() {
+    }
+}
+
+extension Experience : Decodable {
+    func decode(_ responseObject: ResponseObject) {
+        self.id = responseObject.int(forKey: "id")
+        self.name = responseObject.string(forKey: "name")
+        self.description = responseObject.string(forKey: "description")
+    }
 }

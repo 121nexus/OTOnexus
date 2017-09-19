@@ -54,9 +54,9 @@ class WebServiceOperation: AsyncOperation {
                                                                   options: []),
             let jsonDictionary = json as? [String: Any] {
             if let dataDictionary = jsonDictionary["data"] as? [String: Any] {
-                dispatchOnMainQueue(successBlock(dataDictionary))
+                dispatchOnMainQueue(successBlock(ResponseObject(data: dataDictionary)))
             } else {
-                dispatchOnMainQueue(successBlock(jsonDictionary))
+                dispatchOnMainQueue(successBlock(nil))
             }
         }
     }

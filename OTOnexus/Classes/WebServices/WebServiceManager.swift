@@ -14,11 +14,11 @@ class WebServiceManager {
         queue.underlyingQueue = DispatchQueue(label: "OTONexusAPI", attributes: .concurrent)
         return queue
     }()
-    typealias SuccessBlock = ([String: Any]?) -> Void
+    typealias SuccessBlock = (ResponseObject?) -> Void
     typealias FailureBlock = (Error?) -> Void
     static let shared = WebServiceManager()
     var urlSession = URLSession(configuration: .default)
-    var baseUrl = URL(string: "https://scan.121nexus.com/v3")
+    var baseUrl = URL(string: "https://private-4304e4-121nexus.apiary-mock.com/v3")
     
     func url(withEndPoint endpoint:String) -> URL? {
         guard let baseUrl = baseUrl else {

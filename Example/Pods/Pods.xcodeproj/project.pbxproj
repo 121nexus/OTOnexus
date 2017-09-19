@@ -22,6 +22,8 @@
 		84468F7B63BA17539D7D5AA2FE4F9CD3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD1778F9B03C67E9B6BF49A0F7492C5 /* Product.swift */; };
 		845368B7617FD356BD61A379E3AAA7B8 /* CaptureViewInternal.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5877E6734F4E62DE9776F20CB35612 /* CaptureViewInternal.xib */; };
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
+		8A6AC7021F7171DE00787FE8 /* Decodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AC7011F7171DE00787FE8 /* Decodeable.swift */; };
+		8A6AC7051F71892700787FE8 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AC7041F71892700787FE8 /* ResponseObject.swift */; };
 		8A7FA0781F6C16FF00F216A3 /* OTOnexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FA0771F6C16FF00F216A3 /* OTOnexus.swift */; };
 		8AB99FED1F6FFB0F00FDCE3E /* PostWebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB99FEC1F6FFB0F00FDCE3E /* PostWebServiceOperation.swift */; };
 		8AB99FEF1F70001A00FDCE3E /* PutWebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB99FEE1F70001A00FDCE3E /* PutWebServiceOperation.swift */; };
@@ -76,6 +78,8 @@
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		8817EBB378983DFA3C57FE74A33B1D27 /* OTOnexus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OTOnexus.xcconfig; sourceTree = "<group>"; };
 		8937A3A990B9916B09A6CE079B312E2B /* CaptureViewInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CaptureViewInternal.swift; sourceTree = "<group>"; };
+		8A6AC7011F7171DE00787FE8 /* Decodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodeable.swift; sourceTree = "<group>"; };
+		8A6AC7041F71892700787FE8 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		8A7FA0771F6C16FF00F216A3 /* OTOnexus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTOnexus.swift; sourceTree = "<group>"; };
 		8AB99FEC1F6FFB0F00FDCE3E /* PostWebServiceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWebServiceOperation.swift; sourceTree = "<group>"; };
 		8AB99FEE1F70001A00FDCE3E /* PutWebServiceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutWebServiceOperation.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				4F229E91D0FC6FC7E211E6FA8B328774 /* Experience.swift */,
 				5FD1778F9B03C67E9B6BF49A0F7492C5 /* Product.swift */,
 				A4C70D0BADF2957BDFD314E385C8E8D3 /* Session.swift */,
+				8A6AC7011F7171DE00787FE8 /* Decodeable.swift */,
 			);
 			name = Models;
 			path = OTOnexus/Classes/Models;
@@ -209,6 +214,7 @@
 				8AB99FEE1F70001A00FDCE3E /* PutWebServiceOperation.swift */,
 				8AB99FF01F7005AC00FDCE3E /* HeadWebServiceOperation.swift */,
 				8AB99FF21F7005F700FDCE3E /* DeleteWebServiceOperation.swift */,
+				8A6AC7041F71892700787FE8 /* ResponseObject.swift */,
 			);
 			name = WebServices;
 			path = OTOnexus/Classes/WebServices;
@@ -486,6 +492,7 @@
 				8AB99FF11F7005AC00FDCE3E /* HeadWebServiceOperation.swift in Sources */,
 				4640B84255E0B8E7E499DFFEAFC19030 /* Experience.swift in Sources */,
 				2E84A05A3E2DC372C867F632AB3269F2 /* MDTPreviewBox.swift in Sources */,
+				8A6AC7051F71892700787FE8 /* ResponseObject.swift in Sources */,
 				501546786ADD9E070CA6FCE27D75046F /* OTOnexus-dummy.m in Sources */,
 				84468F7B63BA17539D7D5AA2FE4F9CD3 /* Product.swift in Sources */,
 				8AD929A51F6C3755003B42DC /* GetWebServiceOperation.swift in Sources */,
@@ -495,6 +502,7 @@
 				8AB99FF31F7005F700FDCE3E /* DeleteWebServiceOperation.swift in Sources */,
 				8AB99FEF1F70001A00FDCE3E /* PutWebServiceOperation.swift in Sources */,
 				8AD9299E1F6C1BFC003B42DC /* WebServiceManager.swift in Sources */,
+				8A6AC7021F7171DE00787FE8 /* Decodeable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
