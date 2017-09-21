@@ -24,7 +24,7 @@ final public class Session {
                                       body: body,
                                       success: { (responseObject) in
                                         if let responseObject = responseObject {
-                                            complete(decode(responseObject))
+                                            complete(self.decode(responseObject.data))
                                         }
         },
                                       failure: { (error) in
@@ -34,8 +34,8 @@ final public class Session {
 }
 
 extension Session : Decodable {
-    func decode(_ responseObject: ResponseObject) {
-        self.id = responseObject.string(forKey: "id")
-        self.productUrl = responseObject.string(forKey: "product_url")
+    func decode(_ responseData:ResponseData) {
+        self.id = responseData.string(forKey: "id")
+        self.productUrl = responseData.string(forKey: "product_url")
     }
 }

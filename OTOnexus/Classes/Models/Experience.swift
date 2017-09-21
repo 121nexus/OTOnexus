@@ -19,9 +19,9 @@ final public class Experience {
 }
 
 extension Experience : Decodable {
-    func decode(_ responseObject: ResponseObject) {
-        self.id = responseObject.int(forKey: "id")
-        self.name = responseObject.string(forKey: "name")
-        self.description = responseObject.string(forKey: "description")
+    func decode(_ responseData:ResponseData) {
+        self.id = responseData.int(forKey: "id")
+        self.name = responseData.string(forKey: "name")
+        self.description = responseData.string(forKey: "description")
     }
 }

@@ -27,7 +27,7 @@ final public class Product {
                                      params: ["barcode_data": barcodeData],
                                      success: { (response) in
                                         if let response = response {
-                                            success(decode(response))
+                                            success(self.decode(response.data))
                                         }
         },
                                      failure: { (error) in
@@ -37,10 +37,10 @@ final public class Product {
 }
 
 extension Product : Decodable {
-    func decode(_ responseObject: ResponseObject) {
-        self.url = responseObject.string(forKey: "url")
-        self.experiences = Experience.array(responseObject.array(forKey: "experiences"))
-        self.defaultExperienceId = responseObject.int(forKey: "default_experience")
+    func decode(_ responseData:ResponseData) {
+        self.url = responseData.string(forKey: "url")
+        self.experiences = Experience.array(responseData.array(forKey: "experiences"))
+        self.defaultExperienceId = responseData.int(forKey: "default_experience")
     }
 }
 
