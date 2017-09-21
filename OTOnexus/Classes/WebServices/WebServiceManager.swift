@@ -17,7 +17,12 @@ class WebServiceManager {
     typealias SuccessBlock = (ResponseObject?) -> Void
     typealias FailureBlock = (Error?) -> Void
     static let shared = WebServiceManager()
-    var urlSession = URLSession(configuration: .default)
+    var urlSession:URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        configuration.timeoutIntervalForResource = 20
+        return URLSession(configuration: configuration)
+    }()
     var baseUrl = URL(string: "https://private-4304e4-121nexus.apiary-mock.com/v3")
     
     func url(withEndPoint endpoint:String) -> URL? {
@@ -32,7 +37,7 @@ class WebServiceManager {
         getOperation.queryParams = params
         getOperation.endPoint = endpoint
         getOperation.successBlock = success
-        self.operationQueue.addOperation(getOperation)
+        self.runRequest(operation: getOperation)
     }
     
     func head(endpoint:String, params:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
@@ -40,7 +45,7 @@ class WebServiceManager {
         headOperation.queryParams = params
         headOperation.endPoint = endpoint
         headOperation.successBlock = success
-        self.operationQueue.addOperation(headOperation)
+        self.runRequest(operation: headOperation)
     }
     
     func delete(endpoint:String, params:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
@@ -48,7 +53,7 @@ class WebServiceManager {
         deleteOperation.queryParams = params
         deleteOperation.endPoint = endpoint
         deleteOperation.successBlock = success
-        self.operationQueue.addOperation(deleteOperation)
+        self.runRequest(operation: deleteOperation)
     }
     
     func post(endpoint:String, body:[String:Any], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
@@ -56,7 +61,7 @@ class WebServiceManager {
         postOperation.body = body
         postOperation.endPoint = endpoint
         postOperation.successBlock = success
-        self.operationQueue.addOperation(postOperation)
+        self.runRequest(operation: postOperation)
     }
     
     func put(endpoint:String, body:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
@@ -64,6 +69,10 @@ class WebServiceManager {
         putOperation.body = body
         putOperation.endPoint = endpoint
         putOperation.successBlock = success
-        self.operationQueue.addOperation(putOperation)
+        self.runRequest(operation: putOperation)
+    }
+    
+    func runRequest(operation:WebServiceOperation) {
+        self.operationQueue.addOperation(operation)
     }
 }

@@ -26,4 +26,14 @@ class GetWebServiceOperation : WebServiceOperation {
         }
         return urlRequest
     }
+    
+    override func duplicateOperation() -> WebServiceOperation {
+        let operation = super.duplicateOperation()
+        
+        if let getOperation = operation as? GetWebServiceOperation {
+            getOperation.queryParams = self.queryParams
+        }
+        
+        return operation
+    }
 }
