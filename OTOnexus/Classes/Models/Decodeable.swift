@@ -8,23 +8,23 @@
 import Foundation
 
 protocol Decodable {
-    func decode(_ responseObject:ResponseObject)
-    static func decode(_ responseObject:ResponseObject) -> Self
-    static func array(_ array:[ResponseObject]) -> [Self]
+    func decode(_ responseData:ResponseData)
+    static func decode(_ responseData:ResponseData) -> Self
+    static func array(_ array:[ResponseData]) -> [Self]
     init()
 }
 
 extension Decodable {
-    static func decode(_ responseObject:ResponseObject) -> Self {
+    static func decode(_ responseData:ResponseData) -> Self {
         let decodable = Self()
-        decodable.decode(responseObject)
+        decodable.decode(responseData)
         return decodable
     }
     
-    static func array(_ array:[ResponseObject]) -> [Self] {
+    static func array(_ array:[ResponseData]) -> [Self] {
         var objects = [Self]()
-        for responseObject in array {
-            objects.append(decode(responseObject))
+        for responseData in array {
+            objects.append(decode(responseData))
         }
         return objects
     }
