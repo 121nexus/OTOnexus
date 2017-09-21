@@ -21,4 +21,14 @@ class PostWebServiceOperation : WebServiceOperation {
         }
         return urlRequest
     }
+    
+    override func duplicateOperation() -> WebServiceOperation {
+        let operation = super.duplicateOperation()
+        
+        if let postOperation = operation as? PostWebServiceOperation {
+            postOperation.body = self.body
+        }
+        
+        return operation
+    }
 }
