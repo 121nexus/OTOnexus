@@ -9,7 +9,7 @@
 import Foundation
 
 class WebServiceOperation: AsyncOperation {
-    
+    private var retry = 0
     var endPoint = ""
     enum HttpMethod : String {
         case GET, POST, HEAD, DELETE, PUT
@@ -18,6 +18,9 @@ class WebServiceOperation: AsyncOperation {
         return .GET
     }
     var successBlock:WebServiceManager.SuccessBlock?
+    
+    required override init() {
+    }
     
     override func main() {
         guard let urlRequest = urlRequest() else {
@@ -28,6 +31,8 @@ class WebServiceOperation: AsyncOperation {
             if let response = response as? HTTPURLResponse,
                 response.statusCode == 200 {
                 self.handleSuccess(data: data, response: response)
+            } else {
+                self.handleError(response: response as? HTTPURLResponse, error: error)
             }
             self.state = .isFinished
         }
@@ -61,9 +66,40 @@ class WebServiceOperation: AsyncOperation {
         }
     }
     
+    private func handleError(response:HTTPURLResponse?, error:Error?) {
+        if let nsError = error as NSError?,
+            self.canRetry(error: nsError),
+            self.retry < 3 {
+            self.retryOperation()
+        }
+    }
+    
     private func dispatchOnMainQueue(_ closure: @escaping @autoclosure () -> Void) {
         DispatchQueue.main.async {
             closure()
         }
+    }
+    
+    private func retryOperation() {
+        WebServiceManager.shared.runRequest(operation: self.duplicateOperation())
+    }
+    
+    func duplicateOperation() -> WebServiceOperation {
+        let operation = type(of: self).init()
+        operation.endPoint = self.endPoint
+        operation.retry = retry + 1
+        operation.successBlock = successBlock
+        
+        return operation
+    }
+    
+    private func canRetry(error:NSError) -> Bool {
+        return (error.code == NSURLErrorCancelled) ||
+            (error.code == NSURLErrorTimedOut) ||
+            (error.code == NSURLErrorCannotFindHost) ||
+            (error.code == NSURLErrorCannotConnectToHost) ||
+            (error.code == NSURLErrorDNSLookupFailed) ||
+            (error.code == NSURLErrorNetworkConnectionLost) ||
+            (error.code == NSURLErrorNotConnectedToInternet)
     }
 }
