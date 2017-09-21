@@ -18,14 +18,6 @@ class ViewController: UIViewController {
         self.captureView.delegate = self
         self.segmentedControl.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFont(ofSize: 10.0)], for: .normal)
     }
-
-    @IBAction func resetAction(_ sender: Any) {
-        self.captureView.resetResults()
-    }
-    
-    @IBAction func flashAction(_ sender: Any) {
-        self.captureView.toggleFlash()
-    }
     
     @IBAction func segmentChangedAction(_ sender: UISegmentedControl) {
         self.captureView.scanStacked = sender.selectedSegmentIndex == 0

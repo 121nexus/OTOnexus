@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,11 +31,39 @@
                         <constraint firstItem="qIl-6m-ii5" firstAttribute="top" secondItem="0dg-0T-m0e" secondAttribute="top" constant="12" id="Wlg-VY-Dfs"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-wo-gqQ">
+                    <rect key="frame" x="300" y="35" width="40" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="hFv-ex-Hm5"/>
+                        <constraint firstAttribute="height" constant="40" id="mwF-S2-6CL"/>
+                    </constraints>
+                    <state key="normal" image="torch-light-7"/>
+                    <connections>
+                        <action selector="flashAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IhB-4T-wNx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-LU-Wwm">
+                    <rect key="frame" x="35" y="35" width="40" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="4qE-JH-BlL"/>
+                        <constraint firstAttribute="height" constant="40" id="YAx-rm-ttg"/>
+                    </constraints>
+                    <state key="normal" image="reset"/>
+                    <connections>
+                        <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IXy-iD-Jfq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="8MV-wo-gqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="0AI-Kj-CEg"/>
+                <constraint firstAttribute="trailing" secondItem="8MV-wo-gqQ" secondAttribute="trailing" constant="35" id="ATp-HS-DmV"/>
                 <constraint firstItem="0dg-0T-m0e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="CHv-AG-DDg"/>
+                <constraint firstItem="pzy-LU-Wwm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="OFI-ot-GIs"/>
                 <constraint firstItem="0dg-0T-m0e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="ebf-JL-bgX"/>
+                <constraint firstItem="pzy-LU-Wwm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="kCG-ik-zZ4"/>
                 <constraint firstAttribute="trailing" secondItem="0dg-0T-m0e" secondAttribute="trailing" constant="16" id="li4-UF-BKa"/>
                 <constraint firstAttribute="bottom" secondItem="0dg-0T-m0e" secondAttribute="bottom" constant="16" id="ucY-rW-Lv8"/>
             </constraints>
@@ -42,8 +71,14 @@
             <connections>
                 <outlet property="previewBox" destination="0dg-0T-m0e" id="oAi-lW-3kO"/>
                 <outlet property="previewLabel" destination="qIl-6m-ii5" id="V20-Fn-elj"/>
+                <outlet property="resetButton" destination="pzy-LU-Wwm" id="rrX-M4-IhF"/>
+                <outlet property="torchButton" destination="8MV-wo-gqQ" id="fhw-w3-bG8"/>
             </connections>
             <point key="canvasLocation" x="-3" y="-23"/>
         </view>
     </objects>
+    <resources>
+        <image name="reset" width="30" height="27"/>
+        <image name="torch-light-7" width="30" height="30"/>
+    </resources>
 </document>

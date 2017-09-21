@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'OTOnexus/Classes/**/*.{swift,h}'
   s.resource_bundles = {
-      'OTOnexus' => ['OTOnexus/**/*.xib']
+      'OTOnexus' => ['OTOnexus/**/*.xib', 'OTOnexus/**/*.xcassets']
   }
   
   # s.resource_bundles = {

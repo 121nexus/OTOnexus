@@ -28,10 +28,10 @@ let AI_GTIN = "01"
 
 public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
-    @IBOutlet var myCaptureView: UIView!
     @IBOutlet public weak var previewBox: MDTPreviewBox!
     @IBOutlet weak var previewLabel: UILabel!
-    @IBOutlet weak var previewBoxAspect: NSLayoutConstraint!
+    @IBOutlet weak var torchButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     public var delegate : CaptureViewInternalDelegate?
     
@@ -69,7 +69,6 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     
     public var captureDevice : AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     
-    
     public enum Status {
         case scanning, stacking, completed
     }
@@ -81,21 +80,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
     
     required public init?(coder aDecoder:NSCoder) {
-        
         super.init(coder: aDecoder)
-        
-        
-//        guard
-//            let path = Bundle(for: CaptureView.self).path(forResource: "OTOnexus", ofType: "bundle"),
-//            let bundle = Bundle(path: path)
-//            else {
-//                fatalError("No bundle found")
-//        }
-//        bundle.loadNibNamed("CaptureView", owner: self, options: nil)
-        
-        //        self.addSubview(self.myCaptureView!)
-//        self.addSubview(self.previewBox)
-//        previewBox.addLabel(previewLabel)
         
         codeDetectionShape.strokeColor = UIColor.green.cgColor
         codeDetectionShape.fillColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.25).cgColor
@@ -106,8 +91,12 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     
     override public func didMoveToSuperview() {
         previewBox.addLabel(previewLabel)
-        self.bringSubview(toFront: previewBox)
-        self.bringSubview(toFront: previewLabel)
+        self.bringSubview(toFront: self.previewBox)
+        self.bringSubview(toFront: self.previewLabel)
+        self.bringSubview(toFront: self.torchButton)
+        self.bringSubview(toFront: self.resetButton)
+        
+        self.styleView()
         
         //print("testing life cycle")
         if (!(captureSession?.isRunning)!)
@@ -115,7 +104,13 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
             print("Capture Session is not running yet");
             return
         }
-        
+    }
+    
+    private func styleView() {
+        self.torchButton.layer.cornerRadius = 5
+        self.torchButton.layer.masksToBounds = true
+        self.resetButton.layer.cornerRadius = 5
+        self.resetButton.layer.masksToBounds = true
     }
     
     override public func layoutSubviews() {
@@ -124,6 +119,14 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         self.videoPreviewLayer?.frame = self.layer.bounds
         let rectOfInterest : CGRect = videoPreviewLayer!.metadataOutputRectOfInterest(for: previewBox.frame)
         metaDataOutput?.rectOfInterest = rectOfInterest
+    }
+    
+    @IBAction func resetAction(_ sender: Any) {
+        self.resetResults()
+    }
+    
+    @IBAction func flashAction(_ sender: Any) {
+        self.toggleFlash()
     }
     
     public func resetResults() {

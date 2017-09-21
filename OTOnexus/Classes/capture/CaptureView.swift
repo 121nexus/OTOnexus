@@ -19,7 +19,7 @@ public class CaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
 
     public weak var delegate : CaptureViewDelegate?
-    public var scanStacked = true {
+    public var scanStacked = false {
         didSet {
             captureViewInternal?.scanStacked = scanStacked
             if oldValue != scanStacked {

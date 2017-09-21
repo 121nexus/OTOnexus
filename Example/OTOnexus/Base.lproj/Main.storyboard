@@ -28,14 +28,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hV-VF-4NJ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWr-sz-zxH">
-                                        <rect key="frame" x="8" y="7" width="30" height="30"/>
-                                        <state key="normal" title="R"/>
-                                        <connections>
-                                            <action selector="resetAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Rno-m1-tI3"/>
-                                        </connections>
-                                    </button>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IYQ-nI-FRN">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="IYQ-nI-FRN">
                                         <rect key="frame" x="49" y="7.5" width="277" height="29"/>
                                         <segments>
                                             <segment title="STACKED BARCODE"/>
@@ -46,24 +39,11 @@
                                             <action selector="segmentChangedAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="kbW-4R-3Ju"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBT-h6-xtu">
-                                        <rect key="frame" x="337" y="7" width="30" height="30"/>
-                                        <state key="normal" title="F"/>
-                                        <connections>
-                                            <action selector="flashAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SoY-KJ-PZS"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="vBT-h6-xtu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IYQ-nI-FRN" secondAttribute="trailing" constant="8" id="5Qw-7i-gBv"/>
                                     <constraint firstItem="IYQ-nI-FRN" firstAttribute="centerY" secondItem="9hV-VF-4NJ" secondAttribute="centerY" id="AfE-TE-JOJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="vBT-h6-xtu" secondAttribute="trailing" constant="8" id="Da0-2L-EvZ"/>
                                     <constraint firstItem="IYQ-nI-FRN" firstAttribute="centerX" secondItem="9hV-VF-4NJ" secondAttribute="centerX" id="NBz-sJ-O2c"/>
-                                    <constraint firstItem="pWr-sz-zxH" firstAttribute="centerY" secondItem="9hV-VF-4NJ" secondAttribute="centerY" id="V6J-Qb-00Q"/>
-                                    <constraint firstItem="vBT-h6-xtu" firstAttribute="centerY" secondItem="9hV-VF-4NJ" secondAttribute="centerY" id="j19-61-mqa"/>
-                                    <constraint firstItem="IYQ-nI-FRN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pWr-sz-zxH" secondAttribute="trailing" constant="8" id="sOw-4r-oq6"/>
-                                    <constraint firstItem="pWr-sz-zxH" firstAttribute="leading" secondItem="9hV-VF-4NJ" secondAttribute="leading" constant="8" id="vN6-jg-FsR"/>
                                 </constraints>
                             </view>
                         </subviews>
