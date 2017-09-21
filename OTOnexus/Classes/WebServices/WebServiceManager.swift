@@ -19,8 +19,8 @@ class WebServiceManager {
     static let shared = WebServiceManager()
     var urlSession:URLSession = {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 2
-        configuration.timeoutIntervalForResource = 2
+        configuration.timeoutIntervalForRequest = 10
+        configuration.timeoutIntervalForResource = 20
         return URLSession(configuration: configuration)
     }()
     var baseUrl = URL(string: "https://private-4304e4-121nexus.apiary-mock.com/v3")
