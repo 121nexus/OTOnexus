@@ -16,7 +16,8 @@
   "source_files": "OTOnexus/Classes/**/*.{swift,h}",
   "resource_bundles": {
     "OTOnexus": [
-      "OTOnexus/**/*.xib"
+      "OTOnexus/**/*.xib",
+      "OTOnexus/**/*.xcassets"
     ]
   }
 }
