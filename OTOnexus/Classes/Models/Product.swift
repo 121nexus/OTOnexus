@@ -9,6 +9,7 @@
 import Foundation
 
 final public class Product {
+    public var barcodeData:String?
     public var url = ""
     var defaultExperienceId = -1
     public var experiences = [Experience]()
@@ -27,7 +28,9 @@ final public class Product {
                                      params: ["barcode_data": barcodeData],
                                      success: { (response) in
                                         if let response = response {
-                                            success(self.decode(response.data))
+                                            let product = self.decode(response.data)
+                                            product.barcodeData = barcodeData
+                                            success(product)
                                         }
         },
                                      failure: { (error) in
