@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-0T-m0e" customClass="MDTPreviewBox" customModule="OTOnexus" customModuleProvider="target">
-                    <rect key="frame" x="16" y="16" width="343" height="495"/>
+                    <rect key="frame" x="16" y="76" width="343" height="386"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="qIl-6m-ii5">
                             <rect key="frame" x="172" y="12" width="0.0" height="0.0"/>
@@ -32,7 +32,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-wo-gqQ">
-                    <rect key="frame" x="300" y="35" width="40" height="40"/>
+                    <rect key="frame" x="315" y="20" width="40" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="hFv-ex-Hm5"/>
@@ -44,7 +44,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-LU-Wwm">
-                    <rect key="frame" x="35" y="35" width="40" height="40"/>
+                    <rect key="frame" x="20" y="20" width="40" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="4qE-JH-BlL"/>
@@ -55,21 +55,37 @@
                         <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IXy-iD-Jfq"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="ALN-Oy-8kI">
+                    <rect key="frame" x="49" y="479" width="277" height="29"/>
+                    <segments>
+                        <segment title="STACKED BARCODE"/>
+                        <segment title="SINGLE BARCODE"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="switchBarcodeTypeAction:" destination="iN0-l3-epB" eventType="valueChanged" id="8lq-LP-Zi2"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="8MV-wo-gqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="0AI-Kj-CEg"/>
-                <constraint firstAttribute="trailing" secondItem="8MV-wo-gqQ" secondAttribute="trailing" constant="35" id="ATp-HS-DmV"/>
+                <constraint firstItem="8MV-wo-gqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="0AI-Kj-CEg"/>
+                <constraint firstAttribute="bottom" secondItem="ALN-Oy-8kI" secondAttribute="bottom" constant="20" id="9r0-UO-2q2"/>
+                <constraint firstAttribute="trailing" secondItem="8MV-wo-gqQ" secondAttribute="trailing" constant="20" id="ATp-HS-DmV"/>
                 <constraint firstItem="0dg-0T-m0e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="CHv-AG-DDg"/>
-                <constraint firstItem="pzy-LU-Wwm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="OFI-ot-GIs"/>
-                <constraint firstItem="0dg-0T-m0e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="ebf-JL-bgX"/>
-                <constraint firstItem="pzy-LU-Wwm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="kCG-ik-zZ4"/>
+                <constraint firstItem="pzy-LU-Wwm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="OFI-ot-GIs"/>
+                <constraint firstItem="ALN-Oy-8kI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ajK-fa-N2y"/>
+                <constraint firstItem="0dg-0T-m0e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="76" id="ebf-JL-bgX"/>
+                <constraint firstItem="pzy-LU-Wwm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="kCG-ik-zZ4"/>
                 <constraint firstAttribute="trailing" secondItem="0dg-0T-m0e" secondAttribute="trailing" constant="16" id="li4-UF-BKa"/>
-                <constraint firstAttribute="bottom" secondItem="0dg-0T-m0e" secondAttribute="bottom" constant="16" id="ucY-rW-Lv8"/>
+                <constraint firstAttribute="bottom" secondItem="0dg-0T-m0e" secondAttribute="bottom" constant="65" id="ucY-rW-Lv8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="barcodeTypeControl" destination="ALN-Oy-8kI" id="z4p-lP-ge7"/>
                 <outlet property="previewBox" destination="0dg-0T-m0e" id="oAi-lW-3kO"/>
+                <outlet property="previewBoxBottomConstraint" destination="ucY-rW-Lv8" id="bmf-72-dEg"/>
+                <outlet property="previewBoxTopConstraint" destination="ebf-JL-bgX" id="6uc-VS-foB"/>
                 <outlet property="previewLabel" destination="qIl-6m-ii5" id="V20-Fn-elj"/>
                 <outlet property="resetButton" destination="pzy-LU-Wwm" id="rrX-M4-IhF"/>
                 <outlet property="torchButton" destination="8MV-wo-gqQ" id="fhw-w3-bG8"/>

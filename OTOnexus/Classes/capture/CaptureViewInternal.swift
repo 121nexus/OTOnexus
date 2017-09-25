@@ -23,19 +23,52 @@ public protocol CaptureViewInternalDelegate: class {
 //    @objc optional func previewController(_ previewController: MDTValidationViewController, didScanCode code: NSString, ofType type: NSString)
 //}
 
-let AI_GTIN = "01"
 
-
-public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
+class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
+    fileprivate static let AI_GTIN = "01"
     
     @IBOutlet public weak var previewBox: MDTPreviewBox!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var previewBoxTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var previewBoxBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var barcodeTypeControl: UISegmentedControl!
     
-    public var delegate : CaptureViewInternalDelegate?
+    private var areAnyTopButtonsVisible:Bool {
+        return !isTorchHidden || !isResetHidden
+    }
     
-    public var captureSession:AVCaptureSession?
+    var isTorchHidden = false {
+        didSet {
+            if oldValue != isTorchHidden {
+                self.previewBoxTopConstraint.constant = areAnyTopButtonsVisible ? 76 : 16
+                self.torchButton.isHidden = isTorchHidden
+                self.layoutIfNeeded()
+            }
+        }
+    }
+    var isResetHidden = false {
+        didSet {
+            if oldValue != isResetHidden {
+                self.previewBoxTopConstraint.constant = areAnyTopButtonsVisible ? 76 : 16
+                self.resetButton.isHidden = isResetHidden
+                self.layoutIfNeeded()
+            }
+        }
+    }
+    var isBarcodeTypeHidden = false {
+        didSet {
+            if oldValue != isBarcodeTypeHidden {
+                self.previewBoxBottomConstraint.constant = !isBarcodeTypeHidden ? 65 : 16
+                self.barcodeTypeControl.isHidden = isBarcodeTypeHidden
+                self.layoutIfNeeded()
+            }
+        }
+    }
+    
+    var delegate : CaptureViewInternalDelegate?
+    var captureSession:AVCaptureSession?
     var stillCameraOutput: AVCaptureStillImageOutput?
     var videoConnection:AVCaptureConnection?
     var metaDataOutput: AVCaptureMetadataOutput?
@@ -45,7 +78,6 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     var sessionKey = ""
     var possibleGTINs : [String] = []
     let listOfCodes: NSMutableSet = []
-    //  let locationManager = CLLocationManager()
     var latitudeString = ""
     var longitudeString = ""
     var statusCode: Int = Int()
@@ -53,7 +85,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     var result = String()
     var stackedResult : Set<String> = []
     var GTIN = String()
-    public var scanStacked = true {
+    public var scanStacked = false {
         didSet {
             if oldValue != scanStacked {
                 resetResults()
@@ -67,26 +99,25 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     var pickedImage: UIImage = UIImage()
     var strBase64 = String()
     
-    public var captureDevice : AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+    fileprivate var captureDevice : AVCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     
-    public enum Status {
+    enum Status {
         case scanning, stacking, completed
     }
     
     
-    public var scanStatus = Status.scanning
+    var scanStatus = Status.scanning
     var codeDetectionShape = CAShapeLayer()
     
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
     
-    required public init?(coder aDecoder:NSCoder) {
+    required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
-        
+
         codeDetectionShape.strokeColor = UIColor.green.cgColor
         codeDetectionShape.fillColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.25).cgColor
         codeDetectionShape.lineWidth = 2
         captureBarcodes()
-        
     }
     
     override public func didMoveToSuperview() {
@@ -95,6 +126,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         self.bringSubview(toFront: self.previewLabel)
         self.bringSubview(toFront: self.torchButton)
         self.bringSubview(toFront: self.resetButton)
+        self.bringSubview(toFront: self.barcodeTypeControl)
         
         self.styleView()
         
@@ -113,7 +145,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         self.resetButton.layer.masksToBounds = true
     }
     
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         previewBox.setHeightMultiplier(stackedHeightMultiplier)
         self.videoPreviewLayer?.frame = self.layer.bounds
@@ -129,7 +161,11 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         self.toggleFlash()
     }
     
-    public func resetResults() {
+    @IBAction func switchBarcodeTypeAction(_ sender: Any) {
+        self.scanStacked = self.barcodeTypeControl.selectedSegmentIndex == 0
+    }
+    
+    func resetResults() {
         if scanStacked {
             previewBox.setLabelText("0/2 Scanned")
         } else {
@@ -145,7 +181,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         scanStatus = Status.scanning
     }
     
-    public func toggleFlash() {
+    func toggleFlash() {
         if (self.captureDevice.hasTorch) {
             do {
                 if self.captureDevice.hasTorch {
@@ -169,7 +205,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
     }
     
     // MARK: AVCaptureMetadataOutputObjectsDelegate
-    public func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
     {
         if (scanStatus != Status.completed) && processing == false && metadataObjects != nil && metadataObjects.count > 0 {
             processing = true
@@ -271,7 +307,7 @@ public class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate
         
     }
     
-    func takePhoto() {
+    fileprivate func takePhoto() {
         if let stillOutput = stillCameraOutput {
             // we do this on another thread so that we don't hang the UI
             DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
@@ -338,7 +374,7 @@ extension CaptureViewInternal {
     }
     
     fileprivate func findGtin(_ str: String) -> String! {
-        if str.hasPrefix(AI_GTIN) {
+        if str.hasPrefix(CaptureViewInternal.AI_GTIN) {
             return String(String(str.characters.dropFirst(2)).characters.prefix(14))
         } else {
             return ""
