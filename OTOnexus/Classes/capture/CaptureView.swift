@@ -27,9 +27,33 @@ public class CaptureView: UIView {
             }
         }
     }
+    
+    public var isTorchHidden:Bool {
+        set {
+            self.captureViewInternal?.isTorchHidden = newValue
+        }
+        get {
+            return self.captureViewInternal?.isTorchHidden ?? false
+        }
+    }
+    public var isResetHidden:Bool {
+        set {
+            self.captureViewInternal?.isResetHidden = newValue
+        }
+        get {
+            return self.captureViewInternal?.isResetHidden ?? false
+        }
+    }
+    public var isBarcodeTypeHidden:Bool {
+        set {
+            self.captureViewInternal?.isBarcodeTypeHidden = newValue
+        }
+        get {
+            return self.captureViewInternal?.isBarcodeTypeHidden ?? false
+        }
+    }
 
     required public init?(coder aDecoder:NSCoder) {
-        
         super.init(coder: aDecoder)
 
         guard

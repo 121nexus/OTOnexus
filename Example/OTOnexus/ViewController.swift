@@ -11,16 +11,14 @@ import OTOnexus
 
 class ViewController: UIViewController {
     @IBOutlet weak var captureView: CaptureView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.captureView.delegate = self
-        self.segmentedControl.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFont(ofSize: 10.0)], for: .normal)
     }
     
-    @IBAction func segmentChangedAction(_ sender: UISegmentedControl) {
-        self.captureView.scanStacked = sender.selectedSegmentIndex == 0
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
