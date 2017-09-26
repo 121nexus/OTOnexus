@@ -21,12 +21,17 @@ class WebServiceManager {
     typealias ResponseCompletionBlock = (ResponseObject?, WebServiceError?) -> Void
     static let shared = WebServiceManager()
     var urlSession:URLSession = {
+        return URLSession(configuration: URLSessionConfiguration.default)
+    }()
+    var baseUrl = URL(string: "https://cat-api-dev.herokuapp.com/v3")
+    
+    func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 10
         configuration.timeoutIntervalForResource = 20
-        return URLSession(configuration: configuration)
-    }()
-    var baseUrl = URL(string: "https://private-4304e4-121nexus.apiary-mock.com/v3")
+        configuration.httpAdditionalHeaders = ["api-key": apiKey]
+        self.urlSession = URLSession(configuration: configuration)
+    }
     
     func url(withEndPoint endpoint:String) -> URL? {
         guard let baseUrl = baseUrl else {
