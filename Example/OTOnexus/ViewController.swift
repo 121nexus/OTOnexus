@@ -27,7 +27,11 @@ extension UIViewController : CaptureViewDelegate {
         guard let defaultExperience = product.defaultExperience else { return }
         Session.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
-                                print(session.id)
+                                if let submitAction = session.page.first?.submitAction {
+                                    submitAction.perform {
+                                        
+                                    }
+                                }
         }
     }
 }

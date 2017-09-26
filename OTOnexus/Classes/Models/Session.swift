@@ -11,6 +11,7 @@ import Foundation
 final public class Session {
     public var id = ""
     public var productUrl = ""
+    public var page = [OTOModule]()
     
     public static func startSession(withExperience experience:Experience,
                              product:Product? = nil,
@@ -20,22 +21,20 @@ final public class Session {
         if let product = product {
             body["product_url"] = product.url
         }
+        
         WebServiceManager.shared.post(endpoint: endpoint,
-                                      body: body,
-                                      success: { (responseObject) in
+                                      body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
                                             complete(self.decode(responseObject.data))
                                         }
-        },
-                                      failure: { (error) in
-            
-        })
+        }
     }
 }
 
 extension Session : Decodable {
     func decode(_ responseData:ResponseData) {
-        self.id = responseData.string(forKey: "id")
-        self.productUrl = responseData.string(forKey: "product_url")
+        self.id = responseData.stringValue(forKey: "id")
+        self.productUrl = responseData.stringValue(forKey: "product_url")
+        self.page = OTOModule.array(responseData.arrayValue(forKey: "page"))
     }
 }

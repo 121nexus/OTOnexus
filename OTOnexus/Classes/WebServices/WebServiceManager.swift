@@ -14,8 +14,11 @@ class WebServiceManager {
         queue.underlyingQueue = DispatchQueue(label: "OTONexusAPI", attributes: .concurrent)
         return queue
     }()
-    typealias SuccessBlock = (ResponseObject?) -> Void
-    typealias FailureBlock = (Error?) -> Void
+    enum WebServiceError : Error {
+        case genericError
+        case errorFromServer(Error)
+    }
+    typealias ResponseCompletionBlock = (ResponseObject?, WebServiceError?) -> Void
     static let shared = WebServiceManager()
     var urlSession:URLSession = {
         let configuration = URLSessionConfiguration.default
@@ -32,43 +35,43 @@ class WebServiceManager {
         return baseUrl.appendingPathComponent(endpoint)
     }
     
-    func get(endpoint:String, params:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
+    func get(endpoint:String, params:[String:String], completion:@escaping ResponseCompletionBlock) {
         let getOperation = GetWebServiceOperation()
         getOperation.queryParams = params
         getOperation.endPoint = endpoint
-        getOperation.successBlock = success
+        getOperation.responseCompletionBlock = completion
         self.runRequest(operation: getOperation)
     }
     
-    func head(endpoint:String, params:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
+    func head(endpoint:String, params:[String:String], completion:@escaping ResponseCompletionBlock) {
         let headOperation = HeadWebServiceOperation()
         headOperation.queryParams = params
         headOperation.endPoint = endpoint
-        headOperation.successBlock = success
+        headOperation.responseCompletionBlock = completion
         self.runRequest(operation: headOperation)
     }
     
-    func delete(endpoint:String, params:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
+    func delete(endpoint:String, params:[String:String], completion:@escaping ResponseCompletionBlock) {
         let deleteOperation = DeleteWebServiceOperation()
         deleteOperation.queryParams = params
         deleteOperation.endPoint = endpoint
-        deleteOperation.successBlock = success
+        deleteOperation.responseCompletionBlock = completion
         self.runRequest(operation: deleteOperation)
     }
     
-    func post(endpoint:String, body:[String:Any], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
+    func post(endpoint:String, body:[String:Any], completion:@escaping ResponseCompletionBlock) {
         let postOperation = PostWebServiceOperation()
         postOperation.body = body
         postOperation.endPoint = endpoint
-        postOperation.successBlock = success
+        postOperation.responseCompletionBlock = completion
         self.runRequest(operation: postOperation)
     }
     
-    func put(endpoint:String, body:[String:String], success:@escaping SuccessBlock, failure:@escaping FailureBlock) {
+    func put(endpoint:String, body:[String:String], completion:@escaping ResponseCompletionBlock) {
         let putOperation = PutWebServiceOperation()
         putOperation.body = body
         putOperation.endPoint = endpoint
-        putOperation.successBlock = success
+        putOperation.responseCompletionBlock = completion
         self.runRequest(operation: putOperation)
     }
     
