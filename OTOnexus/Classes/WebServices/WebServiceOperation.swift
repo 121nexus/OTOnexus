@@ -17,7 +17,7 @@ class WebServiceOperation: AsyncOperation {
     var method:WebServiceOperation.HttpMethod {
         return .GET
     }
-    var successBlock:WebServiceManager.SuccessBlock?
+    var responseCompletionBlock: WebServiceManager.ResponseCompletionBlock?
     
     required override init() {
     }
@@ -28,15 +28,29 @@ class WebServiceOperation: AsyncOperation {
             return
         }
         let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            if let response = response as? HTTPURLResponse,
-                response.statusCode == 200 {
-                self.handleSuccess(data: data, response: response)
+            if let data = data,
+                let response = response as? HTTPURLResponse,
+                let responseObject = self.responseObject(forData: data, response: response),
+                let responseCompletionBlock = self.responseCompletionBlock {
+                self.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
             } else {
                 self.handleError(response: response as? HTTPURLResponse, error: error)
             }
+            
             self.state = .isFinished
         }
         dataTask.resume()
+    }
+    
+    private func responseObject(forData data:Data, response: HTTPURLResponse) -> ResponseObject? {
+        if let json = try? JSONSerialization.jsonObject(with: data,
+                                                        options: []),
+            let jsonDictionary = json as? [String: Any] {
+            if let dataDictionary = jsonDictionary["data"] as? [String: Any] {
+                return ResponseObject(data: dataDictionary, statusCode: response.statusCode)
+            }
+        }
+        return nil
     }
     
     func urlRequest() -> URLRequest? {
@@ -50,27 +64,17 @@ class WebServiceOperation: AsyncOperation {
         return urlRequest
     }
     
-    private func handleSuccess(data:Data?, response:HTTPURLResponse) {
-        guard let successBlock = successBlock,
-            let data = data else {
-            return
-        }
-        if let json = try? JSONSerialization.jsonObject(with: data,
-                                                                  options: []),
-            let jsonDictionary = json as? [String: Any] {
-            if let dataDictionary = jsonDictionary["data"] as? [String: Any] {
-                dispatchOnMainQueue(successBlock(ResponseObject(dataDictionary)))
-            } else {
-                dispatchOnMainQueue(successBlock(nil))
-            }
-        }
-    }
-    
     private func handleError(response:HTTPURLResponse?, error:Error?) {
         if let nsError = error as NSError?,
             self.canRetry(error: nsError),
             self.retry < 3 {
             self.retryOperation()
+        } else if let responseCompletionBlock = responseCompletionBlock {
+            if let error = error {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.errorFromServer(error)))
+            } else {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.genericError))
+            }
         }
     }
     
@@ -87,8 +91,8 @@ class WebServiceOperation: AsyncOperation {
     func duplicateOperation() -> WebServiceOperation {
         let operation = type(of: self).init()
         operation.endPoint = self.endPoint
-        operation.retry = retry + 1
-        operation.successBlock = successBlock
+        operation.retry = self.retry + 1
+        operation.responseCompletionBlock = self.responseCompletionBlock
         
         return operation
     }

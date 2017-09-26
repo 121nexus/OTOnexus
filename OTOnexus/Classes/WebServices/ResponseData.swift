@@ -12,33 +12,51 @@ class ResponseData {
         self.storage = storage
     }
     
-    func string(forKey key:String) -> String {
-        if let string = storage[key] as? String {
-            return string
-        }
-        return ""
+    func stringValue(forKey key:String) -> String {
+        return self.string(forKey: key) ?? ""
     }
     
-    func int(forKey key:String) -> Int {
-        if let int = storage[key] as? Int {
-            return int
-        }
-        return 0
+    func string(forKey key:String) -> String? {
+        return storage[key] as? String
     }
     
-    func bool(forKey key:String) -> Bool {
-        if let bool = storage[key] as? Bool {
-            return bool
-        }
-        return false
+    func intValue(forKey key:String) -> Int {
+        return self.int(forKey: key) ?? 0
     }
     
-    func array(forKey key:String) -> [ResponseData] {
+    func int(forKey key:String) -> Int? {
+        return storage[key] as? Int
+    }
+    
+    func boolValue(forKey key:String) -> Bool {
+        return self.bool(forKey: key) ?? false
+    }
+    
+    func bool(forKey key:String) -> Bool? {
+        return storage[key] as? Bool
+    }
+    
+    func arrayValue(forKey key:String) -> [ResponseData] {
+        return self.array(forKey: key) ?? []
+    }
+    
+    func array(forKey key:String) -> [ResponseData]? {
         if let array = storage[key] as? [[String: Any]] {
             return array.map({ (dictionary) -> ResponseData in
                 return ResponseData(dictionary)
             })
         }
-        return []
+        return nil
+    }
+    
+    func responseDataValue(forKey key:String) -> ResponseData {
+        return self.responseData(forKey: key) ?? ResponseData([:])
+    }
+    
+    func responseData(forKey key:String) -> ResponseData? {
+        if let dictionary = storage[key] as? [String: Any] {
+            return ResponseData(dictionary)
+        }
+        return nil
     }
 }

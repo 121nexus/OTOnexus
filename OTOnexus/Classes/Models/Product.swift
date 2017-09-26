@@ -25,25 +25,23 @@ final public class Product {
     
     public static func search(barcodeData:String, success:@escaping (Product) -> Void) {
         WebServiceManager.shared.get(endpoint: "products/search",
-                                     params: ["barcode_data": barcodeData],
-                                     success: { (response) in
-                                        if let response = response {
-                                            let product = self.decode(response.data)
-                                            product.barcodeData = barcodeData
-                                            success(product)
+                                     params: ["barcode_data": barcodeData]) { (responseObject, error) in
+                                        if let responseObject = responseObject {
+                                            if responseObject.isSuccessful {
+                                                let product = self.decode(responseObject.data)
+                                                product.barcodeData = barcodeData
+                                                success(product)
+                                            }
                                         }
-        },
-                                     failure: { (error) in
-                                        print(error)
-        })
+        }
     }
 }
 
 extension Product : Decodable {
     func decode(_ responseData:ResponseData) {
-        self.url = responseData.string(forKey: "url")
-        self.experiences = Experience.array(responseData.array(forKey: "experiences"))
-        self.defaultExperienceId = responseData.int(forKey: "default_experience")
+        self.url = responseData.stringValue(forKey: "url")
+        self.experiences = Experience.array(responseData.arrayValue(forKey: "experiences"))
+        self.defaultExperienceId = responseData.intValue(forKey: "default_experience")
     }
 }
 
