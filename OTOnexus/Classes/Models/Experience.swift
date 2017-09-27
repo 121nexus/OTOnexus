@@ -8,7 +8,7 @@
 
 import Foundation
 
-final public class Experience {
+public class Experience {
     var id = -1
     public var name = ""
     public var description = ""

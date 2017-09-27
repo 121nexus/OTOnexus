@@ -9,8 +9,6 @@ import Foundation
 
 protocol Decodable {
     func decode(_ responseData:ResponseData)
-    static func decode(_ responseData:ResponseData) -> Self
-    static func array(_ array:[ResponseData]) -> [Self]
     init()
 }
 
@@ -22,10 +20,8 @@ extension Decodable {
     }
     
     static func array(_ array:[ResponseData]) -> [Self] {
-        var objects = [Self]()
-        for responseData in array {
-            objects.append(decode(responseData))
+        return array.map { (responseData) -> Self in
+            return decode(responseData)
         }
-        return objects
     }
 }

@@ -7,8 +7,11 @@
 
 import Foundation
 
-final public class OTOAction {
+public class OTOAction {
     var url = ""
+    
+    public required init() {
+    }
     
     public func perform(success: @escaping () -> Void) {
         WebServiceManager.shared.post(endpoint: url,

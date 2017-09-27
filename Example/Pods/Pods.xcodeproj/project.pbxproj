@@ -30,6 +30,7 @@
 		8892A012BEDBF91323EEFBF2BFF3600F /* OTOnexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848D3F1AFC1FB9CE660AD9737B47B391 /* OTOnexus.swift */; };
 		8A20F19F1F7A90B700C452AA /* OTOModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20F19E1F7A90B700C452AA /* OTOModule.swift */; };
 		8A20F1A11F7A915900C452AA /* OTOAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20F1A01F7A915900C452AA /* OTOAction.swift */; };
+		8AC66EBF1F7C10B000E831CB /* OTOImageUploadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC66EBE1F7C10B000E831CB /* OTOImageUploadModule.swift */; };
 		8DF0C55F3006BAF613A4E989E8FDE6C8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD6359E5A64FA4C5370749E72A6BD41 /* Session.swift */; };
 		AB77E59E886B56ACCC1C3B9BAF614CFB /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B66694B8546B01B570D3850A430AF63 /* WebServiceManager.swift */; };
 		BEAAC09A146DDFC2C61DF7B7C7E0F17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -91,6 +92,7 @@
 		848D3F1AFC1FB9CE660AD9737B47B391 /* OTOnexus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OTOnexus.swift; path = OTOnexus/Classes/OTOnexus.swift; sourceTree = "<group>"; };
 		8A20F19E1F7A90B700C452AA /* OTOModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOModule.swift; sourceTree = "<group>"; };
 		8A20F1A01F7A915900C452AA /* OTOAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOAction.swift; sourceTree = "<group>"; };
+		8AC66EBE1F7C10B000E831CB /* OTOImageUploadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOImageUploadModule.swift; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8FCEB1406D753FBB74956D7EFE949367 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -189,12 +191,12 @@
 		6BABA09D13C584528F78BB9F73CD47C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8AC66EC31F7C20CB00E831CB /* Modules */,
+				8AC66EC21F7C20C000E831CB /* Actions */,
 				2C9FA382653C25166BC74E1F68465D48 /* Decodeable.swift */,
 				6AC476493B52AD6039939366C8CE6647 /* Experience.swift */,
 				EFBD1E9DE0359A3B4D04AF0F9546AC38 /* Product.swift */,
 				4DD6359E5A64FA4C5370749E72A6BD41 /* Session.swift */,
-				8A20F19E1F7A90B700C452AA /* OTOModule.swift */,
-				8A20F1A01F7A915900C452AA /* OTOAction.swift */,
 			);
 			name = Models;
 			path = OTOnexus/Classes/Models;
@@ -242,6 +244,23 @@
 				614FB9A306F4DB2BDAFA45F2A527473B /* Pods-OTOnexus_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8AC66EC21F7C20C000E831CB /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				8A20F1A01F7A915900C452AA /* OTOAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		8AC66EC31F7C20CB00E831CB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8A20F19E1F7A90B700C452AA /* OTOModule.swift */,
+				8AC66EBE1F7C10B000E831CB /* OTOImageUploadModule.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		90B36ADFB4FB8B3FA1F3BE61C76D9554 /* Development Pods */ = {
@@ -499,6 +518,7 @@
 				8A20F19F1F7A90B700C452AA /* OTOModule.swift in Sources */,
 				DB7A1CC8594E384B9DD77EC3C38A0769 /* PutWebServiceOperation.swift in Sources */,
 				4C3B7DA69F267D132F038B4906AA0BB3 /* ResponseData.swift in Sources */,
+				8AC66EBF1F7C10B000E831CB /* OTOImageUploadModule.swift in Sources */,
 				E7F76F8DF274584896B3CBDFB9F00B42 /* ResponseObject.swift in Sources */,
 				8DF0C55F3006BAF613A4E989E8FDE6C8 /* Session.swift in Sources */,
 				AB77E59E886B56ACCC1C3B9BAF614CFB /* WebServiceManager.swift in Sources */,

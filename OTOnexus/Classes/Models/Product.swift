@@ -8,7 +8,7 @@
 
 import Foundation
 
-final public class Product {
+public class Product {
     public var barcodeData:String?
     public var url = ""
     var defaultExperienceId = -1
