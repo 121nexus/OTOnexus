@@ -9,15 +9,11 @@ import Foundation
 
 public class OTOModule : Decodable {
     static private let classMap = ["Image": OTOImageUploadModule.self]
-    public var submitAction:OTOAction?
     
     public required init() {
     }
     
     func decode(_ responseData:ResponseData) {
-        if let submit = responseData.responseData(forKey: "actions")?.responseData(forKey: "submit") {
-            self.submitAction = OTOAction.decode(submit)
-        }
     }
     
     static func array(_ array:[ResponseData]) -> [OTOModule] {

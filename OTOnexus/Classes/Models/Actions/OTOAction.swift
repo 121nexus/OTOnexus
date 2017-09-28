@@ -7,19 +7,32 @@
 
 import Foundation
 
-public class OTOAction {
+class OTOAction<ResponseType: OTOActionResponse> {
+    typealias CompletionClosure = (ResponseType?, Error?) -> Void
     var url = ""
     
     public required init() {
     }
     
-    public func perform(success: @escaping () -> Void) {
+    func perform(complete: @escaping CompletionClosure) {
+        let params = ["action_arguments": self.actionArguments()]
         WebServiceManager.shared.post(endpoint: url,
-                                      body: [:]) { (responseObject, error) in
+                                      body: params) { (responseObject, error) in
                                         if let responseObject = responseObject {
-                                            print(responseObject.data.stringValue(forKey: "message"))
+                                            complete(self.process(responseObject: responseObject), nil)
+                                        } else {
+                                            complete(nil, error)
                                         }
         }
+    }
+    
+    func process(responseObject:ResponseObject) -> ResponseType? {
+        // override and don't call super
+        return nil
+    }
+    
+    func actionArguments() -> [String: Any] {
+        return [:]
     }
 }
 

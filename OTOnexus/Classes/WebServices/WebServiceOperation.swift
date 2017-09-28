@@ -46,9 +46,7 @@ class WebServiceOperation: AsyncOperation {
         if let json = try? JSONSerialization.jsonObject(with: data,
                                                         options: []),
             let jsonDictionary = json as? [String: Any] {
-            if let dataDictionary = jsonDictionary["data"] as? [String: Any] {
-                return ResponseObject(data: dataDictionary, statusCode: response.statusCode)
-            }
+            return ResponseObject(data: jsonDictionary, statusCode: response.statusCode)
         }
         return nil
     }

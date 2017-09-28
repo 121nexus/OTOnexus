@@ -1,5 +1,9 @@
 PODS:
-  - OTOnexus (1.0.0)
+  - AWSCore (2.6.1)
+  - AWSS3 (2.6.1):
+    - AWSCore (= 2.6.1)
+  - OTOnexus (1.0.0):
+    - AWSS3
 
 DEPENDENCIES:
   - OTOnexus (from `../`)
@@ -9,7 +13,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  OTOnexus: 6a97489e7b372ba3596417564fcac41c3f698315
+  AWSCore: e7d37fa0715def975acf1b0d75556576780088b8
+  AWSS3: 2e18ede28199a5530955dc1a65434da43dcc4d2c
+  OTOnexus: b3472c3a3ddc270c86775c313d1da42ec6ad7000
 
 PODFILE CHECKSUM: 507f9e69f9617577aafdae8bde861b9961b9c59a
 
