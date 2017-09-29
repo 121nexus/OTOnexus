@@ -13,9 +13,14 @@ import OTOnexus
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let uploadModule = OTOImageUploadModule()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         OTOnexus.configure(withApiKey: "YOUR API KEY HERE")
+
+        uploadModule.upload(image: #imageLiteral(resourceName: "statcked_barcode.png")) { (success) in
+            print(success ? "YES!" : "NO :(")
+        }
         return true
     }
 }

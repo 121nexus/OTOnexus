@@ -19,5 +19,10 @@
       "OTOnexus/**/*.xib",
       "OTOnexus/**/*.xcassets"
     ]
+  },
+  "dependencies": {
+    "AWSS3": [
+
+    ]
   }
 }

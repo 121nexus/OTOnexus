@@ -59,4 +59,8 @@ class ResponseData {
         }
         return nil
     }
+    
+    func keys() -> LazyMapCollection<[String : Any], String> {
+        return self.storage.keys
+    }
 }

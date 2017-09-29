@@ -8,10 +8,13 @@
 
 import Foundation
 
-final public class Session {
+public class Session {
     public var id = ""
     public var productUrl = ""
     public var page = [OTOModule]()
+    
+    public required init() {
+    }
     
     public static func startSession(withExperience experience:Experience,
                              product:Product? = nil,
