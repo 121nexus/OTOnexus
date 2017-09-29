@@ -28,7 +28,7 @@ public class Session {
         WebServiceManager.shared.post(endpoint: endpoint,
                                       body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
-                                            complete(self.decode(responseObject.data))
+                                            complete(self.decode(responseObject.dataValue()))
                                         }
         }
     }

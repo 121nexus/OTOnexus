@@ -12,6 +12,7 @@ import Foundation
 public protocol CaptureViewDelegate: class {
     
     func didCapture(product:Product)
+    func scannedBarcodeDoesNotExist(barcode:String)
     
 }
 
@@ -84,9 +85,19 @@ public class CaptureView: UIView {
 
 extension CaptureView : CaptureViewInternalDelegate {
     public func sendRawScanDataString(_ barcodeStringToPass: String) {
-        Product.search(barcodeData: barcodeStringToPass) { (product) in
-            self.delegate?.didCapture(product: product)
-        }
+        Product.search(barcodeData: barcodeStringToPass,
+                       success: { (product) in
+                        self.delegate?.didCapture(product: product)
+        },
+                       failure: { (error) in
+                        switch error {
+                        case .productNotFound:
+                            self.delegate?.scannedBarcodeDoesNotExist(barcode: barcodeStringToPass)
+                        default:
+                            break
+                        }
+                        
+        })
     }
     
     public func sendScannedImageData(_ pickedImage: UIImage) {
