@@ -23,10 +23,15 @@ class ViewController: UIViewController {
 }
 
 extension UIViewController : CaptureViewDelegate {
+    public func scannedBarcodeDoesNotExist(barcode: String) {
+        print(barcode)
+    }
+    
     public func didCapture(product: Product) {
         guard let defaultExperience = product.defaultExperience else { return }
         Session.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
+                                print(session)
         }
     }
 }
