@@ -15,9 +15,8 @@ class OTOAction<ResponseType: OTOActionResponse> {
     }
     
     func perform(complete: @escaping CompletionClosure) {
-        let params = ["action_arguments": self.actionArguments()]
         WebServiceManager.shared.post(endpoint: url,
-                                      body: params) { (responseObject, error) in
+                                      body: self.bodyParams()) { (responseObject, error) in
                                         if let responseObject = responseObject {
                                             complete(self.process(responseObject: responseObject), nil)
                                         } else {
@@ -31,7 +30,7 @@ class OTOAction<ResponseType: OTOActionResponse> {
         return nil
     }
     
-    func actionArguments() -> [String: Any] {
+    func bodyParams() -> [String: Any] {
         return [:]
     }
 }

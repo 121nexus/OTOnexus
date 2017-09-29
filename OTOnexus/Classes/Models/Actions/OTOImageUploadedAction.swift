@@ -15,7 +15,7 @@ class OTOImageUploadedAction : OTOAction<OTOActionResponse> {
         self.url = "sessions/1/modules/3/image_uploaded"
     }
     
-    override func actionArguments() -> [String : Any] {
+    override func bodyParams() -> [String : Any] {
         return ["s3_url":self.s3Url]
     }
 }
