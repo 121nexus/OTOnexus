@@ -12,7 +12,7 @@ class OTOImageUploadedAction : OTOAction<OTOActionResponse> {
     
     required public init() {
         super.init()
-        self.url = "sessions/1/modules/3/image_uploaded"
+        self.url = "sessions/1/modules/3/submit_upload_url"
     }
     
     override func bodyParams() -> [String : Any] {

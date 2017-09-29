@@ -8,13 +8,9 @@
 import UIKit
 import AVFoundation
 
-public protocol CaptureViewInternalDelegate: class {
-    
-    func sendRawScanDataString(_ barcodeStringToPass: String)
-    func sendScannedImageData(_ pickedImage: UIImage)
+protocol CaptureViewInternalDelegate: class {
+    func didCapture(barcode: String, image:UIImage)
     func connectionLost()->Bool
-    
-    
 }
 
 
@@ -232,26 +228,9 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     barcodeStringToPass = rawScanData
                     print("Barcode String to pass", barcodeStringToPass)
                     
-                    scanStatus = Status.completed
-                    previewBox.green()
                     previewBox.setLabelText("2/2 Scanned")
                     
-                    //Take photo of scan to be sent to platform//
-                    clearBarcodeBounds()
-                    if (delegate != nil) {
-                        if (delegate?.connectionLost())! {
-                            ///No connection
-                            self.resetResults()
-                            scanStatus = Status.scanning
-                        } else {
-                            //Take photo of scan to be sent to platform//
-                            takePhoto()
-                            delegate!.sendRawScanDataString(barcodeStringToPass)
-                            
-                        }
-                        
-                        
-                    }
+                    self.finishBarcodeScan()
                 } else if stackedResult.count == 1 {
                     scanStatus = Status.stacking
                     previewBox.yellow()
@@ -269,27 +248,8 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     rawScanData = result
                     print("RawData Unicode", Array(rawScanData.unicodeScalars))
                     
-                    scanStatus = Status.completed
-                    previewBox.green()
-                    
                     barcodeStringToPass = rawScanData
-                    clearBarcodeBounds()
-                    print("Barcode String to pass", barcodeStringToPass)
-                    if (delegate != nil) {
-                        if (delegate?.connectionLost())! {
-                            ///No connection
-                            self.resetResults()
-                            scanStatus = Status.scanning
-                        } else {
-                            //Take photo of scan to be sent to platform//
-                            takePhoto()
-                            delegate!.sendRawScanDataString(barcodeStringToPass)
-                            
-                        }
-                        
-                        
-                    }
-                    
+                    finishBarcodeScan()
                 }
                 else {
                     resetResults()
@@ -307,7 +267,27 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         
     }
     
-    fileprivate func takePhoto() {
+    fileprivate func finishBarcodeScan() {
+        scanStatus = Status.completed
+        previewBox.green()
+        //Take photo of scan to be sent to platform//
+        clearBarcodeBounds()
+        if (delegate != nil) {
+            if (delegate?.connectionLost())! {
+                ///No connection
+                self.resetResults()
+                scanStatus = Status.scanning
+            } else {
+                //Take photo of scan to be sent to platform//
+                takePhoto(capturedImage: { (image) in
+                    self.delegate?.didCapture(barcode: self.barcodeStringToPass, image: image)
+                })
+                
+            }
+        }
+    }
+    
+    fileprivate func takePhoto(capturedImage:@escaping (UIImage) -> Void) {
         if let stillOutput = stillCameraOutput {
             // we do this on another thread so that we don't hang the UI
             DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
@@ -340,9 +320,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                             // handle or ignore the error
                         }
                         
-                        if (self.delegate != nil) {
-                            self.delegate!.sendScannedImageData(self.pickedImage)
-                        }
+                        capturedImage(self.pickedImage)
                     }
                 }
             }

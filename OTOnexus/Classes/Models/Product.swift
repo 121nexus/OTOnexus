@@ -16,6 +16,7 @@ public class Product {
     public typealias ProductSuccessBlock = (Product) -> Void
     public typealias ProductFailureBlock = (ProductError) -> Void
     public var barcodeData:String?
+    public var capturedImage:UIImage?
     public var url = ""
     public var attributes = [String:String]()
     var defaultExperienceId = -1

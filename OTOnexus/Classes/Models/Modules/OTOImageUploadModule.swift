@@ -108,7 +108,7 @@ public class OTOImageUploadModule : OTOModule {
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
         
-        if let getUploadFormAction = responseData.responseData(forKey: "actions")?.responseData(forKey: "get_upload_form") {
+        if let getUploadFormAction = responseData.responseData(forKey: "actions")?.responseData(forKey: "submit_upload_url") {
             self.getUploadFormAction = OTOGetUploadFormAction.decode(getUploadFormAction)
         }
     }

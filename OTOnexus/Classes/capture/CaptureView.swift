@@ -84,15 +84,16 @@ public class CaptureView: UIView {
 }
 
 extension CaptureView : CaptureViewInternalDelegate {
-    public func sendRawScanDataString(_ barcodeStringToPass: String) {
-        Product.search(barcodeData: barcodeStringToPass,
+    func didCapture(barcode: String, image:UIImage) {
+        Product.search(barcodeData: barcode,
                        success: { (product) in
+                        product.capturedImage = image
                         self.delegate?.didCapture(product: product)
         },
                        failure: { (error) in
                         switch error {
                         case .productNotFound:
-                            self.delegate?.scannedBarcodeDoesNotExist(barcode: barcodeStringToPass)
+                            self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
                         default:
                             break
                         }
@@ -100,11 +101,7 @@ extension CaptureView : CaptureViewInternalDelegate {
         })
     }
     
-    public func sendScannedImageData(_ pickedImage: UIImage) {
-        
-    }
-    
-    public func connectionLost() -> Bool {
+    func connectionLost() -> Bool {
         return false
     }
 }
