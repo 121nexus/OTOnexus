@@ -47,6 +47,8 @@ class WebServiceOperation: AsyncOperation {
                                                         options: []),
             let jsonDictionary = json as? [String: Any] {
             return ResponseObject(data: jsonDictionary, statusCode: response.statusCode)
+        } else if response.statusCode >= 200 && response.statusCode < 300 {
+            return ResponseObject(data: nil, statusCode: response.statusCode)
         }
         return nil
     }

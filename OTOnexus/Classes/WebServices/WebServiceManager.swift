@@ -23,7 +23,7 @@ class WebServiceManager {
     var urlSession:URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
-    var baseUrl = URL(string: "https://private-4304e4-121nexus.apiary-mock.com/v3")
+    var baseUrl = URL(string: "https://cat-api-dev.herokuapp.com/v3")
     
     func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default
