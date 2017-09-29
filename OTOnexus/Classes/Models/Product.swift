@@ -11,6 +11,7 @@ import Foundation
 public class Product {
     public var barcodeData:String?
     public var url = ""
+    public var attributes = [String:String]()
     var defaultExperienceId = -1
     public var experiences = [Experience]()
     public var defaultExperience:Experience? {
@@ -35,6 +36,18 @@ public class Product {
                                         }
         }
     }
+    
+    public static func search(productUrl:String, success:@escaping (Product) -> Void) {
+        WebServiceManager.shared.get(endpoint: "products/search",
+                                     params: ["product_url": productUrl]) { (responseObject, error) in
+                                        if let responseObject = responseObject {
+                                            if responseObject.isSuccessful {
+                                                let product = self.decode(responseObject.data)
+                                                success(product)
+                                            }
+                                        }
+        }
+    }
 }
 
 extension Product : Decodable {
@@ -42,6 +55,9 @@ extension Product : Decodable {
         self.url = responseData.stringValue(forKey: "url")
         self.experiences = Experience.array(responseData.arrayValue(forKey: "experiences"))
         self.defaultExperienceId = responseData.intValue(forKey: "default_experience")
+        if let attributes = responseData.dictionary(forKey: "attributes") as? [String:String] {
+            self.attributes = attributes
+        }
     }
 }
 
