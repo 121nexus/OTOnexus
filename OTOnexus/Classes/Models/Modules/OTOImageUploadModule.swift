@@ -35,9 +35,13 @@ public class OTOImageUploadModule : OTOModule {
     private var complete: ((Bool) -> Void)?
     private var image: UIImage?
     
-    required public init() {
-        self.getUploadFormAction = OTOGetUploadFormAction()
-        self.imageUploadedAction = OTOImageUploadedAction()
+    override func populateActions(withUrlBase urlBase: String) {
+        super.populateActions(withUrlBase: urlBase)
+        let getUploadFormEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "get_upload_form")
+        self.getUploadFormAction = OTOGetUploadFormAction(url:getUploadFormEndpoint)
+        
+        let imageUploadedEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "submit_upload_url")
+        self.imageUploadedAction = OTOImageUploadedAction(url:imageUploadedEndpoint)
     }
     
     public func upload(image:UIImage, complete:@escaping (Bool) -> Void) {
@@ -102,14 +106,6 @@ public class OTOImageUploadModule : OTOModule {
             return fileUrl
         } else {
             return nil
-        }
-    }
-    
-    override func decode(_ responseData: ResponseData) {
-        super.decode(responseData)
-        
-        if let getUploadFormAction = responseData.responseData(forKey: "actions")?.responseData(forKey: "submit_upload_url") {
-            self.getUploadFormAction = OTOGetUploadFormAction.decode(getUploadFormAction)
         }
     }
 }

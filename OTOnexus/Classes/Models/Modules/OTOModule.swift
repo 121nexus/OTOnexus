@@ -8,22 +8,35 @@
 import Foundation
 
 public class OTOModule : Decodable {
-    static private let classMap = ["Image": OTOImageUploadModule.self]
+    static private let classMap = ["ImageUpload": OTOImageUploadModule.self,
+                                   "Video": OTOVideoModule.self,]
+    
+    public var id = 0
     
     public required init() {
     }
     
+    func populateActions(withUrlBase urlBase:String) {
+    }
+    
+    func actionEndpoint(withUrlBase urlBase:String, actionName:String) -> String {
+        return "\(urlBase)/modules/\(id)/\(actionName)"
+    }
+    
     func decode(_ responseData:ResponseData) {
+        self.id = responseData.intValue(forKey: "id")
     }
     
     static func array(_ array:[ResponseData]) -> [OTOModule] {
-        return array.map({ (responseData) -> OTOModule in
+        var modules = [OTOModule]()
+        for responseData in array {
             if let objectType = classMap[responseData.stringValue(forKey: "type")] {
-                return objectType.decode(responseData)
-            } else {
-                return OTOModule.decode(responseData)
+                let instance = objectType.init()
+                instance.decode(responseData)
+                modules.append(instance)
             }
-        })
+        }
+        return modules
     }
 }
 

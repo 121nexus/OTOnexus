@@ -129,6 +129,8 @@
 		87965612E7630E23F03BFFDA75421790 /* AWSS3Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB3883C0629C2E29F66BEC2B4104E7F1 /* AWSS3Serializer.m */; };
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
 		88B9ACC7D3A6CDA15649741C6B262132 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D70026582F6ADDD8106314FD8BE1B /* Foundation.framework */; };
+		8A88B7751F842E230078E5DE /* OTOVideoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88B7741F842E230078E5DE /* OTOVideoModule.swift */; };
+		8A88B7771F84347E0078E5DE /* OTOBasicAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A88B7761F84347E0078E5DE /* OTOBasicAction.swift */; };
 		8AC66EC71F7C4B3E00E831CB /* OTOGetUploadFormAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC66EC41F7C49B300E831CB /* OTOGetUploadFormAction.swift */; };
 		8AC66ECC1F7C5B6E00E831CB /* OTOActionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC66ECA1F7C5B3D00E831CB /* OTOActionResponse.swift */; };
 		8AC66ECE1F7D302100E831CB /* OTOGetUploadFormActionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC66ECD1F7D302100E831CB /* OTOGetUploadFormActionResponse.swift */; };
@@ -432,6 +434,8 @@
 		86D3D3AF6026A0ACD5FA946804927BC5 /* AWSFMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSFMDatabaseAdditions.h; path = AWSCore/FMDB/AWSFMDatabaseAdditions.h; sourceTree = "<group>"; };
 		88D69A43590766FE3609F10C9696ED38 /* AWSS3Model.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSS3Model.m; path = AWSS3/AWSS3Model.m; sourceTree = "<group>"; };
 		891694B9ADE45C5A1C026A2148197136 /* AWSMTLModel+NSCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSMTLModel+NSCoding.m"; path = "AWSCore/Mantle/AWSMTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		8A88B7741F842E230078E5DE /* OTOVideoModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOVideoModule.swift; sourceTree = "<group>"; };
+		8A88B7761F84347E0078E5DE /* OTOBasicAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOBasicAction.swift; sourceTree = "<group>"; };
 		8AC66EC41F7C49B300E831CB /* OTOGetUploadFormAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOGetUploadFormAction.swift; sourceTree = "<group>"; };
 		8AC66ECA1F7C5B3D00E831CB /* OTOActionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOActionResponse.swift; sourceTree = "<group>"; };
 		8AC66ECD1F7D302100E831CB /* OTOGetUploadFormActionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOGetUploadFormActionResponse.swift; sourceTree = "<group>"; };
@@ -698,6 +702,7 @@
 				92B6B6814611DAC4436C3816DBA17146 /* OTOAction.swift */,
 				8AC66EC41F7C49B300E831CB /* OTOGetUploadFormAction.swift */,
 				8AD1D4EC1F7D649300154B22 /* OTOImageUploadedAction.swift */,
+				8A88B7761F84347E0078E5DE /* OTOBasicAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -757,8 +762,9 @@
 		9848AA16D4371D97179B119CCC3A5428 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				151BEDBFEE0AB7836BFDAA2451D76C02 /* OTOImageUploadModule.swift */,
 				237187071E55BF9F43C4929A464BD727 /* OTOModule.swift */,
+				151BEDBFEE0AB7836BFDAA2451D76C02 /* OTOImageUploadModule.swift */,
+				8A88B7741F842E230078E5DE /* OTOVideoModule.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1383,11 +1389,13 @@
 				E40DE50391E7440FC11226E368790486 /* OTOModule.swift in Sources */,
 				D7921CB2BC0A34A7B5D52F5499B4ABA3 /* OTOnexus-dummy.m in Sources */,
 				34B472E85E90FEFBAE5E859873C5B0EA /* OTOnexus.swift in Sources */,
+				8A88B7751F842E230078E5DE /* OTOVideoModule.swift in Sources */,
 				8AC66EC71F7C4B3E00E831CB /* OTOGetUploadFormAction.swift in Sources */,
 				BDE1435020CB3A3EB5A59AE3A0E31131 /* PostWebServiceOperation.swift in Sources */,
 				4FA936D9682D0E663110A00FC1270247 /* Product.swift in Sources */,
 				8AC66ECE1F7D302100E831CB /* OTOGetUploadFormActionResponse.swift in Sources */,
 				86D374FC609C734715316EF59FDFF141 /* PutWebServiceOperation.swift in Sources */,
+				8A88B7771F84347E0078E5DE /* OTOBasicAction.swift in Sources */,
 				6CD8EC601F0B0482645B8F1DA8910862 /* ResponseData.swift in Sources */,
 				7550F764CE37195047AEC2600AFBF9DB /* ResponseObject.swift in Sources */,
 				C319545E05E0C425ED76101C64E03755 /* Session.swift in Sources */,

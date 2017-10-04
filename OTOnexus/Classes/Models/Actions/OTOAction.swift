@@ -9,9 +9,10 @@ import Foundation
 
 class OTOAction<ResponseType: OTOActionResponse> {
     typealias CompletionClosure = (ResponseType?, Error?) -> Void
-    var url = ""
+    let url:String
     
-    public required init() {
+    public init(url:String) {
+        self.url = url
     }
     
     func perform(complete: @escaping CompletionClosure) {
@@ -32,11 +33,5 @@ class OTOAction<ResponseType: OTOActionResponse> {
     
     func bodyParams() -> [String: Any] {
         return [:]
-    }
-}
-
-extension OTOAction : Decodable {
-    func decode(_ responseData:ResponseData) {
-        self.url = responseData.stringValue(forKey: "url")
     }
 }
