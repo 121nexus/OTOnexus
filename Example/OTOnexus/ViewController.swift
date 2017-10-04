@@ -31,7 +31,19 @@ extension UIViewController : CaptureViewDelegate {
         guard let defaultExperience = product.defaultExperience else { return }
         Session.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
-                                print(session)
+                                for module in session.page {
+                                    if let imageUpload = module as? OTOImageUploadModule {
+                                        print(imageUpload)
+                                        // upload image
+//                                        imageUpload.upload(image: foo, complete: { (success) in
+//
+//                                        })
+                                    } else if let video = module as? OTOVideoModule {
+                                        print(video.videoUrl)
+                                        // Mark video as played
+//                                        video.videoPlayed()
+                                    }
+                                }
         }
     }
 }
