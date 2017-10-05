@@ -12,6 +12,7 @@ public class Session {
     public var id = ""
     public var productUrl = ""
     public var page = [OTOModule]()
+    public var product:Product?
     
     public required init() {
     }
@@ -28,7 +29,9 @@ public class Session {
         WebServiceManager.shared.post(endpoint: endpoint,
                                       body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
-                                            complete(self.decode(responseObject.dataValue()))
+                                            let session = self.decode(responseObject.dataValue())
+                                            session.product = product
+                                            complete(session)
                                         }
         }
     }
