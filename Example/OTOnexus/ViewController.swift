@@ -11,6 +11,7 @@ import OTOnexus
 
 class ViewController: UIViewController {
     @IBOutlet weak var captureView: CaptureView!
+    public var session:Session?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension UIViewController : CaptureViewDelegate {
+extension ViewController : CaptureViewDelegate {
     public func scannedBarcodeDoesNotExist(barcode: String) {
         print(barcode)
     }
@@ -31,12 +32,13 @@ extension UIViewController : CaptureViewDelegate {
         guard let defaultExperience = product.defaultExperience else { return }
         Session.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
+                                self.session = session
                                 for module in session.page {
                                     if let imageUpload = module as? OTOImageUploadModule {
                                         print(imageUpload)
                                         // upload image
-//                                        imageUpload.upload(image: foo, complete: { (success) in
-//
+//                                        imageUpload.upload(image: #imageLiteral(resourceName: "IMG_6636.JPG"), complete: { (success, image) in
+//                                            print(image!)
 //                                        })
                                     } else if let video = module as? OTOVideoModule {
                                         print(video.videoUrl)

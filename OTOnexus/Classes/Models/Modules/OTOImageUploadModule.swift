@@ -49,7 +49,7 @@ public class OTOImageUploadModule : OTOModule {
     
     public func upload(image:UIImage, complete:@escaping (Bool, UIImage?) -> Void) {
         self.complete = complete
-        self.image = image
+        self.image = resizeImage(image: image)
         getUploadForm()
     }
     
@@ -123,5 +123,29 @@ public class OTOImageUploadModule : OTOModule {
         
         self.promptText = config.stringValue(forKey: "prompt_text")
         self.thanksText = config.stringValue(forKey: "thanks_text")
+    }
+    
+    private func resizeImage(image:UIImage) -> UIImage {
+        let maxDimension = CGFloat(1024)
+        var newSize:CGSize?
+        if image.size.width >= image.size.height && image.size.width > maxDimension {
+            let ratio = maxDimension / image.size.width
+            let scaledHeight = ratio * image.size.height
+            newSize = CGSize(width: maxDimension, height: scaledHeight)
+        } else if image.size.height > image.size.width && image.size.height > maxDimension {
+            let ratio = maxDimension / image.size.height
+            let scaledWidth = ratio * image.size.width
+            newSize = CGSize(width: scaledWidth, height: maxDimension)
+        }
+        if let newSize = newSize {
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+            if let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
+                return newImage
+            }
+        }
+        
+        return image
     }
 }
