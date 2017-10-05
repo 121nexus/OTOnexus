@@ -35,6 +35,9 @@ public class OTOImageUploadModule : OTOModule {
     private var complete: ((Bool) -> Void)?
     private var image: UIImage?
     
+    public var promptText = ""
+    public var thanksText = ""
+    
     override func populateActions(withUrlBase urlBase: String) {
         super.populateActions(withUrlBase: urlBase)
         let getUploadFormEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "get_upload_form")
@@ -107,5 +110,14 @@ public class OTOImageUploadModule : OTOModule {
         } else {
             return nil
         }
+    }
+    
+    override func decode(_ responseData: ResponseData) {
+        super.decode(responseData)
+        
+        let config = responseData.responseDataValue(forKey: "config")
+        
+        self.promptText = config.stringValue(forKey: "prompt_text")
+        self.thanksText = config.stringValue(forKey: "thanks_text")
     }
 }
