@@ -9,7 +9,11 @@ import Foundation
 
 public class OTOModule : Decodable {
     static private let classMap = ["ImageUpload": OTOImageUploadModule.self,
-                                   "Video": OTOVideoModule.self,]
+                                   "Video": OTOVideoModule.self,
+                                   "Gudid": OTOGudidModule.self,
+                                   "SafetyCheck": OTOSafetyCheckModule.self,
+                                   "Gs1Validation": OTOGs1ValidationModule.self,
+                                   "Reorder": OTOReorderModule.self]
     
     public var id = 0
     
