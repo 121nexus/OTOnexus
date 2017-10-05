@@ -32,7 +32,7 @@ extension AWSRegionType {
 public class OTOImageUploadModule : OTOModule {
     private var getUploadFormAction: OTOGetUploadFormAction?
     private var imageUploadedAction: OTOImageUploadedAction?
-    private var complete: ((Bool) -> Void)?
+    private var complete: ((Bool, UIImage?) -> Void)?
     private var image: UIImage?
     
     public var promptText = ""
@@ -47,7 +47,7 @@ public class OTOImageUploadModule : OTOModule {
         self.imageUploadedAction = OTOImageUploadedAction(url:imageUploadedEndpoint)
     }
     
-    public func upload(image:UIImage, complete:@escaping (Bool) -> Void) {
+    public func upload(image:UIImage, complete:@escaping (Bool, UIImage?) -> Void) {
         self.complete = complete
         self.image = image
         getUploadForm()
@@ -79,7 +79,7 @@ public class OTOImageUploadModule : OTOModule {
         transferManager.upload(uploadRequest).continueWith { (task) -> Any? in
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
-                self.complete?(false)
+                self.complete?(false, nil)
             } else if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 if let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!) {
@@ -94,7 +94,11 @@ public class OTOImageUploadModule : OTOModule {
         imageUploadedAction?.s3Url = s3Url
         print("image uploaded successfully to \(s3Url)")
         imageUploadedAction?.perform { (response, error) in
-            self.complete?(error == nil)
+            if error == nil {
+                self.complete?(true, self.image)
+            } else {
+                self.complete?(false, nil)
+            }
         }
     }
     
