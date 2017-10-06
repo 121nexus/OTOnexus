@@ -6,7 +6,7 @@
 //
 
 class ResponseData {
-    private var storage: [String: Any] = [:]
+    var storage: [String: Any] = [:]
     
     init(_ storage:[String: Any]) {
         self.storage = storage

@@ -20,11 +20,10 @@ public class OTOModule : Decodable {
     public required init() {
     }
     
-    func populateActions(withUrlBase urlBase:String) {
-    }
-    
-    func actionEndpoint(withUrlBase urlBase:String, actionName:String) -> String {
-        return "\(urlBase)/modules/\(id)/\(actionName)"
+    func actionUrl(forName name:String, responseData:ResponseData) -> String? {
+        let actionsData = responseData.responseDataValue(forKey: "actions")
+        
+        return actionsData.string(forKey: name)
     }
     
     func decode(_ responseData:ResponseData) {

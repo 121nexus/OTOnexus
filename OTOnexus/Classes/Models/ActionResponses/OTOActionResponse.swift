@@ -7,8 +7,8 @@
 
 import Foundation
 
-class OTOActionResponse : Decodable {
-    required init() {
+public class OTOActionResponse : Decodable {
+    public required init() {
         
     }
     

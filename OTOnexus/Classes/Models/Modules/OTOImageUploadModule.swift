@@ -38,15 +38,6 @@ public class OTOImageUploadModule : OTOModule {
     public var promptText = ""
     public var thanksText = ""
     
-    override func populateActions(withUrlBase urlBase: String) {
-        super.populateActions(withUrlBase: urlBase)
-        let getUploadFormEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "get_upload_form")
-        self.getUploadFormAction = OTOGetUploadFormAction(url:getUploadFormEndpoint)
-        
-        let imageUploadedEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "submit_upload_url")
-        self.imageUploadedAction = OTOImageUploadedAction(url:imageUploadedEndpoint)
-    }
-    
     public func upload(image:UIImage, complete:@escaping (Bool, UIImage?) -> Void) {
         self.complete = complete
         self.image = resizeImage(image: image)
@@ -123,6 +114,14 @@ public class OTOImageUploadModule : OTOModule {
         
         self.promptText = config.stringValue(forKey: "prompt_text")
         self.thanksText = config.stringValue(forKey: "thanks_text")
+        
+        if let getUploadFormUrl = self.actionUrl(forName: "get_upload_form", responseData: responseData) {
+            self.getUploadFormAction = OTOGetUploadFormAction(url:getUploadFormUrl)
+        }
+        
+        if let submitUploadUrl = self.actionUrl(forName: "submit_upload_url", responseData: responseData) {
+            self.imageUploadedAction = OTOImageUploadedAction(url:submitUploadUrl)
+        }
     }
     
     private func resizeImage(image:UIImage) -> UIImage {

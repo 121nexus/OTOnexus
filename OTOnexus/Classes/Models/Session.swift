@@ -24,6 +24,9 @@ public class Session {
         var body:[String: Any] = [:]
         if let product = product {
             body["product_url"] = product.url
+            if let barcode = product.barcodeData {
+                body["raw_scan"] = barcode
+            }
         }
         
         WebServiceManager.shared.post(endpoint: endpoint,
@@ -42,8 +45,5 @@ extension Session : Decodable {
         self.id = responseData.stringValue(forKey: "id")
         self.productUrl = responseData.stringValue(forKey: "product_url")
         self.page = OTOModule.array(responseData.arrayValue(forKey: "page"))
-        self.page.forEach { (module) in
-            module.populateActions(withUrlBase: "sessions/\(id)")
-        }
     }
 }

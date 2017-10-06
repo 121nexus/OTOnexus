@@ -43,7 +43,11 @@ extension ViewController : CaptureViewDelegate {
                                     } else if let video = module as? OTOVideoModule {
                                         print(video.videoUrl)
                                         // Mark video as played
-//                                        video.videoPlayed()
+                                        video.videoPlayed()
+                                    } else if let gudid = module as? OTOGudidModule {
+                                        gudid.lookup(success: { (response) in
+                                            print(response.deviceDescription)
+                                        })
                                     }
                                 }
         }
