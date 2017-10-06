@@ -34,10 +34,14 @@ class WebServiceManager {
     }
     
     func url(withEndPoint endpoint:String) -> URL? {
-        guard let baseUrl = baseUrl else {
-            return nil
+        if endpoint.starts(with: "https") {
+            return URL(string:endpoint)
+        } else {
+            guard let baseUrl = baseUrl else {
+                return nil
+            }
+            return baseUrl.appendingPathComponent(endpoint)
         }
-        return baseUrl.appendingPathComponent(endpoint)
     }
     
     func get(endpoint:String, params:[String:String], completion:@escaping ResponseCompletionBlock) {

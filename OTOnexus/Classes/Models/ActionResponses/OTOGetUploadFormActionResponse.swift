@@ -5,7 +5,7 @@
 //  Created by Nicholas Schlueter on 9/28/17.
 //
 
-class OTOGetUploadFormActionResponse: OTOActionResponse {
+public class OTOGetUploadFormActionResponse: OTOActionResponse {
     var secretAccessKey = ""
     var accessKeyId = ""
     var bucketRegion = ""

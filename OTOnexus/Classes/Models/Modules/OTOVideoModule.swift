@@ -21,12 +21,6 @@ public class OTOVideoModule : OTOModule {
         })
     }
     
-    override func populateActions(withUrlBase urlBase: String) {
-        super.populateActions(withUrlBase: urlBase)
-        let videoPlayedEndpoint = self.actionEndpoint(withUrlBase: urlBase, actionName: "video_played")
-        self.videoPlayedAction = OTOBasicAction(url:videoPlayedEndpoint)
-    }
-    
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
         
@@ -39,5 +33,9 @@ public class OTOVideoModule : OTOModule {
         }
         
         self.videoUrl = config.stringValue(forKey: "video_url")
+        
+        if let videoPlayedUrl = self.actionUrl(forName: "video_played", responseData: responseData) {
+            self.videoPlayedAction = OTOBasicAction(url:videoPlayedUrl)
+        }
     }
 }

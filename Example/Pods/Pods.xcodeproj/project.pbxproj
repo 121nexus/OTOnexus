@@ -134,6 +134,8 @@
 		8A21FE701F86BCAC0029243F /* OTOSafetyCheckModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FE6F1F86BCAC0029243F /* OTOSafetyCheckModule.swift */; };
 		8A21FE721F86BCC50029243F /* OTOGs1ValidationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FE711F86BCC50029243F /* OTOGs1ValidationModule.swift */; };
 		8A21FE741F86BCD80029243F /* OTOReorderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A21FE731F86BCD80029243F /* OTOReorderModule.swift */; };
+		8ACD91BC1F87E955000B7DEE /* OTOLookupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACD91BA1F87E951000B7DEE /* OTOLookupAction.swift */; };
+		8ACD91BE1F880262000B7DEE /* OTOLookupActionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACD91BD1F880262000B7DEE /* OTOLookupActionResponse.swift */; };
 		8AD1C89C4DA8C6B148BA2570402298D1 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB3C47CD2BE29ED4EA1A7FE5CC41124 /* AWSCore.framework */; };
 		8C2147621C51AAE9EB9D1636E855BAFD /* AWSFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE902F722B04BA1AEB8F44163F5DD92 /* AWSFMResultSet.m */; };
 		8C541F534182B8C4AF84097D8417F4D0 /* AWSURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5898FDF2978193123EE637B0F8493CB8 /* AWSURLSessionManager.m */; };
@@ -439,6 +441,8 @@
 		8A21FE711F86BCC50029243F /* OTOGs1ValidationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOGs1ValidationModule.swift; sourceTree = "<group>"; };
 		8A21FE731F86BCD80029243F /* OTOReorderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOReorderModule.swift; sourceTree = "<group>"; };
 		8A6444D112594A6D24269BA386AD3C1A /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		8ACD91BA1F87E951000B7DEE /* OTOLookupAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOLookupAction.swift; sourceTree = "<group>"; };
+		8ACD91BD1F880262000B7DEE /* OTOLookupActionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOLookupActionResponse.swift; sourceTree = "<group>"; };
 		8B2AA4B7EFB355FE058A11C95EBBF5CD /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OTOnexus.modulemap; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C82D37DF8FCAB164A651128575F3A21 /* AWSSTSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSService.h; path = AWSCore/STS/AWSSTSService.h; sourceTree = "<group>"; };
@@ -686,6 +690,7 @@
 			children = (
 				C8C6AE007350E8BDAE826DC684C17694 /* OTOActionResponse.swift */,
 				8168DEF44ED251052C4BF0ECA9777628 /* OTOGetUploadFormActionResponse.swift */,
+				8ACD91BD1F880262000B7DEE /* OTOLookupActionResponse.swift */,
 			);
 			path = ActionResponses;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				6C9E658A1B193A4A7DBD98D1444B3B15 /* OTOBasicAction.swift */,
 				6511258FCA6ECE5BB92D2CE607F2E1C5 /* OTOGetUploadFormAction.swift */,
 				6444D70E11E5A57C9816F8519820A9F9 /* OTOImageUploadedAction.swift */,
+				8ACD91BA1F87E951000B7DEE /* OTOLookupAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -1309,6 +1315,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					DD1DBCC1DF68514CF23AA06E1AB43A68 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1399,6 +1410,7 @@
 				3467863FD1971036BD8C29C20103FBFF /* OTOImageUploadedAction.swift in Sources */,
 				AF67F06AB81B08E61BCA8698701DF2BF /* OTOImageUploadModule.swift in Sources */,
 				57A04E52FF6322504705FCBFC36B279F /* OTOModule.swift in Sources */,
+				8ACD91BE1F880262000B7DEE /* OTOLookupActionResponse.swift in Sources */,
 				3A8DC1D0C59A67FC0832CDA0ADE4D8D2 /* OTOnexus-dummy.m in Sources */,
 				A8BE5961A67B93E78B12DF3C255B4CA1 /* OTOnexus.swift in Sources */,
 				24DBC8DE37DC44129E8774EB0DF4C128 /* OTOVideoModule.swift in Sources */,
@@ -1412,6 +1424,7 @@
 				8A21FE741F86BCD80029243F /* OTOReorderModule.swift in Sources */,
 				6F5E557C9CB87BCFA83D6FFD83933B4D /* Session.swift in Sources */,
 				156B674D0870AE8D5B215BF535E167AD /* WebServiceManager.swift in Sources */,
+				8ACD91BC1F87E955000B7DEE /* OTOLookupAction.swift in Sources */,
 				E6CC30D51FE8E4B6A86C8AE37AA77200 /* WebServiceOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1732,6 +1745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0D276768E70A3D8312DB37153810748 /* AWSCore.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1755,6 +1769,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2007,6 +2022,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0D276768E70A3D8312DB37153810748 /* AWSCore.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
