@@ -34,7 +34,7 @@ class WebServiceManager {
     }
     
     func url(withEndPoint endpoint:String) -> URL? {
-        if endpoint.starts(with: "https") {
+        if endpoint.hasPrefix("https") {
             return URL(string:endpoint)
         } else {
             guard let baseUrl = baseUrl else {
