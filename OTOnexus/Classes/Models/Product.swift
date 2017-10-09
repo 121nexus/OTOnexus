@@ -18,7 +18,7 @@ public class Product {
     public var barcodeData:String?
     public var capturedImage:UIImage?
     public var url = ""
-    public var attributes = [String:String]()
+    public var attributes = [String:Any]()
     var defaultExperienceId = -1
     public var experiences = [Experience]()
     public var defaultExperience:Experience? {
@@ -71,9 +71,7 @@ extension Product : Decodable {
         self.url = responseData.stringValue(forKey: "url")
         self.experiences = Experience.array(responseData.arrayValue(forKey: "experiences"))
         self.defaultExperienceId = responseData.intValue(forKey: "default_experience_id")
-        if let attributes = responseData.dictionary(forKey: "attributes") as? [String:String] {
-            self.attributes = attributes
-        }
+        self.attributes = responseData.dictionaryValue(forKey: "attributes")
     }
 }
 
