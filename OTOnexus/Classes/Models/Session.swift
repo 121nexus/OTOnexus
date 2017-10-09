@@ -21,7 +21,14 @@ public class Session {
                              product:Product? = nil,
                              barcode:String? = nil,
                              complete: @escaping (Session) -> Void) {
-        let endpoint = "experiences/\(experience.id)/sessions"
+        self.startSession(withExperience: experience.id, product:product, barcode:barcode, complete: complete)
+    }
+    
+    public static func startSession(withExperience experienceId:Int,
+                                    product:Product? = nil,
+                                    barcode:String? = nil,
+                                    complete: @escaping (Session) -> Void) {
+        let endpoint = "experiences/\(experienceId)/sessions"
         var body:[String: Any] = [:]
         if let product = product {
             body["product_url"] = product.url
