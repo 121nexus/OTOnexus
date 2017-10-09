@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.captureView.delegate = self
+        self.captureView.scanStacked = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

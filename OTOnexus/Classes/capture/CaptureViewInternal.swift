@@ -175,6 +175,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         rawScanData = ""
         barcodeStringToPass = ""
         scanStatus = Status.scanning
+        self.barcodeTypeControl.selectedSegmentIndex = self.scanStacked ? 0 : 1
     }
     
     func toggleFlash() {
