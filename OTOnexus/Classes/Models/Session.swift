@@ -19,14 +19,17 @@ public class Session {
     
     public static func startSession(withExperience experience:Experience,
                              product:Product? = nil,
+                             barcode:String? = nil,
                              complete: @escaping (Session) -> Void) {
         let endpoint = "experiences/\(experience.id)/sessions"
         var body:[String: Any] = [:]
         if let product = product {
             body["product_url"] = product.url
-            if let barcode = product.barcodeData {
-                body["raw_scan"] = barcode
+            if let barcodeData = product.barcodeData {
+                body["raw_scan"] = barcodeData
             }
+        } else if let barcode = barcode {
+            body["raw_scan"] = barcode
         }
         
         WebServiceManager.shared.post(endpoint: endpoint,
