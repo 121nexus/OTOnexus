@@ -12,10 +12,11 @@ public class OTOModule : Decodable {
                                    "Video": OTOVideoModule.self,
                                    "Gudid": OTOGudidModule.self,
                                    "SafetyCheck": OTOSafetyCheckModule.self,
-                                   "Gs1Validation": OTOGs1ValidationModule.self,
+                                   "GS1Validation": OTOGs1ValidationModule.self,
                                    "Reorder": OTOReorderModule.self]
     
     public var id = 0
+    weak var session:Session?
     
     public required init() {
     }

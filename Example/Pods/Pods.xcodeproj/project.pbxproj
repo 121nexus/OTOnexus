@@ -136,6 +136,8 @@
 		8A06A3021F8D151900AE9B6E /* OTOSafetyCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */; };
 		8A06A3041F8D1B9400AE9B6E /* OTOReorderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */; };
 		8A06A3061F8D1BA800AE9B6E /* OTOReorderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */; };
+		8A06A3081F8D361100AE9B6E /* OTOValidateBarcodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3071F8D361100AE9B6E /* OTOValidateBarcodeResponse.swift */; };
+		8A06A30A1F8D366300AE9B6E /* OTOValidateBarcodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3091F8D366300AE9B6E /* OTOValidateBarcodeAction.swift */; };
 		8A7A591460BD5502492917F62FAC6D98 /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3C31DA56DE59A16846A9990F30E3355 /* OTOnexus.bundle */; };
 		8BBD956DA3B4669457541521993E3428 /* OTOImageUploadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBC6D385A8EC4A63491A47A106ACFE /* OTOImageUploadModule.swift */; };
 		8C2147621C51AAE9EB9D1636E855BAFD /* AWSFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE902F722B04BA1AEB8F44163F5DD92 /* AWSFMResultSet.m */; };
@@ -449,6 +451,8 @@
 		8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSafetyCheckResponse.swift; sourceTree = "<group>"; };
 		8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOReorderAction.swift; sourceTree = "<group>"; };
 		8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOReorderResponse.swift; sourceTree = "<group>"; };
+		8A06A3071F8D361100AE9B6E /* OTOValidateBarcodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOValidateBarcodeResponse.swift; sourceTree = "<group>"; };
+		8A06A3091F8D366300AE9B6E /* OTOValidateBarcodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOValidateBarcodeAction.swift; sourceTree = "<group>"; };
 		8B2AA4B7EFB355FE058A11C95EBBF5CD /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OTOnexus.modulemap; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C82D37DF8FCAB164A651128575F3A21 /* AWSSTSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSService.h; path = AWSCore/STS/AWSSTSService.h; sourceTree = "<group>"; };
@@ -982,6 +986,7 @@
 				FFFC68D1D22B303CF092E3C901575E3E /* OTOLookupAction.swift */,
 				8A06A2FF1F8D11A900AE9B6E /* CheckSafetyAction.swift */,
 				8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */,
+				8A06A3091F8D366300AE9B6E /* OTOValidateBarcodeAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -1027,6 +1032,7 @@
 				A07BA9032F8259A4EE86F67B50CF2828 /* OTOLookupActionResponse.swift */,
 				8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */,
 				8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */,
+				8A06A3071F8D361100AE9B6E /* OTOValidateBarcodeResponse.swift */,
 			);
 			path = ActionResponses;
 			sourceTree = "<group>";
@@ -1417,6 +1423,7 @@
 				299BB38854D16E94299744ED01FF7CB3 /* MDTPreviewBox.swift in Sources */,
 				7161BCA62F0F0D4EB90F0E6BC785A454 /* OTOAction.swift in Sources */,
 				0A87AF38F88725BF69D90AF217575ED3 /* OTOActionResponse.swift in Sources */,
+				8A06A30A1F8D366300AE9B6E /* OTOValidateBarcodeAction.swift in Sources */,
 				D5D5AEA32C962896FCF071A7C5536FCD /* OTOBasicAction.swift in Sources */,
 				08FEB4D859233A528CB4A4B2A82246AB /* OTOGetUploadFormAction.swift in Sources */,
 				140ACB5982524D894B8A5DF8DD20E079 /* OTOGetUploadFormActionResponse.swift in Sources */,
@@ -1439,6 +1446,7 @@
 				8A06A3041F8D1B9400AE9B6E /* OTOReorderAction.swift in Sources */,
 				5163F9D93BCA606904617EFBDE1810AD /* PutWebServiceOperation.swift in Sources */,
 				BE2C8DE82537A239E076923A1835C523 /* ResponseData.swift in Sources */,
+				8A06A3081F8D361100AE9B6E /* OTOValidateBarcodeResponse.swift in Sources */,
 				9D2CBF18D4FDDF7D90FFEB0BCB00A23A /* ResponseObject.swift in Sources */,
 				55D8584B46D040EDC7CFC386F33FAA48 /* Session.swift in Sources */,
 				59C5B05C012C257CDEF7FB90FD87A938 /* WebServiceManager.swift in Sources */,
