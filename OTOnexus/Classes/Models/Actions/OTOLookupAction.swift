@@ -8,8 +8,5 @@
 import Foundation
 
 class OTOLookupAction : OTOAction<OTOLookupResponse> {
-    override func process(responseObject: ResponseObject) -> OTOLookupResponse? {
-        return OTOLookupResponse.decode(responseObject.dataValue())
-    }
 }
 

@@ -27,8 +27,7 @@ class OTOAction<ResponseType: OTOActionResponse> {
     }
     
     func process(responseObject:ResponseObject) -> ResponseType? {
-        // override and don't call super
-        return nil
+        return ResponseType.decode(responseObject.dataValue())
     }
     
     func bodyParams() -> [String: Any] {
