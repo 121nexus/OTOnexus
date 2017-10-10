@@ -10,7 +10,7 @@ import Foundation
 public class OTOReorderModule : OTOModule {
     private var reorderAction:OTOReorderAction?
     
-    public func reorder(success:@escaping (Int) -> Void) {
+    public func reorder(success:@escaping (String) -> Void) {
         reorderAction?.perform(complete: { (reorderResponse, error) in
             if let reorderResponse = reorderResponse {
                 success(reorderResponse.orderQuanty)

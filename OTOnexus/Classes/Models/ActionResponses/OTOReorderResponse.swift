@@ -8,9 +8,9 @@
 import Foundation
 
 public class OTOReorderResponse : OTOActionResponse {
-    var orderQuanty = 0
+    var orderQuanty = ""
     
     override func decode(_ responseData: ResponseData) {
-        self.orderQuanty = responseData.intValue(forKey: "order_qty")
+        self.orderQuanty = responseData.stringValue(forKey: "order_qty")
     }
 }
