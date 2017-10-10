@@ -134,6 +134,8 @@
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
 		8A06A3001F8D11A900AE9B6E /* CheckSafetyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A2FF1F8D11A900AE9B6E /* CheckSafetyAction.swift */; };
 		8A06A3021F8D151900AE9B6E /* OTOSafetyCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */; };
+		8A06A3041F8D1B9400AE9B6E /* OTOReorderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */; };
+		8A06A3061F8D1BA800AE9B6E /* OTOReorderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */; };
 		8A7A591460BD5502492917F62FAC6D98 /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3C31DA56DE59A16846A9990F30E3355 /* OTOnexus.bundle */; };
 		8BBD956DA3B4669457541521993E3428 /* OTOImageUploadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBC6D385A8EC4A63491A47A106ACFE /* OTOImageUploadModule.swift */; };
 		8C2147621C51AAE9EB9D1636E855BAFD /* AWSFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE902F722B04BA1AEB8F44163F5DD92 /* AWSFMResultSet.m */; };
@@ -445,6 +447,8 @@
 		89DE04431754EEDA42586C5E3886B2BB /* PostWebServiceOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostWebServiceOperation.swift; sourceTree = "<group>"; };
 		8A06A2FF1F8D11A900AE9B6E /* CheckSafetyAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSafetyAction.swift; sourceTree = "<group>"; };
 		8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSafetyCheckResponse.swift; sourceTree = "<group>"; };
+		8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOReorderAction.swift; sourceTree = "<group>"; };
+		8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOReorderResponse.swift; sourceTree = "<group>"; };
 		8B2AA4B7EFB355FE058A11C95EBBF5CD /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OTOnexus.modulemap; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C82D37DF8FCAB164A651128575F3A21 /* AWSSTSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSService.h; path = AWSCore/STS/AWSSTSService.h; sourceTree = "<group>"; };
@@ -977,6 +981,7 @@
 				68D73A23D4838C438DB98B72E2421F9C /* OTOImageUploadedAction.swift */,
 				FFFC68D1D22B303CF092E3C901575E3E /* OTOLookupAction.swift */,
 				8A06A2FF1F8D11A900AE9B6E /* CheckSafetyAction.swift */,
+				8A06A3031F8D1B9400AE9B6E /* OTOReorderAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -1021,6 +1026,7 @@
 				1277EA603FEC2752F2C50EEB2D5AC49C /* OTOGetUploadFormActionResponse.swift */,
 				A07BA9032F8259A4EE86F67B50CF2828 /* OTOLookupActionResponse.swift */,
 				8A06A3011F8D151900AE9B6E /* OTOSafetyCheckResponse.swift */,
+				8A06A3051F8D1BA800AE9B6E /* OTOReorderResponse.swift */,
 			);
 			path = ActionResponses;
 			sourceTree = "<group>";
@@ -1430,12 +1436,14 @@
 				37BF0231CED124FB6E9670C747D5845C /* PostWebServiceOperation.swift in Sources */,
 				8A06A3001F8D11A900AE9B6E /* CheckSafetyAction.swift in Sources */,
 				C53BEA4EE0453148512A99F36C43A9AF /* Product.swift in Sources */,
+				8A06A3041F8D1B9400AE9B6E /* OTOReorderAction.swift in Sources */,
 				5163F9D93BCA606904617EFBDE1810AD /* PutWebServiceOperation.swift in Sources */,
 				BE2C8DE82537A239E076923A1835C523 /* ResponseData.swift in Sources */,
 				9D2CBF18D4FDDF7D90FFEB0BCB00A23A /* ResponseObject.swift in Sources */,
 				55D8584B46D040EDC7CFC386F33FAA48 /* Session.swift in Sources */,
 				59C5B05C012C257CDEF7FB90FD87A938 /* WebServiceManager.swift in Sources */,
 				4AFC394FAF7D1F53B5927BA9E78C87FA /* WebServiceOperation.swift in Sources */,
+				8A06A3061F8D1BA800AE9B6E /* OTOReorderResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

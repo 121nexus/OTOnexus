@@ -53,6 +53,10 @@ extension ViewController : CaptureViewDelegate {
                                         safetyCheck.checkSafety(success: { (response) in
                                             
                                         })
+                                    } else if let reorder = module as? OTOReorderModule {
+                                        reorder.reorder(success: { (quantity) in
+                                            print("ordered \(quantity)")
+                                        })
                                     }
                                 }
         }
