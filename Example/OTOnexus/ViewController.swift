@@ -38,7 +38,7 @@ extension ViewController : CaptureViewDelegate {
                                     if let imageUpload = module as? OTOImageUploadModule {
                                         print(imageUpload)
                                         // upload image
-//                                        imageUpload.upload(image: #imageLiteral(resourceName: "IMG_6636.JPG"), complete: { (success, image) in
+//                                        imageUpload.upload(image: product.capturedImage!, complete: { (success, image) in
 //                                            print(image!)
 //                                        })
                                     } else if let video = module as? OTOVideoModule {
@@ -48,6 +48,10 @@ extension ViewController : CaptureViewDelegate {
                                     } else if let gudid = module as? OTOGudidModule {
                                         gudid.lookup(success: { (response) in
                                             print(response.deviceDescription)
+                                        })
+                                    } else if let safetyCheck = module as? OTOSafetyCheckModule {
+                                        safetyCheck.checkSafety(success: { (response) in
+                                            
                                         })
                                     }
                                 }
