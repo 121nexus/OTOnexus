@@ -55,5 +55,8 @@ extension Session : Decodable {
         self.id = responseData.stringValue(forKey: "id")
         self.productUrl = responseData.stringValue(forKey: "product_url")
         self.page = OTOModule.array(responseData.arrayValue(forKey: "page"))
+        self.page.forEach { (module) in
+            module.session = self
+        }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 public class Experience {
-    var id = -1
+    public var id = -1
     public var name = ""
     public var description = ""
     public var productRequired = false

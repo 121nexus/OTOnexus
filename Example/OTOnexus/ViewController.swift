@@ -57,6 +57,10 @@ extension ViewController : CaptureViewDelegate {
                                         reorder.reorder(success: { (quantity) in
                                             print("ordered \(quantity)")
                                         })
+                                    } else if let gs1 = module as? OTOGs1ValidationModule {
+                                        gs1.validateBarcode(complete: { (validationResponse) in
+                                            print(validationResponse.allErrorMessages)
+                                        })
                                     }
                                 }
         }
