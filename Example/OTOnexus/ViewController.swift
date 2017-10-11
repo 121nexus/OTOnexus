@@ -22,11 +22,50 @@ class ViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    func printModules() {
+        guard let session = self.session else { return }
+        for module in session.page {
+            if let imageUpload = module as? OTOImageUploadModule {
+                print(imageUpload)
+                // upload image
+                //                                        imageUpload.upload(image: product.capturedImage!, complete: { (success, image) in
+                //                                            print(image!)
+                //                                        })
+            } else if let video = module as? OTOVideoModule {
+                print(video.videoUrl)
+                // Mark video as played
+                video.videoPlayed()
+            } else if let gudid = module as? OTOGudidModule {
+                gudid.lookup(success: { (response) in
+                    print(response.deviceDescription)
+                }, failure: { (response) in
+                    print(response.message)
+                })
+            } else if let safetyCheck = module as? OTOSafetyCheckModule {
+                safetyCheck.checkSafety(success: { (response) in
+                    
+                })
+            } else if let reorder = module as? OTOReorderModule {
+                print("amount to be reordered \(reorder.orderQuatity)")
+                reorder.reorder(success: { (quantity) in
+                    print("reordered \(quantity)")
+                })
+            } else if let gs1 = module as? OTOGs1ValidationModule {
+                gs1.validateBarcode(complete: { (validationResponse) in
+                    print(validationResponse.allErrorMessages)
+                })
+            }
+        }
+    }
 }
 
 extension ViewController : CaptureViewDelegate {
     public func scannedBarcodeDoesNotExist(barcode: String) {
-        print(barcode)
+        Session.startSession(withExperienceId: 1, barcode: barcode) { (session) in
+            self.session = session
+            self.printModules()
+        }
     }
     
     public func didCapture(product: Product) {
@@ -34,36 +73,7 @@ extension ViewController : CaptureViewDelegate {
         Session.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
                                 self.session = session
-                                for module in session.page {
-                                    if let imageUpload = module as? OTOImageUploadModule {
-                                        print(imageUpload)
-                                        // upload image
-//                                        imageUpload.upload(image: product.capturedImage!, complete: { (success, image) in
-//                                            print(image!)
-//                                        })
-                                    } else if let video = module as? OTOVideoModule {
-                                        print(video.videoUrl)
-                                        // Mark video as played
-                                        video.videoPlayed()
-                                    } else if let gudid = module as? OTOGudidModule {
-                                        gudid.lookup(success: { (response) in
-                                            print(response.deviceDescription)
-                                        })
-                                    } else if let safetyCheck = module as? OTOSafetyCheckModule {
-                                        safetyCheck.checkSafety(success: { (response) in
-                                            
-                                        })
-                                    } else if let reorder = module as? OTOReorderModule {
-                                        print("amount to be reordered \(reorder.orderQuatity)")
-                                        reorder.reorder(success: { (quantity) in
-                                            print("reordered \(quantity)")
-                                        })
-                                    } else if let gs1 = module as? OTOGs1ValidationModule {
-                                        gs1.validateBarcode(complete: { (validationResponse) in
-                                            print(validationResponse.allErrorMessages)
-                                        })
-                                    }
-                                }
+                                self.printModules()
         }
     }
 }
