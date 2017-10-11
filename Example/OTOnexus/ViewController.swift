@@ -39,6 +39,13 @@ class ViewController: UIViewController {
             } else if let gudid = module as? OTOGudidModule {
                 gudid.lookup(success: { (response) in
                     print(response.deviceDescription)
+                    if let lot = response.lot {
+                        print(lot)
+                    }
+                    if let expirationDate = response.expirationDate {
+                        // swift Date type
+                        print(expirationDate)
+                    }
                 }, failure: { (response) in
                     print(response.message)
                 })
