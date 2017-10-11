@@ -21,10 +21,10 @@ public class Session {
                              product:Product? = nil,
                              barcode:String? = nil,
                              complete: @escaping (Session) -> Void) {
-        self.startSession(withExperience: experience.id, product:product, barcode:barcode, complete: complete)
+        self.startSession(withExperienceId: experience.id, product:product, barcode:barcode, complete: complete)
     }
     
-    public static func startSession(withExperience experienceId:Int,
+    public static func startSession(withExperienceId experienceId:Int,
                                     product:Product? = nil,
                                     barcode:String? = nil,
                                     complete: @escaping (Session) -> Void) {
