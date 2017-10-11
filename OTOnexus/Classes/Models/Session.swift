@@ -33,10 +33,10 @@ public class Session {
         if let product = product {
             body["product_url"] = product.url
             if let barcodeData = product.barcodeData {
-                body["raw_scan"] = barcodeData
+                body["barcode_data"] = barcodeData
             }
         } else if let barcode = barcode {
-            body["raw_scan"] = barcode
+            body["barcode_data"] = barcode
         }
         
         WebServiceManager.shared.post(endpoint: endpoint,
