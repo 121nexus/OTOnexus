@@ -11,6 +11,6 @@ class OTOValidateBarcodeAction : OTOAction<OTOValidateBarcodeResponse> {
     var barcode = ""
     
     override func bodyParams() -> [String : Any] {
-        return ["gs1_barcode":barcode]
+        return ["barcode_data":barcode]
     }
 }
