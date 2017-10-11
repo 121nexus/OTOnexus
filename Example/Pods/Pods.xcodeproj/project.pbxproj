@@ -140,6 +140,7 @@
 		8A06A30A1F8D366300AE9B6E /* OTOValidateBarcodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06A3091F8D366300AE9B6E /* OTOValidateBarcodeAction.swift */; };
 		8A07AF041F8E9B0D0046E47D /* OTOLookupSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07AF031F8E9B0D0046E47D /* OTOLookupSuccessResponse.swift */; };
 		8A07AF061F8E9B5C0046E47D /* OTOLookupFailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07AF051F8E9B5C0046E47D /* OTOLookupFailureResponse.swift */; };
+		8A07AF081F8EC56E0046E47D /* OTODateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07AF071F8EC56E0046E47D /* OTODateHelper.swift */; };
 		8A7A591460BD5502492917F62FAC6D98 /* OTOnexus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3C31DA56DE59A16846A9990F30E3355 /* OTOnexus.bundle */; };
 		8BBD956DA3B4669457541521993E3428 /* OTOImageUploadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBC6D385A8EC4A63491A47A106ACFE /* OTOImageUploadModule.swift */; };
 		8C2147621C51AAE9EB9D1636E855BAFD /* AWSFMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE902F722B04BA1AEB8F44163F5DD92 /* AWSFMResultSet.m */; };
@@ -457,6 +458,7 @@
 		8A06A3091F8D366300AE9B6E /* OTOValidateBarcodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOValidateBarcodeAction.swift; sourceTree = "<group>"; };
 		8A07AF031F8E9B0D0046E47D /* OTOLookupSuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOLookupSuccessResponse.swift; sourceTree = "<group>"; };
 		8A07AF051F8E9B5C0046E47D /* OTOLookupFailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOLookupFailureResponse.swift; sourceTree = "<group>"; };
+		8A07AF071F8EC56E0046E47D /* OTODateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTODateHelper.swift; sourceTree = "<group>"; };
 		8B2AA4B7EFB355FE058A11C95EBBF5CD /* OTOnexus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OTOnexus.modulemap; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C82D37DF8FCAB164A651128575F3A21 /* AWSSTSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSService.h; path = AWSCore/STS/AWSSTSService.h; sourceTree = "<group>"; };
@@ -1023,6 +1025,7 @@
 				E97CBFCE6AB8F26A2994ECEBCE420F35 /* Resources */,
 				114B552B8226E06A7DF03C2EE8D17787 /* Support Files */,
 				22D5399F5F5E16A0EA3CB399016EE5ED /* WebServices */,
+				8A07AF071F8EC56E0046E47D /* OTODateHelper.swift */,
 			);
 			name = OTOnexus;
 			path = ../..;
@@ -1437,6 +1440,7 @@
 				6719B15134B29542C7D9B97C3DD2884B /* OTOGudidModule.swift in Sources */,
 				2ABEA736B999C175FA01ED3312C435A1 /* OTOImageUploadedAction.swift in Sources */,
 				8BBD956DA3B4669457541521993E3428 /* OTOImageUploadModule.swift in Sources */,
+				8A07AF081F8EC56E0046E47D /* OTODateHelper.swift in Sources */,
 				8A06A3021F8D151900AE9B6E /* OTOSafetyCheckResponse.swift in Sources */,
 				507C724292DA5708383D1A49063DA6C7 /* OTOLookupAction.swift in Sources */,
 				C9AC45771657CA5C39F8B6E9B96BEF8C /* OTOLookupActionResponse.swift in Sources */,

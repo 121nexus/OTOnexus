@@ -12,6 +12,8 @@ public class OTOLookupSuccessResponse: OTOLookupResponse {
     public var companyName = ""
     public var deviceDescription = ""
     public var brandName = ""
+    public var lot:String?
+    public var expirationDate:Date?
     public var email = ""
     public var phone = ""
     public var phoneExtension:String?
@@ -23,11 +25,16 @@ public class OTOLookupSuccessResponse: OTOLookupResponse {
         self.deviceDescription = responseData.stringValue(forKey: "deviceDescription")
         self.companyName = responseData.stringValue(forKey: "companyName")
         self.brandName = responseData.stringValue(forKey: "brandName")
+        self.lot = responseData.string(forKey: "udi_lot_number")
+        if let udiExpirationDate = responseData.string(forKey: "udi_expiration_date") {
+            self.expirationDate = OTODateHelper.shared.yearMonthDayParser.date(from: udiExpirationDate)
+        }
         
         let contact = responseData.responseDataValue(forKey: "contacts").responseDataValue(forKey: "customerContact")
         
         self.email = contact.stringValue(forKey: "email")
         self.phone = contact.stringValue(forKey: "phone")
         self.phoneExtension = contact.string(forKey: "phoneExtension")
+        
     }
 }
