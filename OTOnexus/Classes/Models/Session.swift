@@ -13,6 +13,7 @@ public class Session {
     public var productUrl = ""
     public var page = [OTOModule]()
     public var product:Product?
+    public var barcode:String?
     
     public required init() {
     }
@@ -43,6 +44,7 @@ public class Session {
                                       body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
                                             let session = self.decode(responseObject.dataValue())
+                                            session.barcode = body["barcode_data"] as? String
                                             session.product = product
                                             complete(session)
                                         }

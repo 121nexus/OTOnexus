@@ -69,7 +69,7 @@ class ViewController: UIViewController {
 
 extension ViewController : CaptureViewDelegate {
     public func scannedBarcodeDoesNotExist(barcode: String) {
-        Session.startSession(withExperienceId: 1, barcode: barcode) { (session) in
+        Session.startSession(withExperienceId: 4, barcode: barcode) { (session) in
             self.session = session
             self.printModules()
         }
