@@ -22,10 +22,7 @@ public class Product {
     var defaultExperienceId = -1
     public var experiences = [Experience]()
     public var defaultExperience:Experience? {
-        let foundExperience = experiences.first { (experience) -> Bool in
-            return experience.id == defaultExperienceId
-        }
-        return foundExperience
+        return experience(forId: defaultExperienceId)
     }
     
     required public init() {
@@ -62,6 +59,12 @@ public class Product {
                                         } else {
                                             failure(ProductError.serverError(nil))
                                         }
+        }
+    }
+    
+    func experience(forId experienceId:Int) -> Experience? {
+        return experiences.first { (experience) -> Bool in
+            return experience.id == experienceId
         }
     }
 }
