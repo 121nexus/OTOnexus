@@ -23,7 +23,7 @@ class WebServiceManager {
     var urlSession:URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
-    var baseUrl = URL(string: "https://cat-api-dev.herokuapp.com/v3")
+    var baseUrl = URL(string: "https://api.beta.121nexus.com/v3")
     
     func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default
@@ -31,6 +31,7 @@ class WebServiceManager {
         configuration.timeoutIntervalForResource = 20
         configuration.httpAdditionalHeaders = ["api-key": apiKey]
         self.urlSession = URLSession(configuration: configuration)
+        
     }
     
     func url(withEndPoint endpoint:String) -> URL? {
