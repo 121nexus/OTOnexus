@@ -62,7 +62,7 @@ public class Product {
         }
     }
     
-    func experience(forId experienceId:Int) -> Experience? {
+    public func experience(forId experienceId:Int) -> Experience? {
         return experiences.first { (experience) -> Bool in
             return experience.id == experienceId
         }
