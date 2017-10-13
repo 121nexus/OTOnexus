@@ -9,12 +9,16 @@ import Foundation
 
 public class OTOGudidModule : OTOModule {
     var lookupAction:OTOLookupAction?
+    public var lookupSuccessResponse:OTOLookupSuccessResponse?
+    public var lookupFailureResponse:OTOLookupFailureResponse?
 
     public func lookup(success:@escaping (OTOLookupSuccessResponse) -> Void, failure:@escaping (OTOLookupFailureResponse) -> Void) {
         lookupAction?.perform(complete: { (response, error) in
             if let lookupSuccessResponse = response as? OTOLookupSuccessResponse {
+                self.lookupSuccessResponse = lookupSuccessResponse
                 success(lookupSuccessResponse)
             } else if let lookupFailureResponse = response as? OTOLookupFailureResponse {
+                self.lookupFailureResponse = lookupFailureResponse
                 failure(lookupFailureResponse)
             }
         })

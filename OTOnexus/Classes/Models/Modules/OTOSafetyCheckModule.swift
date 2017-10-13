@@ -9,10 +9,12 @@ import Foundation
 
 public class OTOSafetyCheckModule : OTOModule {
     private var safetyCheckAction:OTOCheckSafetyAction?
+    public var safetyResult:Bool?
     
     public func checkSafety(success:@escaping (Bool) -> Void) {
         safetyCheckAction?.perform(complete: { (checkSafetyResponse, error) in
             if let checkSafetyResponse = checkSafetyResponse {
+                self.safetyResult = checkSafetyResponse.safe
                 success(checkSafetyResponse.safe)
             }
         })

@@ -9,6 +9,7 @@ import Foundation
 
 public class OTOGs1ValidationModule : OTOModule {
     var validateBarcodeAction:OTOValidateBarcodeAction?
+    public var validationResponse:OTOValidateBarcodeResponse?
     
     public func validateBarcode(complete: @escaping (OTOValidateBarcodeResponse) -> Void) {
         if let barcode = session?.product?.barcodeData {
@@ -16,6 +17,7 @@ public class OTOGs1ValidationModule : OTOModule {
         }
         validateBarcodeAction?.perform(complete: { (barcodeResponse, error) in
             if let barcodeResponse = barcodeResponse {
+                self.validationResponse = barcodeResponse
                 complete(barcodeResponse)
             }
         })
