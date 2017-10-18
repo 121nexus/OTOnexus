@@ -9,7 +9,7 @@
 import UIKit
 import CoreGraphics
 
-public class MDTPreviewBox: UIView {
+class OTOPreviewBox: UIView {
     
     var color: UIColor = UIColor.red
     let EDGE_LENGTH: CGFloat = 20.0

@@ -9,17 +9,17 @@
 import UIKit
 import Foundation
 
-public protocol CaptureViewDelegate: class {
+public protocol OTOCaptureViewDelegate: class {
     
-    func didCapture(product:Product)
+    func didCapture(product:OTOProduct)
     func scannedBarcodeDoesNotExist(barcode:String)
     
 }
 
-public class CaptureView: UIView {
+public class OTOCaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
 
-    public weak var delegate : CaptureViewDelegate?
+    public weak var delegate : OTOCaptureViewDelegate?
     public var scanStacked = false {
         didSet {
             captureViewInternal?.scanStacked = scanStacked
@@ -83,9 +83,9 @@ public class CaptureView: UIView {
     }
 }
 
-extension CaptureView : CaptureViewInternalDelegate {
+extension OTOCaptureView : CaptureViewInternalDelegate {
     func didCapture(barcode: String, image:UIImage) {
-        Product.search(barcodeData: barcode,
+        OTOProduct.search(barcodeData: barcode,
                        success: { (product) in
                         product.capturedImage = image
                         self.delegate?.didCapture(product: product)

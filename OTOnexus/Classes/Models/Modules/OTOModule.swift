@@ -16,7 +16,7 @@ public class OTOModule : Decodable {
                                    "Reorder": OTOReorderModule.self]
     
     public var id = 0
-    weak var session:Session?
+    weak var session:OTOSession?
     
     public required init() {
     }

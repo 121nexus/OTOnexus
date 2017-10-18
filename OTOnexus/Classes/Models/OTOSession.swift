@@ -1,5 +1,5 @@
 //
-//  Session.swift
+//  OTOSession.swift
 //  Pods
 //
 //  Created by Nicholas Schlueter on 9/14/17.
@@ -8,27 +8,27 @@
 
 import Foundation
 
-public class Session {
+public class OTOSession {
     public var id = ""
     public var productUrl = ""
     public var page = [OTOModule]()
-    public var product:Product?
+    public var product:OTOProduct?
     public var barcode:String?
     
     public required init() {
     }
     
-    public static func startSession(withExperience experience:Experience,
-                             product:Product? = nil,
+    public static func startSession(withExperience experience:OTOExperience,
+                             product:OTOProduct? = nil,
                              barcode:String? = nil,
-                             complete: @escaping (Session) -> Void) {
+                             complete: @escaping (OTOSession) -> Void) {
         self.startSession(withExperienceId: experience.id, product:product, barcode:barcode, complete: complete)
     }
     
     public static func startSession(withExperienceId experienceId:Int,
-                                    product:Product? = nil,
+                                    product:OTOProduct? = nil,
                                     barcode:String? = nil,
-                                    complete: @escaping (Session) -> Void) {
+                                    complete: @escaping (OTOSession) -> Void) {
         let endpoint = "experiences/\(experienceId)/sessions"
         var body:[String: Any] = [:]
         if let product = product {
@@ -52,7 +52,7 @@ public class Session {
     }
 }
 
-extension Session : Decodable {
+extension OTOSession : Decodable {
     func decode(_ responseData:ResponseData) {
         self.id = responseData.stringValue(forKey: "id")
         self.productUrl = responseData.stringValue(forKey: "product_url")

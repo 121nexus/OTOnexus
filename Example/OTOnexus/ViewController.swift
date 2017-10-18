@@ -10,8 +10,8 @@ import UIKit
 import OTOnexus
 
 class ViewController: UIViewController {
-    @IBOutlet weak var captureView: CaptureView!
-    public var session:Session?
+    @IBOutlet weak var captureView: OTOCaptureView!
+    public var session:OTOSession?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,17 +67,17 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : CaptureViewDelegate {
+extension ViewController : OTOCaptureViewDelegate {
     public func scannedBarcodeDoesNotExist(barcode: String) {
-        Session.startSession(withExperienceId: 4, barcode: barcode) { (session) in
+        OTOSession.startSession(withExperienceId: 4, barcode: barcode) { (session) in
             self.session = session
             self.printModules()
         }
     }
     
-    public func didCapture(product: Product) {
+    public func didCapture(product: OTOProduct) {
         guard let defaultExperience = product.defaultExperience else { return }
-        Session.startSession(withExperience: defaultExperience,
+        OTOSession.startSession(withExperience: defaultExperience,
                              product: product) { (session) in
                                 self.session = session
                                 self.printModules()

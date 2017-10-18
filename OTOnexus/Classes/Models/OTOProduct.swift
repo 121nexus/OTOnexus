@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  OTOProduct.swift
 //  Pods
 //
 //  Created by Nicholas Schlueter on 9/14/17.
@@ -8,20 +8,20 @@
 
 import Foundation
 
-public class Product {
+public class OTOProduct {
     public enum ProductError : Error {
         case productNotFound
         case serverError(Error?)
     }
-    public typealias ProductSuccessBlock = (Product) -> Void
+    public typealias ProductSuccessBlock = (OTOProduct) -> Void
     public typealias ProductFailureBlock = (ProductError) -> Void
     public var barcodeData:String?
     public var capturedImage:UIImage?
     public var url = ""
     public var attributes = [String:Any]()
     var defaultExperienceId = -1
-    public var experiences = [Experience]()
-    public var defaultExperience:Experience? {
+    public var experiences = [OTOExperience]()
+    public var defaultExperience:OTOExperience? {
         return experience(forId: defaultExperienceId)
     }
     
@@ -39,7 +39,7 @@ public class Product {
     }
     
     public static func search(productUrl:String,
-                              success:@escaping (Product) -> Void,
+                              success:@escaping (OTOProduct) -> Void,
                               failure: @escaping ProductFailureBlock) {
         self.search(withParams: ["product_url": productUrl], success: success, failure: failure)
     }
@@ -62,17 +62,17 @@ public class Product {
         }
     }
     
-    public func experience(forId experienceId:Int) -> Experience? {
+    public func experience(forId experienceId:Int) -> OTOExperience? {
         return experiences.first { (experience) -> Bool in
             return experience.id == experienceId
         }
     }
 }
 
-extension Product : Decodable {
+extension OTOProduct : Decodable {
     func decode(_ responseData:ResponseData) {
         self.url = responseData.stringValue(forKey: "url")
-        self.experiences = Experience.array(responseData.arrayValue(forKey: "experiences"))
+        self.experiences = OTOExperience.array(responseData.arrayValue(forKey: "experiences"))
         self.defaultExperienceId = responseData.intValue(forKey: "default_experience_id")
         self.attributes = responseData.dictionaryValue(forKey: "attributes")
     }
