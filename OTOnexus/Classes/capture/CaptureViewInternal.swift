@@ -23,7 +23,7 @@ protocol CaptureViewInternalDelegate: class {
 class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     fileprivate static let AI_GTIN = "01"
     
-    @IBOutlet public weak var previewBox: MDTPreviewBox!
+    @IBOutlet public weak var previewBox: OTOPreviewBox!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!

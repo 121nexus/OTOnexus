@@ -1,5 +1,5 @@
 //
-//  Experience.swift
+//  OTOExperience.swift
 //  Pods
 //
 //  Created by Nicholas Schlueter on 9/14/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Experience {
+public class OTOExperience {
     public var id = -1
     public var name = ""
     public var description = ""
@@ -18,7 +18,7 @@ public class Experience {
     }
 }
 
-extension Experience : Decodable {
+extension OTOExperience : Decodable {
     func decode(_ responseData:ResponseData) {
         self.id = responseData.intValue(forKey: "id")
         self.name = responseData.stringValue(forKey: "name")
