@@ -11,7 +11,10 @@ import Foundation
 
 public protocol OTOCaptureViewDelegate: class {
     
+    /// Returns the results of a scanned barcode and takes a parameter of a *product*
     func didCapture(product:OTOProduct)
+    
+    /// Delegate method that returns when a scanned barcode does not exist on the **121nexus Platform**
     func scannedBarcodeDoesNotExist(barcode:String)
     
 }
@@ -20,6 +23,8 @@ public class OTOCaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
 
     public weak var delegate : OTOCaptureViewDelegate?
+    
+    /// Sets default barcode type to be scanned to **stacked** vs. **single**
     public var scanStacked = false {
         didSet {
             captureViewInternal?.scanStacked = scanStacked
@@ -28,7 +33,7 @@ public class OTOCaptureView: UIView {
             }
         }
     }
-    
+    /// Bool value to hide/show flashlight button
     public var isTorchHidden:Bool {
         set {
             self.captureViewInternal?.isTorchHidden = newValue
@@ -37,6 +42,7 @@ public class OTOCaptureView: UIView {
             return self.captureViewInternal?.isTorchHidden ?? false
         }
     }
+    /// Bool value to hide/show scan reset button
     public var isResetHidden:Bool {
         set {
             self.captureViewInternal?.isResetHidden = newValue
@@ -45,6 +51,7 @@ public class OTOCaptureView: UIView {
             return self.captureViewInternal?.isResetHidden ?? false
         }
     }
+    /// Bool value to turn hide/show barcode type segmented control
     public var isBarcodeTypeHidden:Bool {
         set {
             self.captureViewInternal?.isBarcodeTypeHidden = newValue
@@ -73,11 +80,11 @@ public class OTOCaptureView: UIView {
         captureViewInternal.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         captureViewInternal.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
+    /// Resets capture scan view
     public func resetResults() {
         self.captureViewInternal?.resetResults()
     }
-    
+    /// Turns flashlight on/off
     public func toggleFlash() {
         self.captureViewInternal?.toggleFlash()
     }
