@@ -35,8 +35,6 @@ class GetWebServiceOperation : WebServiceOperation {
             let fullUrl = URL(string:fullUrlString + queryString){
             urlRequest.url = fullUrl
         }
-        print(urlRequest)
-
         return urlRequest
     }
     
