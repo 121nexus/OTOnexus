@@ -9,9 +9,13 @@
 import Foundation
 
 public class OTOExperience {
+    /// id given to an experience
     public var id = -1
+    /// name of the experience
     public var name = ""
+    /// description given to experience (i.e. "GS1 validation experience for manufacturer")
     public var description = ""
+    
     public var productRequired = false
     
     required public init() {

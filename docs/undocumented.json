@@ -1,0 +1,726 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOActionResponse.swift",
+      "line": 10,
+      "symbol": "OTOActionResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOActionResponse.swift",
+      "line": 11,
+      "symbol": "OTOActionResponse.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOGetUploadFormActionResponse.swift",
+      "line": 8,
+      "symbol": "OTOGetUploadFormActionResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupActionResponse.swift",
+      "line": 10,
+      "symbol": "OTOLookupResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupFailureResponse.swift",
+      "line": 10,
+      "symbol": "OTOLookupFailureResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupFailureResponse.swift",
+      "line": 11,
+      "symbol": "OTOLookupFailureResponse.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 10,
+      "symbol": "OTOLookupSuccessResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 11,
+      "symbol": "OTOLookupSuccessResponse.fullResponse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 12,
+      "symbol": "OTOLookupSuccessResponse.companyName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 13,
+      "symbol": "OTOLookupSuccessResponse.deviceDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 14,
+      "symbol": "OTOLookupSuccessResponse.brandName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 15,
+      "symbol": "OTOLookupSuccessResponse.lot",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 16,
+      "symbol": "OTOLookupSuccessResponse.expirationDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 17,
+      "symbol": "OTOLookupSuccessResponse.email",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 18,
+      "symbol": "OTOLookupSuccessResponse.phone",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOLookupSuccessResponse.swift",
+      "line": 19,
+      "symbol": "OTOLookupSuccessResponse.phoneExtension",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOReorderResponse.swift",
+      "line": 10,
+      "symbol": "OTOReorderResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOSafetyCheckResponse.swift",
+      "line": 10,
+      "symbol": "OTOSafetyCheckResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 10,
+      "symbol": "OTOValidateBarcodeResponse",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 11,
+      "symbol": "OTOValidateBarcodeResponse.validationSuccessful",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 12,
+      "symbol": "OTOValidateBarcodeResponse.parsingSuccessful",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 13,
+      "symbol": "OTOValidateBarcodeResponse.parsedAis",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 14,
+      "symbol": "OTOValidateBarcodeResponse.errors",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/ActionResponses/OTOValidateBarcodeResponse.swift",
+      "line": 15,
+      "symbol": "OTOValidateBarcodeResponse.allErrorMessages",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 11,
+      "symbol": "Experience",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 12,
+      "symbol": "Experience.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 13,
+      "symbol": "Experience.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 14,
+      "symbol": "Experience.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 15,
+      "symbol": "Experience.productRequired",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Experience.swift",
+      "line": 17,
+      "symbol": "Experience.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGs1ValidationModule.swift",
+      "line": 10,
+      "symbol": "OTOGs1ValidationModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGs1ValidationModule.swift",
+      "line": 12,
+      "symbol": "OTOGs1ValidationModule.validationResponse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGs1ValidationModule.swift",
+      "line": 14,
+      "symbol": "OTOGs1ValidationModule.validateBarcode(complete:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGudidModule.swift",
+      "line": 10,
+      "symbol": "OTOGudidModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGudidModule.swift",
+      "line": 12,
+      "symbol": "OTOGudidModule.lookupSuccessResponse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGudidModule.swift",
+      "line": 13,
+      "symbol": "OTOGudidModule.lookupFailureResponse",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOGudidModule.swift",
+      "line": 15,
+      "symbol": "OTOGudidModule.lookup(success:failure:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOImageUploadModule.swift",
+      "line": 32,
+      "symbol": "OTOImageUploadModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOImageUploadModule.swift",
+      "line": 38,
+      "symbol": "OTOImageUploadModule.promptText",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOImageUploadModule.swift",
+      "line": 39,
+      "symbol": "OTOImageUploadModule.thanksText",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOImageUploadModule.swift",
+      "line": 41,
+      "symbol": "OTOImageUploadModule.upload(image:complete:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOModule.swift",
+      "line": 10,
+      "symbol": "OTOModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOModule.swift",
+      "line": 18,
+      "symbol": "OTOModule.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOModule.swift",
+      "line": 21,
+      "symbol": "OTOModule.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOReorderModule.swift",
+      "line": 10,
+      "symbol": "OTOReorderModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOReorderModule.swift",
+      "line": 12,
+      "symbol": "OTOReorderModule.orderQuatity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOReorderModule.swift",
+      "line": 14,
+      "symbol": "OTOReorderModule.reorder(success:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOSafetyCheckModule.swift",
+      "line": 10,
+      "symbol": "OTOSafetyCheckModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOSafetyCheckModule.swift",
+      "line": 12,
+      "symbol": "OTOSafetyCheckModule.safetyResult",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOSafetyCheckModule.swift",
+      "line": 14,
+      "symbol": "OTOSafetyCheckModule.checkSafety(success:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 10,
+      "symbol": "OTOVideoModule",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 11,
+      "symbol": "OTOVideoModule.VideoType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 12,
+      "symbol": "OTOVideoModule.VideoType.direct",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 12,
+      "symbol": "OTOVideoModule.VideoType.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 12,
+      "symbol": "OTOVideoModule.VideoType.youtube",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 15,
+      "symbol": "OTOVideoModule.videoType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 16,
+      "symbol": "OTOVideoModule.videoUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Modules/OTOVideoModule.swift",
+      "line": 18,
+      "symbol": "OTOVideoModule.videoPlayed()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 11,
+      "symbol": "Product",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 12,
+      "symbol": "Product.ProductError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 13,
+      "symbol": "Product.ProductError.productNotFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 14,
+      "symbol": "Product.ProductError.serverError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 18,
+      "symbol": "Product.barcodeData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 19,
+      "symbol": "Product.capturedImage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 20,
+      "symbol": "Product.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 21,
+      "symbol": "Product.attributes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 23,
+      "symbol": "Product.experiences",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 24,
+      "symbol": "Product.defaultExperience",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 28,
+      "symbol": "Product.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 31,
+      "symbol": "Product.search(barcodeData:success:failure:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 41,
+      "symbol": "Product.search(productUrl:success:failure:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Product.swift",
+      "line": 65,
+      "symbol": "Product.experience(forId:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 11,
+      "symbol": "Session",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 12,
+      "symbol": "Session.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 13,
+      "symbol": "Session.productUrl",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 14,
+      "symbol": "Session.page",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 15,
+      "symbol": "Session.product",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 16,
+      "symbol": "Session.barcode",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 18,
+      "symbol": "Session.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 21,
+      "symbol": "Session.startSession(withExperience:product:barcode:complete:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/Models/Session.swift",
+      "line": 28,
+      "symbol": "Session.startSession(withExperienceId:product:barcode:complete:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/OTOnexus.swift",
+      "line": 11,
+      "symbol": "OTOnexus",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/OTOnexus.swift",
+      "line": 14,
+      "symbol": "OTOnexus.configure(withApiKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 12,
+      "symbol": "CaptureViewDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 14,
+      "symbol": "CaptureViewDelegate.didCapture(product:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 15,
+      "symbol": "CaptureViewDelegate.scannedBarcodeDoesNotExist(barcode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 19,
+      "symbol": "CaptureView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 22,
+      "symbol": "CaptureView.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 23,
+      "symbol": "CaptureView.scanStacked",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 32,
+      "symbol": "CaptureView.isTorchHidden",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 40,
+      "symbol": "CaptureView.isResetHidden",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 48,
+      "symbol": "CaptureView.isBarcodeTypeHidden",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 57,
+      "symbol": "CaptureView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 77,
+      "symbol": "CaptureView.resetResults()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/CaptureView.swift",
+      "line": 81,
+      "symbol": "CaptureView.toggleFlash()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 12,
+      "symbol": "MDTPreviewBox",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 24,
+      "symbol": "MDTPreviewBox.draw(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 78,
+      "symbol": "MDTPreviewBox.red()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 84,
+      "symbol": "MDTPreviewBox.yellow()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 90,
+      "symbol": "MDTPreviewBox.green()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 96,
+      "symbol": "MDTPreviewBox.setHeightMultiplier(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 101,
+      "symbol": "MDTPreviewBox.setLabelText(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/OTOnexus/Classes/capture/MDTPreviewBox.swift",
+      "line": 105,
+      "symbol": "MDTPreviewBox.addLabel(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus"
+}
