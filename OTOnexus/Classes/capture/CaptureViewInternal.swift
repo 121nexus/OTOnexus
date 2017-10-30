@@ -250,6 +250,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     print("RawData Unicode", Array(rawScanData.unicodeScalars))
                     
                     barcodeStringToPass = rawScanData
+                    print("Barcode String to pass", barcodeStringToPass)
                     finishBarcodeScan()
                 }
                 else {

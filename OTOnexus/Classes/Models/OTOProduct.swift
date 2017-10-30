@@ -25,9 +25,13 @@ public class OTOProduct {
         return experience(forId: defaultExperienceId)
     }
     
+    
     required public init() {
     }
     
+    /**
+     Search for product with barcodeData
+     */
     public static func search(barcodeData:String,
                               success:@escaping ProductSuccessBlock,
                               failure: @escaping ProductFailureBlock) {
@@ -37,14 +41,17 @@ public class OTOProduct {
                         success(product)
         }, failure: failure)
     }
-    
-    public static func search(productUrl:String,
+ 
+    /**
+    Search for product with productUrl
+    */
+       public static func search(productUrl:String,
                               success:@escaping (OTOProduct) -> Void,
                               failure: @escaping ProductFailureBlock) {
         self.search(withParams: ["product_url": productUrl], success: success, failure: failure)
     }
     
-    static func search(withParams params:[String:String],
+       static func search(withParams params:[String:String],
                        success:@escaping ProductSuccessBlock,
                        failure: @escaping ProductFailureBlock) {
         WebServiceManager.shared.get(endpoint: "products/search",

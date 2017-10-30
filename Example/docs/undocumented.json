@@ -1,0 +1,26 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/Example/OTOnexus/ViewController.swift",
+      "line": null,
+      "symbol": "ViewController",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/Example/OTOnexus/ViewController.swift",
+      "line": 71,
+      "symbol": "ViewController.scannedBarcodeDoesNotExist(barcode:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/Example/OTOnexus/ViewController.swift",
+      "line": 78,
+      "symbol": "ViewController.didCapture(product:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/chrisjdeorio/121Nexus-Codebases/OTOnexus/Example"
+}
