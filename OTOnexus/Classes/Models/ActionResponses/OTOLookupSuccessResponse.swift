@@ -10,25 +10,21 @@ import Foundation
 public class OTOLookupSuccessResponse: OTOLookupResponse {
     /// Complete FDA GUDID data response from AccessGUDID database. Use this if you would like to pull out specific data from the response.
     public var fullResponse:[String:Any]?
-    
-    /**
-    A set of the most commonly used data element variables that get returned from the FDA AcessGUDID database
-     - companyName: Company who manufactured the medical device
-     - deviceDescription: Short description of the medical device
-     - brandName: Brand or division that manufactures device
-     - lot: Batch/Lot number associated with device
-     - expirationDate: Device date of expiration 
-     - email: email of manufacturer on file
-     - phone: phone number of manufacturer
-     - phoneExtenstion: phone extension for the manufacturer
-    */
+    /// Company who manufactured the medical device
     public var companyName = ""
+    /// Short description of the medical device
     public var deviceDescription = ""
+    ///Brand or corporate division that manufactures device
     public var brandName = ""
+    /// Batch/Lot number associated with device
     public var lot:String?
+    /// Device date of expiration
     public var expirationDate:Date?
+    /// Contact email at manufacturer
     public var email = ""
+    /// Phone number of manufacturer
     public var phone = ""
+    /// Phone extention of manufacturer
     public var phoneExtension:String?
     
     override func decode(_ responseData: ResponseData) {
