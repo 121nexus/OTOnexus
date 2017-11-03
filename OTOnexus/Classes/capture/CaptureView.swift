@@ -21,10 +21,11 @@ public protocol OTOCaptureViewDelegate: class {
 
 public class OTOCaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
-
+    
+    /// Returns the results of a scanned barcode
     public weak var delegate : OTOCaptureViewDelegate?
     
-    /// Sets default barcode type to be scanned to **stacked** vs. **single**
+    /// Sets default barcode type to be scanned to *stacked* vs. *single*
     public var scanStacked = false {
         didSet {
             captureViewInternal?.scanStacked = scanStacked
