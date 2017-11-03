@@ -8,16 +8,18 @@
 import Foundation
 
 public class OTOVideoModule : OTOModule {
+    
+    /// Enum for video type returned from platform
     public enum VideoType {
         case youtube, direct, unknown
     }
+    
     var videoPlayedAction:OTOBasicAction?
     public var videoType = VideoType.unknown
     public var videoUrl = ""
     
     public func videoPlayed() {
         videoPlayedAction?.perform(complete: { (_, _) in
-            
         })
     }
     
