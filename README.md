@@ -26,6 +26,9 @@ OTOnexus is available through [CocoaPods](http://cocoapods.org). To install it, 
 pod 'OTOnexus'
 ```
 
+## Usage Example
+To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus).
+
 ## License
 OTOnexus is available under the ????? licnese. See the LICENSE file for more info.
 

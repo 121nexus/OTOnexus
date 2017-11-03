@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'OTOnexus'
   s.version          = '1.0.0'
-  s.summary          = 'A short description of OTOnexus.'
+  s.summary          = 'A Barcode Scanning SDK by 121nexus.com'
   s.source           = { :git => 'https://github.com/121nexus/OTOnexus' }
 
 # This description is used to generate tags and improve search results.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-                    Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
+                    OTOnexus is a Barcode Scanning SDK for capturing, looking up, presenting data associated with barcodes.
                    DESC
 
   s.homepage         = 'https://github.com/121nexus/OTOnexus'
