@@ -9,9 +9,13 @@ import Foundation
 
 public class OTOGudidModule : OTOModule {
     var lookupAction:OTOLookupAction?
+    
+    /// Successful response object returned for a FDA GUDID lookup
     public var lookupSuccessResponse:OTOLookupSuccessResponse?
+    /// Failure response object returned for a FDA GUDID lookup
     public var lookupFailureResponse:OTOLookupFailureResponse?
-
+    
+    /// FDA GUDID lookup function
     public func lookup(success:@escaping (OTOLookupSuccessResponse) -> Void, failure:@escaping (OTOLookupFailureResponse) -> Void) {
         lookupAction?.perform(complete: { (response, error) in
             if let lookupSuccessResponse = response as? OTOLookupSuccessResponse {

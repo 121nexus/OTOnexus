@@ -15,6 +15,7 @@ public class OTOModule : Decodable {
                                    "GS1Validation": OTOGs1ValidationModule.self,
                                    "Reorder": OTOReorderModule.self]
     
+    /// Int value identifying a module.
     public var id = 0
     weak var session:OTOSession?
     

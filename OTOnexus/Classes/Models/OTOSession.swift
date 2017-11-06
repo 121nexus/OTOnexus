@@ -9,6 +9,7 @@
 import Foundation
 
 public class OTOSession {
+    
     public var id = ""
     public var productUrl = ""
     public var page = [OTOModule]()

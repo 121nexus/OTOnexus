@@ -35,9 +35,11 @@ public class OTOImageUploadModule : OTOModule {
     private var complete: ((Bool, UIImage?) -> Void)?
     private var image: UIImage?
     
+    /// Property that could be used to prompt the user to "uplaod a photo"
     public var promptText = ""
+    /// Property that couple be used to notify user of "upload completion"
     public var thanksText = ""
-    
+    /// Function to upload image to 121nexus platform
     public func upload(image:UIImage, complete:@escaping (Bool, UIImage?) -> Void) {
         self.complete = complete
         self.image = resizeImage(image: image)
