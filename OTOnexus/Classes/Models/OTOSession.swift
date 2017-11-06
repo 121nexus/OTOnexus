@@ -9,16 +9,20 @@
 import Foundation
 
 public class OTOSession {
-    
+    /// The ID of the session
     public var id = ""
+    /// Product associated with current session
     public var productUrl = ""
+    /// The active page of the session, includes a list of modules associated with that page
     public var page = [OTOModule]()
+    /// A product on the 121 platform
     public var product:OTOProduct?
+    /// A barcode's raw string value
     public var barcode:String?
     
     public required init() {
     }
-    
+    /// Function that starts a new session
     public static func startSession(withExperience experience:OTOExperience,
                              product:OTOProduct? = nil,
                              barcode:String? = nil,
@@ -26,6 +30,7 @@ public class OTOSession {
         self.startSession(withExperienceId: experience.id, product:product, barcode:barcode, complete: complete)
     }
     
+    /// Function that starts a new session with a *experienceID*
     public static func startSession(withExperienceId experienceId:Int,
                                     product:OTOProduct? = nil,
                                     barcode:String? = nil,
