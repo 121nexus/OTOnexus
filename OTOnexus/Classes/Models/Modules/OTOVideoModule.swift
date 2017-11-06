@@ -11,7 +11,12 @@ public class OTOVideoModule : OTOModule {
     
     /// Enum for video type returned from platform
     public enum VideoType {
-        case youtube, direct, unknown
+        /// Youtube video type
+        case youtube
+        /// Direct video type
+        case direct
+        /// Video type unkown
+        case unknown
     }
     
     var videoPlayedAction:OTOBasicAction?
