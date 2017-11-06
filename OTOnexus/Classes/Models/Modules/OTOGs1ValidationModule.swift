@@ -9,8 +9,12 @@ import Foundation
 
 public class OTOGs1ValidationModule : OTOModule {
     var validateBarcodeAction:OTOValidateBarcodeAction?
+    /**
+     Response object returned from GS1 validation
+    */
     public var validationResponse:OTOValidateBarcodeResponse?
     
+    /// Function to validate barcode data using GS1 validation rules
     public func validateBarcode(complete: @escaping (OTOValidateBarcodeResponse) -> Void) {
         if let barcode = session?.barcode {
             validateBarcodeAction?.barcode = barcode

@@ -10,9 +10,9 @@ import Foundation
 public class OTOLookupSuccessResponse: OTOLookupResponse {
     /// Complete FDA GUDID data response from AccessGUDID database. Use this if you would like to pull out specific data from the response.
     public var fullResponse:[String:Any]?
-    /// Company who manufactured the medical device
+    /// Company of manufacture
     public var companyName = ""
-    /// Short description of the medical device
+    /// Short description of the device
     public var deviceDescription = ""
     ///Brand or corporate division that manufactures device
     public var brandName = ""

@@ -8,10 +8,15 @@
 import Foundation
 
 public class OTOValidateBarcodeResponse : OTOActionResponse {
+    /// Bool returned for barcode validated successfully
     public var validationSuccessful = false
+    /// Bool returned for barcode parsed successfully
     public var parsingSuccessful = false
+    /// Dictionary of AIs values for a parsed barcode
     public var parsedAis = [String: String]()
+    /// Dictionoary of error values for a parsed barcode
     public var errors = [String: [String]]()
+    /// Array of all error messages for a parsed barcode
     public var allErrorMessages = [String]()
     
     override func decode(_ responseData: ResponseData) {

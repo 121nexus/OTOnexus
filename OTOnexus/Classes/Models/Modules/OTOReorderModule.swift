@@ -9,9 +9,9 @@ import Foundation
 
 public class OTOReorderModule : OTOModule {
     private var reorderAction:OTOReorderAction?
-    public var orderQuatity = ""
+    private var orderQuatity = ""
     
-    public func reorder(success:@escaping (String) -> Void) {
+    private func reorder(success:@escaping (String) -> Void) {
         reorderAction?.perform(complete: { (reorderResponse, error) in
             if let reorderResponse = reorderResponse {
                 success(reorderResponse.orderQuanty)

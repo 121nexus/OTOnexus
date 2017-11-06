@@ -9,18 +9,29 @@
 import Foundation
 
 public class OTOProduct {
+    /**
+    Enum for product lookup error
+    - Product not found on platform
+    - Server error
+    */
     public enum ProductError : Error {
         case productNotFound
         case serverError(Error?)
     }
     public typealias ProductSuccessBlock = (OTOProduct) -> Void
     public typealias ProductFailureBlock = (ProductError) -> Void
+    /// A barcode's raw data string
     public var barcodeData:String?
+    /// Auto captured image during scanning
     public var capturedImage:UIImage?
+    /// A product url
     public var url = ""
+    /// Dictionary of attributes of a product
     public var attributes = [String:Any]()
     var defaultExperienceId = -1
+    /// An array of expriences for a product
     public var experiences = [OTOExperience]()
+    /// Default experience for a product
     public var defaultExperience:OTOExperience? {
         return experience(forId: defaultExperienceId)
     }
@@ -68,7 +79,9 @@ public class OTOProduct {
                                         }
         }
     }
-    
+    /**
+     Search for product by experience id
+    */
     public func experience(forId experienceId:Int) -> OTOExperience? {
         return experiences.first { (experience) -> Bool in
             return experience.id == experienceId
