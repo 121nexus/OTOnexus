@@ -20,9 +20,11 @@ public class OTOVideoModule : OTOModule {
     }
     
     var videoPlayedAction:OTOBasicAction?
+    /// Type of video hosted on platform (i.e Youtube link, direct video file, etc)
     public var videoType = VideoType.unknown
+    /// String value of video file url
     public var videoUrl = ""
-    
+    /// Function to log video played event to 121nexus platfrom
     public func videoPlayed() {
         videoPlayedAction?.perform(complete: { (_, _) in
         })
