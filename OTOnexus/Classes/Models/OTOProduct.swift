@@ -15,7 +15,9 @@ public class OTOProduct {
     - Server error
     */
     public enum ProductError : Error {
+        /// Product not found on platform
         case productNotFound
+        /// Server error returned during product search
         case serverError(Error?)
     }
     public typealias ProductSuccessBlock = (OTOProduct) -> Void
