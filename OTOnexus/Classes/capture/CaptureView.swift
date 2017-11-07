@@ -22,7 +22,7 @@ public protocol OTOCaptureViewDelegate: class {
 public class OTOCaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
     
-    /// Returns the results of a scanned barcode
+    /// Main delegate that has two methods associated with it *didCapture(product:OTOProduct)* and *scannedBarcodeDoesNotExist(barcode:String)*
     public weak var delegate : OTOCaptureViewDelegate?
     
     /// Sets default barcode type to be scanned to *stacked* vs. *single*
