@@ -15,8 +15,7 @@ public class OTOExperience {
     public var name = ""
     /// Description given to experience (i.e. "GS1 validation experience for manufacturer")
     public var description = ""
-    // TODO: possibly don't need productRequired any longer
-    public var productRequired = false
+    private var productRequired = false
     
     required public init() {
     }
