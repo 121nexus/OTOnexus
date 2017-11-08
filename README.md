@@ -30,8 +30,7 @@ pod 'OTOnexus'
 To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus).
 
 ## License
-OTOnexus is available under the ????? licnese. See the LICENSE file for more info.
-
+OTOnexus is available under an [MIT License](http://opensource.org/licenses/MIT). See the LICENSE file for more details.
 ## Author
 
 Chris DeOrio, <mailto:chris@121nexus.com>
