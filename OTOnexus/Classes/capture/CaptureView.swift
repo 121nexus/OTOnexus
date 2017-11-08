@@ -18,7 +18,9 @@ public protocol OTOCaptureViewDelegate: class {
     func scannedBarcodeDoesNotExist(barcode:String)
     
 }
-
+/**
+ OTOCaptureView is a class that provides scanning functionality to capture barcodes and provide the data associated with them. Through it's delegate methods it returns the raw barcode string that can be used to search on the *121nexus platform*
+ */
 public class OTOCaptureView: UIView {
     var captureViewInternal:CaptureViewInternal?
     
