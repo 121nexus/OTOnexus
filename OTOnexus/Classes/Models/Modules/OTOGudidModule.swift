@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ OTOGudidModule is a module that allows users to look up medical devices via barcode data in the FDA's GUDID access database. It provides information about a medical device submitted to the FDA by the manufacturer.
+ */
 public class OTOGudidModule : OTOModule {
     var lookupAction:OTOLookupAction?
     
@@ -36,3 +39,4 @@ public class OTOGudidModule : OTOModule {
         }
     }
 }
+

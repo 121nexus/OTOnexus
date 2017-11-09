@@ -7,8 +7,10 @@
 
 import Foundation
 
+/**
+ OTOVideoModule is a video module that allows a user to view video content stored on the *121nexus platform*. This can be direct video files or videos hosted on video hosting services like YouTube.
+ */
 public class OTOVideoModule : OTOModule {
-    
     /// Enum for video type returned from platform
     public enum VideoType {
         /// Youtube video type

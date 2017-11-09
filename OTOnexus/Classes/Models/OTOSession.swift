@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+OTOSession is a class that allows you to start a session to track user interactions with an experience.
+*/
 public class OTOSession {
     /// The ID of the session
     public var id = ""
