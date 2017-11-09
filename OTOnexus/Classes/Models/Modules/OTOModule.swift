@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+OTOModule represents an instance of a module. Modules contain functionality associated with a product. For example a video module will present video content about a particular product on the *121nexus platform*.
+*/
 public class OTOModule : Decodable {
     static private let classMap = ["ImageUpload": OTOImageUploadModule.self,
                                    "Video": OTOVideoModule.self,

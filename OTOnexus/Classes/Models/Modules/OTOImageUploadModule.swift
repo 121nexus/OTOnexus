@@ -29,6 +29,9 @@ extension AWSRegionType {
     }
 }
 
+/**
+ OTOImageUploadModule is a module that allows a user to upload photos to the *121nexus platform*.
+*/
 public class OTOImageUploadModule : OTOModule {
     private var getUploadFormAction: OTOGetUploadFormAction?
     private var imageUploadedAction: OTOImageUploadedAction?

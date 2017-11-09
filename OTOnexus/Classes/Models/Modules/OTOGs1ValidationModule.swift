@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ OTOGs1ValidationModule is a module that validates barcode data based on GS1's barcode parsing rules. [GS1 General Spec](https://www.gs1.org/docs/barcodes/GS1_General_Specifications.pdf)
+ */
 public class OTOGs1ValidationModule : OTOModule {
     var validateBarcodeAction:OTOValidateBarcodeAction?
     /**

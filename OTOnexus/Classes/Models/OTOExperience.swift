@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+The OTOExperience class defines an experience of a scanned product. Experiences are comprised of one or more modules that a user can interact with. Experiences let users watch video, upload photos, validate data and display content.
+*/
 public class OTOExperience {
     /// id given to an experience
     public var id = -1

@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+/**
+OTOProduct is a class that represents a physical product on the *121nexus platform*. Products can be searched by the barcode data or by unique urls found on the system.
+*/
 public class OTOProduct {
     /**
     Enum for product lookup error
