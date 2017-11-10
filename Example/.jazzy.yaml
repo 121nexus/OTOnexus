@@ -1,6 +1,5 @@
-
 custom_categories:
-    - name: OTOGudidModule
-    children:
-    - OTOLookupFailureResponse
-    - OTOLookupSuccessResponse
+- name: OTOGudidModule
+children:
+- OTOLookupFailureResponse
+- OTOLookupSuccessResponse
