@@ -17,6 +17,8 @@ public protocol OTOCaptureViewDelegate: class {
     /// Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
     func scannedBarcodeDoesNotExist(barcode:String)
     
+    func didEncounterError(error: OTOError)
+    
 }
 /**
  OTOCaptureView is a class that provides scanning functionality to capture barcodes and provide the data associated with them. Through its delegate methods it returns the raw barcode string that can be used to search on the *121nexus platform*
@@ -95,20 +97,19 @@ public class OTOCaptureView: UIView {
 
 extension OTOCaptureView : CaptureViewInternalDelegate {
     func didCapture(barcode: String, image:UIImage) {
-        OTOProduct.search(barcodeData: barcode,
-                       success: { (product) in
-                        product.capturedImage = image
-                        self.delegate?.didCapture(product: product)
-        },
-                       failure: { (error) in
-                        switch error {
-                        case .productNotFound:
-                            self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
-                        default:
-                            break
-                        }
-                        
-        })
+        OTOProduct.search(barcodeData: barcode) { (product, error) in
+            if let product = product {
+                product.capturedImage = image
+                self.delegate?.didCapture(product: product)
+            } else if let error = error {
+                switch error {
+                case .productNotFound:
+                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
+                case .otoError(let otoError):
+                    self.delegate?.didEncounterError(error: otoError)
+                }
+            }
+        }
     }
     
     func connectionLost() -> Bool {

@@ -18,14 +18,16 @@ public class OTOGs1ValidationModule : OTOModule {
     public var validationResponse:OTOValidateBarcodeResponse?
     
     /// Function to validate barcode data using GS1 validation rules
-    public func validateBarcode(complete: @escaping (OTOValidateBarcodeResponse) -> Void) {
+    public func validateBarcode(complete: @escaping (OTOValidateBarcodeResponse?, OTOError?) -> Void) {
         if let barcode = session?.barcode {
             validateBarcodeAction?.barcode = barcode
         }
         validateBarcodeAction?.perform(complete: { (barcodeResponse, error) in
             if let barcodeResponse = barcodeResponse {
                 self.validationResponse = barcodeResponse
-                complete(barcodeResponse)
+                complete(barcodeResponse, nil)
+            } else {
+                complete(nil, error)
             }
         })
     }

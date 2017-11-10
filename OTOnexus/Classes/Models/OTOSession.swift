@@ -29,7 +29,7 @@ public class OTOSession {
     public static func startSession(withExperience experience:OTOExperience,
                              product:OTOProduct? = nil,
                              barcode:String? = nil,
-                             complete: @escaping (OTOSession) -> Void) {
+                             complete: @escaping (OTOSession?, OTOError?) -> Void) {
         self.startSession(withExperienceId: experience.id, product:product, barcode:barcode, complete: complete)
     }
     
@@ -37,7 +37,7 @@ public class OTOSession {
     public static func startSession(withExperienceId experienceId:Int,
                                     product:OTOProduct? = nil,
                                     barcode:String? = nil,
-                                    complete: @escaping (OTOSession) -> Void) {
+                                    complete: @escaping (OTOSession?, OTOError?) -> Void) {
         let endpoint = "experiences/\(experienceId)/sessions"
         var body:[String: Any] = [:]
         if let product = product {
@@ -55,7 +55,9 @@ public class OTOSession {
                                             let session = self.decode(responseObject.dataValue())
                                             session.barcode = body["barcode_data"] as? String
                                             session.product = product
-                                            complete(session)
+                                            complete(session, nil)
+                                        } else {
+                                            complete(nil, error)
                                         }
         }
     }

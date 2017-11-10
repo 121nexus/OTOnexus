@@ -8,7 +8,7 @@
 import Foundation
 
 class OTOAction<ResponseType: OTOActionResponse> {
-    typealias CompletionClosure = (ResponseType?, Error?) -> Void
+    typealias CompletionClosure = (ResponseType?, OTOError?) -> Void
     let url:String
     
     public init(url:String) {

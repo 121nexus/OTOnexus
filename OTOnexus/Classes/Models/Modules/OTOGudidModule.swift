@@ -19,14 +19,16 @@ public class OTOGudidModule : OTOModule {
     public var lookupFailureResponse:OTOLookupFailureResponse?
     
     /// FDA GUDID lookup function
-    public func lookup(success:@escaping (OTOLookupSuccessResponse) -> Void, failure:@escaping (OTOLookupFailureResponse) -> Void) {
+    public func lookup(complete:@escaping (OTOLookupResponse?, OTOError?) -> Void) {
         lookupAction?.perform(complete: { (response, error) in
             if let lookupSuccessResponse = response as? OTOLookupSuccessResponse {
                 self.lookupSuccessResponse = lookupSuccessResponse
-                success(lookupSuccessResponse)
+                complete(lookupSuccessResponse, nil)
             } else if let lookupFailureResponse = response as? OTOLookupFailureResponse {
                 self.lookupFailureResponse = lookupFailureResponse
-                failure(lookupFailureResponse)
+                complete(lookupFailureResponse, nil)
+            } else {
+                complete(nil, error)
             }
         })
     }
