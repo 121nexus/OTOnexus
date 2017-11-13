@@ -31,26 +31,38 @@
                         <constraint firstItem="qIl-6m-ii5" firstAttribute="top" secondItem="0dg-0T-m0e" secondAttribute="top" constant="12" id="Wlg-VY-Dfs"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-wo-gqQ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8MV-wo-gqQ">
                     <rect key="frame" x="315" y="20" width="40" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="hFv-ex-Hm5"/>
                         <constraint firstAttribute="height" constant="40" id="mwF-S2-6CL"/>
                     </constraints>
-                    <state key="normal" image="torch-light-7"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="torch-light-7">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="torch-light-7">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="flashAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IhB-4T-wNx"/>
                     </connections>
                 </button>
-                <button opaque="NO" multipleTouchEnabled="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-LU-Wwm">
+                <button opaque="NO" multipleTouchEnabled="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-LU-Wwm">
                     <rect key="frame" x="20" y="20" width="40" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="4qE-JH-BlL"/>
                         <constraint firstAttribute="height" constant="40" id="YAx-rm-ttg"/>
                     </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="reset"/>
+                    <state key="selected" image="reset"/>
+                    <state key="highlighted" image="reset"/>
                     <connections>
                         <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="IXy-iD-Jfq"/>
                     </connections>
@@ -90,11 +102,11 @@
                 <outlet property="resetButton" destination="pzy-LU-Wwm" id="rrX-M4-IhF"/>
                 <outlet property="torchButton" destination="8MV-wo-gqQ" id="fhw-w3-bG8"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="-23"/>
+            <point key="canvasLocation" x="-3.5" y="-23.5"/>
         </view>
     </objects>
     <resources>
         <image name="reset" width="31" height="28"/>
-        <image name="torch-light-7" width="30" height="30"/>
+        <image name="torch-light-7" width="14" height="28"/>
     </resources>
 </document>

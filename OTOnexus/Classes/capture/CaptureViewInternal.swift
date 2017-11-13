@@ -182,9 +182,11 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         if (self.captureDevice.hasTorch) {
             do {
                 if self.captureDevice.hasTorch {
+                    self.torchButton.tintColor = UIColor.blue
                     try self.captureDevice.lockForConfiguration()
                     if (self.captureDevice.torchMode == AVCaptureTorchMode.on) {
                         self.captureDevice.torchMode = AVCaptureTorchMode.off
+                        self.torchButton.tintColor = UIColor.white
                     } else {
                         do {
                             try self.captureDevice.setTorchModeOnWithLevel(1.0)
