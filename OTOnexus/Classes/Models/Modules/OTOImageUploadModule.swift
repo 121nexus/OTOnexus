@@ -50,11 +50,12 @@ public class OTOImageUploadModule : OTOModule {
     }
     
     func getUploadForm() {
-        getUploadFormAction?.perform { (getUploadFormResponse, error) in
+        getUploadFormAction?.perform { [weak self]  (getUploadFormResponse, error) in
+            guard let strongSelf = self else { return }
             if let uploadFormResponse = getUploadFormResponse {
-                self.uploadToAws(uploadFormActionResponse: uploadFormResponse)
+                strongSelf.uploadToAws(uploadFormActionResponse: uploadFormResponse)
             } else {
-                self.complete?(nil, error)
+                strongSelf.complete?(nil, error)
             }
         }
     }
@@ -74,14 +75,15 @@ public class OTOImageUploadModule : OTOModule {
         uploadRequest.contentType = "image/jpeg"
         uploadRequest.acl = .publicRead
         let transferManager = AWSS3TransferManager.default()
-        transferManager.upload(uploadRequest).continueWith { (task) -> Any? in
+        transferManager.upload(uploadRequest).continueWith { [weak self] (task) -> Any? in
+            guard let strongSelf = self else { return nil }
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
-                self.complete?(nil, OTOError.errorFromServer(error))
+                strongSelf.complete?(nil, OTOError.errorFromServer(error))
             } else if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 if let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!) {
-                    self.imageUploadedTo(s3Url: publicURL.absoluteString)
+                    strongSelf.imageUploadedTo(s3Url: publicURL.absoluteString)
                 }
             }
             return nil
@@ -91,11 +93,12 @@ public class OTOImageUploadModule : OTOModule {
     func imageUploadedTo(s3Url:String) {
         imageUploadedAction?.s3Url = s3Url
         print("image uploaded successfully to \(s3Url)")
-        imageUploadedAction?.perform { (response, error) in
+        imageUploadedAction?.perform { [weak self] (response, error) in
+            guard let strongSelf = self else { return }
             if error == nil {
-                self.complete?(self.image, nil)
+                strongSelf.complete?(strongSelf.image, nil)
             } else {
-                self.complete?(nil, error)
+                strongSelf.complete?(nil, error)
             }
         }
     }

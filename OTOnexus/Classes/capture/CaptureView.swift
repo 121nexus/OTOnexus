@@ -98,17 +98,17 @@ public class OTOCaptureView: UIView {
 extension OTOCaptureView : CaptureViewInternalDelegate {
     func didCapture(barcode: String, image:UIImage) {
         OTOProduct.search(barcodeData: barcode) { (product, error) in
-            if let product = product {
-                product.capturedImage = image
-                self.delegate?.didCapture(product: product)
-            } else if let error = error {
-                switch error {
-                case .productNotFound:
-                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
-                case .otoError(let otoError):
-                    self.delegate?.didEncounterError(error: otoError)
-                }
-            }
+//            if let product = product {
+//                product.capturedImage = image
+//                self.delegate?.didCapture(product: product)
+//            } else if let error = error {
+//                switch error {
+//                case .productNotFound:
+//                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
+//                case .otoError(let otoError):
+//                    self.delegate?.didEncounterError(error: otoError)
+//                }
+//            }
         }
     }
     
