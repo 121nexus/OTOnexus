@@ -27,19 +27,20 @@ class WebServiceOperation: AsyncOperation {
             state = .isFinished
             return
         }
-        let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            guard let response = response as? HTTPURLResponse else { return }
-            let responseObject = self.responseObject(forData: data, response: response)
+        let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                let strongSelf = self else { return }
+            let responseObject = strongSelf.responseObject(forData: data, response: response)
             
             if response.statusCode >= 200 && response.statusCode < 300 {
-                if let responseCompletionBlock = self.responseCompletionBlock {
-                    self.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
+                if let responseCompletionBlock = strongSelf.responseCompletionBlock {
+                    strongSelf.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
                 }
             } else {
-                self.handleError(response: response, error: error, responseObject: responseObject)
+                strongSelf.handleError(response: response, error: error, responseObject: responseObject)
             }
             
-            self.state = .isFinished
+            strongSelf.state = .isFinished
         }
         dataTask.resume()
     }
@@ -49,9 +50,13 @@ class WebServiceOperation: AsyncOperation {
             let json = try? JSONSerialization.jsonObject(with: data,
                                                         options: []),
             let jsonDictionary = json as? [String: Any] {
-            return ResponseObject(data: jsonDictionary, statusCode: response.statusCode)
+            return ResponseObject(data: jsonDictionary,
+                                  statusCode: response.statusCode,
+                                  headers: response.allHeaderFields)
         }
-        return ResponseObject(data: nil, statusCode: response.statusCode)
+        return ResponseObject(data: nil,
+                              statusCode: response.statusCode,
+                              headers: response.allHeaderFields)
     }
     
     func urlRequest() -> URLRequest? {

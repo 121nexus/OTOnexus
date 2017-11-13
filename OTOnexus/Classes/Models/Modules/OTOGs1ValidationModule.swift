@@ -22,9 +22,10 @@ public class OTOGs1ValidationModule : OTOModule {
         if let barcode = session?.barcode {
             validateBarcodeAction?.barcode = barcode
         }
-        validateBarcodeAction?.perform(complete: { (barcodeResponse, error) in
+        validateBarcodeAction?.perform(complete: { [weak self] (barcodeResponse, error) in
+            guard let strongSelf = self else { return }
             if let barcodeResponse = barcodeResponse {
-                self.validationResponse = barcodeResponse
+                strongSelf.validationResponse = barcodeResponse
                 complete(barcodeResponse, nil)
             } else {
                 complete(nil, error)
@@ -35,8 +36,6 @@ public class OTOGs1ValidationModule : OTOModule {
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
         
-        if let validateBarcodeUrl = self.actionUrl(forName: "validate_barcode", responseData: responseData) {
-            self.validateBarcodeAction = OTOValidateBarcodeAction(url: validateBarcodeUrl)
-        }
+        self.validateBarcodeAction = self.action(forName: "validate_barcode", responseData: responseData)
     }
 }

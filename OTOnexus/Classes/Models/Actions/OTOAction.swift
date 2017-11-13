@@ -7,19 +7,31 @@
 
 import Foundation
 
+protocol SessionAction: class {
+    weak var session:OTOSession? {get set}
+    init(url:String)
+}
+
 class OTOAction<ResponseType: OTOActionResponse> {
     typealias CompletionClosure = (ResponseType?, OTOError?) -> Void
     let url:String
+    weak var session:OTOSession?
     
-    public init(url:String) {
+    required init(url:String) {
         self.url = url
     }
     
     func perform(complete: @escaping CompletionClosure) {
         WebServiceManager.shared.post(endpoint: url,
-                                      body: self.bodyParams()) { (responseObject, error) in
+                                      body: self.bodyParams()) { [weak self] (responseObject, error) in
+                                        guard let strongSelf = self else { return }
                                         if let responseObject = responseObject {
-                                            complete(self.process(responseObject: responseObject), nil)
+                                            if let transition = responseObject.headers["X-Transition"] as? String {
+                                                if transition == "true" {
+                                                    strongSelf.session?.getLatestSessionData()
+                                                }
+                                            }
+                                            complete(strongSelf.process(responseObject: responseObject), nil)
                                         } else {
                                             complete(nil, error)
                                         }
@@ -33,4 +45,7 @@ class OTOAction<ResponseType: OTOActionResponse> {
     func bodyParams() -> [String: Any] {
         return [:]
     }
+}
+
+extension OTOAction: SessionAction {
 }

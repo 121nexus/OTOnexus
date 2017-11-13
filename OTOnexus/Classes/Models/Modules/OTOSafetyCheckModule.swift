@@ -25,8 +25,6 @@ public class OTOSafetyCheckModule : OTOModule {
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
         
-        if let checkSafetyUrl = self.actionUrl(forName: "check_safety", responseData: responseData) {
-            self.safetyCheckAction = OTOCheckSafetyAction(url: checkSafetyUrl)
-        }
+        self.safetyCheckAction = self.action(forName: "check_safety", responseData: responseData)
     }
 }

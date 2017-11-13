@@ -25,9 +25,6 @@ public class OTOReorderModule : OTOModule {
         super.decode(responseData)
         
         self.orderQuatity = responseData.responseDataValue(forKey: "config").stringValue(forKey: "order_qty")
-        
-        if let reorderUrl = self.actionUrl(forName: "reorder", responseData: responseData) {
-            self.reorderAction = OTOReorderAction(url: reorderUrl)
-        }
+        self.reorderAction = self.action(forName: "reorder", responseData: responseData)
     }
 }
