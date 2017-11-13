@@ -11,10 +11,12 @@ public class OTOReorderModule : OTOModule {
     private var reorderAction:OTOReorderAction?
     public var orderQuatity = ""
     
-    public func reorder(success:@escaping (String) -> Void) {
+    public func reorder(complete:@escaping (String?, OTOError?) -> Void) {
         reorderAction?.perform(complete: { (reorderResponse, error) in
             if let reorderResponse = reorderResponse {
-                success(reorderResponse.orderQuanty)
+                complete(reorderResponse.orderQuanty, nil)
+            } else {
+                complete(nil, error)
             }
         })
     }

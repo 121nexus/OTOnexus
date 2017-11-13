@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let uploadModule = OTOImageUploadModule()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        OTOnexus.configure(withApiKey: "YOUR API KEY HERE")
+        OTOnexus.configure(withApiKey: "61ab188f-30b-4578-8e0f-28906f44b509")
 
         return true
     }

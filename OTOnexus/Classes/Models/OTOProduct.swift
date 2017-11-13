@@ -20,10 +20,9 @@ public class OTOProduct {
         /// Product not found on platform
         case productNotFound
         /// Server error returned during product search
-        case serverError(Error?)
+        case otoError(OTOError)
     }
-    public typealias ProductSuccessBlock = (OTOProduct) -> Void
-    public typealias ProductFailureBlock = (ProductError) -> Void
+    public typealias ProductCompleteBlock = (OTOProduct?, ProductError?) -> Void
     /// A barcode's raw data string
     public var barcodeData:String?
     /// Auto captured image during scanning
@@ -48,38 +47,39 @@ public class OTOProduct {
      Search for product with barcodeData
      */
     public static func search(barcodeData:String,
-                              success:@escaping ProductSuccessBlock,
-                              failure: @escaping ProductFailureBlock) {
+                              complete:@escaping ProductCompleteBlock) {
         self.search(withParams: ["barcode_data": barcodeData],
-                    success: { (product) in
-                        product.barcodeData = barcodeData
-                        success(product)
-        }, failure: failure)
+                    complete: { (product, error) in
+                        if let product = product {
+                            product.barcodeData = barcodeData
+                            complete(product, nil)
+                        } else {
+                            complete(product, error)
+                        }
+        })
     }
  
     /**
     Search for product with productUrl
     */
        public static func search(productUrl:String,
-                              success:@escaping (OTOProduct) -> Void,
-                              failure: @escaping ProductFailureBlock) {
-        self.search(withParams: ["product_url": productUrl], success: success, failure: failure)
+                              complete:@escaping ProductCompleteBlock) {
+        self.search(withParams: ["product_url": productUrl], complete: complete)
     }
     
        static func search(withParams params:[String:String],
-                       success:@escaping ProductSuccessBlock,
-                       failure: @escaping ProductFailureBlock) {
+                       complete:@escaping ProductCompleteBlock) {
         WebServiceManager.shared.get(endpoint: "products/search",
                                      params: params) { (responseObject, error) in
                                         if let responseObject = responseObject {
                                             if responseObject.statusCode == 204 {
-                                                failure(ProductError.productNotFound)
+                                                complete(nil, ProductError.productNotFound)
                                             } else if responseObject.isSuccessful {
                                                 let product = self.decode(responseObject.dataValue())
-                                                success(product)
+                                                complete(product, nil)
                                             }
-                                        } else {
-                                            failure(ProductError.serverError(nil))
+                                        } else if let error = error {
+                                            complete(nil, .otoError(error))
                                         }
         }
     }

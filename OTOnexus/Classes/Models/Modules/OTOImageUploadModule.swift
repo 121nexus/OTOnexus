@@ -35,7 +35,7 @@ extension AWSRegionType {
 public class OTOImageUploadModule : OTOModule {
     private var getUploadFormAction: OTOGetUploadFormAction?
     private var imageUploadedAction: OTOImageUploadedAction?
-    private var complete: ((Bool, UIImage?) -> Void)?
+    private var complete: ((UIImage?, OTOError?) -> Void)?
     private var image: UIImage?
     
     /// Property that could be used to prompt the user to "uplaod a photo"
@@ -43,7 +43,7 @@ public class OTOImageUploadModule : OTOModule {
     /// Property that couple be used to notify user of "upload completion"
     public var thanksText = ""
     /// Function to upload image to 121nexus platform
-    public func upload(image:UIImage, complete:@escaping (Bool, UIImage?) -> Void) {
+    public func upload(image:UIImage, complete:@escaping (UIImage?, OTOError?) -> Void) {
         self.complete = complete
         self.image = resizeImage(image: image)
         getUploadForm()
@@ -53,6 +53,8 @@ public class OTOImageUploadModule : OTOModule {
         getUploadFormAction?.perform { (getUploadFormResponse, error) in
             if let uploadFormResponse = getUploadFormResponse {
                 self.uploadToAws(uploadFormActionResponse: uploadFormResponse)
+            } else {
+                self.complete?(nil, error)
             }
         }
     }
@@ -75,7 +77,7 @@ public class OTOImageUploadModule : OTOModule {
         transferManager.upload(uploadRequest).continueWith { (task) -> Any? in
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
-                self.complete?(false, nil)
+                self.complete?(nil, OTOError.errorFromServer(error))
             } else if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 if let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!) {
@@ -91,9 +93,9 @@ public class OTOImageUploadModule : OTOModule {
         print("image uploaded successfully to \(s3Url)")
         imageUploadedAction?.perform { (response, error) in
             if error == nil {
-                self.complete?(true, self.image)
+                self.complete?(self.image, nil)
             } else {
-                self.complete?(false, nil)
+                self.complete?(nil, error)
             }
         }
     }

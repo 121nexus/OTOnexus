@@ -11,11 +11,13 @@ public class OTOSafetyCheckModule : OTOModule {
     private var safetyCheckAction:OTOCheckSafetyAction?
     public var safetyResult:Bool?
     
-    public func checkSafety(success:@escaping (Bool) -> Void) {
+    public func checkSafety(complete:@escaping (Bool?, OTOError?) -> Void) {
         safetyCheckAction?.perform(complete: { (checkSafetyResponse, error) in
             if let checkSafetyResponse = checkSafetyResponse {
                 self.safetyResult = checkSafetyResponse.safe
-                success(checkSafetyResponse.safe)
+                complete(checkSafetyResponse.safe, nil)
+            } else {
+                complete(nil, error)
             }
         })
     }

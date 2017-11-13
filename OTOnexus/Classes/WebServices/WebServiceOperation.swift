@@ -28,13 +28,15 @@ class WebServiceOperation: AsyncOperation {
             return
         }
         let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            if let data = data,
-                let response = response as? HTTPURLResponse,
-                let responseObject = self.responseObject(forData: data, response: response),
-                let responseCompletionBlock = self.responseCompletionBlock {
-                self.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
+            guard let response = response as? HTTPURLResponse else { return }
+            let responseObject = self.responseObject(forData: data, response: response)
+            
+            if response.statusCode >= 200 && response.statusCode < 300 {
+                if let responseCompletionBlock = self.responseCompletionBlock {
+                    self.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
+                }
             } else {
-                self.handleError(response: response as? HTTPURLResponse, error: error)
+                self.handleError(response: response, error: error, responseObject: responseObject)
             }
             
             self.state = .isFinished
@@ -42,15 +44,14 @@ class WebServiceOperation: AsyncOperation {
         dataTask.resume()
     }
     
-    private func responseObject(forData data:Data, response: HTTPURLResponse) -> ResponseObject? {
-        if let json = try? JSONSerialization.jsonObject(with: data,
+    private func responseObject(forData data:Data?, response: HTTPURLResponse) -> ResponseObject {
+        if let data = data,
+            let json = try? JSONSerialization.jsonObject(with: data,
                                                         options: []),
             let jsonDictionary = json as? [String: Any] {
             return ResponseObject(data: jsonDictionary, statusCode: response.statusCode)
-        } else if response.statusCode >= 200 && response.statusCode < 300 {
-            return ResponseObject(data: nil, statusCode: response.statusCode)
         }
-        return nil
+        return ResponseObject(data: nil, statusCode: response.statusCode)
     }
     
     func urlRequest() -> URLRequest? {
@@ -64,7 +65,7 @@ class WebServiceOperation: AsyncOperation {
         return urlRequest
     }
     
-    private func handleError(response:HTTPURLResponse?, error:Error?) {
+    private func handleError(response:HTTPURLResponse?, error:Error?, responseObject:ResponseObject) {
         if let nsError = error as NSError?,
             self.canRetry(error: nsError),
             self.retry < 3 {
@@ -72,8 +73,12 @@ class WebServiceOperation: AsyncOperation {
         } else if let responseCompletionBlock = responseCompletionBlock {
             if let error = error {
                 dispatchOnMainQueue(responseCompletionBlock(nil,.errorFromServer(error)))
+            } else if responseObject.statusCode == 401 {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.unauthenticated))
+            } else if let message = responseObject.dataValue().string(forKey: "message") {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.errorWithMessage(message)))
             } else {
-                dispatchOnMainQueue(responseCompletionBlock(nil,.genericError))
+                dispatchOnMainQueue(responseCompletionBlock(nil,.errorWithMessage("An unknown error has occured")))
             }
         }
     }

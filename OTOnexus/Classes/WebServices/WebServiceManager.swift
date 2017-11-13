@@ -15,15 +15,16 @@ class WebServiceManager {
         return queue
     }()
     enum WebServiceError : Error {
-        case genericError
         case errorFromServer(Error)
+        case errorWithMessage(String)
+        case unauthenticated
     }
-    typealias ResponseCompletionBlock = (ResponseObject?, WebServiceError?) -> Void
+    typealias ResponseCompletionBlock = (ResponseObject?, OTOError?) -> Void
     static let shared = WebServiceManager()
     var urlSession:URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
-    var baseUrl = URL(string: "https://api.beta.121nexus.com/v3")
+    var baseUrl = URL(string: "https://cat-api-dev.herokuapp.com/v3")
     
     func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default
