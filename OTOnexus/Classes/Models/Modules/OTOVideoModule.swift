@@ -44,9 +44,6 @@ public class OTOVideoModule : OTOModule {
         }
         
         self.videoUrl = config.stringValue(forKey: "video_url")
-        
-        if let videoPlayedUrl = self.actionUrl(forName: "video_played", responseData: responseData) {
-            self.videoPlayedAction = OTOBasicAction(url:videoPlayedUrl)
-        }
+        self.videoPlayedAction = self.action(forName: "video_played", responseData: responseData)
     }
 }

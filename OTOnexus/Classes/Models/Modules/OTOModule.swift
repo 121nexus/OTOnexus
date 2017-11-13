@@ -20,15 +20,32 @@ public class OTOModule : Decodable {
     
     /// Int value identifying a module.
     public var id = 0
-    weak var session:OTOSession?
+    weak var session:OTOSession? {
+        didSet {
+            for action in actions {
+                action.session = self.session
+            }
+        }
+    }
+    
+    private var actions = [SessionAction]()
     
     public required init() {
     }
     
-    func actionUrl(forName name:String, responseData:ResponseData) -> String? {
+    private func actionUrl(forName name:String, responseData:ResponseData) -> String? {
         let actionsData = responseData.responseDataValue(forKey: "actions")
         
         return actionsData.string(forKey: name)
+    }
+    
+    func action<T:SessionAction>(forName name:String, responseData:ResponseData) -> T? {
+        if let url = actionUrl(forName: name, responseData: responseData) {
+            let action = T.init(url: url)
+            actions.append(action)
+            return action
+        }
+        return nil
     }
     
     func decode(_ responseData:ResponseData) {

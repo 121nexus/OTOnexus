@@ -122,13 +122,8 @@ public class OTOImageUploadModule : OTOModule {
         self.promptText = config.stringValue(forKey: "prompt_text")
         self.thanksText = config.stringValue(forKey: "thanks_text")
         
-        if let getUploadFormUrl = self.actionUrl(forName: "get_upload_form", responseData: responseData) {
-            self.getUploadFormAction = OTOGetUploadFormAction(url:getUploadFormUrl)
-        }
-        
-        if let submitUploadUrl = self.actionUrl(forName: "submit_upload_url", responseData: responseData) {
-            self.imageUploadedAction = OTOImageUploadedAction(url:submitUploadUrl)
-        }
+        self.getUploadFormAction = self.action(forName: "get_upload_form", responseData: responseData)
+        self.imageUploadedAction = self.action(forName: "submit_upload_url", responseData: responseData)
     }
     
     private func resizeImage(image:UIImage) -> UIImage {

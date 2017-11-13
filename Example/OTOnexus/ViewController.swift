@@ -40,9 +40,9 @@ class ViewController: UIViewController {
             if let imageUpload = module as? OTOImageUploadModule {
                 print(imageUpload)
                 // upload image
-                //                                        imageUpload.upload(image: product.capturedImage!, complete: { (success, image) in
-                //                                            print(image!)
-                //                                        })
+                imageUpload.upload(image: #imageLiteral(resourceName: "torch-light.png"), complete: { (image, error) in
+                    print(image!)
+                })
             } else if let video = module as? OTOVideoModule {
                 print(video.videoUrl)
                 // Mark video as played
@@ -94,8 +94,9 @@ class ViewController: UIViewController {
 
 extension ViewController : OTOCaptureViewDelegate {
     public func scannedBarcodeDoesNotExist(barcode: String) {
-        OTOSession.startSession(withExperienceId: 4, barcode: barcode) { (session, error) in
+        OTOSession.startSession(withExperienceId: 5, barcode: barcode) { (session, error) in
             if let session = session {
+                session.delegate = self
                 self.session = session
                 self.printModules()
             } else if let error = error {
@@ -109,6 +110,7 @@ extension ViewController : OTOCaptureViewDelegate {
         OTOSession.startSession(withExperience: defaultExperience,
                              product: product) { (session, error) in
                                 if let session = session {
+                                    session.delegate = self
                                     self.session = session
                                     self.printModules()
                                 } else if let error = error {
@@ -120,5 +122,12 @@ extension ViewController : OTOCaptureViewDelegate {
     func didEncounterError(error: OTOError) {
         handle(error: error)
     }
+}
+
+extension ViewController : OTOSessionDelegate {
+    func sessionDidUpdatePage() {
+        self.printModules()
+    }
+    
 }
 

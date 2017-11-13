@@ -20,12 +20,13 @@ public class OTOGudidModule : OTOModule {
     
     /// FDA GUDID lookup function
     public func lookup(complete:@escaping (OTOLookupResponse?, OTOError?) -> Void) {
-        lookupAction?.perform(complete: { (response, error) in
+        lookupAction?.perform(complete: { [weak self]  (response, error) in
+            guard let strongSelf = self else { return }
             if let lookupSuccessResponse = response as? OTOLookupSuccessResponse {
-                self.lookupSuccessResponse = lookupSuccessResponse
+                strongSelf.lookupSuccessResponse = lookupSuccessResponse
                 complete(lookupSuccessResponse, nil)
             } else if let lookupFailureResponse = response as? OTOLookupFailureResponse {
-                self.lookupFailureResponse = lookupFailureResponse
+                strongSelf.lookupFailureResponse = lookupFailureResponse
                 complete(lookupFailureResponse, nil)
             } else {
                 complete(nil, error)
@@ -36,9 +37,7 @@ public class OTOGudidModule : OTOModule {
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
         
-        if let lookupUrl = self.actionUrl(forName: "lookup", responseData: responseData) {
-            self.lookupAction = OTOLookupAction(url: lookupUrl)
-        }
+        self.lookupAction = self.action(forName: "lookup", responseData: responseData)
     }
 }
 

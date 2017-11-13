@@ -8,6 +8,10 @@
 
 import Foundation
 
+public protocol OTOSessionDelegate : class {
+    func sessionDidUpdatePage()
+}
+
 /**
 OTOSession is a class that allows you to start a session to track user interactions with an experience.
 */
@@ -22,6 +26,8 @@ public class OTOSession {
     public var product:OTOProduct?
     /// A barcode's raw string value
     public var barcode:String?
+    /// A delegate that notifies when the session transitions to the next page
+    public var delegate:OTOSessionDelegate?
     
     public required init() {
     }
@@ -58,6 +64,17 @@ public class OTOSession {
                                             complete(session, nil)
                                         } else {
                                             complete(nil, error)
+                                        }
+        }
+    }
+    
+    func getLatestSessionData() {
+        let endpoint = "sessions/\(self.id)"
+        WebServiceManager.shared.get(endpoint: endpoint,
+                                     params: [:]) { (responseObject, error) in
+                                        if let responseObject = responseObject {
+                                            self.decode(responseObject.dataValue())
+                                            self.delegate?.sessionDidUpdatePage()
                                         }
         }
     }
