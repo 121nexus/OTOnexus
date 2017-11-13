@@ -1,5 +1,36 @@
+
+
 custom_categories:
-- name: OTOGudidModule
-children:
-- OTOLookupFailureResponse
-- OTOLookupSuccessResponse
+  - name: Capture
+    children:
+    - OTOCaptureView
+
+  - name: Models
+    children:
+    - OTOExperience
+    - OTOSession
+    - OTOProduct
+
+  - name: Platform Modules
+    children:
+    - OTOModule
+    - OTOImageUploadModule
+    - OTOGudidModule
+    - OTOVideoModule
+    - OTOGs1ValidationModule
+  
+  - name: GUDID Responses
+    children:
+    - OTOLookupSuccessResponse
+    - OTOLookupFailureResponse
+
+  - name: GS1 Validation Response
+    children:
+    - OTOValidateBarcodeResponse
+
+  - name: Error 
+    children:
+    - OTOError
+
+
+
