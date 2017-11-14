@@ -68,6 +68,42 @@ public class OTOSession {
         }
     }
     
+    public func preloadModuleData(complete: @escaping (Bool, [OTOError]) -> Void) {
+        var errors = [OTOError]()
+        let dispatchGroup = DispatchGroup()
+        for module in self.page {
+            if let gudidModule = module as? OTOGudidModule  {
+                dispatchGroup.enter()
+                gudidModule.lookup(complete: { (_, error) in
+                    if let error = error {
+                        errors.append(error)
+                    }
+                    dispatchGroup.leave()
+                })
+            } else if let safetyCheckModule = module as? OTOSafetyCheckModule {
+                dispatchGroup.enter()
+                safetyCheckModule.checkSafety(complete: { (_, error) in
+                    if let error = error {
+                        errors.append(error)
+                    }
+                    dispatchGroup.leave()
+                })
+            } else if let gs1Module = module as? OTOGs1ValidationModule {
+                dispatchGroup.enter()
+                gs1Module.validateBarcode(complete: { (_, error) in
+                    if let error = error {
+                        errors.append(error)
+                    }
+                    dispatchGroup.leave()
+                })
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            complete(errors.count == 0, errors)
+        }
+    }
+    
     func getLatestSessionData() {
         let endpoint = "sessions/\(self.id)"
         WebServiceManager.shared.get(endpoint: endpoint,
