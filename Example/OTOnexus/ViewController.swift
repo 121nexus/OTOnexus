@@ -36,57 +36,53 @@ class ViewController: UIViewController {
     
     func printModules() {
         guard let session = self.session else { return }
-        for module in session.page {
-            if let imageUpload = module as? OTOImageUploadModule {
-                print(imageUpload)
-                // upload image
-                imageUpload.upload(image: #imageLiteral(resourceName: "torch-light.png"), complete: { (image, error) in
-                    print(image!)
-                })
-            } else if let video = module as? OTOVideoModule {
-                print(video.videoUrl)
-                // Mark video as played
-                video.videoPlayed()
-            } else if let gudid = module as? OTOGudidModule {
-                gudid.lookup(complete: { (response, error) in
-                    if let response = response as? OTOLookupSuccessResponse {
-                        print(response.deviceDescription)
-                        if let lot = response.lot {
-                            print(lot)
+        session.preloadModuleData { (success, errors) in
+            if success {
+                for module in session.page {
+                    if let imageUpload = module as? OTOImageUploadModule {
+                        print(imageUpload)
+                        // upload image
+                        imageUpload.upload(image: #imageLiteral(resourceName: "torch-light.png"), complete: { (image, error) in
+                            print(image!)
+                        })
+                    } else if let video = module as? OTOVideoModule {
+                        print(video.videoUrl)
+                        // Mark video as played
+                        video.videoPlayed()
+                    } else if let gudid = module as? OTOGudidModule {
+                        if let lookupFailureResponse = gudid.lookupFailureResponse {
+                            print(lookupFailureResponse.message)
+                        } else if let lookupSuccessResponse = gudid.lookupSuccessResponse {
+                            print(lookupSuccessResponse.deviceDescription)
+                            if let lot = lookupSuccessResponse.lot {
+                                print(lot)
+                            }
+                            if let expirationDate = lookupSuccessResponse.expirationDate {
+                                // swift Date type
+                                print(expirationDate)
+                            }
                         }
-                        if let expirationDate = response.expirationDate {
-                            // swift Date type
-                            print(expirationDate)
+                    } else if let safetyCheck = module as? OTOSafetyCheckModule {
+                        if let safetyResult = safetyCheck.safetyResult {
+                            print("safe? - \(safetyResult)")
                         }
-                    } else if let response = response as? OTOLookupFailureResponse {
-                        print(response.message)
-                    } else if let error = error {
-                        self.handle(error: error)
+                    } else if let reorder = module as? OTOReorderModule {
+                        print("amount to be reordered \(reorder.orderQuatity)")
+                        reorder.reorder(complete: { (quantity, error) in
+                            if let quantity = quantity {
+                                print("reordered \(quantity)")
+                            } else if let error = error {
+                                self.handle(error: error)
+                            }
+                        })
+                    } else if let gs1 = module as? OTOGs1ValidationModule {
+                        if let validationResponse = gs1.validationResponse {
+                            print(validationResponse.allErrorMessages)
+                        }
                     }
-                })
-            } else if let safetyCheck = module as? OTOSafetyCheckModule {
-                safetyCheck.checkSafety(complete: { (response, error) in
-                    if let error = error {
-                        self.handle(error: error)
-                    }
-                })
-            } else if let reorder = module as? OTOReorderModule {
-                print("amount to be reordered \(reorder.orderQuatity)")
-                reorder.reorder(complete: { (quantity, error) in
-                    if let quantity = quantity {
-                        print("reordered \(quantity)")
-                    } else if let error = error {
-                        self.handle(error: error)
-                    }
-                })
-            } else if let gs1 = module as? OTOGs1ValidationModule {
-                gs1.validateBarcode(complete: { (validationResponse, error) in
-                    if let validationResponse = validationResponse {
-                        print(validationResponse.allErrorMessages)
-                    } else if let error = error {
-                        self.handle(error: error)
-                    }
-                })
+                }
+            } else {
+                print(errors)
             }
         }
     }
@@ -126,6 +122,7 @@ extension ViewController : OTOCaptureViewDelegate {
 
 extension ViewController : OTOSessionDelegate {
     func sessionDidUpdatePage() {
+        
         self.printModules()
     }
     
