@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         OTOnexus.configure(withApiKey: "61ab188f-730b-4578-8e0f-28906f44b509")
-
         return true
     }
 }

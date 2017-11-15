@@ -14,7 +14,7 @@ public class OTOValidateBarcodeResponse : OTOActionResponse {
     public var parsingSuccessful = false
     /// Dictionary of AIs values for a parsed barcode
     public var parsedAis = [String: String]()
-    /// Dictionoary of error values for a parsed barcode
+    /// Dictionary of error values for a parsed barcode
     public var errors = [String: [String]]()
     /// Array of all error messages for a parsed barcode
     public var allErrorMessages = [String]()
