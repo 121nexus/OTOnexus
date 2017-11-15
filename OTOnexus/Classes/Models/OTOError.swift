@@ -8,7 +8,8 @@
 import Foundation
 
 public enum OTOError: Error {
-    case errorFromServer(Error)
-    case errorWithMessage(String)
+    case connectivityError(Error, HTTPURLResponse?)
+    case validationErrorWithMessage(String, HTTPURLResponse?)
+    case serverErrorWithMessage(String, HTTPURLResponse?)
     case unauthenticated
 }
