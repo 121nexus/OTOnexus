@@ -25,9 +25,20 @@ class ViewController: UIViewController {
     
     func handle(error:OTOError) {
         switch error {
-        case .errorFromServer(let error):
+        case .connectivityError(let error, let httpUrlResponse):
+            if let httpUrlResponse = httpUrlResponse {
+                print(httpUrlResponse.statusCode)
+            }
             print(error)
-        case .errorWithMessage(let message):
+        case .validationErrorWithMessage(let message, let httpUrlResponse):
+            if let httpUrlResponse = httpUrlResponse {
+                print(httpUrlResponse.statusCode)
+            }
+            print(message)
+        case .serverErrorWithMessage(let message, let httpUrlResponse):
+            if let httpUrlResponse = httpUrlResponse {
+                print(httpUrlResponse.statusCode)
+            }
             print(message)
         case .unauthenticated:
             print("Please provide valid API Key")
@@ -82,7 +93,9 @@ class ViewController: UIViewController {
                     }
                 }
             } else {
-                print(errors)
+                for error in errors {
+                    self.handle(error: error)
+                }
             }
         }
     }

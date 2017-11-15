@@ -79,7 +79,7 @@ public class OTOImageUploadModule : OTOModule {
             guard let strongSelf = self else { return nil }
             if let error = task.error {
                 print("Upload failed with error: (\(error.localizedDescription))")
-                strongSelf.complete?(nil, OTOError.errorFromServer(error))
+                strongSelf.complete?(nil, OTOError.connectivityError(error, nil))
             } else if task.result != nil {
                 let url = AWSS3.default().configuration.endpoint.url
                 if let publicURL = url?.appendingPathComponent(uploadRequest.bucket!).appendingPathComponent(uploadRequest.key!) {

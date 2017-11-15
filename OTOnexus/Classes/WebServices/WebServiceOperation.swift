@@ -28,16 +28,21 @@ class WebServiceOperation: AsyncOperation {
             return
         }
         let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
-            guard let response = response as? HTTPURLResponse,
-                let strongSelf = self else { return }
-            let responseObject = strongSelf.responseObject(forData: data, response: response)
-            
-            if response.statusCode >= 200 && response.statusCode < 300 {
-                if let responseCompletionBlock = strongSelf.responseCompletionBlock {
-                    strongSelf.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
+            guard let strongSelf = self else { return }
+            if let response = response as? HTTPURLResponse {
+                let responseObject = strongSelf.responseObject(forData: data, response: response)
+                
+                if response.statusCode >= 200 && response.statusCode < 300 {
+                    if let responseCompletionBlock = strongSelf.responseCompletionBlock {
+                        strongSelf.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
+                    }
+                } else {
+                    strongSelf.handleError(response: response, error: error, responseObject: responseObject)
                 }
             } else {
-                strongSelf.handleError(response: response, error: error, responseObject: responseObject)
+                self?.handleError(response: response as? HTTPURLResponse,
+                                  error:error,
+                                  responseObject: ResponseObject(data: nil, statusCode: -1, headers: [:]))
             }
             
             strongSelf.state = .isFinished
@@ -77,13 +82,21 @@ class WebServiceOperation: AsyncOperation {
             self.retryOperation()
         } else if let responseCompletionBlock = responseCompletionBlock {
             if let error = error {
-                dispatchOnMainQueue(responseCompletionBlock(nil,.errorFromServer(error)))
+                dispatchOnMainQueue(responseCompletionBlock(nil,.connectivityError(error, response)))
             } else if responseObject.statusCode == 401 {
                 dispatchOnMainQueue(responseCompletionBlock(nil,.unauthenticated))
             } else if let message = responseObject.dataValue().string(forKey: "message") {
-                dispatchOnMainQueue(responseCompletionBlock(nil,.errorWithMessage(message)))
+                dispatchOnMainQueue(responseCompletionBlock(nil,.validationErrorWithMessage(message, response)))
             } else {
-                dispatchOnMainQueue(responseCompletionBlock(nil,.errorWithMessage("An unknown error has occured")))
+                var errorMessage = "An unknown error has occured"
+                if responseObject.statusCode == 500 {
+                    errorMessage = "Internal Server Error"
+                } else if responseObject.statusCode == 503 {
+                    errorMessage = "The server is currently unable to handle the request due to a temporary overload or scheduled maintenance"
+                } else if responseObject.statusCode == 404 {
+                    errorMessage = "API endpoint not found"
+                }
+                dispatchOnMainQueue(responseCompletionBlock(nil,.serverErrorWithMessage(errorMessage, response)))
             }
         }
     }
