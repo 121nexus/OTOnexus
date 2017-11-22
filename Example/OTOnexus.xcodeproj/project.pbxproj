@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		7A1ECAFE1FBE1ED7006B559F /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECAFD1FBE1ED6006B559F /* ExperienceViewController.swift */; };
+		7A1ECB001FBE1FF8006B559F /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECAFF1FBE1FF8006B559F /* ScanViewController.swift */; };
 		7A6CC6A01FB5E6CC008166AD /* .jazzy.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 7A6CC69F1FB5E6CB008166AD /* .jazzy.yaml */; };
 		8A4087921FBA02FB00AAD789 /* torch-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A4087911FBA02FB00AAD789 /* torch-light.png */; };
 		8ABBFEB87ACCF1FCC43D1AB0 /* Pods_OTOnexus_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F19A4107C57AF283D9F8D2B /* Pods_OTOnexus_Tests.framework */; };
@@ -36,13 +37,14 @@
 		607FACD01AFB9204008FA782 /* OTOnexus_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OTOnexus_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* OTOnexus_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OTOnexus_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		7A1ECAFD1FBE1ED6006B559F /* ExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
+		7A1ECAFF1FBE1FF8006B559F /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		7A6CC69F1FB5E6CB008166AD /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
 		8555A93660B29C5E47FEE076 /* Pods-OTOnexus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OTOnexus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OTOnexus_Example/Pods-OTOnexus_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8A4087911FBA02FB00AAD789 /* torch-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "torch-light.png"; path = "../../OTOnexus/Assets/OTOImages.xcassets/torch-light-7.imageset/torch-light.png"; sourceTree = "<group>"; };
@@ -108,7 +110,8 @@
 			children = (
 				8A4087911FBA02FB00AAD789 /* torch-light.png */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				7A1ECAFF1FBE1FF8006B559F /* ScanViewController.swift */,
+				7A1ECAFD1FBE1ED6006B559F /* ExperienceViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -384,8 +387,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				7A1ECAFE1FBE1ED7006B559F /* ExperienceViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				7A1ECB001FBE1FF8006B559F /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
