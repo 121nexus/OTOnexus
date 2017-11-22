@@ -14,21 +14,17 @@ import AVKit
 class ExperienceViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var videoModule: UIView!
     @IBOutlet weak var imageModule: UIView!
     @IBOutlet weak var footerModule: UIView!
     @IBOutlet weak var rawBarcodeStringModule: UIView!
     @IBOutlet weak var cameraButton: UIButton!
-
     @IBOutlet weak var takePhotoLabel: UILabel!
-    @IBOutlet weak var videoButton: UIButton!
-
     @IBOutlet weak var returnedImage: UIImageView!
     @IBOutlet weak var imageModuleView: UIView!
     @IBOutlet weak var imageActivity: UIActivityIndicatorView!
-    let picker = UIImagePickerController ()
-
     @IBOutlet weak var rawBarcodeLabel: UITextView!
+    
+    let picker = UIImagePickerController ()
     var currentSession : OTOSession?
     var barcodeRawScanData = ""
     var videoString = ""
@@ -53,14 +49,14 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
+    //This function matches the views created to the modules returned from the experience.
     func matchViewsToModules(firstLoad:Bool) {
         for stackView in self.stackView.arrangedSubviews {
             self.stackView.removeArrangedSubview(stackView)
             imageModule.isHidden = true
             self.viewDidLayoutSubviews()
         }
-        
         guard let currentSession = self.currentSession else { return }
         
         //Find modules in current session and add it to the stackView
@@ -74,6 +70,7 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         
     }
     
+    // MARK: - imageUpload Module interactions. Tapping the camera button will present a camera picker to take a photo that will be uploaded to the platform.
     @IBAction func takePicture(_ sender: Any) {
         self.present(picker, animated: true, completion: nil)
     }
@@ -93,7 +90,6 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         self.returnedImage.isHidden = false
         dismiss(animated: true, completion: nil)
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -116,8 +112,6 @@ extension ExperienceViewController: OTOSessionDelegate {
     }
 }
 
-
-
 extension OTOSession {
     
     func moduleOfType<T>() -> T? {
@@ -126,37 +120,13 @@ extension OTOSession {
         }) as? T
     }
     
-    var reorderModule:OTOReorderModule? {
-        get {
-            return moduleOfType()
-        }
-    }
-    
     var imageUpload:OTOImageUploadModule? {
         get {
             return moduleOfType()
         }
     }
     
-    var videoModule:OTOVideoModule? {
-        get {
-            return moduleOfType()
-        }
-    }
-    
     var gs1ValidationModule:OTOGs1ValidationModule? {
-        get {
-            return moduleOfType()
-        }
-    }
-    
-    var safetyCheckModule:OTOSafetyCheckModule? {
-        get {
-            return moduleOfType()
-        }
-    }
-    
-    var gudidModule:OTOGudidModule? {
         get {
             return moduleOfType()
         }
