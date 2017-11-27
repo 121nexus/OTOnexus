@@ -134,6 +134,11 @@
 		8814A8E1BF0E6CF1172B28125578448E /* Pods-OTOnexus_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A20944B2C55AB370BC7DA61198EF35F1 /* Pods-OTOnexus_Tests-dummy.m */; };
 		889EF3E6F11030C6B63F04EDE3EBEF4A /* OTOImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55EBAA7BE553D190502B8B151D676DC8 /* OTOImages.xcassets */; };
 		89AC15D89D790F4856CF7D4F2C001CC8 /* WebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9943FADB7CA3E98C1B3A279640C0F /* WebServiceOperation.swift */; };
+		8A380FD01FCCA31000F9B61E /* OTOSurveyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A380FCF1FCCA31000F9B61E /* OTOSurveyModule.swift */; };
+		8A380FD31FCCA48200F9B61E /* OTOSurveyQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A380FD21FCCA48200F9B61E /* OTOSurveyQuestion.swift */; };
+		8A380FD51FCCA4C400F9B61E /* OTOSurveySelectQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A380FD41FCCA4C400F9B61E /* OTOSurveySelectQuestion.swift */; };
+		8A380FD71FCCA50C00F9B61E /* OTOSurveyTextQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A380FD61FCCA50C00F9B61E /* OTOSurveyTextQuestion.swift */; };
+		8A380FD91FCCA54300F9B61E /* OTOSurveyDateQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A380FD81FCCA54300F9B61E /* OTOSurveyDateQuestion.swift */; };
 		8A581C1B7FA81BC344F5EA555B16CCD8 /* OTOnexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963FC29DA96C6CFBF1BAB7D059AF42D /* OTOnexus.swift */; };
 		8A74A7C01FB62D5500DB0B71 /* OTOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A74A7BF1FB62D5500DB0B71 /* OTOError.swift */; };
 		8A7A471C7EB50E05910EBE4F3F3085FC /* OTOnexus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C98D3090DE38FD6C5A94F246F66E9B /* OTOnexus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -458,6 +463,11 @@
 		86D3D3AF6026A0ACD5FA946804927BC5 /* AWSFMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSFMDatabaseAdditions.h; path = AWSCore/FMDB/AWSFMDatabaseAdditions.h; sourceTree = "<group>"; };
 		88D69A43590766FE3609F10C9696ED38 /* AWSS3Model.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSS3Model.m; path = AWSS3/AWSS3Model.m; sourceTree = "<group>"; };
 		891694B9ADE45C5A1C026A2148197136 /* AWSMTLModel+NSCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSMTLModel+NSCoding.m"; path = "AWSCore/Mantle/AWSMTLModel+NSCoding.m"; sourceTree = "<group>"; };
+		8A380FCF1FCCA31000F9B61E /* OTOSurveyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSurveyModule.swift; sourceTree = "<group>"; };
+		8A380FD21FCCA48200F9B61E /* OTOSurveyQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSurveyQuestion.swift; sourceTree = "<group>"; };
+		8A380FD41FCCA4C400F9B61E /* OTOSurveySelectQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSurveySelectQuestion.swift; sourceTree = "<group>"; };
+		8A380FD61FCCA50C00F9B61E /* OTOSurveyTextQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSurveyTextQuestion.swift; sourceTree = "<group>"; };
+		8A380FD81FCCA54300F9B61E /* OTOSurveyDateQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOSurveyDateQuestion.swift; sourceTree = "<group>"; };
 		8A74A7BF1FB62D5500DB0B71 /* OTOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTOError.swift; sourceTree = "<group>"; };
 		8B0A725F88D8B33E00E563BF8292F784 /* PostWebServiceOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostWebServiceOperation.swift; sourceTree = "<group>"; };
 		8BEB10DF68DBFA944E80B5CD9855D12E /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -803,6 +813,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		8A380FD11FCCA40500F9B61E /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				8A380FCF1FCCA31000F9B61E /* OTOSurveyModule.swift */,
+				8A380FD21FCCA48200F9B61E /* OTOSurveyQuestion.swift */,
+				8A380FD41FCCA4C400F9B61E /* OTOSurveySelectQuestion.swift */,
+				8A380FD61FCCA50C00F9B61E /* OTOSurveyTextQuestion.swift */,
+				8A380FD81FCCA54300F9B61E /* OTOSurveyDateQuestion.swift */,
+			);
+			path = Survey;
+			sourceTree = "<group>";
+		};
 		A807D94F11180B055DB18E78725EFAD7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -815,6 +837,7 @@
 		A93765E96D028A25B8EDF0E0A7A2FA6E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				8A380FD11FCCA40500F9B61E /* Survey */,
 				22CDCAD1C1765D09EEABFF7872F900A0 /* OTOGs1ValidationModule.swift */,
 				8F51586BCD932CA20BA28B5AEEFDC857 /* OTOGudidModule.swift */,
 				7595F349A825943A1EE191F557FB4CF6 /* OTOImageUploadModule.swift */,
@@ -1420,6 +1443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A380FD51FCCA4C400F9B61E /* OTOSurveySelectQuestion.swift in Sources */,
 				4E3E564DA9E1BB99934F43DBDD90A93F /* AsyncOperation.swift in Sources */,
 				8A74A7C01FB62D5500DB0B71 /* OTOError.swift in Sources */,
 				7B47683ABAA54ABA62B2CFE53CDF7D41 /* CaptureView.swift in Sources */,
@@ -1428,6 +1452,7 @@
 				DD6EC67A644425370283F3538FC466A1 /* Decodeable.swift in Sources */,
 				7212B823AD8D939DB69E26BED4F1B3A5 /* DeleteWebServiceOperation.swift in Sources */,
 				15B99B961138147F20A79530748E493D /* OTOExperience.swift in Sources */,
+				8A380FD71FCCA50C00F9B61E /* OTOSurveyTextQuestion.swift in Sources */,
 				62B82A2D06E11969F7EE9748760EC001 /* GetWebServiceOperation.swift in Sources */,
 				4CEBA1F865535848D69925537689EA7E /* HeadWebServiceOperation.swift in Sources */,
 				7B975B21EACCA4C903C49BBD15ADD50F /* OTOPreviewBox.swift in Sources */,
@@ -1435,6 +1460,7 @@
 				B7A57665C99C16C46857A6E5CD18514B /* OTOActionResponse.swift in Sources */,
 				EF873B261F8D6B2AED7E5C62089C1C96 /* OTOBasicAction.swift in Sources */,
 				C14EA70DAFFAF8E1182E055CFB478420 /* OTODateHelper.swift in Sources */,
+				8A380FD31FCCA48200F9B61E /* OTOSurveyQuestion.swift in Sources */,
 				FB6A28EAB9C3F13CE3EE9D2BC3D4356A /* OTOGetUploadFormAction.swift in Sources */,
 				4B9CD2F1118BBBC94FD9E0ECC903CE4D /* OTOGetUploadFormActionResponse.swift in Sources */,
 				7A4275A11FCC782000543203 /* OTOTextModule.swift in Sources */,
@@ -1463,7 +1489,9 @@
 				A628C33665DB9BAB5C78F71186D07A07 /* ResponseData.swift in Sources */,
 				85C21E62BB7E5048A1AF491A78646B2A /* ResponseObject.swift in Sources */,
 				064C9775068E79AE9C01D2D19A62E47C /* OTOSession.swift in Sources */,
+				8A380FD91FCCA54300F9B61E /* OTOSurveyDateQuestion.swift in Sources */,
 				F78B57EDACD2BB20E1796AA9AB0EC320 /* WebServiceManager.swift in Sources */,
+				8A380FD01FCCA31000F9B61E /* OTOSurveyModule.swift in Sources */,
 				89AC15D89D790F4856CF7D4F2C001CC8 /* WebServiceOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

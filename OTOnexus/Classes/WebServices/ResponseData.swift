@@ -40,6 +40,13 @@ class ResponseData {
         return self.array(forKey: key) ?? []
     }
     
+    func objectArray(forKey key:String) -> [Any]? {
+        if let array = storage[key] as? [Any] {
+            return array
+        }
+        return nil
+    }
+    
     func array(forKey key:String) -> [ResponseData]? {
         if let array = storage[key] as? [[String: Any]] {
             return array.map({ (dictionary) -> ResponseData in
