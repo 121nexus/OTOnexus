@@ -13,8 +13,4 @@ public class OTOSurveyTextQuestion: OTOSurveyQuestion {
     override func data() -> Any? {
         return response
     }
-    
-    override func decode(_ responseData: ResponseData) {
-        
-    }
 }
