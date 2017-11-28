@@ -16,6 +16,7 @@ public class OTOSurveySelectQuestion: OTOSurveyQuestion {
     }
     
     override func decode(_ responseData: ResponseData) {
+        super.decode(responseData)
         if let answers = responseData.objectArray(forKey: "answers") as? [String] {
             self.answers = answers
         }
