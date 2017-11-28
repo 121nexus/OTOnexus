@@ -16,6 +16,7 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var imageModule: UIView!
     @IBOutlet weak var footerModule: UIView!
+    @IBOutlet weak var textModule: UIView!
     @IBOutlet weak var rawBarcodeStringModule: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var takePhotoLabel: UILabel!
@@ -23,11 +24,11 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var imageModuleView: UIView!
     @IBOutlet weak var imageActivity: UIActivityIndicatorView!
     @IBOutlet weak var rawBarcodeLabel: UITextView!
+    @IBOutlet weak var textModuleLabel: UILabel!
     
     let picker = UIImagePickerController ()
     var currentSession : OTOSession?
     var barcodeRawScanData = ""
-    var videoString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,10 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         currentSession?.delegate = self
         // Do any additional setup after loading the view.
         self.rawBarcodeLabel.text = barcodeRawScanData
+      
         matchViewsToModules(firstLoad:true)
-
+        self.textModuleLabel.text = currentSession?.textModule?.content
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +66,10 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         for module in currentSession.page {
             if module is OTOImageUploadModule {
                 self.stackView.addArrangedSubview(self.imageModule)
-            } 
+            }
+            if module is OTOTextModule {
+                self.stackView.addArrangedSubview(self.textModule)
+            }
         }
         self.stackView.insertArrangedSubview(self.rawBarcodeStringModule, at: 0)
         self.stackView.addArrangedSubview(self.footerModule)
@@ -127,6 +133,12 @@ extension OTOSession {
     }
     
     var gs1ValidationModule:OTOGs1ValidationModule? {
+        get {
+            return moduleOfType()
+        }
+    }
+    
+    var textModule:OTOTextModule?{
         get {
             return moduleOfType()
         }
