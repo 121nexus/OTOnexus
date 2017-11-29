@@ -11,7 +11,7 @@ public class OTOSurveySelectQuestion: OTOSurveyQuestion {
     public var answers = [String]()
     public var selection:String?
     
-    override func data() -> Any? {
+    override func data() -> String? {
         return selection
     }
     

@@ -10,7 +10,7 @@ import Foundation
 public class OTOSurveyTextQuestion: OTOSurveyQuestion {
     public var response:String?
     
-    override func data() -> Any? {
+    override func data() -> String? {
         return response
     }
 }

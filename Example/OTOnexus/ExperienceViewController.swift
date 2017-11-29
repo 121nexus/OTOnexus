@@ -43,7 +43,25 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         // Do any additional setup after loading the view.
         self.rawBarcodeLabel.text = barcodeRawScanData
         matchViewsToModules(firstLoad:true)
-
+        fakeSurvey()
+    }
+    
+    func fakeSurvey() {
+        guard let survey = currentSession?.surveyModule else {
+            return
+        }
+        for question in survey.questions {
+            if let select = question as? OTOSurveySelectQuestion {
+                select.selection = select.answers.first
+            } else if let text = question as? OTOSurveyTextQuestion {
+                text.response = "A Response"
+            } else if let date = question as? OTOSurveyDateQuestion {
+                date.date = Date()
+            }
+        }
+        survey.submitSurvey { (error) in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,6 +145,12 @@ extension OTOSession {
     }
     
     var gs1ValidationModule:OTOGs1ValidationModule? {
+        get {
+            return moduleOfType()
+        }
+    }
+    
+    var surveyModule:OTOSurveyModule? {
         get {
             return moduleOfType()
         }

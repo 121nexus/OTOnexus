@@ -72,8 +72,8 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
     }
 
     func didCapture(product: OTOProduct) {
-        guard let defaultExperience = product.defaultExperience else { return }
-        OTOSession.startSession(withExperience: defaultExperience,
+//        guard let defaultExperience = product.defaultExperience else { return }
+        OTOSession.startSession(withExperienceId: 6,
                                 product: product) { (session, error) in
                                     if let session = session {
                                         print("Session Page", session.page)

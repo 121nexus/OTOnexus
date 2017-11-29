@@ -19,6 +19,10 @@ public class OTOSurveyModule : OTOModule {
     var submitAction:OTOSurveySubmitAction?
     
     public func submitSurvey(complete:@escaping (OTOError?) -> Void) {
+        let answers = self.questions.map { (question) -> String in
+            return question.data() ?? ""
+        }
+        submitAction?.answers = answers
         submitAction?.perform(complete: { (response, error) in
             complete(error)
         })

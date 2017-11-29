@@ -8,9 +8,9 @@
 import Foundation
 
 public class OTOSurveyDateQuestion: OTOSurveyQuestion {
-    var date:Date?
+    public var date:Date?
     
-    override func data() -> Any? {
+    override func data() -> String? {
         if let date = self.date {
             return OTODateHelper.shared.yearMonthDayParser.string(from: date)
         } else {

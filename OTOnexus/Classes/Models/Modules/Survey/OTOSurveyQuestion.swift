@@ -15,7 +15,7 @@ public class OTOSurveyQuestion: Decodable {
     public required init() {
     }
     
-    func data() -> Any? {
+    func data() -> String? {
         return nil
     }
     
