@@ -12,9 +12,7 @@ public class OTOTextModule : OTOModule {
     public var content = ""
     
     override func decode(_ responseData: ResponseData) {
-        
         let config = responseData.responseDataValue(forKey: "config")
-        config.stringValue(forKey: "content")
-        self.content = config.stringValue(forKey: "content") 
+        self.content = config.stringValue(forKey: "content")
     }
 }
