@@ -42,7 +42,7 @@ class OTOAction<ResponseType: OTOActionResponse> {
         return ResponseType.decode(responseObject.dataValue())
     }
     
-    func bodyParams() -> [String: Any] {
+    func bodyParams() -> [String:Any] {
         return [:]
     }
 }

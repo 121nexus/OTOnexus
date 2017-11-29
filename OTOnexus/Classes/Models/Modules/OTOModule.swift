@@ -17,7 +17,8 @@ public class OTOModule : Decodable {
                                    "SafetyCheck": OTOSafetyCheckModule.self,
                                    "GS1Validation": OTOGs1ValidationModule.self,
                                    "Reorder": OTOReorderModule.self,
-                                   "Text": OTOTextModule.self]
+                                   "Text": OTOTextModule.self,
+                                   "Survey": OTOSurveyModule.self]
     
     /// Int value identifying a module.
     public var id = 0
