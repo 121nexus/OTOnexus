@@ -156,11 +156,13 @@ extension OTOSession {
         }
     }
     
-<<<<<<< HEAD
     var surveyModule:OTOSurveyModule? {
-=======
-    var textModule:OTOTextModule?{
->>>>>>> master
+        get {
+            return moduleOfType()
+        }
+    }
+    
+    var textModule:OTOTextModule? {
         get {
             return moduleOfType()
         }
