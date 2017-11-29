@@ -108,6 +108,8 @@
                         <outlet property="returnedImage" destination="4iQ-7d-fKs" id="Jpx-Ia-v92"/>
                         <outlet property="stackView" destination="iE1-TR-lom" id="P68-pC-91S"/>
                         <outlet property="takePhotoLabel" destination="LFg-7q-T8D" id="qiW-sK-eoY"/>
+                        <outlet property="textModule" destination="ijp-lQ-weJ" id="Tst-2B-8SE"/>
+                        <outlet property="textModuleLabel" destination="Ao7-BE-Vus" id="9eW-5I-vPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIa-eI-3kd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,6 +202,25 @@
                         <constraint firstItem="AZC-ep-vup" firstAttribute="centerY" secondItem="O46-lY-j9v" secondAttribute="centerY" id="d88-QU-EZL"/>
                         <constraint firstItem="Ewm-wU-6jr" firstAttribute="centerY" secondItem="O46-lY-j9v" secondAttribute="centerY" id="ovf-mC-mBw"/>
                         <constraint firstItem="4iQ-7d-fKs" firstAttribute="leading" secondItem="O46-lY-j9v" secondAttribute="leading" id="yI9-wc-Nh3"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="ijp-lQ-weJ">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="64"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ao7-BE-Vus">
+                            <rect key="frame" x="106" y="20" width="29" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.75627803800000004" green="0.35361120099999999" blue="0.13724431400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Ao7-BE-Vus" secondAttribute="bottom" constant="26" id="RIR-mD-TNJ"/>
+                        <constraint firstAttribute="trailing" secondItem="Ao7-BE-Vus" secondAttribute="trailing" constant="105" id="fdj-Wi-2pM"/>
+                        <constraint firstItem="Ao7-BE-Vus" firstAttribute="top" secondItem="ijp-lQ-weJ" secondAttribute="top" constant="20" id="mhG-hQ-l4y"/>
+                        <constraint firstItem="Ao7-BE-Vus" firstAttribute="leading" secondItem="ijp-lQ-weJ" secondAttribute="leading" constant="106" id="qLU-XM-Jx6"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GL3-vy-qnn" userLabel="Footer">

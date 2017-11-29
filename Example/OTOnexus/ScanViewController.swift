@@ -60,8 +60,9 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
     }
 
     func scannedBarcodeDoesNotExist(barcode: String) {
-        OTOSession.startSession(withExperienceId: 5, barcode: barcode) { (session, error) in
+        OTOSession.startSession(withExperienceId: 8, barcode: barcode) { (session, error) in
             if let session = session {
+                print("Session Page", session.page)
                 self.barcodeString = barcode
                 self.session = session
                 self.goToExperience(session: session)
