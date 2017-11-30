@@ -32,8 +32,10 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
     }
     
     func goToExperience(session:OTOSession) {
+        session.preloadModuleData { (success, errors) in
             self.session = session
             self.performSegue(withIdentifier: "toExperience", sender: self)
+        }
     }
     
     
@@ -74,7 +76,7 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
 
     func didCapture(product: OTOProduct) {
 //        guard let defaultExperience = product.defaultExperience else { return }
-        OTOSession.startSession(withExperienceId: 6,
+        OTOSession.startSession(withExperienceId: 10,
                                 product: product) { (session, error) in
                                     if let session = session {
                                         print("Session Page", session.page)

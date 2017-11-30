@@ -96,6 +96,14 @@ public class OTOSession {
                     }
                     dispatchGroup.leave()
                 })
+            } else if let customValidationModule = module as? OTOCustomValidationModule {
+                dispatchGroup.enter()
+                customValidationModule.validateBarcode(complete: { (_, error) in
+                    if let error = error {
+                        errors.append(error)
+                    }
+                    dispatchGroup.leave()
+                })
             }
         }
         
