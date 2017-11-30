@@ -47,6 +47,7 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         matchViewsToModules(firstLoad:true)
         self.textModuleLabel.text = currentSession?.textModule?.content
         fakeSurvey()
+        customValidation()
     }
     
     func fakeSurvey() {
@@ -65,6 +66,14 @@ class ExperienceViewController: UIViewController, UINavigationControllerDelegate
         survey.submitSurvey { (error) in
             
         }
+    }
+    
+    func customValidation() {
+        guard let custom = currentSession?.customValidationModule else {
+            return
+        }
+        
+        print(custom.validationResponse)
     }
 
     override func didReceiveMemoryWarning() {
@@ -150,7 +159,7 @@ extension OTOSession {
         }
     }
     
-    var gs1ValidationModule:OTOGs1ValidationModule? {
+    var customValidationModule:OTOCustomValidationModule? {
         get {
             return moduleOfType()
         }
