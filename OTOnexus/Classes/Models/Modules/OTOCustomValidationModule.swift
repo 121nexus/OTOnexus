@@ -8,16 +8,16 @@
 import Foundation
 
 /**
- OTOGs1ValidationModule is a module that validates barcode data based on GS1's barcode parsing rules. [GS1 General Spec](https://www.gs1.org/docs/barcodes/GS1_General_Specifications.pdf)
+ OTOCustomValidationModule is a module that allows a user to run custom validations on barcodes with rules created on the *121nexus Platform*.
  */
 public class OTOCustomValidationModule : OTOModule {
     var validateBarcodeAction:OTOCustomValidateBarcodeAction?
     /**
-     Response object returned from GS1 validation
+     Response object returned from custom validation
      */
     public var validationResponse:OTOCustomValidateBarcodeResponse?
     
-    /// Function to validate barcode data using GS1 validation rules
+    /// Function to validate barcode data using custom validation rules
     public func validateBarcode(complete: @escaping (OTOCustomValidateBarcodeResponse?, OTOError?) -> Void) {
         if let barcode = session?.barcode {
             validateBarcodeAction?.barcode = barcode

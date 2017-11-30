@@ -6,9 +6,12 @@
 //
 
 import Foundation
-
+/**
+ OTOTextModule is a text module that allows a user to display text content stored on teh *121nexus platform*.
+ */
 public class OTOTextModule : OTOModule {
     
+    /// A property used to hold the texet content
     public var content = ""
     
     override func decode(_ responseData: ResponseData) {
