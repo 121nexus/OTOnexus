@@ -18,6 +18,9 @@ custom_categories:
     - OTOGudidModule
     - OTOVideoModule
     - OTOGs1ValidationModule
+    - OTOTextModule
+    - OTOSurveyModule
+    - OTOCustomValidationModule
   
   - name: GUDID Responses
     children:
@@ -27,6 +30,17 @@ custom_categories:
   - name: GS1 Validation Response
     children:
     - OTOValidateBarcodeResponse
+
+  - name: Custom Validation Response
+    children:
+    - OTOCustomValidateBarcodeResponse
+
+  - name: Survey Question Type
+    children:
+    - OTOSurveyQuestion
+    - OTOSurveyDateQuestion
+    - OTOSurveySelectQuestion
+    - OTOSurveyTextQuestion
 
   - name: Error 
     children:

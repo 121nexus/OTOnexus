@@ -28,6 +28,10 @@ OTOnexus is available through [CocoaPods](http://cocoapods.org). To install it, 
 pod 'OTOnexus'
 ```
 
+#### Initialization
+
+Add api-key in AppDelegate here: OTOnexus.configure(withApiKey: "YOUR-API-KEY-HERE")
+
 ## Usage Example
 To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus/tree/master/Example).
 

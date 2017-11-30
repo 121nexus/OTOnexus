@@ -11,7 +11,7 @@ import Foundation
  */
 public class OTOTextModule : OTOModule {
     
-    /// A property used to hold the texet content
+    /// A property used to hold the text content
     public var content = ""
     
     override func decode(_ responseData: ResponseData) {

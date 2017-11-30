@@ -8,7 +8,9 @@
 import Foundation
 
 public class OTOSurveySelectQuestion: OTOSurveyQuestion {
+    ///Value of answers to select from
     public var answers = [String]()
+    ///Value of the answer selected
     public var selection:String?
     
     override func data() -> String? {
