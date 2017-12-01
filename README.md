@@ -3,7 +3,7 @@
 
 OTOnexus is a Barcode Scanning SDK for capturing, looking up, presenting data associated with barcodes. The SDK is supported by the 121nexus Platform which allows clients to add products to the system to enable interactive experiences when end-users scan the physical product.
 
-You will need to obtain an api-key from [121nexus.com](https://121nexus.com) in order to interact with the 121nexus Platform.
+You will need to obtain an api-key from [121nexus.com](https://121nexus.com/next) in order to interact with the 121nexus Platform.
 
 ## Features
 
@@ -16,7 +16,7 @@ You will need to obtain an api-key from [121nexus.com](https://121nexus.com) in 
 ## Requirements
 
 - iOS 9.0+
-- Xcode 8.0+
+- Xcode 9.0+
 
 ## Installation with CocoaPods
 <!---->
