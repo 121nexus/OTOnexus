@@ -74,8 +74,4 @@ class ResponseData {
     func dictionary(forKey key:String) -> [String: Any]? {
         return storage[key] as? [String: Any]
     }
-    
-    func keys() -> LazyMapCollection<[String : Any], String> {
-        return self.storage.keys
-    }
 }
