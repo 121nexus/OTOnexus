@@ -7,17 +7,24 @@
 
 import Foundation
 
+/**
+ OTOSurveyModule is a module that allows users to present survey type content. There are 3 types of survey questions: Select, Text, and Date.
+ */
 public class OTOSurveyModule : OTOModule {
     static private let questionClassMap = ["select": OTOSurveySelectQuestion.self,
                                    "text": OTOSurveyTextQuestion.self,
                                    "date": OTOSurveyDateQuestion.self]
     
+    ///Property to store prompt text.
     public var promptText = ""
+    ///Property to store thank you text
     public var thanksText = ""
+    ///Property to hold survey question value
     public var questions = [OTOSurveyQuestion]()
-    
+    ///Submit action for survey
     var submitAction:OTOSurveySubmitAction?
     
+    ///Method for submitting the results of a set of survey questions
     public func submitSurvey(complete:@escaping (OTOError?) -> Void) {
         let answers = self.questions.map { (question) -> String in
             return question.data() ?? ""

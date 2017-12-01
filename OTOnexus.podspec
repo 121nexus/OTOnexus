@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-                    OTOnexus is a Barcode Scanning SDK for capturing, looking up, presenting data associated with barcodes.
+                   OTOnexus is a Barcode Scanning SDK for capturing, looking up, presenting data associated with barcodes. The SDK is supported by the 121nexus Platform which allows clients to add products to the system to enable interactive experiences when end-users scan the physical product.
                    DESC
 
   s.homepage         = 'https://github.com/121nexus/OTOnexus'
