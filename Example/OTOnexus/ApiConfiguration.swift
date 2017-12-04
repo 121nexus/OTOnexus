@@ -10,6 +10,6 @@ import Foundation
 
 struct ApiConfiguration {
     static let apiKey = "<YOUR API KEY HERE>"
-    /// Set the defaultExperienceId to the provided value
-    static let defaultExperienceId = -1
+    /// Set the sampleExperienceId to the provided value
+    static let sampleExperienceId = -1
 }
