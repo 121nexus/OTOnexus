@@ -223,6 +223,7 @@
 		D1FFA3A458A3ACE202F75A92ADB9E553 /* AWSCredentialsProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A5B81742E1D7E8E8F59CA3E8FCFDF0 /* AWSCredentialsProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D29BA8225D700A50FD0259802887C693 /* OTOVideoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E96BA6CF7FB8E5276298A7B62C84C /* OTOVideoModule.swift */; };
 		D42D24A6974EFD9B51F6A726EAFA5960 /* PostWebServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0A725F88D8B33E00E563BF8292F784 /* PostWebServiceOperation.swift */; };
+		D4935F131FD5B37B00ED1BC9 /* OTOImageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4935F121FD5B37B00ED1BC9 /* OTOImageModule.swift */; };
 		D643219B82A806ACD322A1852095CADB /* AWSTMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E0809DAE1BA541569015896B1996068 /* AWSTMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6D9DB88745E784AEBD7F2610B0587DC /* AWSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DAE3BB5B03EF3F985FBCAA170B2B95 /* AWSNetworking.m */; };
 		D789F37BD89E9040406CFA657B629386 /* AWSS3Serializer.h in Headers */ = {isa = PBXBuildFile; fileRef = B3B75AC883EC8A2E6A3CA6039E835576 /* AWSS3Serializer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -546,6 +547,7 @@
 		D20F30904D890E49957858AA54F58D03 /* AWSFMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSFMResultSet.h; path = AWSCore/FMDB/AWSFMResultSet.h; sourceTree = "<group>"; };
 		D2DC10D08370E860B388B218A3747598 /* NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m"; path = "AWSCore/Mantle/NSValueTransformer+AWSMTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
 		D3C31DA56DE59A16846A9990F30E3355 /* OTOnexus.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OTOnexus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4935F121FD5B37B00ED1BC9 /* OTOImageModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTOImageModule.swift; sourceTree = "<group>"; };
 		D4AEB8833FA00289D06D6081BBAA6212 /* AWSS3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AWSS3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D531EC2E908366F6958531698BD483A8 /* AWSFMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSFMDatabaseQueue.m; path = AWSCore/FMDB/AWSFMDatabaseQueue.m; sourceTree = "<group>"; };
 		D6E7A547C006F7DB32F5F63DD0D7325D /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = AWSCore/Fabric/Fabric.h; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 				6C1E96BA6CF7FB8E5276298A7B62C84C /* OTOVideoModule.swift */,
 				7A4275A01FCC782000543203 /* OTOTextModule.swift */,
 				8AC144041FCDDF9400E412CF /* OTOCustomValidationModule.swift */,
+				D4935F121FD5B37B00ED1BC9 /* OTOImageModule.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1383,6 +1386,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					DD1DBCC1DF68514CF23AA06E1AB43A68 = {
+						LastSwiftMigration = 0830;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1533,6 +1541,7 @@
 			files = (
 				3841D17FBE42C643CAD373EA12C10837 /* AWSBolts.m in Sources */,
 				68E16B642C2C5163C9D6B4DF4E6F56BB /* AWSCancellationToken.m in Sources */,
+				D4935F131FD5B37B00ED1BC9 /* OTOImageModule.swift in Sources */,
 				5C99C6E859C5D374C3FF609A4C853C88 /* AWSCancellationTokenRegistration.m in Sources */,
 				C2D4365855D337166ED1A17BA5CAE511 /* AWSCancellationTokenSource.m in Sources */,
 				D82E5FD36F95925F294AFA02C87EB911 /* AWSCategory.m in Sources */,
@@ -1828,6 +1837,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0D276768E70A3D8312DB37153810748 /* AWSCore.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1851,6 +1861,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2103,6 +2114,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0D276768E70A3D8312DB37153810748 /* AWSCore.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
