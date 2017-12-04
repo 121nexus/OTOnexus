@@ -8,6 +8,7 @@
 import Foundation
 
 public class OTOSurveyDateQuestion: OTOSurveyQuestion {
+    ///Value of an answer to a Date question 
     public var date:Date?
     
     override func data() -> String? {

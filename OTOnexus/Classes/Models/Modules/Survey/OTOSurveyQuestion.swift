@@ -6,10 +6,14 @@
 //
 
 import Foundation
-
+/**
+ OTOSurveyQuestion is a question class
+ */
 public class OTOSurveyQuestion: Decodable {
     var id = ""
+    ///Property to hold a question
     public var question = ""
+    ///Property defining if a question is required
     public var required = false
     
     public required init() {

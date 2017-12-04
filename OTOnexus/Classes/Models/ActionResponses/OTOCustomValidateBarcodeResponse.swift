@@ -8,6 +8,7 @@
 import Foundation
 
 public class OTOCustomValidateBarcodeResponse : OTOValidateBarcodeResponse {
+    ///Dictionay of validated results
     public var validationResults:[String:String]?
     
     override func decode(_ responseData: ResponseData) {
