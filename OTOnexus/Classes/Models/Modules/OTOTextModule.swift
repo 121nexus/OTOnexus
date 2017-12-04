@@ -7,7 +7,7 @@
 
 import Foundation
 /**
- OTOTextModule is a text module that allows a user to display text content stored on teh *121nexus platform*.
+ OTOTextModule is a text module that allows a user to display text content stored on the *121nexus platform*.
  */
 public class OTOTextModule : OTOModule {
     
