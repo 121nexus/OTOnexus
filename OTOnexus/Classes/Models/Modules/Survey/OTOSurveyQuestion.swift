@@ -16,6 +16,7 @@ public class OTOSurveyQuestion: Decodable {
     ///Property defining if a question is required
     public var required = false
     
+    /// :nodoc:
     public required init() {
     }
     

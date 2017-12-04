@@ -33,6 +33,7 @@ public class OTOModule : Decodable {
     
     private var actions = [SessionAction]()
     
+    /// :nodoc:
     public required init() {
     }
     
