@@ -19,7 +19,7 @@ public class OTOImageModule : OTOModule {
     
     override func decode(_ responseData: ResponseData) {
         let config = responseData.responseDataValue(forKey: "config")
-        self.url = config.stringValue(forKey: "description")
+        self.url = config.stringValue(forKey: "url")
         self.description = config.stringValue(forKey: "description")
     }
 }
