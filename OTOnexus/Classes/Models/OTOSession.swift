@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol OTOSessionDelegate : class {
+    /// The function that fires when the page transitions to a new set of modules
     func sessionDidUpdatePage()
 }
 
@@ -29,6 +30,7 @@ public class OTOSession {
     /// A delegate that notifies when the session transitions to the next page
     public var delegate:OTOSessionDelegate?
     
+    /// :nodoc:
     public required init() {
     }
     /// Function that starts a new session
