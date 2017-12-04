@@ -15,6 +15,7 @@
 		7A1ECAFE1FBE1ED7006B559F /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECAFD1FBE1ED6006B559F /* ExperienceViewController.swift */; };
 		7A1ECB001FBE1FF8006B559F /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1ECAFF1FBE1FF8006B559F /* ScanViewController.swift */; };
 		8A4087921FBA02FB00AAD789 /* torch-light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A4087911FBA02FB00AAD789 /* torch-light.png */; };
+		8AB65A3C1FD5EEF900358DE3 /* ApiConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65A3B1FD5EEF900358DE3 /* ApiConfiguration.swift */; };
 		8ABBFEB87ACCF1FCC43D1AB0 /* Pods_OTOnexus_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F19A4107C57AF283D9F8D2B /* Pods_OTOnexus_Tests.framework */; };
 		D52AB3E8FD48FEAA194AD23F /* Pods_OTOnexus_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C2AE82939820039613B2DE /* Pods_OTOnexus_Example.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		7A1ECAFF1FBE1FF8006B559F /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		8555A93660B29C5E47FEE076 /* Pods-OTOnexus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OTOnexus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OTOnexus_Example/Pods-OTOnexus_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8A4087911FBA02FB00AAD789 /* torch-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "torch-light.png"; path = "../../OTOnexus/Assets/OTOImages.xcassets/torch-light-7.imageset/torch-light.png"; sourceTree = "<group>"; };
+		8AB65A3B1FD5EEF900358DE3 /* ApiConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfiguration.swift; sourceTree = "<group>"; };
 		8C9F16C9D6DC991D566595B9 /* OTOnexus.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OTOnexus.podspec; path = ../OTOnexus.podspec; sourceTree = "<group>"; };
 		C7A7B484CFBEB2CDF32AE08D /* Pods-OTOnexus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OTOnexus_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OTOnexus_Example/Pods-OTOnexus_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D3FF7F49D8469D870CFAEE8D /* Pods-OTOnexus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OTOnexus_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OTOnexus_Tests/Pods-OTOnexus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				8AB65A3B1FD5EEF900358DE3 /* ApiConfiguration.swift */,
 			);
 			name = "Example for OTOnexus";
 			path = OTOnexus;
@@ -386,6 +389,7 @@
 				7A1ECAFE1FBE1ED7006B559F /* ExperienceViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				7A1ECB001FBE1FF8006B559F /* ScanViewController.swift in Sources */,
+				8AB65A3C1FD5EEF900358DE3 /* ApiConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
