@@ -36,7 +36,7 @@ Add api-key in AppDelegate here: OTOnexus.configure(withApiKey: "YOUR-API-KEY-HE
 To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus/tree/master/Example).
 
 ## License
-OTOnexus is available under an [MIT License](http://opensource.org/licenses/MIT). See the LICENSE file for more details.
+See the LICENSE file for more details.
 ## Author
 
 Chris DeOrio, <chris@121nexus.com>
