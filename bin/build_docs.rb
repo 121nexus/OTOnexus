@@ -6,5 +6,4 @@ excluded = ["../*/OTOLookupActionResponse.swift","../*/OTOActionResponse.swift",
   --output ../docs \
   --clean \
   --config ../OTOnexus/.jazzy.yaml \
-  --theme fullwidth \
-  --exclude=#{excluded.join(",")}`
+  --theme fullwidth`

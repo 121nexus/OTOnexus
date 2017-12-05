@@ -46,5 +46,11 @@ custom_categories:
     children:
     - OTOError
 
-
+exclude:
+  - Classes/Models/Modules/OTOReorderModule.swift
+  - Classes/Models/Modules/OTOSafetyCheckModule.swift
+  - Classes/Models/ActionResponses/OTOReorderResponse.swift
+  - Classes/Models/ActionResponses/OTOSafetyCheckResponse.swift
+  - Classes/Models/ActionResponses/OTOLookupActionResponse.swift
+  - Classes/Models/ActionResponses/OTOActionResponse.swift
 
