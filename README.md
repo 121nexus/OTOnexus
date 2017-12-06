@@ -30,7 +30,16 @@ pod 'OTOnexus', :git => 'https://github.com/121nexus/OTOnexus.git', :tag => '1.0
 
 #### Initialization
 
-Add api-key in AppDelegate here: OTOnexus.configure(withApiKey: "YOUR-API-KEY-HERE")
+Add api-key in ApiConfiguration.swift
+```
+...
+struct ApiConfiguration {
+    static let apiKey = "<YOUR API KEY HERE>"
+    /// Set the sampleExperienceId to the provided value
+    static let sampleExperienceId = -1
+}
+...
+```
 
 ## Usage Example
 To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus/tree/master/Example).
