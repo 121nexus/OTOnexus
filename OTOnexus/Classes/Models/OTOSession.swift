@@ -57,6 +57,11 @@ public class OTOSession {
             body["barcode_data"] = barcode
         }
         
+        if let currentLocation = OTOLocationHelper.shared.currentLocation {
+            body["location_data"] = ["latitude":currentLocation.coordinate.latitude,
+                                     "longitude":currentLocation.coordinate.longitude]
+        }
+        
         WebServiceManager.shared.post(endpoint: endpoint,
                                       body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
