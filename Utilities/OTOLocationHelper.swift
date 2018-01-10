@@ -29,7 +29,8 @@ class OTOLocationHelper: NSObject {
     func start() {
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
-        } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+        } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.startUpdatingLocation()
         }
     }
