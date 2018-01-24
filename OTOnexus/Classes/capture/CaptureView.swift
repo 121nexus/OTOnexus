@@ -15,7 +15,7 @@ public protocol OTOCaptureViewDelegate: class {
     func didCapture(product:OTOProduct)
     
     /// Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
-    func scannedBarcodeDoesNotExist(barcode:String)
+    func scannedBarcodeDoesNotExist(barcode:String, image:UIImage)
     
     func didEncounterError(error: OTOError)
     
@@ -104,7 +104,7 @@ extension OTOCaptureView : CaptureViewInternalDelegate {
             } else if let error = error {
                 switch error {
                 case .productNotFound:
-                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
+                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode, image: image)
                 case .otoError(let otoError):
                     self.delegate?.didEncounterError(error: otoError)
                 }
