@@ -13,17 +13,10 @@ protocol CaptureViewInternalDelegate: class {
     func connectionLost()->Bool
 }
 
-
-//@objc protocol MDTCaptureViewControllerDelegate
-//{
-//    @objc optional func previewController(_ previewController: MDTValidationViewController, didScanCode code: NSString, ofType type: NSString)
-//}
-
-
 class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     fileprivate static let AI_GTIN = "01"
     
-    @IBOutlet public weak var previewBox: OTOPreviewBox!
+    @IBOutlet weak var previewBox: OTOPreviewBox!
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -71,16 +64,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     let captureMetadataOutput = AVCaptureMetadataOutput()
     var qrCodeFrameView:UIView?
-    var sessionKey = ""
-    var possibleGTINs : [String] = []
-    let listOfCodes: NSMutableSet = []
-    var latitudeString = ""
-    var longitudeString = ""
-    var statusCode: Int = Int()
-    var rawScanData = String()
-    var result = String()
     var stackedResult : Set<String> = []
-    var GTIN = String()
     public var scanStacked = false {
         didSet {
             if oldValue != scanStacked {
@@ -91,14 +75,13 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     let stackedHeightMultiplier: CGFloat = 1.0
     let singleHeightMultiplier: CGFloat = 1.0
     var processing = false
-    var barcodeStringToPass = String()
     var pickedImage: UIImage = UIImage()
     var strBase64 = String()
     
     #if swift(>=4)
-        fileprivate var captureDevice : AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
+    fileprivate var captureDevice : AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
     #else
-        fileprivate var captureDevice : AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+    fileprivate var captureDevice : AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     #endif
     
     enum Status {
@@ -110,14 +93,14 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var codeDetectionShape = CAShapeLayer()
     
     #if swift(>=4)
-        let supportedBarCodes = [AVMetadataObject.ObjectType.qr, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.itf14]
+    let supportedBarCodes = [AVMetadataObject.ObjectType.qr, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.itf14]
     #else
-        let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
+    let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
     #endif
     
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
-
+        
         codeDetectionShape.strokeColor = UIColor.green.cgColor
         codeDetectionShape.fillColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.25).cgColor
         codeDetectionShape.lineWidth = 2
@@ -182,10 +165,6 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         //spinner.stopAnimating()
         previewBox.red()
         stackedResult = []
-        result = ""
-        GTIN = ""
-        rawScanData = ""
-        barcodeStringToPass = ""
         scanStatus = Status.scanning
         self.barcodeTypeControl.selectedSegmentIndex = self.scanStacked ? 0 : 1
     }
@@ -199,26 +178,26 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     try captureDevice.lockForConfiguration()
                     #if swift(>=4)
                         if (captureDevice.torchMode == AVCaptureDevice.TorchMode.on) {
-                            captureDevice.torchMode = AVCaptureDevice.TorchMode.off
+                        captureDevice.torchMode = AVCaptureDevice.TorchMode.off
                         self.torchButton.tintColor = UIColor.white
-                    } else {
+                        } else {
                         do {
-                            try captureDevice.setTorchModeOn(level: 1.0)
+                        try captureDevice.setTorchModeOn(level: 1.0)
                         } catch {
-                            print(error)
+                        print(error)
                         }
-                    }
+                        }
                     #else
-                    if (captureDevice.torchMode == AVCaptureTorchMode.on) {
-                        captureDevice.torchMode = AVCaptureTorchMode.off
-                        self.torchButton.tintColor = UIColor.white
-                    } else {
-                        do {
-                            try captureDevice.setTorchModeOnWithLevel(1.0)
-                        } catch {
-                            print(error)
+                        if (captureDevice.torchMode == AVCaptureTorchMode.on) {
+                            captureDevice.torchMode = AVCaptureTorchMode.off
+                            self.torchButton.tintColor = UIColor.white
+                        } else {
+                            do {
+                                try captureDevice.setTorchModeOnWithLevel(1.0)
+                            } catch {
+                                print(error)
+                            }
                         }
-                    }
                     #endif
                     
                     captureDevice.unlockForConfiguration()
@@ -249,27 +228,23 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         stackedResult.insert(processBarcode(metadataObjects as [AnyObject]))
         if(stackedResult.count == 2) {
             print("STACKED RESULT",stackedResult)
-            var gtin_segment = ""
-            for res in stackedResult {
-                if !findGtin(res).isEmpty {
-                    GTIN = findGtin(res)
-                    gtin_segment = res
-                }
-            }
-            if gtin_segment.isEmpty {
-                
-                rawScanData = stackedResult.joined(separator: "\u{1D}")
-            } else {
-                rawScanData = stackedResult.remove(gtin_segment)! + "\u{1D}" + stackedResult.first!
-            }
-            print("RawData Unicode", Array(rawScanData.unicodeScalars))
             
-            barcodeStringToPass = rawScanData
-            print("Barcode String to pass", barcodeStringToPass)
+            let gtinSegment = stackedResult.first(where: { (res) -> Bool in
+                return !findGtin(res).isEmpty
+            })
+            
+            var rawScanData = ""
+            if let gtinSegment = gtinSegment {
+                rawScanData = stackedResult.remove(gtinSegment)! + "\u{1D}" + stackedResult.first!
+            } else {
+                rawScanData = stackedResult.joined(separator: "\u{1D}")
+            }
+            
+            print("RawData Unicode", Array(rawScanData.unicodeScalars))
             
             previewBox.setLabelText("2/2 Scanned")
             
-            self.finishBarcodeScan()
+            self.finishBarcodeScan(barcode: rawScanData)
         } else if stackedResult.count == 1 {
             scanStatus = Status.stacking
             previewBox.yellow()
@@ -282,15 +257,11 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     func processSingle(metadataObjects:[AnyObject]) {
         print("PROCESSING SINGLE BARCODE")
-        result = processBarcode(metadataObjects as [AnyObject])
+        let result = processBarcode(metadataObjects as [AnyObject])
         if !result.isEmpty {
-            GTIN = findGtin(result)
-            rawScanData = result
-            print("RawData Unicode", Array(rawScanData.unicodeScalars))
+            print("RawData Unicode", Array(result.unicodeScalars))
             
-            barcodeStringToPass = rawScanData
-            print("Barcode String to pass", barcodeStringToPass)
-            finishBarcodeScan()
+            finishBarcodeScan(barcode: result)
         }
         else {
             resetResults()
@@ -303,7 +274,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         processScanned(metadataObjects: metadataObjects)
     }
-
+    
     //swift 3.2
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
     {
@@ -311,7 +282,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         processScanned(metadataObjects: metadataObjects)
     }
     
-    fileprivate func finishBarcodeScan() {
+    fileprivate func finishBarcodeScan(barcode:String) {
         scanStatus = Status.completed
         previewBox.green()
         //Take photo of scan to be sent to platform//
@@ -324,7 +295,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
             } else {
                 //Take photo of scan to be sent to platform//
                 takePhoto(capturedImage: { (image) in
-                    self.delegate?.didCapture(barcode: self.barcodeStringToPass, image: image)
+                    self.delegate?.didCapture(barcode: barcode, image: image)
                 })
                 
             }
@@ -343,8 +314,8 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     for port in (connecton as AnyObject).inputPorts!{
                         #if swift(>=4)
                             if (port as AnyObject).mediaType == AVMediaType.video {
-                                videoConnection = connecton
-                                break //for port
+                            videoConnection = connecton
+                            break //for port
                             }
                         #else
                             if (port as AnyObject).mediaType == AVMediaTypeVideo {
@@ -394,7 +365,7 @@ extension CaptureViewInternal {
         
         #if swift(>=4)
             if let objectCorners = transformedObject?.corners {
-                corners = objectCorners
+            corners = objectCorners
             }
         #else
             if let cornerDictionarys = transformedObject?.corners as? [NSDictionary] {
@@ -455,10 +426,10 @@ extension CaptureViewInternal {
             
             #if swift(>=4)
                 if(captureDevice.supportsSessionPreset(AVCaptureSession.Preset.hd1920x1080)) {
-                    captureSession?.sessionPreset = AVCaptureSession.Preset.hd1920x1080
-                    
+                captureSession?.sessionPreset = AVCaptureSession.Preset.hd1920x1080
+                
                 } else {
-                    captureSession?.sessionPreset = AVCaptureSession.Preset.medium
+                captureSession?.sessionPreset = AVCaptureSession.Preset.medium
                 }
                 
                 videoConnection = self.captureMetadataOutput.connection(with: AVMediaType.video)
@@ -489,12 +460,12 @@ extension CaptureViewInternal {
             
             #if swift(>=4)
                 if let stillCameraOutput = stillCameraOutput {
-                    //Add output of camera still of barcode image
-                    captureSession?.addOutput(stillCameraOutput)
+                //Add output of camera still of barcode image
+                captureSession?.addOutput(stillCameraOutput)
                 }
                 if let captureSession = captureSession {
-                    // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-                    videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 }
                 videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             #else
@@ -553,14 +524,10 @@ extension CaptureViewInternal {
         return str.trimmingCharacters(in: CharacterSet.urlQueryAllowed.inverted)
     }
     
-    
     fileprivate func processBarcode(_ metadataObjects: [AnyObject]) -> String {
         let barcodeObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         if supportedBarCodes.contains(barcodeObj.type) && barcodeObj.stringValue != nil {
             drawBarcodeBounds(barcodeObj)
-            //print("Barcode", barcodeObj.observationInfo.debugDescription)
-            
-            //            print ("Barcode", barcodeObj.valueForKeyPath("_internal.basi cDescriptor")!["BarcodeRawData"])
             
             #if swift(>=4)
                 return sanitizeBarcodeString(barcodeObj.stringValue ?? "")
