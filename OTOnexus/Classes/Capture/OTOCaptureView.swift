@@ -8,12 +8,7 @@
 import UIKit
 import AVFoundation
 
-protocol CaptureViewInternalDelegate: class {
-    func didCapture(barcode: String, image:UIImage)
-    func connectionLost()->Bool
-}
-
-class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
+class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     fileprivate static let AI_GTIN = "01"
     
     @IBOutlet weak var previewBox: OTOPreviewBox!
@@ -56,7 +51,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    var delegate : CaptureViewInternalDelegate?
+    weak var delegate : OTOCaptureViewDelegate?
     var captureSession:AVCaptureSession?
     var stillCameraOutput: AVCaptureStillImageOutput?
     var videoConnection:AVCaptureConnection?
@@ -65,7 +60,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     let captureMetadataOutput = AVCaptureMetadataOutput()
     var qrCodeFrameView:UIView?
     var stackedResult : Set<String> = []
-    public var scanStacked = false {
+    var scanStacked = false {
         didSet {
             if oldValue != scanStacked {
                 resetResults()
@@ -98,16 +93,25 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
     let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
     #endif
     
-    required init?(coder aDecoder:NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         codeDetectionShape.strokeColor = UIColor.green.cgColor
         codeDetectionShape.fillColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.25).cgColor
         codeDetectionShape.lineWidth = 2
         captureBarcodes()
     }
     
-    override public func didMoveToSuperview() {
+    
+    class func fromNib() -> OTOCaptureView? {
+        guard let path = Bundle(for: OTOCaptureView.self).path(forResource: "OTOnexus", ofType: "bundle"),
+            let bundle = Bundle(path: path),
+            let contentView = bundle.loadNibNamed("OTOCaptureView", owner: nil.self, options: nil)?.first as? OTOCaptureView else {
+            return nil
+        }
+        return contentView
+    }
+    
+    override func didMoveToSuperview() {
         previewBox.addLabel(previewLabel)
         self.bringSubview(toFront: self.previewBox)
         self.bringSubview(toFront: self.previewLabel)
@@ -288,16 +292,25 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
         //Take photo of scan to be sent to platform//
         clearBarcodeBounds()
         if (delegate != nil) {
-            if (delegate?.connectionLost())! {
-                ///No connection
-                self.resetResults()
-                scanStatus = Status.scanning
-            } else {
-                //Take photo of scan to be sent to platform//
-                takePhoto(capturedImage: { (image) in
-                    self.delegate?.didCapture(barcode: barcode, image: image)
-                })
-                
+            //Take photo of scan to be sent to platform//
+            takePhoto(capturedImage: { (image) in
+                self.didCapture(barcode: barcode, image: image)
+            })
+        }
+    }
+    
+    fileprivate func didCapture(barcode: String, image:UIImage) {
+        OTOProduct.search(barcodeData: barcode) { (product, error) in
+            if let product = product {
+                product.capturedImage = image
+                self.delegate?.didCapture(product: product)
+            } else if let error = error {
+                switch error {
+                case .productNotFound:
+                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode, image: image)
+                case .otoError(let otoError):
+                    self.delegate?.didEncounterError(error: otoError)
+                }
             }
         }
     }
@@ -352,7 +365,7 @@ class CaptureViewInternal: UIView, AVCaptureMetadataOutputObjectsDelegate {
 
 // MARK: Private functions
 
-extension CaptureViewInternal {
+extension OTOCaptureView {
     fileprivate func pathForCorners(from barcodeObject: AVMetadataMachineReadableCodeObject,
                                     transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
     {
@@ -387,7 +400,7 @@ extension CaptureViewInternal {
     }
     
     fileprivate func findGtin(_ str: String) -> String! {
-        if str.hasPrefix(CaptureViewInternal.AI_GTIN) {
+        if str.hasPrefix(OTOCaptureView.AI_GTIN) {
             return String(String(str.characters.dropFirst(2)).characters.prefix(14))
         } else {
             return ""
