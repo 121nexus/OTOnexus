@@ -21,7 +21,9 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureViewController = OTOCaptureViewController.setup(containerView: captureContainerView, containerController: self)
+        captureViewController = OTOCaptureViewController.setup(containerView: captureContainerView,
+                                                               containerController: self,
+                                                               delegate: self)
         captureViewController?.scanStacked = true
     }
     

@@ -35,12 +35,11 @@ public class OTOCaptureViewController: UIViewController {
     }
     
     public class func setup(containerView:UIView,
-                            containerController:UIViewController) -> OTOCaptureViewController {
+                            containerController:UIViewController,
+                            delegate:OTOCaptureViewDelegate) -> OTOCaptureViewController {
         let captureViewController = OTOCaptureViewController()
         captureViewController.setupCaptureView()
-        if let delegate = captureViewController as? OTOCaptureViewDelegate {
-            captureViewController.captureView?.delegate = delegate
-        }
+        captureViewController.captureView?.delegate = delegate
         containerController.addChildViewController(captureViewController)
         captureViewController.view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(captureViewController.view)
