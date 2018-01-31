@@ -55,6 +55,7 @@ public class OTOCaptureViewController: UIViewController {
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        captureView?.startCaptureIfNotRunning()
     }
 }
 

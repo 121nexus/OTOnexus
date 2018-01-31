@@ -173,6 +173,13 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         self.barcodeTypeControl.selectedSegmentIndex = self.scanStacked ? 0 : 1
     }
     
+    func startCaptureIfNotRunning() {
+        guard let captureSession = captureSession else { return }
+        if !captureSession.isRunning {
+            captureSession.startRunning()
+        }
+    }
+    
     func toggleFlash() {
         guard let captureDevice = captureDevice else {return}
         if (captureDevice.hasTorch) {
