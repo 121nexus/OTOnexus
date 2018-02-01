@@ -189,14 +189,14 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                     try captureDevice.lockForConfiguration()
                     #if swift(>=4)
                         if (captureDevice.torchMode == AVCaptureDevice.TorchMode.on) {
-                        captureDevice.torchMode = AVCaptureDevice.TorchMode.off
-                        self.torchButton.tintColor = UIColor.white
+                            captureDevice.torchMode = AVCaptureDevice.TorchMode.off
+                            self.torchButton.tintColor = UIColor.white
                         } else {
-                        do {
-                        try captureDevice.setTorchModeOn(level: 1.0)
-                        } catch {
-                        print(error)
-                        }
+                            do {
+                                try captureDevice.setTorchModeOn(level: 1.0)
+                            } catch {
+                                print(error)
+                            }
                         }
                     #else
                         if (captureDevice.torchMode == AVCaptureTorchMode.on) {
@@ -285,7 +285,7 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         processScanned(metadataObjects: metadataObjects)
     }
-    
+
     //swift 3.2
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
     {
@@ -480,18 +480,18 @@ extension OTOCaptureView {
             
             #if swift(>=4)
                 if let stillCameraOutput = stillCameraOutput {
-                //Add output of camera still of barcode image
-                captureSession?.addOutput(stillCameraOutput)
+                    //Add output of camera still of barcode image
+                    captureSession?.addOutput(stillCameraOutput)
                 }
                 if let captureSession = captureSession {
-                // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                    // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+                    videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 }
                 videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             #else
                 //Add output of camera still of barcode image
                 captureSession?.addOutput(stillCameraOutput)
-                
+
                 // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
                 videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
