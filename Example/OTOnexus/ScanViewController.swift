@@ -10,25 +10,21 @@ import UIKit
 import OTOnexus
 
 class ScanViewController: UIViewController, OTOCaptureViewDelegate {
-    @IBOutlet weak var captureView: OTOCaptureView!
     var session:OTOSession?
     var barcodeString = ""
     var autocaptureImage = UIImage()
     var videoUrl: String = ""
     var videoType: String = ""
+    @IBOutlet weak var captureContainerView: UIView!
+    var captureViewController:OTOCaptureViewController?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.captureView.delegate = self
-        self.captureView.scanStacked = true
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-         self.captureView.resetResults()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        captureViewController = OTOCaptureViewController.setup(containerView: captureContainerView,
+                                                               containerController: self,
+                                                               delegate: self)
+        captureViewController?.scanStacked = true
     }
     
     func goToExperience(session:OTOSession) {
