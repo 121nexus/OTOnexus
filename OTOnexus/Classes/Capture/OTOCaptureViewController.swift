@@ -56,6 +56,11 @@ public class OTOCaptureViewController: UIViewController {
         super.viewWillAppear(animated)
         captureView?.startCaptureIfNotRunning()
     }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleForgrounding), name: .UIApplicationDidBecomeActive, object: nil)
+    }
 }
 
 // Proxy Functions
@@ -104,6 +109,14 @@ extension OTOCaptureViewController {
     /// Turns flashlight on/off
     public func toggleFlash() {
         self.captureView?.toggleFlash()
+    }
+}
+
+extension OTOCaptureViewController {
+    @objc func handleForgrounding() {
+        if view.window != nil {
+            captureView?.startCaptureIfNotRunning()
+        }
     }
 }
 
