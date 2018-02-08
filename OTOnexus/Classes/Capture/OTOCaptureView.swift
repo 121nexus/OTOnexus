@@ -181,6 +181,11 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    func stopCapture() {
+        guard let captureSession = captureSession else { return }
+        captureSession.stopRunning()
+    }
+    
     func toggleFlash() {
         guard let captureDevice = captureDevice else {return}
         if (captureDevice.hasTorch) {

@@ -57,6 +57,11 @@ public class OTOCaptureViewController: UIViewController {
         captureView?.startCaptureIfNotRunning()
     }
     
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureView?.stopCapture()
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleForgrounding), name: .UIApplicationDidBecomeActive, object: nil)
