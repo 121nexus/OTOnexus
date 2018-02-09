@@ -9,12 +9,26 @@ import UIKit
 
 public protocol OTOCaptureViewDelegate: class {
     
-    /// Delegate method that returns the results of a scanned barcode and takes a parameter of a *product*
-    func didCapture(product:OTOProduct)
+    /**
+     Delegate method that returns the results of a scanned barcode.
+     - Parameters:
+        - product: the product mapped to the recognized barcode
+        - barcode: structured information about the scanned barcode
+     */
+    func didCapture(product: OTOProduct, barcode: OTOBarcode)
     
-    /// Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
-    func scannedBarcodeDoesNotExist(barcode:String, image:UIImage)
-    
+    /**
+     Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
+     - Parameters:
+         - barcode: structured information about the scanned barcode
+         - image: an image of the barcode automatically captured as part of the scan
+     */
+    func scannedBarcodeDoesNotExist(barcode: OTOBarcode, image: UIImage)
+
+    /**
+     Delegate method called if some other error occurred, e.g. networking or authentication.
+     - Parameter error: description of the error
+     */
     func didEncounterError(error: OTOError)
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
+class OTOCaptureView: UIView {
     fileprivate static let AI_GTIN = "01"
     
     @IBOutlet weak var previewBox: OTOPreviewBox!
@@ -60,7 +60,7 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     let captureMetadataOutput = AVCaptureMetadataOutput()
     var qrCodeFrameView:UIView?
     var scannedCodeObject:AVMetadataMachineReadableCodeObject?
-    var stackedResult : Set<String> = []
+    var stackedResult : Set<OTOBarcode> = []
     var scanStacked = false {
         didSet {
             if oldValue != scanStacked {
@@ -86,12 +86,6 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     var scanStatus = Status.scanning
     var codeDetectionShape = CAShapeLayer()
-    
-    #if swift(>=4)
-        let supportedBarCodes = [AVMetadataObject.ObjectType.qr, AVMetadataObject.ObjectType.dataMatrix, AVMetadataObject.ObjectType.code128, AVMetadataObject.ObjectType.code39, AVMetadataObject.ObjectType.code93, AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.pdf417, AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.aztec, AVMetadataObject.ObjectType.itf14]
-    #else
-        let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeDataMatrixCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode, AVMetadataObjectTypeITF14Code]
-    #endif
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -243,7 +237,9 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     func processStacked(metadataObjects:[AnyObject]) {
         // print("PROCESSING STACKED BARCODE")
-        stackedResult.insert(processBarcode(metadataObjects as [AnyObject]))
+        if let barcode = processBarcode(metadataObjects) {
+            stackedResult.insert(barcode)
+        }
         if(stackedResult.count == 2) {
             print("STACKED RESULT",stackedResult)
             
@@ -255,17 +251,18 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
             if let gtinSegment = gtinSegment {
                 stackedResult.remove(gtinSegment)
                 if let otherPart = stackedResult.first {
-                    rawScanData = gtinSegment + "\u{1D}" + otherPart
+                    rawScanData = gtinSegment.data + "\u{1D}" + otherPart.data
                 }
             } else {
-                rawScanData = stackedResult.joined(separator: "\u{1D}")
+                rawScanData = stackedResult.map({ $0.data }).joined(separator: "\u{1D}")
             }
             
             print("RawData Unicode", Array(rawScanData.unicodeScalars))
             
             previewBox.setLabelText("2/2 Scanned")
-            
-            self.finishBarcodeScan(barcode: rawScanData)
+
+            let stackedBarcode = OTOBarcode(data: rawScanData, type: .code_128_Stacked)
+            self.finishBarcodeScan(barcode: stackedBarcode)
         } else if stackedResult.count == 1 {
             scanStatus = Status.stacking
             previewBox.yellow()
@@ -278,26 +275,17 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     func processSingle(metadataObjects:[AnyObject]) {
         print("PROCESSING SINGLE BARCODE")
-        let result = processBarcode(metadataObjects as [AnyObject])
-        print("RawData Unicode", Array(result.unicodeScalars))
-        
+        guard let result = processBarcode(metadataObjects) else {
+            resetResults()
+            scanStatus = Status.scanning
+            return
+        }
+
+        print("RawData Unicode", Array(result.data.unicodeScalars))
         finishBarcodeScan(barcode: result)
     }
     
-    // MARK: AVCaptureMetadataOutputObjectsDelegate
-    // swift 4
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        processScanned(metadataObjects: metadataObjects)
-    }
-
-    //swift 3.2
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
-    {
-        let metadataObjects = metadataObjects as [AnyObject]
-        processScanned(metadataObjects: metadataObjects)
-    }
-    
-    fileprivate func finishBarcodeScan(barcode:String) {
+    fileprivate func finishBarcodeScan(barcode: OTOBarcode) {
         scanStatus = Status.completed
         previewBox.green()
         //Take photo of scan to be sent to platform//
@@ -310,11 +298,11 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    fileprivate func didCapture(barcode: String, image:UIImage) {
-        OTOProduct.search(barcodeData: barcode) { (product, error) in
+    fileprivate func didCapture(barcode: OTOBarcode, image: UIImage) {
+        OTOProduct.search(barcode: barcode) { (product, error) in
             if let product = product {
                 product.capturedImage = image
-                self.delegate?.didCapture(product: product)
+                self.delegate?.didCapture(product: product, barcode: barcode)
             } else if let error = error {
                 switch error {
                 case .productNotFound:
@@ -380,9 +368,22 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     }
 }
 
+// MARK: AVCaptureMetadataOutputObjectsDelegate
+extension OTOCaptureView: AVCaptureMetadataOutputObjectsDelegate {
+    #if swift(>=4)
+        func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+            processScanned(metadataObjects: metadataObjects)
+        }
+    #else
+        func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
+        {
+            let metadataObjects = metadataObjects as [AnyObject]
+            processScanned(metadataObjects: metadataObjects)
+        }
+    #endif
+}
 
 // MARK: Private functions
-
 extension OTOCaptureView {
     fileprivate func corners(for codeObject:AVMetadataMachineReadableCodeObject?) -> [CGPoint] {
         var corners = [CGPoint]()
@@ -450,8 +451,8 @@ extension OTOCaptureView {
         return path
     }
     
-    fileprivate func findGtin(_ str: String) -> Bool {
-        return str.hasPrefix(OTOCaptureView.AI_GTIN)
+    fileprivate func findGtin(_ barcode: OTOBarcode) -> Bool {
+        return barcode.data.hasPrefix(OTOCaptureView.AI_GTIN)
     }
     
     fileprivate func captureBarcodes() {
@@ -542,7 +543,7 @@ extension OTOCaptureView {
             }
             
             // Detect all the supported bar code
-            captureMetadataOutput.metadataObjectTypes = supportedBarCodes
+            captureMetadataOutput.metadataObjectTypes = OTOBarcodeType.supportedBarcodes
             
             // Start video capture
             captureSession?.startRunning()
@@ -585,19 +586,28 @@ extension OTOCaptureView {
         return str.trimmingCharacters(in: CharacterSet.urlQueryAllowed.inverted)
     }
     
-    fileprivate func processBarcode(_ metadataObjects: [AnyObject]) -> String {
-        if let barcodeObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject,
-            supportedBarCodes.contains(barcodeObj.type) && barcodeObj.stringValue != nil {
-            scannedCodeObject = barcodeObj
-            drawBarcodeBounds()
-            
-            #if swift(>=4)
-                return sanitizeBarcodeString(barcodeObj.stringValue ?? "")
-            #else
-                return sanitizeBarcodeString(barcodeObj.stringValue)
-            #endif
-        } else {
-            return ""
-        }
+    fileprivate func processBarcode(_ metadataObjects: [AnyObject]) -> OTOBarcode? {
+        guard let barcodeObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else { return nil }
+
+        #if swift(>=4)
+            guard let metadataType = barcodeObj.type as AVMetadataObject.ObjectType? else { return nil }
+        #else
+            guard let metadataType = barcodeObj.type as AVMetadataObjectType? else { return nil }
+        #endif
+
+        guard OTOBarcodeType.supportedBarcodes.contains(metadataType) && barcodeObj.stringValue != nil else { return nil }
+
+        scannedCodeObject = barcodeObj
+        drawBarcodeBounds()
+
+        var barcodeString: String
+        #if swift(>=4)
+            barcodeString = sanitizeBarcodeString(barcodeObj.stringValue ?? "")
+        #else
+            barcodeString = sanitizeBarcodeString(barcodeObj.stringValue)
+        #endif
+
+        guard let barcodeType = OTOBarcodeType(metadataType: metadataType) else { return nil }
+        return OTOBarcode(data: barcodeString, type: barcodeType)
     }
 }
