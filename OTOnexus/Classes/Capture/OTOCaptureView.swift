@@ -59,6 +59,7 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     let captureMetadataOutput = AVCaptureMetadataOutput()
     var qrCodeFrameView:UIView?
+    var scannedCodeObject:AVMetadataMachineReadableCodeObject?
     var stackedResult : Set<String> = []
     var scanStacked = false {
         didSet {
@@ -361,6 +362,7 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
                 }
                 
                 if let videoConnection = videoConnection {
+                    videoConnection.videoOrientation = self.barcodeOrientation()
                     stillOutput.captureStillImageAsynchronously(from: videoConnection) { (imageSampleBuffer: CMSampleBuffer?, err: Error?) -> Void in
                         
                         if let imageSampleBuffer = imageSampleBuffer {
@@ -383,22 +385,15 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
 // MARK: Private functions
 
 extension OTOCaptureView {
-    fileprivate func pathForCorners(from barcodeObject: AVMetadataMachineReadableCodeObject,
-                                    transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath
-    {
-        let transformedObject = previewLayer.transformedMetadataObject(for: barcodeObject) as? AVMetadataMachineReadableCodeObject
-        
-        // new mutable path
-        let path = CGMutablePath()
-        
+    fileprivate func corners(for codeObject:AVMetadataMachineReadableCodeObject?) -> [CGPoint] {
         var corners = [CGPoint]()
         
         #if swift(>=4)
-            if let objectCorners = transformedObject?.corners {
+            if let objectCorners = codeObject?.corners {
                 corners = objectCorners
             }
         #else
-            if let cornerDictionarys = transformedObject?.corners as? [NSDictionary] {
+            if let cornerDictionarys = codeObject?.corners as? [NSDictionary] {
                 for corner in cornerDictionarys {
                     if let point = CGPoint(dictionaryRepresentation: corner) {
                         corners.append(point)
@@ -407,9 +402,48 @@ extension OTOCaptureView {
             }
         #endif
         
+        return corners
+    }
+    
+    fileprivate func barcodeOrientation() -> AVCaptureVideoOrientation {
+        guard let scannedCodeObject = scannedCodeObject else {
+            return .portrait
+        }
+        let corners = self.corners(for: scannedCodeObject)
+        
+        if corners.count == 4 {
+            let corner1 = corners[0]
+            let corner3 = corners[2]
+            if abs(corner1.x - corner3.x) > abs(corner1.y - corner3.y) {
+                if(corner1.x < corner3.x) {
+                    return .landscapeRight
+                } else {
+                    return .landscapeLeft
+                }
+            } else {
+                if(corner1.y < corner3.y) {
+                    return .portraitUpsideDown
+                } else {
+                    return.portrait
+                }
+            }
+        }
+        
+        return .portrait
+    }
+    
+    fileprivate func pathForCorners(transformedForLayer previewLayer: AVCaptureVideoPreviewLayer) -> CGPath {
+        guard let barcodeObject = scannedCodeObject else { return CGMutablePath() }
+        let transformedObject = previewLayer.transformedMetadataObject(for: barcodeObject) as? AVMetadataMachineReadableCodeObject
+        
+        // new mutable path
+        let path = CGMutablePath()
+        
+        let corners = self.corners(for: transformedObject)
+        
         for corner in corners {
-            path.move(to: corner)
             path.addLine(to: corner)
+            path.move(to: corner)
         }
         
         path.closeSubpath()
@@ -530,14 +564,14 @@ extension OTOCaptureView {
         }
     }
     
-    fileprivate func drawBarcodeBounds(_ code: AVMetadataMachineReadableCodeObject) {
+    fileprivate func drawBarcodeBounds() {
         guard let videoPreviewLayer = videoPreviewLayer else { return }
         if(codeDetectionShape.superlayer == nil) {
             videoPreviewLayer.addSublayer(codeDetectionShape)
         }
         
         //create a suitable CGPath for the barcode area
-        let path = pathForCorners(from: code, transformedForLayer: videoPreviewLayer)
+        let path = pathForCorners(transformedForLayer: videoPreviewLayer)
         codeDetectionShape.frame = videoPreviewLayer.bounds
         codeDetectionShape.path = path
     }
@@ -555,7 +589,8 @@ extension OTOCaptureView {
     fileprivate func processBarcode(_ metadataObjects: [AnyObject]) -> String {
         if let barcodeObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject,
             supportedBarCodes.contains(barcodeObj.type) && barcodeObj.stringValue != nil {
-            drawBarcodeBounds(barcodeObj)
+            scannedCodeObject = barcodeObj
+            drawBarcodeBounds()
             
             #if swift(>=4)
                 return sanitizeBarcodeString(barcodeObj.stringValue ?? "")
