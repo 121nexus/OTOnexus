@@ -279,15 +279,9 @@ class OTOCaptureView: UIView, AVCaptureMetadataOutputObjectsDelegate {
     func processSingle(metadataObjects:[AnyObject]) {
         print("PROCESSING SINGLE BARCODE")
         let result = processBarcode(metadataObjects as [AnyObject])
-        if !result.isEmpty {
-            print("RawData Unicode", Array(result.unicodeScalars))
-            
-            finishBarcodeScan(barcode: result)
-        }
-        else {
-            resetResults()
-            scanStatus = Status.scanning
-        }
+        print("RawData Unicode", Array(result.unicodeScalars))
+        
+        finishBarcodeScan(barcode: result)
     }
     
     // MARK: AVCaptureMetadataOutputObjectsDelegate
