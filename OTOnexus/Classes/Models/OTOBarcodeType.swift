@@ -1,5 +1,5 @@
 //
-//  Barcodes.swift
+//  OTOBarcodeType.swift
 //  OTOnexus
 //
 //  Created by Andrew McKnight on 2/8/18.
@@ -8,22 +8,6 @@
 import AVFoundation
 import Foundation
 
-public struct OTOBarcode: Equatable {
-    public var data: String
-    public var type: OTOBarcodeType
-}
-
-extension OTOBarcode: Hashable {
-    public var hashValue: Int {
-        return "\(type.rawValue):\(data)".hashValue
-    }
-}
-
-public func ==(lhs: OTOBarcode, rhs: OTOBarcode) -> Bool {
-    return lhs.data == rhs.data && lhs.type == rhs.type
-}
-
-// MARK: Barcode types
 public enum OTOBarcodeType: String {
     case code_128_Concatenated = "Code 128 concatenated"
     case code_128_Stacked = "Code 128 stacked"
@@ -32,7 +16,10 @@ public enum OTOBarcodeType: String {
     case ITF‌_14 = "_ITF-14_"
     case GS1_Databar = "GS1 Databar"
     case QR_Code = "QR Code"
+}
 
+// MARK: Init
+extension OTOBarcodeType {
     #if swift(>=4)
         init?(metadataType: AVMetadataObject.ObjectType) {
             switch metadataType {
@@ -49,7 +36,26 @@ public enum OTOBarcodeType: String {
             default: return nil
             }
         }
+    #else
+        init?(metadataType: AVMetadataObjectType) {
+            if metadataType as String == AVMetadataObjectTypeQRCode { self = .QR_Code }
+            else if metadataType as String == AVMetadataObjectTypeDataMatrixCode { self = .dataMatrix }
+            else if metadataType as String == AVMetadataObjectTypeCode128Code { self = .code_128_Concatenated }
+            else if metadataType as String == AVMetadataObjectTypeCode39Code { return nil }
+            else if metadataType as String == AVMetadataObjectTypeCode93Code { return nil }
+            else if metadataType as String == AVMetadataObjectTypeUPCECode { return nil }
+            else if metadataType as String == AVMetadataObjectTypePDF417Code { return nil }
+            else if metadataType as String == AVMetadataObjectTypeEAN13Code { return nil }
+            else if metadataType as String == AVMetadataObjectTypeAztecCode { return nil }
+            else if metadataType as String == AVMetadataObjectTypeITF14Code { self = .ITF‌_14 }
+            else { return nil }
+        }
+    #endif
+}
 
+// MARK: Supported barcodes
+extension OTOBarcodeType {
+    #if swift(>=4)
         static var supportedBarcodes: [AVMetadataObject.ObjectType] {
             return [
                 AVMetadataObject.ObjectType.qr,
@@ -65,20 +71,6 @@ public enum OTOBarcodeType: String {
             ]
         }
     #else
-        init?(metadataType: AVMetadataObjectType) {
-            if metadataType as String == AVMetadataObjectTypeQRCode { self = .QR_Code }
-            else if metadataType as String == AVMetadataObjectTypeDataMatrixCode { self = .dataMatrix }
-            else if metadataType as String == AVMetadataObjectTypeCode128Code { self = .code_128_Concatenated }
-            else if metadataType as String == AVMetadataObjectTypeCode39Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeCode93Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeUPCECode { return nil }
-            else if metadataType as String == AVMetadataObjectTypePDF417Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeEAN13Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeAztecCode { return nil }
-            else if metadataType as String == AVMetadataObjectTypeITF14Code { self = .ITF‌_14 }
-            else { return nil }
-        }
-
         static var supportedBarcodes: [AVMetadataObjectType] {
             return [
                 AVMetadataObjectTypeQRCode as NSString,
