@@ -286,6 +286,7 @@ class OTOCaptureView: UIView {
     }
     
     fileprivate func finishBarcodeScan(barcode: OTOBarcode) {
+        var barcode = barcode
         scanStatus = Status.completed
         previewBox.green()
         //Take photo of scan to be sent to platform//
@@ -293,20 +294,21 @@ class OTOCaptureView: UIView {
         if (delegate != nil) {
             //Take photo of scan to be sent to platform//
             takePhoto(capturedImage: { (image) in
-                self.didCapture(barcode: barcode, image: image)
+                barcode.image = image
+                self.didCapture(barcode: barcode)
             })
         }
     }
     
-    fileprivate func didCapture(barcode: OTOBarcode, image: UIImage) {
+    fileprivate func didCapture(barcode: OTOBarcode) {
         OTOProduct.search(barcode: barcode) { (product, error) in
             if let product = product {
-                product.capturedImage = image
+                product.capturedImage = barcode.image
                 self.delegate?.didCapture(product: product, barcode: barcode)
             } else if let error = error {
                 switch error {
                 case .productNotFound:
-                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode, image: image)
+                    self.delegate?.scannedBarcodeDoesNotExist(barcode: barcode)
                 case .otoError(let otoError):
                     self.delegate?.didEncounterError(error: otoError)
                 }

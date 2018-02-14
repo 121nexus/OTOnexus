@@ -21,9 +21,8 @@ public protocol OTOCaptureViewDelegate: class {
      Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
      - Parameters:
          - barcode: structured information about the scanned barcode
-         - image: an image of the barcode automatically captured as part of the scan
      */
-    func scannedBarcodeDoesNotExist(barcode: OTOBarcode, image: UIImage)
+    func scannedBarcodeDoesNotExist(barcode: OTOBarcode)
 
     /**
      Delegate method called if some other error occurred, e.g. networking or authentication.
