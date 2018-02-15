@@ -24,6 +24,12 @@ public protocol OTOCaptureViewDelegate: class {
     func scannedBarcodeDoesNotExist(barcode: OTOBarcode)
 
     /**
+     Called if the scanning subsystem detects and capture the barcode, but fails to parse the data inside it. One example is when the barcode data contains two FNC sequences as a prefix: in that case, AVFoundation returns an empty string.
+     - Parameter barcode: returned struct containing the autocaptured image of the problem barcode.
+     */
+    func barcodeParseError(barcode: OTOBarcode)
+
+    /**
      Delegate method called if some other error occurred, e.g. networking or authentication.
      - Parameter error: description of the error
      */

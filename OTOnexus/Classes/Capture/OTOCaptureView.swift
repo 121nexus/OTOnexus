@@ -301,6 +301,11 @@ class OTOCaptureView: UIView {
     }
     
     fileprivate func didCapture(barcode: OTOBarcode) {
+        guard !barcode.data.isEmpty else {
+            delegate?.barcodeParseError(barcode: barcode)
+            return
+        }
+
         OTOProduct.search(barcode: barcode) { (product, error) in
             if let product = product {
                 product.barcode = barcode
