@@ -20,7 +20,7 @@ public class OTOCustomValidationModule : OTOModule {
     /// Function to validate barcode data using custom validation rules
     public func validateBarcode(complete: @escaping (OTOCustomValidateBarcodeResponse?, OTOError?) -> Void) {
         if let barcode = session?.barcode {
-            validateBarcodeAction?.barcode = barcode
+            validateBarcodeAction?.barcode = barcode.data
         }
         validateBarcodeAction?.perform(complete: { [weak self] (barcodeResponse, error) in
             guard let strongSelf = self else { return }

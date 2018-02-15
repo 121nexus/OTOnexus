@@ -23,10 +23,8 @@ public class OTOProduct {
         case otoError(OTOError)
     }
     public typealias ProductCompleteBlock = (OTOProduct?, ProductError?) -> Void
-    /// A barcode's raw data string
-    public var barcodeData:String?
-    /// Auto captured image during scanning
-    public var capturedImage:UIImage?
+    /// The associated barcode data and type
+    public var barcode:OTOBarcode?
     /// A product url
     public var url = ""
     /// Dictionary of attributes of a product
@@ -46,12 +44,12 @@ public class OTOProduct {
     /**
      Search for product with barcodeData
      */
-    public static func search(barcodeData:String,
+    public static func search(barcode:OTOBarcode,
                               complete:@escaping ProductCompleteBlock) {
-        self.search(withParams: ["barcode_data": barcodeData],
+        self.search(withParams: ["barcode_data": barcode.data],
                     complete: { (product, error) in
                         if let product = product {
-                            product.barcodeData = barcodeData
+                            product.barcode = barcode
                             complete(product, nil)
                         } else {
                             complete(product, error)
