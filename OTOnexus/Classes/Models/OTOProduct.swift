@@ -25,8 +25,6 @@ public class OTOProduct {
     public typealias ProductCompleteBlock = (OTOProduct?, ProductError?) -> Void
     /// The associated barcode data and type
     public var barcode:OTOBarcode?
-    /// Auto captured image during scanning
-    public var capturedImage:UIImage?
     /// A product url
     public var url = ""
     /// Dictionary of attributes of a product

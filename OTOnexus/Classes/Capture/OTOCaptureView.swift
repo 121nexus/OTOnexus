@@ -303,8 +303,8 @@ class OTOCaptureView: UIView {
     fileprivate func didCapture(barcode: OTOBarcode) {
         OTOProduct.search(barcode: barcode) { (product, error) in
             if let product = product {
-                product.capturedImage = barcode.image
-                self.delegate?.didCapture(product: product, barcode: barcode)
+                product.barcode = barcode
+                self.delegate?.didCapture(product: product)
             } else if let error = error {
                 switch error {
                 case .productNotFound:

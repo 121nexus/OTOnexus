@@ -13,9 +13,8 @@ public protocol OTOCaptureViewDelegate: class {
      Delegate method that returns the results of a scanned barcode.
      - Parameters:
         - product: the product mapped to the recognized barcode
-        - barcode: structured information about the scanned barcode
      */
-    func didCapture(product: OTOProduct, barcode: OTOBarcode)
+    func didCapture(product: OTOProduct)
     
     /**
      Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
