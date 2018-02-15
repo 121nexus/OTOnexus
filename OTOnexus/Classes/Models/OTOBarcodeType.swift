@@ -8,14 +8,41 @@
 import AVFoundation
 import Foundation
 
-public enum OTOBarcodeType: String {
-    case code_128_Concatenated = "Code 128 concatenated"
-    case code_128_Stacked = "Code 128 stacked"
-    case dataMatrix = "DataMatrix"
-    case EAN_UPC = "EAN/UPC"
-    case ITF‌_14 = "_ITF-14_"
-    case GS1_Databar = "GS1 Databar"
-    case QR_Code = "QR Code"
+public enum OTOBarcodeType {
+    case QRCode
+    case dataMatrix
+    case code128
+    case code39
+    case code93
+    case UPC
+    case PDF417
+    case EAN13
+    case aztec
+    case ITF14
+    indirect case stacked(OTOBarcodeType, OTOBarcodeType)
+
+    public func code() -> String {
+        switch self {
+        case .stacked(let first, let second):
+            if case OTOBarcodeType.stacked(_, _) = first {
+                fatalError("Multiply nested stacked barcode types not supported.")
+            }
+            if case OTOBarcodeType.stacked(_, _) = second {
+                fatalError("Multiply nested stacked barcode types not supported.")
+            }
+            return "\(first.code()),\(second.code())"
+        case .QRCode: return "QR Code"
+        case .dataMatrix: return "DataMatrix"
+        case .code128: return "Code 128"
+        case .code39: return "Code 39"
+        case .code93: return "Code 93"
+        case .UPC: return "UPC"
+        case .PDF417: return "PDF417"
+        case .EAN13: return "EAN-13"
+        case .aztec: return "Aztec"
+        case .ITF14: return "ITF-14"
+        }
+    }
 }
 
 // MARK: Init
@@ -23,31 +50,31 @@ extension OTOBarcodeType {
     #if swift(>=4)
         init?(metadataType: AVMetadataObject.ObjectType) {
             switch metadataType {
-            case AVMetadataObject.ObjectType.qr: self = .QR_Code
+            case AVMetadataObject.ObjectType.qr: self = .QRCode
             case AVMetadataObject.ObjectType.dataMatrix: self = .dataMatrix
-            case AVMetadataObject.ObjectType.code128: self = .code_128_Concatenated
-            case AVMetadataObject.ObjectType.code39: return nil
-            case AVMetadataObject.ObjectType.code93: return nil
-            case AVMetadataObject.ObjectType.upce: return nil
-            case AVMetadataObject.ObjectType.pdf417: return nil
-            case AVMetadataObject.ObjectType.ean13: return nil
-            case AVMetadataObject.ObjectType.aztec: return nil
-            case AVMetadataObject.ObjectType.itf14: self = .ITF‌_14
+            case AVMetadataObject.ObjectType.code128: self = .code128
+            case AVMetadataObject.ObjectType.code39: self = .code39
+            case AVMetadataObject.ObjectType.code93: self = .code93
+            case AVMetadataObject.ObjectType.upce: self = .UPC
+            case AVMetadataObject.ObjectType.pdf417: self = .PDF417
+            case AVMetadataObject.ObjectType.ean13: self = .EAN13
+            case AVMetadataObject.ObjectType.aztec: self = .aztec
+            case AVMetadataObject.ObjectType.itf14: self = .ITF14
             default: return nil
             }
         }
     #else
         init?(metadataType: AVMetadataObjectType) {
-            if metadataType as String == AVMetadataObjectTypeQRCode { self = .QR_Code }
+            if metadataType as String == AVMetadataObjectTypeQRCode { self = .QRCode }
             else if metadataType as String == AVMetadataObjectTypeDataMatrixCode { self = .dataMatrix }
-            else if metadataType as String == AVMetadataObjectTypeCode128Code { self = .code_128_Concatenated }
-            else if metadataType as String == AVMetadataObjectTypeCode39Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeCode93Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeUPCECode { return nil }
-            else if metadataType as String == AVMetadataObjectTypePDF417Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeEAN13Code { return nil }
-            else if metadataType as String == AVMetadataObjectTypeAztecCode { return nil }
-            else if metadataType as String == AVMetadataObjectTypeITF14Code { self = .ITF‌_14 }
+            else if metadataType as String == AVMetadataObjectTypeCode128Code { self = .code128 }
+            else if metadataType as String == AVMetadataObjectTypeCode39Code { self = .code39 }
+            else if metadataType as String == AVMetadataObjectTypeCode93Code { self = .code93 }
+            else if metadataType as String == AVMetadataObjectTypeUPCECode { self = .UPC }
+            else if metadataType as String == AVMetadataObjectTypePDF417Code { self = .PDF417 }
+            else if metadataType as String == AVMetadataObjectTypeEAN13Code { self = .EAN13 }
+            else if metadataType as String == AVMetadataObjectTypeAztecCode { self = .aztec }
+            else if metadataType as String == AVMetadataObjectTypeITF14Code { self = .ITF14 }
             else { return nil }
         }
     #endif

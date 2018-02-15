@@ -248,21 +248,31 @@ class OTOCaptureView: UIView {
             })
             
             var rawScanData = ""
+            let barcodeType: OTOBarcodeType
             if let gtinSegment = gtinSegment {
                 stackedResult.remove(gtinSegment)
-                if let otherPart = stackedResult.first {
-                    rawScanData = gtinSegment.data + "\u{1D}" + otherPart.data
-                }
+                guard let otherPart = stackedResult.first else { fatalError("stackedResult set was corrupted") }
+                rawScanData = gtinSegment.data + "\u{1D}" + otherPart.data
+                barcodeType = OTOBarcodeType.stacked(gtinSegment.type, otherPart.type)
             } else {
-                rawScanData = stackedResult.map({ $0.data }).joined(separator: "\u{1D}")
+                let barcodes = Array(stackedResult)
+                rawScanData = barcodes.map({ $0.data }).joined(separator: "\u{1D}")
+                let firstBarcode = barcodes.first!
+                let secondBarcode = barcodes.last!
+                if case OTOBarcodeType.stacked(_, _) = firstBarcode.type {
+                    fatalError("Multiply nested stacked barcodes are not supported.")
+                }
+                if case OTOBarcodeType.stacked(_, _) = secondBarcode.type {
+                    fatalError("Multiply nested stacked barcodes are not supported.")
+                }
+                barcodeType = OTOBarcodeType.stacked(firstBarcode.type, secondBarcode.type)
             }
             
             print("RawData Unicode", Array(rawScanData.unicodeScalars))
             
             previewBox.setLabelText("2/2 Scanned")
 
-            let stackedBarcode = OTOBarcode(data: rawScanData, type: .code_128_Stacked)
-            self.finishBarcodeScan(barcode: stackedBarcode)
+            self.finishBarcodeScan(barcode: OTOBarcode(data: rawScanData, type: barcodeType))
         } else if stackedResult.count == 1 {
             scanStatus = Status.stacking
             previewBox.yellow()
