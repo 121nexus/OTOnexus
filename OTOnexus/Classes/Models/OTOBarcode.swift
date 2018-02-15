@@ -20,10 +20,10 @@ public struct OTOBarcode: Equatable {
 
 extension OTOBarcode: Hashable {
     public var hashValue: Int {
-        return "\(type.rawValue):\(data)".hashValue
+        return "\(type.code()):\(data)".hashValue
     }
 }
 
 public func ==(lhs: OTOBarcode, rhs: OTOBarcode) -> Bool {
-    return lhs.data == rhs.data && lhs.type == rhs.type
+    return lhs.data == rhs.data && lhs.type.code() == rhs.type.code()
 }
