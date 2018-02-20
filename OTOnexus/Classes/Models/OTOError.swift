@@ -2,7 +2,7 @@
 //  OTOError.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 11/10/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

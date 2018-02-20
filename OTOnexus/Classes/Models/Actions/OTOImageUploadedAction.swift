@@ -1,8 +1,8 @@
 //
 //  OTOImageUploadedAction.swift
-//  AWSCore
+//  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/28/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  OTOBarcodeType.swift
 //  OTOnexus
 //
-//  Created by Andrew McKnight on 2/8/18.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import AVFoundation
