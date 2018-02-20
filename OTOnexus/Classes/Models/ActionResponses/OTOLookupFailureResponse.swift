@@ -2,7 +2,7 @@
 //  OTOLookupFailureResponse.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 10/11/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,7 @@
 //  OTOnexus.h
 //  OTOnexus
 //
-//  Created by Christopher DeOrio on 8/30/17.
-//  Copyright © 2017 Christopher DeOrio. All rights reserved.
+//  Copyright © 2017 121nexus. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

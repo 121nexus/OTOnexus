@@ -2,7 +2,7 @@
 //  ResponseData.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/21/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 class ResponseData {

@@ -2,7 +2,7 @@
 //  OTOCustomValidateBarcodeResponse.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 11/30/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  OTOBarcode.swift
 //  OTOnexus
 //
-//  Created by Andrew McKnight on 2/14/18.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import UIKit
