@@ -337,31 +337,29 @@ class OTOCaptureView: UIView {
             DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
                 var videoConnection : AVCaptureConnection?
                 
-                if let connections = stillOutput.connections as? [AVCaptureConnection] {
-                    for connection in connections {
-                        //find a matching input port
+                for connection in stillOutput.connections {
+                    //find a matching input port
+                    #if swift(>=4)
+                        let inputPorts = connection.inputPorts
+                    #else
+                        let inputPorts = connection.inputPorts as? [AVCaptureInputPort] ?? [AVCaptureInputPort]()
+                    #endif
+                    for port in inputPorts {
                         #if swift(>=4)
-                            let inputPorts = connection.inputPorts
+                            if port.mediaType == AVMediaType.video {
+                                videoConnection = connection
+                                break //for port
+                            }
                         #else
-                            let inputPorts = connection.inputPorts as? [AVCaptureInputPort] ?? [AVCaptureInputPort]()
+                            if port.mediaType == AVMediaTypeVideo {
+                                videoConnection = connection
+                                break //for port
+                            }
                         #endif
-                        for port in inputPorts {
-                            #if swift(>=4)
-                                if port.mediaType == AVMediaType.video {
-                                    videoConnection = connection
-                                    break //for port
-                                }
-                            #else
-                                if port.mediaType == AVMediaTypeVideo {
-                                    videoConnection = connection
-                                    break //for port
-                                }
-                            #endif
-                        }
-                        
-                        if videoConnection  != nil {
-                            break// for connections
-                        }
+                    }
+                    
+                    if videoConnection  != nil {
+                        break// for connections
                     }
                 }
                 
