@@ -2,7 +2,7 @@
 //  CaptureViewController.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 1/25/18.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import UIKit

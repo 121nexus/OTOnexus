@@ -1,9 +1,8 @@
 //
-//  MDTPreviewBox.swift
-//  MDT-Scan-App-V2
+//  OTOPreviewBox.swift
+//  OTOnexus
 //
-//  Created by Christopher DeOrio on 11/1/16.
-//  Copyright © 2016 Christopher DeOrio. All rights reserved.
+//  Copyright © 2016 121nexus. All rights reserved.
 //
 
 import UIKit

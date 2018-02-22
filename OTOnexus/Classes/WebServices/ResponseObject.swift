@@ -2,7 +2,7 @@
 //  ResponseObject.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/19/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

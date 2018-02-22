@@ -1,9 +1,8 @@
 //
 //  WebServiceManager.swift
-//  Pods
+//  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/15/17.
-//
+//  Copyright © 2017 121nexus. All rights reserved.
 //
 
 import Foundation
