@@ -316,6 +316,8 @@ class OTOCaptureView: UIView {
             return
         }
 
+        delegate?.captureViewDidStartNetworkActivity()
+
         OTOProduct.search(barcode: barcode) { (product, error) in
             if let product = product {
                 product.barcode = barcode
@@ -328,6 +330,7 @@ class OTOCaptureView: UIView {
                     self.delegate?.didEncounterError(error: otoError)
                 }
             }
+            self.delegate?.captureViewDidEndNetworkActivity()
         }
     }
     

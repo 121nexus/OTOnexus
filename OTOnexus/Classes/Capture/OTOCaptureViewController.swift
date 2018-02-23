@@ -35,6 +35,9 @@ public protocol OTOCaptureViewDelegate: class {
      */
     func didEncounterError(error: OTOError)
     
+    func captureViewDidEndNetworkActivity()
+    
+    func captureViewDidStartNetworkActivity()
 }
 
 public class OTOCaptureViewController: UIViewController {
