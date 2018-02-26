@@ -8,6 +8,18 @@
 import AVFoundation
 import Foundation
 
+private let stackedRawStringSeparator: String = ","
+private let QRCodeName = "QR Code"
+private let dataMatrixName = "DataMatrix"
+private let code128Name = "Code 128"
+private let code39Name = "Code 39"
+private let code93Name = "Code 93"
+private let UPCName = "UPC"
+private let PDF417Name = "PDF417"
+private let EAN13Name = "EAN-13"
+private let aztecName = "Aztec"
+private let ITF14Name = "ITF-14"
+
 public enum OTOBarcodeType {
     case QRCode
     case dataMatrix
@@ -30,18 +42,54 @@ public enum OTOBarcodeType {
             if case OTOBarcodeType.stacked(_, _) = second {
                 fatalError("Multiply nested stacked barcode types not supported.")
             }
-            return "\(first.code()),\(second.code())"
-        case .QRCode: return "QR Code"
-        case .dataMatrix: return "DataMatrix"
-        case .code128: return "Code 128"
-        case .code39: return "Code 39"
-        case .code93: return "Code 93"
-        case .UPC: return "UPC"
-        case .PDF417: return "PDF417"
-        case .EAN13: return "EAN-13"
-        case .aztec: return "Aztec"
-        case .ITF14: return "ITF-14"
+            return "\(first.code())\(stackedRawStringSeparator)\(second.code())"
+        case .QRCode: return QRCodeName
+        case .dataMatrix: return dataMatrixName
+        case .code128: return code128Name
+        case .code39: return code39Name
+        case .code93: return code93Name
+        case .UPC: return UPCName
+        case .PDF417: return PDF417Name
+        case .EAN13: return EAN13Name
+        case .aztec: return aztecName
+        case .ITF14: return ITF14Name
         }
+    }
+}
+
+// MARK: RawRepresentable
+extension OTOBarcodeType: RawRepresentable {
+    public init?(rawValue: String) {
+        if rawValue.contains(where: { (c) -> Bool in
+            return c == Character(stackedRawStringSeparator)
+        }) {
+            let parts = rawValue.components(separatedBy: stackedRawStringSeparator).filter({ (part) -> Bool in
+                return !part.isEmpty
+            })
+            precondition(parts.count == 2, "Stacked barcodes must have exactly two elements in their string representation, separated by '\(stackedRawStringSeparator)'")
+            guard let first = OTOBarcodeType(rawValue: parts[0]), let second = OTOBarcodeType(rawValue: parts[1]) else {
+                return nil
+            }
+            self = .stacked(first, second)
+        } else {
+            switch rawValue {
+            case QRCodeName: self = .QRCode
+            case dataMatrixName: self = .dataMatrix
+            case code128Name: self = .code128
+            case code39Name: self = .code39
+            case code93Name: self = .code93
+            case UPCName: self = .UPC
+            case PDF417Name: self = .PDF417
+            case EAN13Name: self = .EAN13
+            case aztecName: self = .aztec
+            case ITF14Name: self = .ITF14
+            default: return nil
+            }
+        }
+    }
+
+    public var rawValue: String {
+        return code()
     }
 }
 
