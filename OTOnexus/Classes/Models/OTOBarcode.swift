@@ -12,7 +12,7 @@ public struct OTOBarcode: Equatable {
     public var type: OTOBarcodeType
     public var image: UIImage?
 
-    init(data: String, type: OTOBarcodeType) {
+    public init(data: String, type: OTOBarcodeType) {
         self.data = data
         self.type = type
     }
