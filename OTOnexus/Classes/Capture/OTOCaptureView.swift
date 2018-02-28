@@ -18,7 +18,8 @@ class OTOCaptureView: UIView {
     @IBOutlet weak var previewBoxTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var previewBoxBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var barcodeTypeControl: UISegmentedControl!
-    
+    private var torchEnabled = false
+
     private var areAnyTopButtonsVisible:Bool {
         return !isTorchHidden || !isResetHidden
     }
@@ -145,15 +146,29 @@ class OTOCaptureView: UIView {
     }
     
     @IBAction func resetAction(_ sender: Any) {
+        NotificationCenter.default.post(Notification(name: OTONotification.resetResults.name()))
         self.resetResults()
     }
     
     @IBAction func flashAction(_ sender: Any) {
+        if self.torchEnabled {
+            NotificationCenter.default.post(Notification(name: OTONotification.flashDisabled.name()))
+        } else {
+            NotificationCenter.default.post(Notification(name: OTONotification.flashEnabled.name()))
+        }
         self.toggleFlash()
     }
     
     @IBAction func switchBarcodeTypeAction(_ sender: Any) {
-        self.scanStacked = self.barcodeTypeControl.selectedSegmentIndex == 0
+        let stacked = self.barcodeTypeControl.selectedSegmentIndex == 0
+
+        if stacked {
+            NotificationCenter.default.post(Notification(name: OTONotification.stackedBarcode.name()))
+        } else {
+            NotificationCenter.default.post(Notification(name: OTONotification.singleBarcode.name()))
+        }
+
+        self.scanStacked = stacked
     }
     
     func resetResults() {
@@ -191,10 +206,12 @@ class OTOCaptureView: UIView {
                     #if swift(>=4)
                         if (captureDevice.torchMode == AVCaptureDevice.TorchMode.on) {
                             captureDevice.torchMode = AVCaptureDevice.TorchMode.off
+                            self.torchEnabled = false
                             self.torchButton.tintColor = UIColor.white
                         } else {
                             do {
                                 try captureDevice.setTorchModeOn(level: 1.0)
+                                self.torchEnabled = true
                             } catch {
                                 print(error)
                             }
@@ -202,10 +219,12 @@ class OTOCaptureView: UIView {
                     #else
                         if (captureDevice.torchMode == AVCaptureTorchMode.on) {
                             captureDevice.torchMode = AVCaptureTorchMode.off
+                            self.torchEnabled = false
                             self.torchButton.tintColor = UIColor.white
                         } else {
                             do {
                                 try captureDevice.setTorchModeOnWithLevel(1.0)
+                                self.torchEnabled = true
                             } catch {
                                 print(error)
                             }
