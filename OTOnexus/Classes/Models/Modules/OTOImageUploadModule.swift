@@ -33,14 +33,14 @@ extension AWSRegionType {
  OTOImageUploadModule is a module that allows a user to upload photos to the *121nexus platform*.
 */
 public class OTOImageUploadModule : OTOModule {
-    public enum ImageCompression: Int {
-        case originalQuality = 10
-        case highQuality = 8
-        case mediumQuality = 5
-        case maxCompression = 1
+    public enum ImageCompression: Float {
+        case originalQuality = 1.0
+        case highQuality = 0.8
+        case mediumQuality = 0.5
+        case maxCompression = 0.1
         
         func imageCompressionValue() -> CGFloat {
-            return CGFloat(self.rawValue) / 10.0
+            return CGFloat(self.rawValue)
         }
     }
     private var getUploadFormAction: OTOGetUploadFormAction?
