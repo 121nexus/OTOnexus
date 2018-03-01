@@ -1,15 +1,25 @@
 readme: ../README.md
 
 custom_categories:
+  - name: Configuration and Feedback
+    children:
+    - OTOnexus
+    - OTONotification
+    - OTOnexusLocationDelegate
+
   - name: Capture
     children:
-    - OTOCaptureView
+    - OTOCaptureViewController
+    - OTOCaptureViewDelegate
 
   - name: Models
     children:
-    - OTOExperience
     - OTOSession
+    - OTOSessionDelegate
+    - OTOExperience
     - OTOProduct
+    - OTOBarcode
+    - OTOBarcodeType
 
   - name: Platform Modules
     children:

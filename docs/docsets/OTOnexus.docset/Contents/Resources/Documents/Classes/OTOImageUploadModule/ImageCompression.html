@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ProductError Enumeration Reference</title>
+    <title>ImageCompression Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/ProductError" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/ImageCompression" class="dashAnchor"></a>
 
-    <a title="ProductError Enumeration Reference"></a>
+    <a title="ImageCompression Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../../index.html">OTOnexus Reference</a>
       <img class="carat" src="../../img/carat.png" />
-      ProductError Enumeration Reference
+      ImageCompression Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -188,19 +188,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>ProductError</h1>
+            <h1>ImageCompression</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ProductError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ImageCompression</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
 
                 </div>
               </div>
-            <p>Enum for product lookup error</p>
-
-<ul>
-<li>Product not found on platform</li>
-<li>Server error</li>
-</ul>
+            <p>ImageCompression specifies how much to compress images. The more images are compressed the less time image uploads will take.</p>
 
           </div>
         </section>
@@ -212,9 +207,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus10OTOProductC12ProductErrorO15productNotFoundA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/productNotFound" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus10OTOProductC12ProductErrorO15productNotFoundA2EmF">productNotFound</a>
+                    <a name="/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO15originalQualityA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/originalQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO15originalQualityA2EmF">originalQuality</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,14 +217,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Product not found on platform</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">productNotFound</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ImageCompression</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
 
                         </div>
                       </div>
@@ -243,9 +237,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus10OTOProductC12ProductErrorO03otoD0AeA8OTOErrorOcAEmF"></a>
-                    <a name="//apple_ref/swift/Element/otoError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus10OTOProductC12ProductErrorO03otoD0AeA8OTOErrorOcAEmF">otoError</a>
+                    <a name="/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO11highQualityA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/highQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO11highQualityA2EmF">highQuality</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -253,14 +247,73 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Server error returned during product search</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="nf">otoError</span><span class="p">(</span><span class="kt"><a href="../../Enums/OTOError.html">OTOError</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ImageCompression</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO13mediumQualityA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/mediumQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO13mediumQualityA2EmF">mediumQuality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ImageCompression</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO03maxF0A2EmF"></a>
+                    <a name="//apple_ref/swift/Element/maxCompression" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus20OTOImageUploadModuleC16ImageCompressionO03maxF0A2EmF">maxCompression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ImageCompression</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
 
                         </div>
                       </div>

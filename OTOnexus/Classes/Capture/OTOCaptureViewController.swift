@@ -40,6 +40,9 @@ public protocol OTOCaptureViewDelegate: class {
     func captureViewDidStartNetworkActivity()
 }
 
+/**
+ OTOCaptureViewController is the UI component that you add to your app to enable 121nexus scanning functionality.
+ */
 public class OTOCaptureViewController: UIViewController {
 
     var captureView:OTOCaptureView?
@@ -55,6 +58,7 @@ public class OTOCaptureViewController: UIViewController {
         }
     }
     
+    /// Sets up capture view controller and adds the scanner as a subview of the `containerView`
     public class func setup(containerView:UIView,
                             containerController:UIViewController,
                             delegate:OTOCaptureViewDelegate) -> OTOCaptureViewController {
@@ -91,6 +95,7 @@ public class OTOCaptureViewController: UIViewController {
 
 // Proxy Functions
 extension OTOCaptureViewController {
+    /// Change where capture functions are called
     public weak var delegate:OTOCaptureViewDelegate? {
         set {
             captureView?.delegate = delegate

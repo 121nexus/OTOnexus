@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ OTONotification provides keys you can observe in the `NotificationCenter` for UIevents
+ */
 public enum OTONotification: String {
     case resetResults
     case flashEnabled
@@ -14,6 +17,7 @@ public enum OTONotification: String {
     case singleBarcode
     case stackedBarcode
 
+    /// :nodoc:
     public init?(name: Notification.Name) {
         if name.rawValue == OTONotification.resetResults.rawValue { self = .resetResults }
         else if name.rawValue == OTONotification.flashEnabled.rawValue { self = .flashEnabled }
@@ -23,6 +27,7 @@ public enum OTONotification: String {
         else { return nil }
     }
 
+    /// :nodoc:
     public func name() -> Notification.Name {
         switch self {
         case .resetResults: return Notification.Name(OTONotification.resetResults.rawValue)

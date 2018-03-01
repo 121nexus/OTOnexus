@@ -21,16 +21,27 @@ private let aztecName = "Aztec"
 private let ITF14Name = "ITF-14"
 
 public enum OTOBarcodeType {
+    /// maps to `AVMetadataObject.ObjectType.qr`
     case QRCode
+    /// maps to `AVMetadataObject.ObjectType.dataMatrix`
     case dataMatrix
+    /// maps to `AVMetadataObject.ObjectType.code128`
     case code128
+    /// maps to `AVMetadataObject.ObjectType.code39`
     case code39
+    /// maps to `AVMetadataObject.ObjectType.code93`
     case code93
+    /// maps to `AVMetadataObject.ObjectType.upce`
     case UPC
+    /// maps to `AVMetadataObject.ObjectType.pdf417`
     case PDF417
+    /// maps to `AVMetadataObject.ObjectType.ean13`
     case EAN13
+    /// maps to `AVMetadataObject.ObjectType.aztec`
     case aztec
+    /// maps to `AVMetadataObject.ObjectType.itf14`
     case ITF14
+    /// maps 2 of the above types
     indirect case stacked(OTOBarcodeType, OTOBarcodeType)
 
     public func code() -> String {
@@ -88,6 +99,7 @@ extension OTOBarcodeType: RawRepresentable {
         }
     }
 
+    /// :nodoc:
     public var rawValue: String {
         return code()
     }

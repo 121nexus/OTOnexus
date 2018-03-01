@@ -33,6 +33,9 @@ extension AWSRegionType {
  OTOImageUploadModule is a module that allows a user to upload photos to the *121nexus platform*.
 */
 public class OTOImageUploadModule : OTOModule {
+    /**
+     ImageCompression specifies how much to compress images. The more images are compressed the less time image uploads will take.
+     */
     public enum ImageCompression: Float {
         case originalQuality = 1.0
         case highQuality = 0.8
