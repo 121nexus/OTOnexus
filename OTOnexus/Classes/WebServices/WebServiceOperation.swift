@@ -7,6 +7,13 @@
 
 import Foundation
 
+let testPlatformConnectionError = true
+let testAuthenticationError = false
+let testPlatformMaintenanceError = false
+let testUnexpectedResponseError = false
+let testAbnormalStatusError = testAuthenticationError || testPlatformMaintenanceError || testUnexpectedResponseError
+let testError = testPlatformConnectionError || testAbnormalStatusError
+
 class WebServiceOperation: AsyncOperation {
     private var retry = 0
     var endPoint = ""
@@ -28,10 +35,9 @@ class WebServiceOperation: AsyncOperation {
         }
         let dataTask = WebServiceManager.shared.urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
-            if let response = response as? HTTPURLResponse {
+            if let response = response as? HTTPURLResponse, !testPlatformConnectionError {
                 let responseObject = strongSelf.responseObject(forData: data, response: response)
-                
-                if response.statusCode >= 200 && response.statusCode < 300 {
+                if response.statusCode >= 200 && response.statusCode < 300 && !testAbnormalStatusError {
                     if let responseCompletionBlock = strongSelf.responseCompletionBlock {
                         strongSelf.dispatchOnMainQueue(responseCompletionBlock(responseObject, nil))
                     }
@@ -75,11 +81,26 @@ class WebServiceOperation: AsyncOperation {
     }
     
     private func handleError(response:HTTPURLResponse?, error:Error?, responseObject:ResponseObject) {
+
         if let nsError = error as NSError?,
             self.canRetry(error: nsError),
-            self.retry < 3 {
+            self.retry < 3,
+            !testError {
             self.retryOperation()
         } else if let responseCompletionBlock = responseCompletionBlock {
+            if testPlatformConnectionError {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.connectivityError(NSError(domain: "test", code: 1, userInfo: nil), response)))
+            } else if testAuthenticationError {
+                dispatchOnMainQueue(responseCompletionBlock(nil,.unauthenticated))
+            } else if testPlatformMaintenanceError {
+                let fakeResponse = HTTPURLResponse(url: URL(fileURLWithPath: ""), statusCode: 503, httpVersion: nil, headerFields: nil)
+                dispatchOnMainQueue(responseCompletionBlock(nil,.serverErrorWithMessage("", fakeResponse)))
+            } else if testUnexpectedResponseError {
+                let fakeResponse = HTTPURLResponse(url: URL(fileURLWithPath: ""), statusCode: 500, httpVersion: nil, headerFields: nil)
+                dispatchOnMainQueue(responseCompletionBlock(nil,.serverErrorWithMessage("", fakeResponse)))
+            }
+            if testError { return }
+
             if let error = error {
                 dispatchOnMainQueue(responseCompletionBlock(nil,.connectivityError(error, response)))
             } else if responseObject.statusCode == 401 {
