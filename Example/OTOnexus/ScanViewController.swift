@@ -9,7 +9,7 @@
 import UIKit
 import OTOnexus
 
-class ScanViewController: UIViewController, OTOCaptureViewDelegate {
+class ScanViewController: UIViewController {
     var session:OTOSession?
     var barcodeString = ""
     var autocaptureImage = UIImage()
@@ -57,38 +57,6 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
         }
     }
 
-    func scannedBarcodeDoesNotExist(barcode: String, image:UIImage) {
-        OTOSession.startSession(withExperienceId: ApiConfiguration.sampleExperienceId, barcode: barcode) { (session, error) in
-            if let session = session {
-                print("Session Page", session.page)
-                self.barcodeString = barcode
-                self.session = session
-                self.goToExperience(session: session)
-            } else if let error = error {
-                self.handle(error: error)
-            }
-        }
-    }
-
-    func didCapture(product: OTOProduct) {
-        guard let defaultExperience = product.defaultExperience else { return }
-        OTOSession.startSession(withExperience: defaultExperience,
-                                product: product) { (session, error) in
-                                    if let session = session {
-                                        print("Session Page", session.page)
-                                        self.barcodeString = product.barcodeData!
-                                        self.session = session
-                                        self.goToExperience(session: session)
-                                    } else if let error = error {
-                                        self.handle(error: error)
-                                    }
-        }
-    }
-    
-    func didEncounterError(error: OTOError) {
-        handle(error: error)
-    }
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -100,6 +68,53 @@ class ScanViewController: UIViewController, OTOCaptureViewDelegate {
         }
     }
 
+}
+
+extension ScanViewController: OTOCaptureViewDelegate {
+    
+    func didCapture(product: OTOProduct) {
+        guard let defaultExperience = product.defaultExperience else { return }
+        OTOSession.startSession(withExperience: defaultExperience,
+                                product: product) { (session, error) in
+                                    if let session = session {
+                                        print("Session Page", session.page)
+                                        self.barcodeString = product.barcode?.data ?? ""
+                                        self.session = session
+                                        self.goToExperience(session: session)
+                                    } else if let error = error {
+                                        self.handle(error: error)
+                                    }
+        }
+    }
+    
+    func scannedBarcodeDoesNotExist(barcode: OTOBarcode) {
+        OTOSession.startSession(withExperienceId: ApiConfiguration.sampleExperienceId, barcode: barcode) { (session, error) in
+            if let session = session {
+                print("Session Page", session.page)
+                self.barcodeString = barcode.data
+                self.session = session
+                self.goToExperience(session: session)
+            } else if let error = error {
+                self.handle(error: error)
+            }
+        }
+    }
+    
+    func didEncounterError(error: OTOError) {
+        handle(error: error)
+    }
+    
+    func barcodeParseError(barcode: OTOBarcode) {
+        scannedBarcodeDoesNotExist(barcode: barcode)
+    }
+    
+    func captureViewDidEndNetworkActivity() {
+    }
+    
+    func captureViewDidStartNetworkActivity() {
+    }
+    
+    
 }
 
 

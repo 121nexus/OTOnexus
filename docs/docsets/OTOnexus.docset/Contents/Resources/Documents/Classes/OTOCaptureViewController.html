@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OTOCaptureView Class Reference</title>
+    <title>OTOCaptureViewController Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/OTOCaptureView" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/OTOCaptureViewController" class="dashAnchor"></a>
 
-    <a title="OTOCaptureView Class Reference"></a>
+    <a title="OTOCaptureViewController Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,17 +38,34 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">OTOnexus Reference</a>
       <img class="carat" src="../img/carat.png" />
-      OTOCaptureView Class Reference
+      OTOCaptureViewController Class Reference
     </p>
 
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Configuration and Feedback.html">Configuration and Feedback</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OTOnexus.html">OTOnexus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/OTONotification.html">OTONotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/OTOnexusLocationDelegate.html">OTOnexusLocationDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Capture.html">Capture</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOCaptureView.html">OTOCaptureView</a>
+                <a class="nav-group-task-link" href="../Classes/OTOCaptureViewController.html">OTOCaptureViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a>
               </li>
             </ul>
           </li>
@@ -56,16 +73,25 @@
             <a class="nav-group-name-link" href="../Models.html">Models</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOExperience.html">OTOExperience</a>
+                <a class="nav-group-task-link" href="../Classes/OTOSession.html">OTOSession</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOSession.html">OTOSession</a>
+                <a class="nav-group-task-link" href="../Protocols/OTOSessionDelegate.html">OTOSessionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OTOExperience.html">OTOExperience</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/OTOProduct.html">OTOProduct</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/OTOProduct/ProductError.html">– ProductError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/OTOBarcode.html">OTOBarcode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/OTOBarcodeType.html">OTOBarcodeType</a>
               </li>
             </ul>
           </li>
@@ -77,6 +103,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/OTOImageUploadModule.html">OTOImageUploadModule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OTOImageUploadModule/ImageCompression.html">– ImageCompression</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/OTOGudidModule.html">OTOGudidModule</a>
@@ -153,45 +182,20 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Classes.html">Other Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOReorderModule.html">OTOReorderModule</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOSafetyCheckModule.html">OTOSafetyCheckModule</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/OTOnexus.html">OTOnexus</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Other Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/OTOSessionDelegate.html">OTOSessionDelegate</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
 
         <section class="section">
           <div class="section-content">
-            <h1>OTOCaptureView</h1>
+            <h1>OTOCaptureViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureViewController</span><span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
 
                 </div>
               </div>
-            <p>OTOCaptureView is a class that provides scanning functionality to capture barcodes and provide the data associated with them. Through its delegate methods it returns the raw barcode string that can be used to search on the <em>121nexus platform</em></p>
+            <p>OTOCaptureViewController is the UI component that you add to your app to enable 121nexus scanning functionality.</p>
 
           </div>
         </section>
@@ -203,36 +207,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC8delegateAA0bC8Delegate_pSgXwv"></a>
-                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC8delegateAA0bC8Delegate_pSgXwv">delegate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Main delegate that has two methods associated with it <em>didCapture(product:OTOProduct)</em> and <em>scannedBarcodeDoesNotExist(barcode:String)</em></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC11scanStackedSbv"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC11scanStackedSbv"></a>
                     <a name="//apple_ref/swift/Property/scanStacked" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC11scanStackedSbv">scanStacked</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC11scanStackedSbv">scanStacked</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,9 +234,147 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC13isTorchHiddenSbv"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC5setupACSo6UIViewC09containerC0_So0fD0C0gD0AA0bC8Delegate_p8delegatetFZ"></a>
+                    <a name="//apple_ref/swift/Method/setup(containerView:containerController:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC5setupACSo6UIViewC09containerC0_So0fD0C0gD0AA0bC8Delegate_p8delegatetFZ">setup(containerView:containerController:delegate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets up capture view controller and adds the scanner as a subview of the <code>containerView</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">containerView</span><span class="p">:</span><span class="kt">UIView</span><span class="p">,</span>
+                            <span class="nv">containerController</span><span class="p">:</span><span class="kt">UIViewController</span><span class="p">,</span>
+                            <span class="nv">delegate</span><span class="p">:</span><span class="kt"><a href="../Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">OTOCaptureViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewWillAppear:"></a>
+                    <a name="//apple_ref/swift/Method/viewWillAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewWillAppear:">viewWillAppear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureViewController</span><span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewWillDisappear:"></a>
+                    <a name="//apple_ref/swift/Method/viewWillDisappear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewWillDisappear:">viewWillDisappear(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureViewController</span><span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@OTOnexus@objc(cs)OTOCaptureViewController(im)viewDidLoad">viewDidLoad()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureViewController</span><span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC8delegateAA0bC8Delegate_pSgXwv"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC8delegateAA0bC8Delegate_pSgXwv">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change where capture functions are called</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span><span class="kt"><a href="../Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC13isTorchHiddenSbv"></a>
                     <a name="//apple_ref/swift/Property/isTorchHidden" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC13isTorchHiddenSbv">isTorchHidden</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC13isTorchHiddenSbv">isTorchHidden</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -284,9 +399,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC13isResetHiddenSbv"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC13isResetHiddenSbv"></a>
                     <a name="//apple_ref/swift/Property/isResetHidden" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC13isResetHiddenSbv">isResetHidden</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC13isResetHiddenSbv">isResetHidden</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,9 +426,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC19isBarcodeTypeHiddenSbv"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC19isBarcodeTypeHiddenSbv"></a>
                     <a name="//apple_ref/swift/Property/isBarcodeTypeHidden" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC19isBarcodeTypeHiddenSbv">isBarcodeTypeHidden</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC19isBarcodeTypeHiddenSbv">isBarcodeTypeHidden</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -338,35 +453,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@OTOnexus@objc(cs)OTOCaptureView(im)initWithCoder:"></a>
-                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@OTOnexus@objc(cs)OTOCaptureView(im)initWithCoder:">init(coder:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OTOCaptureView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC12resetResultsyyF"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC12resetResultsyyF"></a>
                     <a name="//apple_ref/swift/Method/resetResults()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC12resetResultsyyF">resetResults()</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC12resetResultsyyF">resetResults()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -391,9 +480,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:8OTOnexus14OTOCaptureViewC11toggleFlashyyF"></a>
+                    <a name="/s:8OTOnexus24OTOCaptureViewControllerC11toggleFlashyyF"></a>
                     <a name="//apple_ref/swift/Method/toggleFlash()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:8OTOnexus14OTOCaptureViewC11toggleFlashyyF">toggleFlash()</a>
+                    <a class="token" href="#/s:8OTOnexus24OTOCaptureViewControllerC11toggleFlashyyF">toggleFlash()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -423,7 +512,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">Chris DeOrio</a>. All rights reserved. (Last updated: 2017-12-04)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">121nexus</a>. All rights reserved. (Last updated: 2018-03-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

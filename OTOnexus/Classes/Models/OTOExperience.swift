@@ -19,6 +19,7 @@ public class OTOExperience {
     public var description = ""
     private var productRequired = false
     
+    /// :nodoc:
     required public init() {
     }
 }
