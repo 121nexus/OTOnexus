@@ -140,12 +140,11 @@ class OTOCaptureView: UIView {
         }
         previewBox.setHeightMultiplier(stackedHeightMultiplier)
         videoPreviewLayer.frame = self.layer.bounds
-        self.videoPreviewLayer?.frame = self.layer.bounds
         #if !((arch(i386) || arch(x86_64)) && os(iOS))
             #if swift(>=4)
-                let rectOfInterest : CGRect = videoPreviewLayer!.metadataOutputRectConverted(fromLayerRect: previewBox.frame)
+                let rectOfInterest : CGRect = videoPreviewLayer.metadataOutputRectConverted(fromLayerRect: previewBox.frame)
             #else
-                let rectOfInterest : CGRect = videoPreviewLayer!.metadataOutputRectOfInterest(for: previewBox.frame)
+                let rectOfInterest : CGRect = videoPreviewLayer.metadataOutputRectOfInterest(for: previewBox.frame)
             #endif
             metaDataOutput?.rectOfInterest = rectOfInterest
         #endif

@@ -27,7 +27,7 @@ public class OTOSession {
     /// A scanned barcode
     public var barcode:OTOBarcode?
     /// A delegate that notifies when the session transitions to the next page
-    public var delegate:OTOSessionDelegate?
+    public weak var delegate:OTOSessionDelegate?
     
     /// :nodoc:
     public required init() {
