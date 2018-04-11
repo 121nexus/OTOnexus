@@ -116,11 +116,14 @@ class OTOCaptureView: UIView {
         
         self.styleView()
         
-        if (!(captureSession?.isRunning ?? false))
-        {
-            print("Capture Session is not running yet");
-            return
-        }
+        //print("testing life cycle")
+        #if !((arch(i386) || arch(x86_64)) && os(iOS))
+            if (!(captureSession?.isRunning ?? false))
+            {
+                print("Capture Session is not running yet");
+                return
+            }
+        #endif
     }
     
     private func styleView() {
@@ -137,12 +140,15 @@ class OTOCaptureView: UIView {
         }
         previewBox.setHeightMultiplier(stackedHeightMultiplier)
         videoPreviewLayer.frame = self.layer.bounds
-        #if swift(>=4)
-            let rectOfInterest : CGRect = videoPreviewLayer.metadataOutputRectConverted(fromLayerRect: previewBox.frame)
-        #else
-            let rectOfInterest : CGRect = videoPreviewLayer.metadataOutputRectOfInterest(for: previewBox.frame)
+        self.videoPreviewLayer?.frame = self.layer.bounds
+        #if !((arch(i386) || arch(x86_64)) && os(iOS))
+            #if swift(>=4)
+                let rectOfInterest : CGRect = videoPreviewLayer!.metadataOutputRectConverted(fromLayerRect: previewBox.frame)
+            #else
+                let rectOfInterest : CGRect = videoPreviewLayer!.metadataOutputRectOfInterest(for: previewBox.frame)
+            #endif
+            metaDataOutput?.rectOfInterest = rectOfInterest
         #endif
-        metaDataOutput?.rectOfInterest = rectOfInterest
     }
     
     @IBAction func resetAction(_ sender: Any) {
