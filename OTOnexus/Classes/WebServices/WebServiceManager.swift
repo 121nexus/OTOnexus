@@ -1,9 +1,8 @@
 //
 //  WebServiceManager.swift
-//  Pods
+//  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/15/17.
-//
+//  Copyright © 2017 121nexus. All rights reserved.
 //
 
 import Foundation
@@ -24,7 +23,7 @@ class WebServiceManager {
     var urlSession:URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
-    var baseUrl = URL(string: "https://cat-api-dev.herokuapp.com/v3")
+    var baseUrl = URL(string: "https://api.beta.121nexus.com/v3")
     
     func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default

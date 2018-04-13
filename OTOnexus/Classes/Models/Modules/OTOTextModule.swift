@@ -2,7 +2,7 @@
 //  OTOTextModule.swift
 //  OTOnexus
 //
-//  Created by Christopher DeOrio on 11/27/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,7 @@
 //  OTOSession.swift
 //  Pods
 //
-//  Created by Nicholas Schlueter on 9/14/17.
-//  Copyright © 2017 121Nexus. All rights reserved.
+//  Copyright © 2017 121nexus. All rights reserved.
 //
 
 import Foundation
@@ -25,10 +24,10 @@ public class OTOSession {
     public var page = [OTOModule]()
     /// A product on the 121 platform
     public var product:OTOProduct?
-    /// A barcode's raw string value
-    public var barcode:String?
+    /// A scanned barcode
+    public var barcode:OTOBarcode?
     /// A delegate that notifies when the session transitions to the next page
-    public var delegate:OTOSessionDelegate?
+    public weak var delegate:OTOSessionDelegate?
     
     /// :nodoc:
     public required init() {
@@ -36,7 +35,7 @@ public class OTOSession {
     /// Function that starts a new session
     public static func startSession(withExperience experience:OTOExperience,
                              product:OTOProduct? = nil,
-                             barcode:String? = nil,
+                             barcode:OTOBarcode? = nil,
                              complete: @escaping (OTOSession?, OTOError?) -> Void) {
         self.startSession(withExperienceId: experience.id, product:product, barcode:barcode, complete: complete)
     }
@@ -44,24 +43,29 @@ public class OTOSession {
     /// Function that starts a new session with a *experienceID*
     public static func startSession(withExperienceId experienceId:Int,
                                     product:OTOProduct? = nil,
-                                    barcode:String? = nil,
+                                    barcode:OTOBarcode? = nil,
                                     complete: @escaping (OTOSession?, OTOError?) -> Void) {
         let endpoint = "experiences/\(experienceId)/sessions"
         var body:[String: Any] = [:]
         if let product = product {
             body["product_url"] = product.url
-            if let barcodeData = product.barcodeData {
+            if let barcodeData = product.barcode?.data {
                 body["barcode_data"] = barcodeData
             }
         } else if let barcode = barcode {
-            body["barcode_data"] = barcode
+            body["barcode_data"] = barcode.data
+        }
+        
+        if let currentLocation = OTOLocationHelper.shared.currentLocation {
+            body["location_data"] = ["latitude":currentLocation.coordinate.latitude,
+                                     "longitude":currentLocation.coordinate.longitude]
         }
         
         WebServiceManager.shared.post(endpoint: endpoint,
                                       body: body) { (responseObject, error) in
                                         if let responseObject = responseObject {
                                             let session = self.decode(responseObject.dataValue())
-                                            session.barcode = body["barcode_data"] as? String
+                                            session.barcode = barcode
                                             session.product = product
                                             complete(session, nil)
                                         } else {

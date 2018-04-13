@@ -2,8 +2,7 @@
 //  OTOExperience.swift
 //  Pods
 //
-//  Created by Nicholas Schlueter on 9/14/17.
-//  Copyright © 2017 121Nexus. All rights reserved.
+//  Copyright © 2017 121nexus. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +19,7 @@ public class OTOExperience {
     public var description = ""
     private var productRequired = false
     
+    /// :nodoc:
     required public init() {
     }
 }

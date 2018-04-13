@@ -44,10 +44,27 @@
       <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Configuration and Feedback.html">Configuration and Feedback</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/OTOnexus.html">OTOnexus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/OTONotification.html">OTONotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/OTOnexusLocationDelegate.html">OTOnexusLocationDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Capture.html">Capture</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOCaptureView.html">OTOCaptureView</a>
+                <a class="nav-group-task-link" href="Classes/OTOCaptureViewController.html">OTOCaptureViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a>
               </li>
             </ul>
           </li>
@@ -55,16 +72,25 @@
             <a class="nav-group-name-link" href="Models.html">Models</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOExperience.html">OTOExperience</a>
+                <a class="nav-group-task-link" href="Classes/OTOSession.html">OTOSession</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOSession.html">OTOSession</a>
+                <a class="nav-group-task-link" href="Protocols/OTOSessionDelegate.html">OTOSessionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/OTOExperience.html">OTOExperience</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/OTOProduct.html">OTOProduct</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/OTOProduct/ProductError.html">– ProductError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/OTOBarcode.html">OTOBarcode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/OTOBarcodeType.html">OTOBarcodeType</a>
               </li>
             </ul>
           </li>
@@ -76,6 +102,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/OTOImageUploadModule.html">OTOImageUploadModule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/OTOImageUploadModule/ImageCompression.html">– ImageCompression</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/OTOGudidModule.html">OTOGudidModule</a>
@@ -152,31 +181,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Other Classes.html">Other Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOReorderModule.html">OTOReorderModule</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOSafetyCheckModule.html">OTOSafetyCheckModule</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/OTOnexus.html">OTOnexus</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Other Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/OTOCaptureViewDelegate.html">OTOCaptureViewDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/OTOSessionDelegate.html">OTOSessionDelegate</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -185,15 +189,54 @@
           <div class="section-content">
             
             <h1 id='otonexus' class='heading'>OTOnexus</h1>
-<h3 id='a-barcode-scanning-sdk-by-121nexus-com' class='heading'>A Barcode Scanning SDK by 121nexus.com</h3>
+
+<blockquote>
+<p>A Barcode Scanning SDK by <a href="https://121nexus.com">121nexus.com</a></p>
+</blockquote>
 
 <p>OTOnexus is a Barcode Scanning SDK for capturing, looking up, presenting data associated with barcodes. The SDK is supported by the 121nexus Platform which allows clients to add products to the system to enable interactive experiences when end-users scan the physical product.</p>
-<h3 id='installation' class='heading'>Installation</h3>
+
+<p>You will need to obtain an api-key from <a href="https://121nexus.com/next">121nexus.com</a> in order to interact with the 121nexus Platform.</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>[x] Scans the most widely used barcode types (including <q>stacked</q> 128Code)</li>
+<li>[x] Extract raw barcode data from barcodes</li>
+<li>[x] Autocapture scanned barcode images</li>
+<li>[x] GS1 UDI barcode validation</li>
+<li>[x] Access FDA GUDID data directly</li>
+</ul>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 9.0+</li>
+<li>Xcode 9.0+</li>
+</ul>
+<h2 id='installation-with-cocoapods' class='heading'>Installation with CocoaPods</h2>
+
+<!---->
+<h4 id='cocoapods' class='heading'>CocoaPods</h4>
+
+<p>OTOnexus is available through <a href="http://cocoapods.org">CocoaPods</a>. To install it, simply add the following line to your Podfile:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'OTOnexus'</span>
 </code></pre>
-<h3 id='authors' class='heading'>Authors</h3>
+<h4 id='initialization' class='heading'>Initialization</h4>
 
-<p>Chris DeOrio</p>
+<p>Add api-key in ApiConfiguration.swift</p>
+<pre class="highlight plaintext"><code>...
+struct ApiConfiguration {
+    static let apiKey = "&lt;YOUR API KEY HERE&gt;"
+    /// Set the sampleExperienceId to the provided value
+    static let sampleExperienceId = -1
+}
+...
+</code></pre>
+<h2 id='usage-example' class='heading'>Usage Example</h2>
+
+<p>To see a complete example of using the gallery, take a look at the <a href="https://github.com/121nexus/OTOnexus/tree/master/Example">Example</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>See the LICENSE file for more details.</p>
 
           </div>
         </section>
@@ -202,7 +245,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2017 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">Chris DeOrio</a>. All rights reserved. (Last updated: 2017-12-04)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">121nexus</a>. All rights reserved. (Last updated: 2018-03-01)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

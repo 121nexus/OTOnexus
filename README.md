@@ -25,7 +25,7 @@ You will need to obtain an api-key from [121nexus.com](https://121nexus.com/next
 OTOnexus is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'OTOnexus', :git => 'https://github.com/121nexus/OTOnexus.git', :tag => '1.0.0'
+pod 'OTOnexus'
 ```
 
 #### Initialization
@@ -46,6 +46,3 @@ To see a complete example of using the gallery, take a look at the [Example](htt
 
 ## License
 See the LICENSE file for more details.
-## Author
-
-Chris DeOrio, <chris@121nexus.com>

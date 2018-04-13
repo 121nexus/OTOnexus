@@ -2,7 +2,7 @@
 //  OTOImageUploadModule.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 9/27/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation
@@ -33,19 +33,34 @@ extension AWSRegionType {
  OTOImageUploadModule is a module that allows a user to upload photos to the *121nexus platform*.
 */
 public class OTOImageUploadModule : OTOModule {
+    /**
+     ImageCompression specifies how much to compress images. The more images are compressed the less time image uploads will take.
+     */
+    public enum ImageCompression: Float {
+        case originalQuality = 1.0
+        case highQuality = 0.8
+        case mediumQuality = 0.5
+        case maxCompression = 0.1
+        
+        func imageCompressionValue() -> CGFloat {
+            return CGFloat(self.rawValue)
+        }
+    }
     private var getUploadFormAction: OTOGetUploadFormAction?
     private var imageUploadedAction: OTOImageUploadedAction?
     private var complete: ((UIImage?, OTOError?) -> Void)?
     private var image: UIImage?
+    private var imageCompression = ImageCompression.highQuality
     
     /// Property that could be used to prompt the user to "uplaod a photo"
     public var promptText = ""
     /// Property that couple be used to notify user of "upload completion"
     public var thanksText = ""
     /// Function to upload image to 121nexus platform
-    public func upload(image:UIImage, complete:@escaping (UIImage?, OTOError?) -> Void) {
+    public func upload(image:UIImage, imageCompression:ImageCompression = .highQuality, complete:@escaping (UIImage?, OTOError?) -> Void) {
+        self.imageCompression = imageCompression
         self.complete = complete
-        self.image = resizeImage(image: image)
+        self.image = image
         getUploadForm()
     }
     
@@ -105,7 +120,7 @@ public class OTOImageUploadModule : OTOModule {
     
     func saveImageToTempDirectory() -> URL? {
         guard let image = self.image,
-            let data = UIImageJPEGRepresentation(image, 1.0) else { return nil }
+            let data = UIImageJPEGRepresentation(image, imageCompression.imageCompressionValue()) else { return nil }
         // consider scaling image down if too large
         
         let tempUrl = URL(fileURLWithPath: NSTemporaryDirectory())
@@ -127,29 +142,5 @@ public class OTOImageUploadModule : OTOModule {
         
         self.getUploadFormAction = self.action(forName: "get_upload_form", responseData: responseData)
         self.imageUploadedAction = self.action(forName: "submit_upload_url", responseData: responseData)
-    }
-    
-    private func resizeImage(image:UIImage) -> UIImage {
-        let maxDimension = CGFloat(1024)
-        var newSize:CGSize?
-        if image.size.width >= image.size.height && image.size.width > maxDimension {
-            let ratio = maxDimension / image.size.width
-            let scaledHeight = ratio * image.size.height
-            newSize = CGSize(width: maxDimension, height: scaledHeight)
-        } else if image.size.height > image.size.width && image.size.height > maxDimension {
-            let ratio = maxDimension / image.size.height
-            let scaledWidth = ratio * image.size.width
-            newSize = CGSize(width: scaledWidth, height: maxDimension)
-        }
-        if let newSize = newSize {
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-            image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-            if let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext() {
-                UIGraphicsEndImageContext()
-                return newImage
-            }
-        }
-        
-        return image
     }
 }

@@ -2,7 +2,7 @@
 //  OTOGs1ValidationModule.swift
 //  OTOnexus
 //
-//  Created by Nicholas Schlueter on 10/5/17.
+//  Copyright © 2018 121nexus. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ public class OTOGs1ValidationModule : OTOModule {
     /// Function to validate barcode data using GS1 validation rules
     public func validateBarcode(complete: @escaping (OTOValidateBarcodeResponse?, OTOError?) -> Void) {
         if let barcode = session?.barcode {
-            validateBarcodeAction?.barcode = barcode
+            validateBarcodeAction?.barcode = barcode.data
         }
         validateBarcodeAction?.perform(complete: { [weak self] (barcodeResponse, error) in
             guard let strongSelf = self else { return }
