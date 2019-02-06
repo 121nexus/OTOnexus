@@ -35,7 +35,7 @@ class WebServiceManager {
     }
     
     func setApiUrl(apiUrl:String) {
-        baseUrl = url(endpoint: apiUrl)
+        baseUrl = URL(string: apiUrl)
     }
     
     func url(withEndPoint endpoint:String) -> URL? {
