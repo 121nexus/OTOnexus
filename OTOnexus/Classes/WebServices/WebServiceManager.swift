@@ -34,6 +34,10 @@ class WebServiceManager {
         
     }
     
+    func setApiUrl(apiUrl:String) {
+        baseUrl = url(endpoint: apiUrl)
+    }
+    
     func url(withEndPoint endpoint:String) -> URL? {
         if endpoint.hasPrefix("https") {
             return URL(string:endpoint)

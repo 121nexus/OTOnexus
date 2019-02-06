@@ -20,8 +20,11 @@ public class OTOnexus {
     }
     
     /// Sets the api key in order to connect ot the *121nexus platform*
-    public static func configure(withApiKey apiKey:String, locationDelegate:OTOnexusLocationDelegate?) {
+    public static func configure(withApiKey apiKey:String, withApiUrl apiUrl:String? = nil, locationDelegate:OTOnexusLocationDelegate?) {
         WebServiceManager.shared.configureWithApiKey(apiKey: apiKey)
+        if let apiUrl = apiUrl {
+            WebServiceManager.shared.setApiUrl(apiUrl: apiUrl)
+        }
         shared.delegate = locationDelegate
         OTOLocationHelper.shared.start()
     }
