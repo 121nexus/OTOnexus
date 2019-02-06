@@ -30,19 +30,27 @@ pod 'OTOnexus'
 
 #### Initialization
 
-Add api-key in ApiConfiguration.swift
+Import OTOnexus and configure with API key and, optionally, API URL and location delegate. The API URL should be passes as the raw host string, without protocol or slashes. The API key should passed as provided by Soom (please [contact us](https://www.soom.com/contact) for a Soom Platform account and API access).
 ```
+import OTOnexus
 ...
-struct ApiConfiguration {
-    static let apiKey = "<YOUR API KEY HERE>"
-    /// Set the sampleExperienceId to the provided value
-    static let sampleExperienceId = -1
-}
+OTOnexus.configure(withApiKey: '6e9d87f2-a1f0-4b86-8bd1-01f0d4173ddf', withApiUrl: 'api.soom.com', locationDelegate: nil)
 ...
 ```
 
 ## Usage Example
 To see a complete example of using the gallery, take a look at the [Example](https://github.com/121nexus/OTOnexus/tree/master/Example).
+
+To configure the SDK in the sample project, modify ApiConfiguration.swift
+```
+...
+struct ApiConfiguration {
+static let apiKey = "<YOUR API KEY HERE>"
+/// Set the sampleExperienceId to the provided value
+static let sampleExperienceId = -1
+}
+...
+```
 
 ## License
 See the LICENSE file for more details.
