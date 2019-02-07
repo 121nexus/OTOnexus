@@ -14,6 +14,7 @@
   </head>
   <body>
 
+    <a name="//apple_ref/swift/Section/Error" class="dashAnchor"></a>
 
     <a title="Error  Reference"></a>
 
@@ -212,25 +213,25 @@
                         <p>OTOError is the error object that can be returned from most network calls</p>
 
 <p>USAGE:</p>
-<pre class="highlight plaintext"><code>     switch error {
-     case .connectivityError(let error, let httpUrlResponse):
-        if let httpUrlResponse = httpUrlResponse {
-            print(httpUrlResponse.statusCode)
-        }
-        print(error)
-     case .validationErrorWithMessage(let message, let httpUrlResponse):
-        if let httpUrlResponse = httpUrlResponse {
-            print(httpUrlResponse.statusCode)
-        }
-        print(message)
-     case .serverErrorWithMessage(let message, let httpUrlResponse):
-        if let httpUrlResponse = httpUrlResponse {
-            print(httpUrlResponse.statusCode)
-        }
-        print(message)
-     case .unauthenticated:
-        print("Please provide valid API Key")
-     }
+<pre class="highlight swift"><code>     <span class="k">switch</span> <span class="n">error</span> <span class="p">{</span>
+     <span class="k">case</span> <span class="o">.</span><span class="nf">connectivityError</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">,</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span><span class="p">):</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span> <span class="o">=</span> <span class="n">httpUrlResponse</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">httpUrlResponse</span><span class="o">.</span><span class="n">statusCode</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+     <span class="k">case</span> <span class="o">.</span><span class="nf">validationErrorWithMessage</span><span class="p">(</span><span class="k">let</span> <span class="nv">message</span><span class="p">,</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span><span class="p">):</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span> <span class="o">=</span> <span class="n">httpUrlResponse</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">httpUrlResponse</span><span class="o">.</span><span class="n">statusCode</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+     <span class="k">case</span> <span class="o">.</span><span class="nf">serverErrorWithMessage</span><span class="p">(</span><span class="k">let</span> <span class="nv">message</span><span class="p">,</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span><span class="p">):</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">httpUrlResponse</span> <span class="o">=</span> <span class="n">httpUrlResponse</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">httpUrlResponse</span><span class="o">.</span><span class="n">statusCode</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+     <span class="k">case</span> <span class="o">.</span><span class="nv">unauthenticated</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Please provide valid API Key"</span><span class="p">)</span>
+     <span class="p">}</span>
 </code></pre>
 
                         <a href="Enums/OTOError.html" class="slightly-smaller">See more</a>
@@ -239,7 +240,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">OTOError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">OTOError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                         </div>
                       </div>
@@ -254,8 +255,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">121nexus</a>. All rights reserved. (Last updated: 2018-03-01)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/121nexus/OTOnexus" target="_blank" rel="external">121nexus</a>. All rights reserved. (Last updated: 2019-02-07)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
