@@ -23,7 +23,7 @@ class WebServiceManager {
     var urlSession:URLSession = {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
-    var baseUrl = URL(string: "https://api.121nexus.com/v3")
+    var baseUrl = URL(string: "https://api.soom.com/v3")
     
     func configureWithApiKey(apiKey:String) {
         let configuration = URLSessionConfiguration.default
@@ -32,6 +32,10 @@ class WebServiceManager {
         configuration.httpAdditionalHeaders = ["api-key": apiKey]
         self.urlSession = URLSession(configuration: configuration)
         
+    }
+    
+    func setApiUrl(apiUrl:String) {
+        baseUrl = URL(string: "https://\(apiUrl)/v3")
     }
     
     func url(withEndPoint endpoint:String) -> URL? {
