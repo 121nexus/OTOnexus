@@ -2,13 +2,13 @@
 //  Module.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation
 
 /**
-OTOModule represents an instance of a module. Modules contain functionality associated with a product. For example a video module will present video content about a particular product on the *121nexus platform*.
+OTOModule represents an instance of a module. Modules contain functionality associated with a product. For example a video module will present video content about a particular product on the *Soom platform*.
 */
 public class OTOModule : Decodable {
     static private let classMap = ["ImageUpload": OTOImageUploadModule.self,

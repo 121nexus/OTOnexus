@@ -2,7 +2,7 @@
 //  CaptureViewController.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2019 Soom. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,7 @@ public protocol OTOCaptureViewDelegate: class {
     func didCapture(product: OTOProduct)
     
     /**
-     Delegate method that returns when a scanned barcode does not exist on the *121nexus Platform*
+     Delegate method that returns when a scanned barcode does not exist on the *Soom Platform*
      - Parameters:
          - barcode: structured information about the scanned barcode
      */
@@ -41,7 +41,7 @@ public protocol OTOCaptureViewDelegate: class {
 }
 
 /**
- OTOCaptureViewController is the UI component that you add to your app to enable 121nexus scanning functionality.
+ OTOCaptureViewController is the UI component that you add to your app to enable Soom scanning functionality.
  */
 public class OTOCaptureViewController: UIViewController {
 

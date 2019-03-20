@@ -2,12 +2,12 @@
 //  OTOTextModule.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation
 /**
- OTOTextModule is a text module that allows a user to display text content stored on teh *121nexus platform*.
+ OTOTextModule is a text module that allows a user to display text content stored on teh *Soom platform*.
  */
 public class OTOTextModule : OTOModule {
     

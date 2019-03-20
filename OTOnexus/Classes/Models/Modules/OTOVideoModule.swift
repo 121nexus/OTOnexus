@@ -2,13 +2,13 @@
 //  OTOVideoModule.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation
 
 /**
- OTOVideoModule is a video module that allows a user to view video content stored on the *121nexus platform*. This can be direct video files or videos hosted on video hosting services like YouTube.
+ OTOVideoModule is a video module that allows a user to view video content stored on the *Soom platform*. This can be direct video files or videos hosted on video hosting services like YouTube.
  */
 public class OTOVideoModule : OTOModule {
     /// Enum for video type returned from platform
@@ -26,7 +26,7 @@ public class OTOVideoModule : OTOModule {
     public var videoType = VideoType.unknown
     /// String value of video file url
     public var videoUrl = ""
-    /// Function to log video played event to 121nexus platfrom
+    /// Function to log video played event to Soom platfrom
     public func videoPlayed() {
         videoPlayedAction?.perform(complete: { (_, _) in
         })

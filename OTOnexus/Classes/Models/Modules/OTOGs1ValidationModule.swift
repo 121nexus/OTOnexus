@@ -2,7 +2,7 @@
 //  OTOGs1ValidationModule.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation

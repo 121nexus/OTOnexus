@@ -2,7 +2,7 @@
 //  OTOImageUploadModule.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation
@@ -30,7 +30,7 @@ extension AWSRegionType {
 }
 
 /**
- OTOImageUploadModule is a module that allows a user to upload photos to the *121nexus platform*.
+ OTOImageUploadModule is a module that allows a user to upload photos to the *Soom platform*.
 */
 public class OTOImageUploadModule : OTOModule {
     /**
@@ -56,7 +56,7 @@ public class OTOImageUploadModule : OTOModule {
     public var promptText = ""
     /// Property that couple be used to notify user of "upload completion"
     public var thanksText = ""
-    /// Function to upload image to 121nexus platform
+    /// Function to upload image to Soom platform
     public func upload(image:UIImage, imageCompression:ImageCompression = .highQuality, complete:@escaping (UIImage?, OTOError?) -> Void) {
         self.imageCompression = imageCompression
         self.complete = complete

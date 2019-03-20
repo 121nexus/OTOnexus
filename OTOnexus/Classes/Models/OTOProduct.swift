@@ -2,12 +2,12 @@
 //  OTOProduct.swift
 //  Pods
 //
-//  Copyright © 2017 121nexus. All rights reserved.
+//  Copyright © 2017 Soom. All rights reserved.
 //
 
 import Foundation
 /**
-OTOProduct is a class that represents a physical product on the *121nexus platform*. Products can be searched by the barcode data or by unique urls found on the system.
+OTOProduct is a class that represents a physical product on the *Soom platform*. Products can be searched by the barcode data or by unique urls found on the system.
 */
 public class OTOProduct {
     /**
