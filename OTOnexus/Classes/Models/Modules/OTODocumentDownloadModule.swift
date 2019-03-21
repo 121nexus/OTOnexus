@@ -9,7 +9,7 @@ import Foundation
 
 public class OTODocumentDownloadModule : OTOModule {
     private var downloadAction:OTODownloadAction?
-    public var downloadUrl = ""
+    public var documentUrl = ""
     
     
     public func download(complete:@escaping (OTODownloadResponse?, OTOError?) -> Void) {
@@ -24,6 +24,8 @@ public class OTODocumentDownloadModule : OTOModule {
     
     override func decode(_ responseData: ResponseData) {
         super.decode(responseData)
+        
+        self.documentUrl = responseData.responseDataValue(forKey: "config").stringValue(forKey: "document_url")
     
         self.downloadAction = self.action(forName: "download_document", responseData: responseData)
     }
