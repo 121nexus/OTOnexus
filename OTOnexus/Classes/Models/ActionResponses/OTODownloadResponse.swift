@@ -8,10 +8,10 @@
 import Foundation
 
 public class OTODownloadResponse: OTOActionResponse {
-    public var documentUrl = ""
+    public var documentUrlResponse = ""
     
     override func decode(_ responseData: ResponseData) {
-        self.documentUrl = responseData.stringValue(forKey: "document_url")
+        self.documentUrlResponse = responseData.stringValue(forKey: "document_url")
     }
 
 }
