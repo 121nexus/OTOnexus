@@ -2,7 +2,7 @@
 //  OTOExperience.swift
 //  Pods
 //
-//  Copyright © 2017 121nexus. All rights reserved.
+//  Copyright © 2017 Soom. All rights reserved.
 //
 
 import Foundation
