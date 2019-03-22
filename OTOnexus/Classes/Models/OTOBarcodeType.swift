@@ -2,7 +2,7 @@
 //  OTOBarcodeType.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2019 Soom. All rights reserved.
 //
 
 import AVFoundation

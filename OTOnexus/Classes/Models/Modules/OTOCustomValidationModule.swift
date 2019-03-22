@@ -2,13 +2,13 @@
 //  OTOCustomValidationModule.swift
 //  OTOnexus
 //
-//  Copyright © 2018 121nexus. All rights reserved.
+//  Copyright © 2018 Soom. All rights reserved.
 //
 
 import Foundation
 
 /**
- OTOCustomValidationModule is a module that allows a user to run custom validations on barcodes with rules created on the *121nexus Platform*.
+ OTOCustomValidationModule is a module that allows a user to run custom validations on barcodes with rules created on the *Soom Platform*.
  */
 public class OTOCustomValidationModule : OTOModule {
     var validateBarcodeAction:OTOCustomValidateBarcodeAction?

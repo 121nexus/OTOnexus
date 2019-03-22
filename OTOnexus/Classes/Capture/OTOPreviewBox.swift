@@ -2,7 +2,7 @@
 //  OTOPreviewBox.swift
 //  OTOnexus
 //
-//  Copyright © 2016 121nexus. All rights reserved.
+//  Copyright © 2019 Soom. All rights reserved.
 //
 
 import UIKit

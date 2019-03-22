@@ -2,7 +2,7 @@
 //  OTOnexus.h
 //  OTOnexus
 //
-//  Copyright © 2017 121nexus. All rights reserved.
+//  Copyright © 2019 Soom. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
