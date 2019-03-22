@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'OTOnexus'
-  s.version          = '1.3.0'
+  s.version          = '1.3.1'
   s.summary          = 'A Barcode Scanning SDK by Soom'
   s.source           = { :git => 'https://github.com/121nexus/OTOnexus' }
   s.description      = <<-DESC
