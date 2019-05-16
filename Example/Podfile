@@ -4,10 +4,4 @@ platform :ios, '10.0'
 
 target 'OTOnexus_Example' do
   pod 'OTOnexus', :path => '../'
-
-  target 'OTOnexus_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end

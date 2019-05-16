@@ -9,6 +9,12 @@ import UIKit
 import AVFoundation
 
 class OTOCaptureView: UIView {
+    
+    enum BarcodeTypeIndex: Int {
+        case stacked = 0
+        case single = 1
+    }
+    
     fileprivate static let AI_GTIN = "01"
     
     @IBOutlet weak var previewBox: OTOPreviewBox!
@@ -165,7 +171,7 @@ class OTOCaptureView: UIView {
     }
     
     @IBAction func switchBarcodeTypeAction(_ sender: Any) {
-        let stacked = self.barcodeTypeControl.selectedSegmentIndex == 0
+        let stacked = self.barcodeTypeControl.selectedSegmentIndex == BarcodeTypeIndex.stacked.rawValue
 
         if stacked {
             NotificationCenter.default.post(Notification(name: OTONotification.stackedBarcode.name()))
@@ -186,7 +192,13 @@ class OTOCaptureView: UIView {
         previewBox.red()
         stackedResult = []
         scanStatus = Status.scanning
-        self.barcodeTypeControl.selectedSegmentIndex = self.scanStacked ? 0 : 1
+        self.barcodeTypeControl.selectedSegmentIndex = self.scanStacked ? BarcodeTypeIndex.stacked.rawValue : BarcodeTypeIndex.single.rawValue
+    }
+    
+    func setScanType(type: BarcodeTypeIndex) {
+        barcodeTypeControl.selectedSegmentIndex = type.rawValue
+        barcodeTypeControl.sendActions(for: .valueChanged)
+        isBarcodeTypeHidden = true
     }
     
     func startCaptureIfNotRunning() {

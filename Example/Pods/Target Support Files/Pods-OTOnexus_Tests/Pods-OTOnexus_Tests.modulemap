@@ -1,6 +1,0 @@
-framework module Pods_OTOnexus_Tests {
-  umbrella header "Pods-OTOnexus_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
