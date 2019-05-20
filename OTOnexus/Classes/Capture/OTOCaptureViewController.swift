@@ -65,6 +65,13 @@ public class OTOCaptureViewController: UIViewController {
     }
     
     /// Sets up capture view controller and adds the scanner as a subview of the `containerView`
+    ///
+    /// - Parameters:
+    ///   - containerView: view in which controller will be presented
+    ///   - scanningOption: what type of barcode will be scanned, if nil stacked and single will be supported with segmented control to switch between options
+    ///   - containerController: parentViewController
+    ///   - delegate: returns the results of scanning process
+    /// - Returns: OTOCaptureViewController
     public class func setup(containerView:UIView,
                             scanningOption: ScanningOption? = nil,
                             containerController:UIViewController,
