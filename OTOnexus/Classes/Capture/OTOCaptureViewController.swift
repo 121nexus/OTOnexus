@@ -44,9 +44,15 @@ public protocol OTOCaptureViewDelegate: class {
  OTOCaptureViewController is the UI component that you add to your app to enable Soom scanning functionality.
  */
 public class OTOCaptureViewController: UIViewController {
-
-    var captureView:OTOCaptureView?
     
+    var captureView:OTOCaptureView?
+    private var scanningOption: ScanningOption?
+    private var totalScanningOptions = 2
+    
+    public enum ScanningOption {
+        case stackedBarcode
+        case singleBarcode
+    }
     
     /// Sets default barcode type to be scanned to *stacked* vs. *single*
     public var scanStacked = false {
@@ -59,12 +65,21 @@ public class OTOCaptureViewController: UIViewController {
     }
     
     /// Sets up capture view controller and adds the scanner as a subview of the `containerView`
+    ///
+    /// - Parameters:
+    ///   - containerView: view in which controller will be presented
+    ///   - scanningOption: what type of barcode will be scanned, if nil stacked and single will be supported with segmented control to switch between options
+    ///   - containerController: parentViewController
+    ///   - delegate: returns the results of scanning process
+    /// - Returns: OTOCaptureViewController
     public class func setup(containerView:UIView,
+                            scanningOption: ScanningOption? = nil,
                             containerController:UIViewController,
                             delegate:OTOCaptureViewDelegate) -> OTOCaptureViewController {
         let captureViewController = OTOCaptureViewController()
         captureViewController.setupCaptureView()
         captureViewController.captureView?.delegate = delegate
+        captureViewController.scanningOption = scanningOption
         containerController.addChildViewController(captureViewController)
         captureViewController.view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(captureViewController.view)
@@ -79,6 +94,7 @@ public class OTOCaptureViewController: UIViewController {
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setScanningOption()
         captureView?.startCaptureIfNotRunning()
     }
     
@@ -90,6 +106,18 @@ public class OTOCaptureViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleForgrounding), name: .UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    private func setScanningOption() {
+        // If option not set, leave as it is
+        guard let scanningOption = scanningOption else { return }
+        switch scanningOption {
+        case .singleBarcode:
+            captureView?.setScanType(type: .single)
+        case .stackedBarcode:
+            captureView?.setScanType(type: .stacked)
+        }
+        
     }
 }
 
